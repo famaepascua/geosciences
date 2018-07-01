@@ -1,0 +1,8 @@
+USERS		- userID, username, password, firstName, lastName, userType
+RECEIVEDOCS	- receivedocID, code, folder, dateReceived, applicant, sender, purpose, locationID, actionslipID
+UNCLAIMDOCS	- unclaimdocID, dateInspected, documentDate, inspector, classification, subject, receivedocsID
+RELEASEDOCS	- releasedocID, releaseDate, receivedocsID, unclaimdocsID
+LOCATION	- locationID, municipality, province, barangayID
+BARANGAY	- barangayID, name, folderNumber
+RECORDS		- recordID, status, receivedocsID, unclaimdocsID, releasedocsID
+LOGS		- logID, logDate, logTime, activity, userID
