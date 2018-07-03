@@ -125,9 +125,10 @@
                         </div>
                         <!-- PANEL HEADER END -->
 
+                        <!-- FORM -->
+                        <form action="../php/admin/addIncoming.php" method="post">
                         <!-- PANEL BODY -->
                         <div class="panel-body">
-                        
                             <!--ROW START -->
                             <div class="row">
                                 <!-- ACTION SLIP -->
@@ -141,47 +142,45 @@
                                         
                                          <!-- ACTION SLIP PANEL BODY -->
                                         <div class="panel-body">
-                                            <!-- FORM -->
-                                            <form action="../php/admin/addActionSlip.php" method="post">
                                             <div class="form-group">
                                                 <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" value="">Information and guidance please.
+                                                    <input name="action" type="checkbox" value="">Information and guidance please.
                                                 </label>
                                                 </div>
                                                 <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" value="">Compliance/Implementation please.
+                                                    <input name="action" type="checkbox" value="">Compliance/Implementation please.
                                                 </label>
                                                 </div>
                                                 <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" value="">Appropriate Action please.
+                                                    <input name="action" type="checkbox" value="">Appropriate Action please.
                                                 </label>
                                                 </div>
                                                 <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" value="">Immediate Investigation please.
+                                                    <input name="action" type="checkbox" value="">Immediate Investigation please.
                                                 </label>
                                                 </div>
                                                 <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" value="">Comment and recommendation please.
+                                                    <input name="action" type="checkbox" value="">Comment and recommendation please.
                                                 </label>
                                                 </div>
                                                 <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" value="">Review and inital please.
+                                                    <input name="action" type="checkbox" value="">Review and inital please.
                                                 </label>
                                                 </div>
                                                 <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" value="">Discussion/Dissemination/Posting please.
+                                                    <input name="action" type="checkbox" value="">Discussion/Dissemination/Posting please.
                                                 </label>
                                                 </div>
                                                 <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" value="">Record/File please.
+                                                    <input name="action" type="checkbox" value="">Record/File please.
                                                 </label>
                                                 </div>
                                             </div>
@@ -191,45 +190,45 @@
                                                 </label>
                                                 <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" value="">Give me status/feedback please.
+                                                    <input name="actiondesired" type="checkbox" value="">Give me status/feedback please.
                                                 </label>
                                                 </div>
                                                 <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" value="">Please attend to this.
+                                                    <input name="actiondesired" type="checkbox" value="">Please attend to this.
                                                 </label>
                                                 </div>
                                                 <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" value="">Please represent to me.
+                                                    <input name="actiondesired" type="checkbox" value="">Please represent to me.
                                                 </label>
                                                 </div>
                                                 <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" value="">Please see me about this.
+                                                    <input name="actiondesired" type="checkbox" value="">Please see me about this.
                                                 </label>
                                                 </div>
                                                 <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" value="">Please prepare reply.
+                                                    <input name="actiondesired" type="checkbox" value="">Please prepare reply.
                                                 </label>
                                                 </div>
                                                 <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" value="">Please submit report.
+                                                    <input name="actiondesired" type="checkbox" value="">Please submit report.
                                                 </label>
                                                 </div>
                                                 <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" value="">Please inform pary concerned.
+                                                    <input name="actiondesired" type="checkbox" value="">Please inform pary concerned.
                                                 </label>
                                                 </div>
                                                 <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" value="">Please schedule.
+                                                    <input name="actiondesired" type="checkbox" value="">Please schedule.
                                                 </label>
                                                 <label>
-                                                    <input type="checkbox" value="">Please respond directly.
+                                                    <input name="actiondesired" type="checkbox" value="">Please respond directly.
                                                 </label>
                                                 </div>
                                             </div>
@@ -241,8 +240,6 @@
                                                 <label>Note</label>
                                                 <textarea name="note" class="form-control" rows="2"></textarea>
                                             </div>
-                                        </form>
-                                        <!-- FORM END -->
                                         </div>
                                         <!-- ACTION SLIP PANEL BODY END -->
                                         
@@ -251,7 +248,6 @@
                                 <!-- ACTION SLIP END -->
 
                                 <!-- MAIN FORM -->
-                                <form action="../php/admin/addRecrd.php" method="post">
                                 <div class="col-lg-2">
                                     <div class="form-group">
                                             <label>Code</label>
@@ -299,12 +295,13 @@
                                         </div>
                                     </div>
                                 </div>
-                                </form>
-                                <!-- FORM END -->
+                                
                             </div>
                             <!-- ROW END -->
                         </div>
                         <!-- PANEL BODY END -->
+                        </form>
+                        <!-- FORM END -->
 
                         <!-- PANEL FOOTER -->
                         <div class="panel-footer">

@@ -172,6 +172,8 @@
 
                     </div>
                     <!-- PANEL END -->
+                    <!--FORM -->
+                    <form action="php/addUser.php" method="post">
                     <!-- MODAL -->
                     <div class="modal fade" id="addUser" role="dialog">
                         <!-- MODAL CONTENT-->
@@ -183,7 +185,6 @@
                             </div>
                             <!-- MODAL BODY -->
                             <div class="modal-body">
-                            <form action="php/addUser.php" method="post">
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
@@ -227,12 +228,11 @@
                                         </div>
                                     </div>
                                 </div>
-                            </form>
                             </div>
                             <!-- MODAL BODY END-->
                             <!-- MODAL FOOTER -->
                             <div class="modal-footer">
-                                <button type="button" value="add" class="btn btn-success">Add User</button>
+                                <input type="submit" class="btn btn-success" Value ="Add User">
                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                             </div>
                             <!-- MODAL FOOTER END -->
@@ -241,6 +241,9 @@
                         </div>
                      </div>
                      <!-- MODAL END -->
+                     </form>
+                     <!-- FORM END -->
+
                 </div>
             </div>
             <!-- BODY END -->
