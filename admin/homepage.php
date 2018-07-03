@@ -5,7 +5,7 @@
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -30,103 +30,103 @@
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
 </head>
 
 <body>
 
-    <div id="wrapper">
+<div id="wrapper">
 
-        <!-- NAVIGATION -->
-        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <!-- NAVIGATION -->
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
 
-            <!-- NAVBAR HEADER --> 
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.html">GEOSCIENCES DIVISION</a>
+        <!-- NAVBAR HEADER -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">GEOSCIENCES DIVISION</a>
+        </div>
+        <!-- NAVBAR HEADER END -->
+
+        <ul class="nav navbar-top-links navbar-right">
+
+            <!-- DROPDOWN -->
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a></li>
+                    <li class="divider"></li>
+                    <li><a href="../index.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                    </li>
+                </ul>
+            </li>
+            <!-- DROPDOWN END -->
+
+        </ul>
+
+        <!-- SIDEBAR-->
+        <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav navbar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li>
+                        <a href="homepage.php"><i class="fa fa-search fa-fw"></i>For Inspection</a>
+                    </li>
+                    <li>
+                        <a href="unclaim.php"><i class="fa fa-file fa-fw"></i>Unclaimed</a>
+                    </li>
+                    <li>
+                        <a href="release.php"><i class="fa fa-file-text fa-fw"></i> Release</a>
+                    </li>
+                    <li>
+                        <a href="records.php"><i class="fa fa-folder fa-fw"></i>Records</a>
+                    </li>
+                    <li>
+                        <a href="users.php"><i class="fa fa-user fa-fw"></i>Users</a>
+                    </li>
+                    <li>
+                        <a href="logs.php"><i class="fa fa-th-list fa-fw"></i>Logs</a>
+                    </li>
+                </ul>
             </div>
-            <!-- NAVBAR HEADER END -->
+        </div>
+        <!-- SIDEBAR END -->
 
-            <ul class="nav navbar-top-links navbar-right">
+    </nav>
+    <!-- NAVIGATION END -->
 
-                <!-- DROPDOWN -->
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a></li>
-                        <li class="divider"></li>
-                        <li><a href="../index.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-                        </li>
-                    </ul>
-                </li>
-                <!-- DROPDOWN END -->
+    <!-- MAIN PAGE -->
+    <div id="page-wrapper">
 
-            </ul>
-
-            <!-- SIDEBAR-->
-            <div class="navbar-default sidebar" role="navigation">
-                <div class="sidebar-nav navbar-collapse">
-                    <ul class="nav" id="side-menu">
-                        <li>
-                            <a href="homepage.php"><i class="fa fa-search fa-fw"></i>For Inspection</a>
-                        </li>
-                        <li>
-                            <a href="unclaim.php"><i class="fa fa-file fa-fw"></i>Unclaimed</a>
-                        </li>
-                        <li>
-                            <a href="release.php"><i class="fa fa-file-text fa-fw"></i> Release</a>
-                        </li>
-                        <li>
-                            <a href="records.php"><i class="fa fa-folder fa-fw"></i>Records</a>
-                        </li>
-                        <li>
-                            <a href="users.php"><i class="fa fa-user fa-fw"></i>Users</a>
-                        </li>
-                        <li>
-                            <a href="logs.php"><i class="fa fa-th-list fa-fw"></i>Logs</a>
-                        </li>
-                    </ul>
-                </div>
+        <!-- PAGE HEADER -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">For Inspection Form</h1>
             </div>
-            <!-- SIDEBAR END -->
+        </div>
+        <!-- PAGE HEADER END -->
 
-        </nav>
-        <!-- NAVIGATION END -->
+        <!-- BODY -->
+        <div class="row">
+            <!-- PANEL -->
+            <div class="col-lg-12">
+                <div class="panel panel-default">
 
-        <!-- MAIN PAGE -->
-        <div id="page-wrapper">
+                    <!-- PANEL HEADER START -->
+                    <div class="panel-heading">
+                    </div>
+                    <!-- PANEL HEADER END -->
 
-            <!-- PAGE HEADER -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">For Inspection Form</h1>
-                </div>
-            </div>
-            <!-- PAGE HEADER END -->
-
-            <!-- BODY -->
-            <div class="row">
-                <!-- PANEL -->
-                <div class="col-lg-12">
-                    <div class="panel panel-default">
-
-                        <!-- PANEL HEADER START -->
-                        <div class="panel-heading">
-                        </div>
-                        <!-- PANEL HEADER END -->
-
-                        <!-- FORM -->
-                        <form action="../php/admin/addIncoming.php" method="post">
+                    <!-- FORM -->
+                    <form action="../php/admin/addIncoming.php" method="post">
                         <!-- PANEL BODY -->
                         <div class="panel-body">
                             <!--ROW START -->
@@ -136,52 +136,60 @@
                                     <div class="panel panel-default">
                                         <!-- ACTION SLIP PANEL HEADING -->
                                         <div class="panel-heading">
-                                           DOCUMENT ACTION SLIP
+                                            DOCUMENT ACTION SLIP
                                         </div>
                                         <!-- ACTION SLIP PANEL HEADING END -->
-                                        
-                                         <!-- ACTION SLIP PANEL BODY -->
+
+                                        <!-- ACTION SLIP PANEL BODY -->
                                         <div class="panel-body">
                                             <div class="form-group">
                                                 <div class="checkbox">
-                                                <label>
-                                                    <input name="action" type="checkbox" value="">Information and guidance please.
-                                                </label>
+                                                    <label>
+                                                        <input name="action" type="checkbox" value="">Information and
+                                                        guidance please.
+                                                    </label>
                                                 </div>
                                                 <div class="checkbox">
-                                                <label>
-                                                    <input name="action" type="checkbox" value="">Compliance/Implementation please.
-                                                </label>
+                                                    <label>
+                                                        <input name="action" type="checkbox" value="">Compliance/Implementation
+                                                        please.
+                                                    </label>
                                                 </div>
                                                 <div class="checkbox">
-                                                <label>
-                                                    <input name="action" type="checkbox" value="">Appropriate Action please.
-                                                </label>
+                                                    <label>
+                                                        <input name="action" type="checkbox" value="">Appropriate Action
+                                                        please.
+                                                    </label>
                                                 </div>
                                                 <div class="checkbox">
-                                                <label>
-                                                    <input name="action" type="checkbox" value="">Immediate Investigation please.
-                                                </label>
+                                                    <label>
+                                                        <input name="action" type="checkbox" value="">Immediate
+                                                        Investigation please.
+                                                    </label>
                                                 </div>
                                                 <div class="checkbox">
-                                                <label>
-                                                    <input name="action" type="checkbox" value="">Comment and recommendation please.
-                                                </label>
+                                                    <label>
+                                                        <input name="action" type="checkbox" value="">Comment and
+                                                        recommendation please.
+                                                    </label>
                                                 </div>
                                                 <div class="checkbox">
-                                                <label>
-                                                    <input name="action" type="checkbox" value="">Review and inital please.
-                                                </label>
+                                                    <label>
+                                                        <input name="action" type="checkbox" value="">Review and inital
+                                                        please.
+                                                    </label>
                                                 </div>
                                                 <div class="checkbox">
-                                                <label>
-                                                    <input name="action" type="checkbox" value="">Discussion/Dissemination/Posting please.
-                                                </label>
+                                                    <label>
+                                                        <input name="action" type="checkbox" value="">Discussion/Dissemination/Posting
+                                                        please.
+                                                    </label>
                                                 </div>
                                                 <div class="checkbox">
-                                                <label>
-                                                    <input name="action" type="checkbox" value="">Record/File please.
-                                                </label>
+                                                    <label>
+                                                        <input name="action" type="checkbox" value="">Record/File
+                                                        please.
+                                                    </label>
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -189,52 +197,62 @@
                                                     Action Desired:
                                                 </label>
                                                 <div class="checkbox">
-                                                <label>
-                                                    <input name="actiondesired" type="checkbox" value="">Give me status/feedback please.
-                                                </label>
+                                                    <label>
+                                                        <input name="actiondesired" type="checkbox" value="">Give me
+                                                        status/feedback please.
+                                                    </label>
                                                 </div>
                                                 <div class="checkbox">
-                                                <label>
-                                                    <input name="actiondesired" type="checkbox" value="">Please attend to this.
-                                                </label>
+                                                    <label>
+                                                        <input name="actiondesired" type="checkbox" value="">Please
+                                                        attend to this.
+                                                    </label>
                                                 </div>
                                                 <div class="checkbox">
-                                                <label>
-                                                    <input name="actiondesired" type="checkbox" value="">Please represent to me.
-                                                </label>
+                                                    <label>
+                                                        <input name="actiondesired" type="checkbox" value="">Please
+                                                        represent to me.
+                                                    </label>
                                                 </div>
                                                 <div class="checkbox">
-                                                <label>
-                                                    <input name="actiondesired" type="checkbox" value="">Please see me about this.
-                                                </label>
+                                                    <label>
+                                                        <input name="actiondesired" type="checkbox" value="">Please see
+                                                        me about this.
+                                                    </label>
                                                 </div>
                                                 <div class="checkbox">
-                                                <label>
-                                                    <input name="actiondesired" type="checkbox" value="">Please prepare reply.
-                                                </label>
+                                                    <label>
+                                                        <input name="actiondesired" type="checkbox" value="">Please
+                                                        prepare reply.
+                                                    </label>
                                                 </div>
                                                 <div class="checkbox">
-                                                <label>
-                                                    <input name="actiondesired" type="checkbox" value="">Please submit report.
-                                                </label>
+                                                    <label>
+                                                        <input name="actiondesired" type="checkbox" value="">Please
+                                                        submit report.
+                                                    </label>
                                                 </div>
                                                 <div class="checkbox">
-                                                <label>
-                                                    <input name="actiondesired" type="checkbox" value="">Please inform pary concerned.
-                                                </label>
+                                                    <label>
+                                                        <input name="actiondesired" type="checkbox" value="">Please
+                                                        inform pary concerned.
+                                                    </label>
                                                 </div>
                                                 <div class="checkbox">
-                                                <label>
-                                                    <input name="actiondesired" type="checkbox" value="">Please schedule.
-                                                </label>
-                                                <label>
-                                                    <input name="actiondesired" type="checkbox" value="">Please respond directly.
-                                                </label>
+                                                    <label>
+                                                        <input name="actiondesired" type="checkbox" value="">Please
+                                                        schedule.
+                                                    </label>
+                                                    <label>
+                                                        <input name="actiondesired" type="checkbox" value="">Please
+                                                        respond directly.
+                                                    </label>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label>OICRD</label>
-                                                <input name="oicrd" type="text" class="form-control" placeholder="Enter Full Name">
+                                                <input name="oicrd" type="text" class="form-control"
+                                                       placeholder="Enter Full Name">
                                             </div>
                                             <div class="form-group">
                                                 <label>Note</label>
@@ -242,7 +260,7 @@
                                             </div>
                                         </div>
                                         <!-- ACTION SLIP PANEL BODY END -->
-                                        
+
                                     </div>
                                 </div>
                                 <!-- ACTION SLIP END -->
@@ -250,139 +268,177 @@
                                 <!-- MAIN FORM -->
                                 <div class="col-lg-2">
                                     <div class="form-group">
-                                            <label>Code</label>
-                                            <input name="code"  type="text" class="form-control" placeholder="Enter Code">
+                                        <label>Code</label>
+                                        <input name="code" type="text" class="form-control" placeholder="Enter Code">
                                     </div>
                                 </div>
                                 <div class="col-lg-2">
                                     <div class="form-group">
-                                            <label>Folder</label>
-                                            <input name="folder" type="text" class="form-control" placeholder="Folder No.">
+                                        <label>Folder</label>
+                                        <input id="folderNo" name="folder" type="text" class="form-control"
+                                               placeholder="Folder No." disabled>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                            <label>Date Received</label>
-                                            <input name="date" id="date" type="date" class="form-control">
+                                        <label>Date Received</label>
+                                        <input name="date" id="date" type="date" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-lg-8">
                                     <div class="form-group">
-                                            <label>Applicant</label>
-                                            <input name="applicant" type="text" class="form-control" placeholder="Enter Full Name">
+                                        <label>Applicant</label>
+                                        <input name="applicant" type="text" class="form-control"
+                                               placeholder="Enter Full Name">
                                     </div>
                                 </div>
                                 <div class="col-lg-8">
                                     <div class="form-group">
-                                            <label>Sender</label>
-                                            <input name="sender" type="text" class="form-control" placeholder="Enter Full Name">
+                                        <label>Sender</label>
+                                        <input name="sender" type="text" class="form-control"
+                                               placeholder="Enter Full Name">
                                     </div>
                                 </div>
                                 <div class="col-lg-8">
                                     <div class="form-group">
-                                            <label>Location</label>
-                                            <input name="barangay" class="form-control" placeholder="Barangay">
-                                            <input name="province" class="form-control" placeholder="Province">
-                                            <input name="municipality" class="form-control" placeholder="Municipality">
-                                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addLocation">Add Location</button>
+                                        <label>Location</label>
+                                        <?php
+                                        require 'config.php';
+
+
+                                        $sql = "SELECT * FROM barangay";
+                                        $res = $db->query($sql);
+                                        echo "<select id='barangay' class='form-control' name='barangay'>";
+                                        echo "<option selected disabled>barangay</option>";
+                                        while ($row = $res->fetch_assoc()) {
+                                            echo "<option value = '" . $row['name'] . "'>" . $row['name'] . "</option>";
+                                        }
+                                        echo "</select>";
+
+
+                                        ?>
+                                        <input name="province" class="form-control" placeholder="Province">
+                                        <input name="municipality" class="form-control" placeholder="Municipality">
+                                        <button type="button" class="btn btn-success" data-toggle="modal"
+                                                data-target="#addLocation">Add Location
+                                        </button>
                                     </div>
                                 </div>
                                 <div class="col-lg-8">
                                     <div class="form-group">
-                                            <div class="form-group">
+                                        <div class="form-group">
                                             <label>Purpose</label>
                                             <textarea name="purpose" class="form-control" rows="14"></textarea>
                                         </div>
                                     </div>
                                 </div>
-                                
+
                             </div>
                             <!-- ROW END -->
                         </div>
                         <!-- PANEL BODY END -->
-                        </form>
-                        <!-- FORM END -->
+                    </form>
+                    <!-- FORM END -->
 
-                        <!-- PANEL FOOTER -->
-                        <div class="panel-footer">
-                            <div class="row">
-                                <div class="col-lg-10">
-                                </div>
-                                <button type="button" class="btn btn-success">Add Record</button>
-                                <button type="button" class="btn btn-primary">Reset</button>
+                    <!-- PANEL FOOTER -->
+                    <div class="panel-footer">
+                        <div class="row">
+                            <div class="col-lg-10">
                             </div>
+                            <button type="button" class="btn btn-success">Add Record</button>
+                            <button type="button" class="btn btn-primary">Reset</button>
                         </div>
-                        <!-- PANEL FOOTER END -->
                     </div>
+                    <!-- PANEL FOOTER END -->
                 </div>
-                <!-- PANEL END-->
-                <!-- MODAL -->
-                    <div class="modal fade" id="addLocation" role="dialog">
-                        <!-- MODAL CONTENT-->
-                        <div class="modal-dialog">
-                        <div class="modal-content ">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title">Add More Location</h4>
-                            </div>
-                            <!-- MODAL BODY -->
-                            <div class="modal-body">
-                                <div class="row">
-                                   
-                                    <div class="col-lg-5">
-                                        <div class="form-group">
-                                            <input class="form-control" placeholder="No. of Location to Add">
-                                        </div>
-                                    </div>
-                                    <button type="button" class="btn btn-success">Go</button>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>Location</label>
-                                            <input class="form-control" placeholder="Barangay">
-                                            <input class="form-control" placeholder="Province">
-                                            <input class="form-control" placeholder="Municipality">
-                                        </div>
-                                    </div>
-                                </div>
-                                    
-                            </div>
-                            <!-- MODAL BODY END-->
-                            <!-- MODAL FOOTER -->
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-success">Add Location</button>
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                            </div>
-                            <!-- MODAL FOOTER END -->
-                        </div>
-                        <!-- MODAL CONTENT END -->
-                        </div>
-                     </div>
-                     <!-- MODAL END -->
             </div>
-            <!-- BODY END -->
+            <!-- PANEL END-->
+            <!-- MODAL -->
+            <div class="modal fade" id="addLocation" role="dialog">
+                <!-- MODAL CONTENT-->
+                <div class="modal-dialog">
+                    <div class="modal-content ">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Add More Location</h4>
+                        </div>
+                        <!-- MODAL BODY -->
+                        <div class="modal-body">
+                            <div class="row">
+
+                                <div class="col-lg-5">
+                                    <div class="form-group">
+                                        <input class="form-control" placeholder="No. of Location to Add">
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn-success">Go</button>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label>Location</label>
+                                        <input class="form-control" placeholder="Barangay">
+                                        <input class="form-control" placeholder="Province">
+                                        <input class="form-control" placeholder="Municipality">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- MODAL BODY END-->
+                        <!-- MODAL FOOTER -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success">Add Location</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div>
+                        <!-- MODAL FOOTER END -->
+                    </div>
+                    <!-- MODAL CONTENT END -->
+                </div>
+            </div>
+            <!-- MODAL END -->
         </div>
-        <!-- MAIN PAGE END -->
+        <!-- BODY END -->
     </div>
-    
-    <!-- jQuery -->
-    <script src="vendor/jquery/jquery.min.js"></script>
+    <!-- MAIN PAGE END -->
+</div>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!-- jQuery -->
+<script src="vendor/jquery/jquery.min.js"></script>
 
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="vendor/metisMenu/metisMenu.min.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 
-    <!-- Morris Charts JavaScript -->
-    <script src="vendor/raphael/raphael.min.js"></script>
-    <script src="vendor/morrisjs/morris.min.js"></script>
-    <script src="data/morris-data.js"></script>
+<!-- Metis Menu Plugin JavaScript -->
+<script src="vendor/metisMenu/metisMenu.min.js"></script>
 
-    <!-- Custom Theme JavaScript -->
-    <script src="dist/js/sb-admin-2.js"></script>
+<!-- Morris Charts JavaScript -->
+<script src="vendor/raphael/raphael.min.js"></script>
+<script src="vendor/morrisjs/morris.min.js"></script>
+<script src="data/morris-data.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="dist/js/sb-admin-2.js"></script>
 
 </body>
+
+
+<script>
+    $(document).ready(function () {
+
+
+        $('#barangay').change(function () {
+            $id = $(this).val();
+            $.ajax({
+                url: 'folderNo.php',
+                data: {barangay: $id},
+                dataType: 'JSON',
+                success: function (data) {
+                    $('#folderNo').val(data[0]);
+                }
+            });
+        });
+    });
+</script>
 
 </html>
