@@ -36,7 +36,7 @@
 					<img src="images/mgbcarlogo.png" alt="MGB Car Logo" width="200" height="200">
 				</div>
 				<span class="login100-form-title p-b-41">
-					Account Login
+					Account Login 
 				</span>
 				<form action="admin/login.php" method="post" class="login100-form validate-form p-b-33 p-t-5">
 

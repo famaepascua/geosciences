@@ -127,6 +127,7 @@
 
                         <!-- PANEL BODY -->
                         <div class="panel-body">
+                        
                             <!--ROW START -->
                             <div class="row">
                                 <!-- ACTION SLIP -->
@@ -137,8 +138,11 @@
                                            DOCUMENT ACTION SLIP
                                         </div>
                                         <!-- ACTION SLIP PANEL HEADING END -->
-                                        <!-- ACTION SLIP PANEL BODY -->
+                                        
+                                         <!-- ACTION SLIP PANEL BODY -->
                                         <div class="panel-body">
+                                            <!-- FORM -->
+                                            <form action="../php/admin/addActionSlip.php" method="post">
                                             <div class="form-group">
                                                 <div class="checkbox">
                                                 <label>
@@ -231,55 +235,59 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>OICRD</label>
-                                                <input class="form-control" placeholder="Enter Full Name">
+                                                <input name="oicrd" type="text" class="form-control" placeholder="Enter Full Name">
                                             </div>
                                             <div class="form-group">
                                                 <label>Note</label>
-                                                <textarea class="form-control" rows="2"></textarea>
+                                                <textarea name="note" class="form-control" rows="2"></textarea>
                                             </div>
+                                        </form>
+                                        <!-- FORM END -->
                                         </div>
-                                    <!-- ACTION SLIP PANEL BODY END -->
+                                        <!-- ACTION SLIP PANEL BODY END -->
+                                        
                                     </div>
                                 </div>
                                 <!-- ACTION SLIP END -->
 
                                 <!-- MAIN FORM -->
+                                <form action="../php/admin/addRecrd.php" method="post">
                                 <div class="col-lg-2">
                                     <div class="form-group">
                                             <label>Code</label>
-                                            <input class="form-control" placeholder="Enter Code">
+                                            <input name="code"  type="text" class="form-control" placeholder="Enter Code">
                                     </div>
                                 </div>
                                 <div class="col-lg-2">
                                     <div class="form-group">
                                             <label>Folder</label>
-                                            <input class="form-control" placeholder="Folder No.">
+                                            <input name="folder" type="text" class="form-control" placeholder="Folder No.">
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
                                             <label>Date Received</label>
-                                            <input class="form-control" type="date" name="date" id="date" required>
+                                            <input name="date" id="date" type="date" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-lg-8">
                                     <div class="form-group">
                                             <label>Applicant</label>
-                                            <input class="form-control" placeholder="Enter Full Name">
+                                            <input name="applicant" type="text" class="form-control" placeholder="Enter Full Name">
                                     </div>
                                 </div>
                                 <div class="col-lg-8">
                                     <div class="form-group">
                                             <label>Sender</label>
-                                            <input class="form-control" placeholder="Enter Full Name">
+                                            <input name="sender" type="text" class="form-control" placeholder="Enter Full Name">
                                     </div>
                                 </div>
                                 <div class="col-lg-8">
                                     <div class="form-group">
                                             <label>Location</label>
-                                            <input class="form-control" placeholder="Barangay">
-                                            <input class="form-control" placeholder="Province">
-                                            <input class="form-control" placeholder="Municipality">
+                                            <input name="barangay" class="form-control" placeholder="Barangay">
+                                            <input name="province" class="form-control" placeholder="Province">
+                                            <input name="municipality" class="form-control" placeholder="Municipality">
                                             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addLocation">Add Location</button>
                                     </div>
                                 </div>
@@ -287,11 +295,12 @@
                                     <div class="form-group">
                                             <div class="form-group">
                                             <label>Purpose</label>
-                                            <textarea class="form-control" rows="14"></textarea>
+                                            <textarea name="purpose" class="form-control" rows="14"></textarea>
                                         </div>
                                     </div>
                                 </div>
-                                <!-- MAIN FORM END -->
+                                </form>
+                                <!-- FORM END -->
                             </div>
                             <!-- ROW END -->
                         </div>

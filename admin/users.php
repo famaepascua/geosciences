@@ -136,9 +136,23 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            
-                                        </tr>
+                                        <?php
+                                        require 'config.php';
+                                        $sql = "SELECT * FROM users";
+                                        $result = $db->query($sql);
+
+                                        if ($result) {
+                                        while ($row = $result->fetch_assoc()) {
+                                        echo "<tr>";
+                                        echo "<td>" . $row['userType'] . "</td>";
+                                        echo "<td>" . $row['firstName'] . "</td>";
+                                        echo "<td>" . $row['lastName'] . "</td>";
+                                        echo "<td>" . $row['username'] . "</td>";
+                                        echo "</tr>";
+                                }
+                            }
+
+                            ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -149,8 +163,8 @@
                         <!-- PANEL FOOTER -->
                         <div class="panel-footer">
                             <div class="row">
-                                <div class="col-lg-10"></div>
-                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addUser">Add User</button>
+                                <div class="col-lg-9"></div>
+                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addUser">Add New User</button>
                                 <button type="button" class="btn btn-danger">Delete</button>
                             </div>
                         </div>
@@ -169,11 +183,12 @@
                             </div>
                             <!-- MODAL BODY -->
                             <div class="modal-body">
+                            <form action="php/addUser.php" method="post">
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>User Type</label>
-                                            <select class="form-control">
+                                            <select name="usertype" class="form-control">
                                                 <option>Admin</option>
                                                 <option>User</option>
                                             </select>
@@ -184,7 +199,7 @@
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label>First Name</label>
-                                            <input class="form-control" placeholder="Enter First Name">
+                                            <input name="firstname" type="text" class="form-control" placeholder="Enter First Name">
                                         </div>
                                     </div>
                                 </div>
@@ -192,7 +207,7 @@
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label>Last Name</label>
-                                            <input class="form-control" placeholder="Enter Last Name">
+                                            <input name="lastname" type="text" class="form-control" placeholder="Enter Last Name">
                                         </div>
                                     </div>
                                 </div>
@@ -200,7 +215,7 @@
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label>Username</label>
-                                            <input class="form-control" placeholder="Enter Username">
+                                            <input name="username" type="text" class="form-control" placeholder="Enter Username">
                                         </div>
                                     </div>
                                 </div>
@@ -208,15 +223,16 @@
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label>Password</label>
-                                            <input class="form-control" placeholder="Enter Password">
+                                            <input name="password" type="text" class="form-control" placeholder="Enter Password">
                                         </div>
                                     </div>
                                 </div>
+                            </form>
                             </div>
                             <!-- MODAL BODY END-->
                             <!-- MODAL FOOTER -->
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-success">Add User</button>
+                                <button type="button" value="add" class="btn btn-success">Add User</button>
                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                             </div>
                             <!-- MODAL FOOTER END -->
