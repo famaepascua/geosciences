@@ -299,8 +299,9 @@
                                                placeholder="Enter Full Name">
                                     </div>
                                 </div>
-                                <div class="col-lg-8">
+                                
                                     <div class="form-group">
+                                <div class="col-lg-4">
                                         <label>Location</label>
                                         <?php
                                         require 'config.php';
@@ -309,7 +310,7 @@
                                         $sql = "SELECT * FROM barangay";
                                         $res = $db->query($sql);
                                         echo "<select id='barangay' class='form-control' name='barangay'>";
-                                        echo "<option selected disabled>barangay</option>";
+                                        echo "<option selected disabled>Select Barangay</option>";
                                         while ($row = $res->fetch_assoc()) {
                                             echo "<option value = '" . $row['name'] . "'>" . $row['name'] . "</option>";
                                         }
@@ -317,12 +318,18 @@
 
 
                                         ?>
+                                </div>
+                                <div class="col-lg-4">
+                                        <label>For Other Barangay/Municipality</label>
+                                        <input name="brgyname" class="form-control" placeholder="Enter Name">
+                                </div>
+                                <div class="col-lg-8">
                                         <input name="province" class="form-control" placeholder="Province">
                                         <input name="municipality" class="form-control" placeholder="Municipality">
                                         <button type="button" class="btn btn-success" data-toggle="modal"
                                                 data-target="#addLocation">Add Location
                                         </button>
-                                    </div>
+                                </div>
                                 </div>
                                 <div class="col-lg-8">
                                     <div class="form-group">
@@ -343,7 +350,7 @@
                     <!-- PANEL FOOTER -->
                     <div class="panel-footer">
                         <div class="row">
-                            <div class="col-lg-10">
+                            <div class="col-lg-9">
                             </div>
                             <button type="button" class="btn btn-success">Add Record</button>
                             <button type="button" class="btn btn-primary">Reset</button>
@@ -368,18 +375,14 @@
 
                                 <div class="col-lg-5">
                                     <div class="form-group">
-                                        <input class="form-control" placeholder="No. of Location to Add">
+                                        <input id="numofinput" class="form-control" placeholder="No. of Location to Add">
                                     </div>
                                 </div>
-                                <button type="button" class="btn btn-success">Go</button>
+                                <button id="addlocation" type="button" class="btn btn-success">Go</button>
                             </div>
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <div class="form-group">
-                                        <label>Location</label>
-                                        <input class="form-control" placeholder="Barangay">
-                                        <input class="form-control" placeholder="Province">
-                                        <input class="form-control" placeholder="Municipality">
+                                    <div id="location" class="form-group">
                                     </div>
                                 </div>
                             </div>
@@ -420,8 +423,21 @@
 <!-- Custom Theme JavaScript -->
 <script src="dist/js/sb-admin-2.js"></script>
 
-</body>
+<script>
+        $('#addlocation').click(function(){
+            var numberOfInputs = $('#numofinput').val();
+            var label = '<label>Location</label>';
+            var input = '<input class="form-control" placeholder="Barangay">'+
+                        '<input class="form-control" placeholder="Province">'+
+                        '<input class="form-control" placeholder="Municipality">';
+            for(i=1; i <= numberOfInputs; i++){
+                $('#location').append(label+input);
+            }
 
+        })
+    </script>
+
+</body>
 
 <script>
     $(document).ready(function () {
