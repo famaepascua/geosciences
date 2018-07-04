@@ -140,12 +140,8 @@
                                         <th>Sender</th>
                                         <th>Location</th>
                                         <th>Purpose</th>
-                                        <th>Date Inspected</th>
-                                        <th>Inspector</th>
-                                        <th>Classification</th>
                                         <th>Subject</th>
-                                        <th>Date Released</th>
-                                        <th>Receive By</th>
+                                        <th>Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -304,8 +300,9 @@
                                 </div>
                                 <div class="col-lg-2">
                                     <div class="form-group">
-                                            <label>Folder</label>
-                                            <input class="form-control" placeholder="Folder No.">
+                                        <label>Folder</label>
+                                        <input id="folderNo" name="folder" type="text" class="form-control"
+                                               placeholder="Folder No." disabled>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
@@ -326,14 +323,36 @@
                                             <input class="form-control" placeholder="Enter Full Name">
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                <div class="col-lg-4">
+                                        <label>Location</label>
+                                        <?php
+                                        require 'config.php';
+
+
+                                        $sql = "SELECT * FROM barangay ORDER BY name ASC";
+                                        $res = $db->query($sql);
+                                        echo "<select id='barangay' class='form-control' name='barangay'>";
+                                        echo "<option selected disabled>Select Barangay</option>";
+                                        while ($row = $res->fetch_assoc()) {
+                                            echo "<option value = '" . $row['name'] . "'>" . $row['name'] . "</option>";
+                                        }
+                                        echo "</select>";
+
+
+                                        ?>
+                                </div>
+                                <div class="col-lg-4">
+                                        <label>For Other Barangay/Municipality</label>
+                                        <input disabled name="brgyname" class="form-control" placeholder="Enter Name">
+                                </div>
                                 <div class="col-lg-8">
-                                    <div class="form-group">
-                                            <label>Location</label>
-                                            <input class="form-control" placeholder="Barangay">
-                                            <input class="form-control" placeholder="Province">
-                                            <input class="form-control" placeholder="Municipality">
-                                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addLocation">Add Location</button>
-                                    </div>
+                                        <input name="province" class="form-control" placeholder="Province">
+                                        <input name="municipality" class="form-control" placeholder="Municipality">
+                                        <button type="button" class="btn btn-success" data-toggle="modal"
+                                                data-target="#addLocation">Add Location
+                                        </button>
+                                </div>
                                 </div>
                                 <div class="col-lg-8">
                                     <div class="form-group">
@@ -504,6 +523,40 @@
     });
     </script>
 
+    <script>
+        $('#addlocation').click(function(){
+            var numberOfInputs = $('#numofinput').val();
+            var label = '<label>Location</label>';
+            var input = '<input class="form-control" placeholder="Barangay">'+
+                        '<input class="form-control" placeholder="Province">'+
+                        '<input class="form-control" placeholder="Municipality">';
+            for(i=1; i <= numberOfInputs; i++){
+                $('#location').append(label+input);
+            }
+
+        })
+    </script>
+
 </body>
+    <script>
+    $(document).ready(function () {
+        $('#barangay').change(function () {
+            $id = $(this).val();
+            $.ajax({
+                url: 'folderNo.php',
+                data: {barangay: $id},
+                dataType: 'JSON',
+                success: function (data) {
+                    $('#folderNo').val(data[0]);
+                }
+            });
+            if($id == 'Other Barangays' || $id == 'Other Municipalities'){
+                $('input[name=brgyname]').removeAttr('disabled');
+            }else{
+                $('input[name=brgyname]').attr('disabled', 'disabled')
+            }
+        });
+    });
+    </script>
 
 </html>

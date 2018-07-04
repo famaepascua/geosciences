@@ -307,7 +307,7 @@
                                         require 'config.php';
 
 
-                                        $sql = "SELECT * FROM barangay";
+                                        $sql = "SELECT * FROM barangay ORDER BY name ASC";
                                         $res = $db->query($sql);
                                         echo "<select id='barangay' class='form-control' name='barangay'>";
                                         echo "<option selected disabled>Select Barangay</option>";
@@ -453,6 +453,8 @@
             });
             if($id == 'Other Barangays' || $id == 'Other Municipalities'){
                 $('input[name=brgyname]').removeAttr('disabled');
+            }else{
+                $('input[name=brgyname]').attr('disabled', 'disabled')
             }
         });
     });
