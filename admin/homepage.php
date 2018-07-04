@@ -321,7 +321,7 @@
                                 </div>
                                 <div class="col-lg-4">
                                         <label>For Other Barangay/Municipality</label>
-                                        <input name="brgyname" class="form-control" placeholder="Enter Name">
+                                        <input disabled name="brgyname" class="form-control" placeholder="Enter Name">
                                 </div>
                                 <div class="col-lg-8">
                                         <input name="province" class="form-control" placeholder="Province">
@@ -441,8 +441,6 @@
 
 <script>
     $(document).ready(function () {
-
-
         $('#barangay').change(function () {
             $id = $(this).val();
             $.ajax({
@@ -453,6 +451,9 @@
                     $('#folderNo').val(data[0]);
                 }
             });
+            if($id == 'Other Barangays' || $id == 'Other Municipalities'){
+                $('input[name=brgyname]').removeAttr('disabled');
+            }
         });
     });
 </script>
