@@ -3,22 +3,27 @@
 require '../config.php';
 
 $action = $_POST['action'];
-$ar = [];
-foreach ($action as $actionarray){
-    array_push($ar,$actionarray);
+$oicrd = $_POST['oicrd'];
+$note = $_POST['note'];
+
+
+//Store all checkbox selected to just one variable separated by comma
+$actionsJoined = "";
+foreach ($action as $a){
+    $actionsJoined .= $a . ",";
 }
 
 $actiondesired = $_POST['actiondesired'];
-$ad = [];
-foreach ($actiondesired as $actiondes){
-    array_push($ad,$actiondes);
+$actionsDesiredJoined = "";
+foreach ($actiondesired as $a){
+    $actionsDesiredJoined .= $a . ",";
 }
 
-$sql = "INSERT INTO actionslip(action,actionDesired,oicrd,note)
-        VALUES('$action','$actiondesired','$oicrd','$note')";
-
-if($db->query($sql)){
+$sql = "INSERT INTO actionslip(action,actionDesired,oicrd,note) VALUES ('$actionsJoined','$actionsDesiredJoined','$oicrd','$note')";
+if ($db->query($sql)) {
 
     header('Location: ../homepage.php');
 
+}else{
+    var_dump($db->error);
 }

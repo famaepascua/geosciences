@@ -126,7 +126,7 @@
                     <!-- PANEL HEADER END -->
 
                     <!-- FORM -->
-                    <form action="../php/admin/addIncoming.php" method="post">
+                    <form action="php/addIncoming.php" method="post">
                         <!-- PANEL BODY -->
                         <div class="panel-body">
                             <!--ROW START -->
@@ -145,13 +145,15 @@
                                             <div class="form-group">
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input name="action[]" type="checkbox" value="">Information and
+                                                        <input name="action[]" type="checkbox" value="Information and
+                                                        guidance please">Information and
                                                         guidance please.
                                                     </label>
                                                 </div>
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input name="action[]" type="checkbox" value="">Compliance/Implementation
+                                                        <input name="action[]" type="checkbox" value="Compliance/Implementation
+                                                        please">Compliance/Implementation
                                                         please.
                                                     </label>
                                                 </div>
@@ -198,13 +200,15 @@
                                                 </label>
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input name="actiondesired[]" type="checkbox" value="">Give me
+                                                        <input name="actiondesired[]" type="checkbox" value="Give me
+                                                        status/feedback please">Give me
                                                         status/feedback please.
                                                     </label>
                                                 </div>
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input name="actiondesired[]" type="checkbox" value="">Please
+                                                        <input name="actiondesired[]" type="checkbox" value="Please
+                                                        attend to this">Please
                                                         attend to this.
                                                     </label>
                                                 </div>
@@ -344,19 +348,21 @@
                             <!-- ROW END -->
                         </div>
                         <!-- PANEL BODY END -->
+
+                        <!-- PANEL FOOTER -->
+                        <div class="panel-footer">
+                            <div class="row">
+                                <div class="col-lg-9">
+                                </div>
+                                <input type="submit" class="btn btn-success" value="Add Record"/>
+                                <button type="button" class="btn btn-primary">Reset</button>
+                            </div>
+                        </div>
+                        <!-- PANEL FOOTER END -->
                     </form>
                     <!-- FORM END -->
 
-                    <!-- PANEL FOOTER -->
-                    <div class="panel-footer">
-                        <div class="row">
-                            <div class="col-lg-9">
-                            </div>
-                            <button type="button" class="btn btn-success">Add Record</button>
-                            <button type="button" class="btn btn-primary">Reset</button>
-                        </div>
-                    </div>
-                    <!-- PANEL FOOTER END -->
+
                 </div>
             </div>
             <!-- PANEL END-->
