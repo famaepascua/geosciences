@@ -193,9 +193,12 @@
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
     <script>
     $(document).ready(function() {
-        $('#dataTables-example').DataTable({
+      var table =  $('#dataTables-example').DataTable({
             responsive: true
         });
+    $('#dataTables-example tbody').on( 'click', 'tr', function () {
+        console.log( table.row( this ).data() );
+    } );
     });
     </script>
 
