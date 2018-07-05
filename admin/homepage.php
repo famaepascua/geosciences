@@ -324,8 +324,8 @@
                                         <input disabled name="brgyname" class="form-control" placeholder="Enter Name">
                                 </div>
                                 <div class="col-lg-8">
-                                        <input name="province" class="form-control" placeholder="Province">
                                         <input name="municipality" class="form-control" placeholder="Municipality">
+                                        <input name="province" class="form-control" placeholder="Province">
                                         <button type="button" class="btn btn-success" data-toggle="modal"
                                                 data-target="#addLocation">Add Location
                                         </button>
@@ -428,8 +428,8 @@
             var numberOfInputs = $('#numofinput').val();
             var label = '<label>Location</label>';
             var input = '<input class="form-control" placeholder="Barangay">'+
-                        '<input class="form-control" placeholder="Province">'+
-                        '<input class="form-control" placeholder="Municipality">';
+                        '<input class="form-control" placeholder="Municipality">'+
+                        '<input class="form-control" placeholder="Province">';
             for(i=1; i <= numberOfInputs; i++){
                 $('#location').append(label+input);
             }
