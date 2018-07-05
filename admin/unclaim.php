@@ -152,7 +152,7 @@
                                             echo "<td>" . $row['code'] . "</td>";
                                             echo "<td>" . $row['applicant'] . "</td>";
                                             echo "<td>" . $row['sender'] . "</td>";
-                                            echo "<td>" . $row['municipality'] . "," . $row['province'] . "," . $row['bn']."</td>";
+                                            echo "<td>" . $row['bn']. "," . $row['municipality'] . "," . $row['province']. "</td>";
                                             echo "<td>" . $row['purpose']."</td>";
                                             echo "</tr>";
                                         }
