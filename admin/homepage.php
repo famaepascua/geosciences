@@ -461,10 +461,11 @@
                 data: {barangay: $id},
                 dataType: 'JSON',
                 success: function (data) {
+                    console.log(data);
                     $('#folderNo').val(data[0]);
                 }
             });
-            if($id == 'Other Barangays' || $id == 'Other Municipalities'){
+            if($id == '54' || $id == '56'){
                 $('input[name=brgyname]').removeAttr('disabled');
             }else{
                 $('input[name=brgyname]').attr('disabled', 'disabled')
