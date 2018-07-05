@@ -483,8 +483,10 @@
             });
             if($id == '54' || $id == '56'){
                 $('input[name=brgyname]').removeAttr('disabled');
+                $('#folderNo').removeAttr('disabled');
             }else{
-                $('input[name=brgyname]').attr('disabled', 'disabled')
+                $('input[name=brgyname]').attr('disabled', 'disabled');
+                $('#folderNo').attr('disabled', 'disabled');
             }
         });
     });
