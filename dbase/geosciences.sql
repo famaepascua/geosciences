@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 01, 2018 at 10:41 PM
+-- Generation Time: Jul 05, 2018 at 06:45 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.4
 
@@ -125,6 +125,14 @@ CREATE TABLE `location` (
   `barangayID` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `location`
+--
+
+INSERT INTO `location` (`locationID`, `municipality`, `province`, `barangayID`) VALUES
+(1, 'Baguio City', 'Benguet', 21),
+(2, 'Baguio City', 'Benguet', 46);
+
 -- --------------------------------------------------------
 
 --
@@ -238,7 +246,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`userID`, `username`, `password`, `firstName`, `lastName`, `userType`) VALUES
 (1, 'adminmark', 'admin01', 'Raymark', 'Cuenca', 'admin'),
-(2, 'famaepascua', 'user1', 'Fatima Mae', 'Pascua', 'user');
+(2, 'famaepascua', 'user1', 'Fatima Mae', 'Pascua', 'user'),
+(3, 'gabinanaman', 'gab02', 'Gab', 'Uy', 'user');
 
 --
 -- Indexes for dumped tables
@@ -260,51 +269,37 @@ ALTER TABLE `barangay`
 -- Indexes for table `location`
 --
 ALTER TABLE `location`
-  ADD PRIMARY KEY (`locationID`),
-  ADD KEY `barangay` (`barangayID`);
+  ADD PRIMARY KEY (`locationID`);
 
 --
 -- Indexes for table `logs`
 --
 ALTER TABLE `logs`
-  ADD PRIMARY KEY (`logID`),
-  ADD KEY `user` (`userID`),
-  ADD KEY `received_docu` (`receiveID`),
-  ADD KEY `release_docu` (`releaseID`),
-  ADD KEY `unclaim_docu` (`unclaimID`),
-  ADD KEY `record` (`recordID`);
+  ADD PRIMARY KEY (`logID`);
 
 --
 -- Indexes for table `receive`
 --
 ALTER TABLE `receive`
-  ADD PRIMARY KEY (`receiveID`),
-  ADD KEY `location` (`locationID`),
-  ADD KEY `action_slip` (`actionslipID`);
+  ADD PRIMARY KEY (`receiveID`);
 
 --
 -- Indexes for table `records`
 --
 ALTER TABLE `records`
-  ADD PRIMARY KEY (`recordID`),
-  ADD KEY `received` (`receiveID`),
-  ADD KEY `unclaimed` (`unclaimID`),
-  ADD KEY `release` (`releaseID`);
+  ADD PRIMARY KEY (`recordID`);
 
 --
 -- Indexes for table `release`
 --
 ALTER TABLE `release`
-  ADD PRIMARY KEY (`releaseID`),
-  ADD KEY `unclaimed_doc` (`unclaimID`),
-  ADD KEY `received_doc` (`receiveID`);
+  ADD PRIMARY KEY (`releaseID`);
 
 --
 -- Indexes for table `unclaim`
 --
 ALTER TABLE `unclaim`
-  ADD PRIMARY KEY (`unclaimID`),
-  ADD KEY `received_docs` (`receiveID`);
+  ADD PRIMARY KEY (`unclaimID`);
 
 --
 -- Indexes for table `users`
@@ -332,7 +327,7 @@ ALTER TABLE `barangay`
 -- AUTO_INCREMENT for table `location`
 --
 ALTER TABLE `location`
-  MODIFY `locationID` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `locationID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `logs`
@@ -368,55 +363,7 @@ ALTER TABLE `unclaim`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `userID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `location`
---
-ALTER TABLE `location`
-  ADD CONSTRAINT `barangay` FOREIGN KEY (`barangayID`) REFERENCES `barangay` (`barangayID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `logs`
---
-ALTER TABLE `logs`
-  ADD CONSTRAINT `received_docu` FOREIGN KEY (`receiveID`) REFERENCES `receive` (`receiveID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `record` FOREIGN KEY (`recordID`) REFERENCES `records` (`recordID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `release_docu` FOREIGN KEY (`releaseID`) REFERENCES `release` (`releaseID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `unclaim_docu` FOREIGN KEY (`unclaimID`) REFERENCES `unclaim` (`unclaimID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `user` FOREIGN KEY (`userID`) REFERENCES `users` (`userID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `receive`
---
-ALTER TABLE `receive`
-  ADD CONSTRAINT `action_slip` FOREIGN KEY (`actionslipID`) REFERENCES `actionslip` (`actionslipID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `location` FOREIGN KEY (`locationID`) REFERENCES `location` (`locationID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `records`
---
-ALTER TABLE `records`
-  ADD CONSTRAINT `received` FOREIGN KEY (`receiveID`) REFERENCES `receive` (`receiveID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `release` FOREIGN KEY (`releaseID`) REFERENCES `release` (`releaseID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `unclaimed` FOREIGN KEY (`unclaimID`) REFERENCES `unclaim` (`unclaimID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `release`
---
-ALTER TABLE `release`
-  ADD CONSTRAINT `received_doc` FOREIGN KEY (`receiveID`) REFERENCES `receive` (`receiveID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `unclaimed_doc` FOREIGN KEY (`unclaimID`) REFERENCES `unclaim` (`unclaimID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `unclaim`
---
-ALTER TABLE `unclaim`
-  ADD CONSTRAINT `received_docs` FOREIGN KEY (`receiveID`) REFERENCES `receive` (`receiveID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  MODIFY `userID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
