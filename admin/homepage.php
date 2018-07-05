@@ -316,7 +316,7 @@
                                         echo "<select id='barangay' class='form-control' name='barangay'>";
                                         echo "<option selected disabled>Select Barangay</option>";
                                         while ($row = $res->fetch_assoc()) {
-                                            echo "<option value = '" . $row['name'] . "'>" . $row['name'] . "</option>";
+                                            echo "<option value = '" . $row['barangayID'] . "'>" . $row['name'] . "</option>";
                                         }
                                         echo "</select>";
 
