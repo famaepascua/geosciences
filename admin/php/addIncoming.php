@@ -3,7 +3,6 @@
 require '../config.php';
 
 $action = $_POST['action'];
-$actiondesired = $_POST['actiondesired'];
 $ar = [];
 foreach ($action as $actionarray){
     array_push($ar,$actionarray);
