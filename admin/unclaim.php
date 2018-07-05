@@ -165,6 +165,118 @@
                         <!-- PANEL BODY END -->
                     </div>
                     <!-- PANEL END -->
+                    <!-- MODAL -->
+            <div class="modal fade" id="addLocation" role="dialog">
+                <!-- MODAL CONTENT-->
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content ">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Document Information</h4>
+                        </div>
+                        <!-- MODAL BODY -->
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div>
+                                        <label>Code:</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div>
+                                        <label>Folder No:</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div>
+                                        <label>Date Received:</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div>
+                                        <label>Applicant:</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div>
+                                        <label>Sender:</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div>
+                                        <label>Location/s:</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div>
+                                        <label>Purpose:</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <h4 class="modal-title">Unclaim Form</h4>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>Date Received</label>
+                                        <input name="datereceived" id="date" type="date" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>Document Date</label>
+                                        <input name="docudate" id="date" type="date" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>Date Received</label>
+                                        <input name="date" id="date" type="date" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>Inspector</label>
+                                        <input name="inspector" type="text" class="form-control"
+                                               placeholder="Enter Full Name">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>Classification</label>
+                                            <select name="classification" class="form-control">
+                                                <option>Evacuation Site</option>
+                                                <option>Geohazard Assesment</option>
+                                                <option>GIR</option>
+                                                <option>Government Projects</option>
+                                                <option>OGI Report</option>
+                                                <option>Reinvestigation</option>
+                                                <option>Sanitary Landfill Site</option>
+                                                <option>Other OGI</option>
+                                            </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                            <div class="form-group">
+                                            <label>Subject</label>
+                                            <textarea name="subject" class="form-control" rows="2"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- MODAL BODY END-->
+                        <!-- MODAL FOOTER -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success">Add Location</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div>
+                        <!-- MODAL FOOTER END -->
+                    </div>
+                    <!-- MODAL CONTENT END -->
+                </div>
+            </div>
+            <!-- MODAL END -->
                 </div>
             </div>
             <!-- BODY END -->
