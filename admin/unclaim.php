@@ -141,6 +141,23 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php
+                                        require 'config.php';
+
+                                        $sql = "SELECT *,b.name AS bn FROM actionslip JOIN receive r on actionslip.actionslipID = r.actionslipID JOIN location l on r.locationID = l.locationID JOIN barangay b on l.barangayID = b.barangayID";
+                                        $res = $db->query($sql);
+                                        while ($row = $res->fetch_assoc()){
+                                            echo "<tr>";
+                                            echo "<td>" . $row['dateReceived'] . "</td>";
+                                            echo "<td>" . $row['code'] . "</td>";
+                                            echo "<td>" . $row['applicant'] . "</td>";
+                                            echo "<td>" . $row['sender'] . "</td>";
+                                            echo "<td>" . $row['municipality'] . "," . $row['province'] . "," . $row['bn']."</td>";
+                                            echo "<td>" . $row['purpose']."</td>";
+                                            echo "</tr>";
+                                        }
+
+                                    ?>
                                 </tbody>
                             </table>
                             <!-- TABLE END -->
