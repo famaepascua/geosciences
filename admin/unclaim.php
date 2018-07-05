@@ -138,6 +138,7 @@
                                         <th>Sender</th>
                                         <th>Location</th>
                                         <th>Purpose</th>
+                                        <th hidden>Folder #</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -154,6 +155,7 @@
                                             echo "<td>" . $row['sender'] . "</td>";
                                             echo "<td>" . $row['bn']. "," . $row['municipality'] . "," . $row['province']. "</td>";
                                             echo "<td>" . $row['purpose']."</td>";
+                                            echo "<td hidden>" . $row['folderNumber']."</td>";
                                             echo "</tr>";
                                         }
 
@@ -166,7 +168,7 @@
                     </div>
                     <!-- PANEL END -->
                     <!-- MODAL -->
-            <div class="modal fade" id="addLocation" role="dialog">
+            <div class="modal fade" id="editUnclaim" role="dialog">
                 <!-- MODAL CONTENT-->
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content ">
@@ -179,37 +181,37 @@
                             <div class="row">
                                 <div class="col-lg-4">
                                     <div>
-                                        <label>Code:</label>
+                                        <label>Code:</label> <span id="code"></span>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <div>
-                                        <label>Folder No:</label>
+                                        <label>Folder No:</label> <span id="folderNo"></span>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <div>
-                                        <label>Date Received:</label>
+                                        <label>Date Received:</label> <span id="dateReceived"></span>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div>
-                                        <label>Applicant:</label>
+                                        <label>Applicant:</label> <span id="applicant"></span>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div>
-                                        <label>Sender:</label>
+                                        <label>Sender:</label> <span id="sender"></span>
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
                                     <div>
-                                        <label>Location/s:</label>
+                                        <label>Location/s:</label> <span id="location"></span>
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
                                     <div>
-                                        <label>Purpose:</label>
+                                        <label>Purpose:</label> <span id="purpose"></span>
                                     </div>
                                 </div>
                             </div>
@@ -217,19 +219,13 @@
                                 <h4 class="modal-title">Unclaim Form</h4>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>Date Received</label>
-                                        <input name="datereceived" id="date" type="date" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label>Document Date</label>
+                                        <label>Date Inspected</label>
                                         <input name="docudate" id="date" type="date" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>Date Received</label>
+                                        <label>Document Date</label>
                                         <input name="date" id="date" type="date" class="form-control">
                                     </div>
                                 </div>
@@ -309,7 +305,16 @@
             responsive: true
         });
     $('#dataTables-example tbody').on( 'click', 'tr', function () {
-        console.log( table.row( this ).data() );
+        var data = table.row( this ).data();
+        console.log(data);
+        $('#code').html(data[1]);
+        $('#folderNo').html(data[6]);
+        $('#dateReceived').html(data[0]);
+        $('#applicant').html(data[2]);
+        $('#sender').html(data[3]);
+        $('#location').html(data[4]);
+        $('#purpose').html(data[5]);
+        $('#editUnclaim').modal();
     } );
     });
     </script>
