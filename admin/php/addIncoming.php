@@ -2,18 +2,24 @@
 
 require '../config.php';
 
-$firstname = $_POST['firstname'];
-$lastname = $_POST['lastname'];
-$usertype = $_POST['usertype'];
-$username = $_POST['username'];
-$password = $_POST['password'];
+$action = $_POST['action'];
+$actiondesired = $_POST['actiondesired'];
+$ar = [];
+foreach ($action as $actionarray){
+    array_push($ar,$actionarray);
+}
 
+$actiondesired = $_POST['actiondesired'];
+$ad = [];
+foreach ($actiondesired as $actiondes){
+    array_push($ad,$actiondes);
+}
 
-$sql = "INSERT INTO users(username,password,firstName,lastName,userType)
-        VALUES('$username','$password','$firstname','$lastname','$usertype')";
+$sql = "INSERT INTO actionslip(action,actionDesired,oicrd,note)
+        VALUES('$action','$actiondesired','$oicrd','$note')";
 
 if($db->query($sql)){
 
-    header('Location: ../users.php');
+    header('Location: ../homepage.php');
 
 }

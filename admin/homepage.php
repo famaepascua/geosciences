@@ -145,49 +145,49 @@
                                             <div class="form-group">
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input name="action" type="checkbox" value="">Information and
+                                                        <input name="action[]" type="checkbox" value="">Information and
                                                         guidance please.
                                                     </label>
                                                 </div>
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input name="action" type="checkbox" value="">Compliance/Implementation
+                                                        <input name="action[]" type="checkbox" value="">Compliance/Implementation
                                                         please.
                                                     </label>
                                                 </div>
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input name="action" type="checkbox" value="">Appropriate Action
+                                                        <input name="action[]" type="checkbox" value="">Appropriate Action
                                                         please.
                                                     </label>
                                                 </div>
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input name="action" type="checkbox" value="">Immediate
+                                                        <input name="action[]" type="checkbox" value="">Immediate
                                                         Investigation please.
                                                     </label>
                                                 </div>
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input name="action" type="checkbox" value="">Comment and
+                                                        <input name="action[]" type="checkbox" value="">Comment and
                                                         recommendation please.
                                                     </label>
                                                 </div>
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input name="action" type="checkbox" value="">Review and inital
+                                                        <input name="action[]" type="checkbox" value="">Review and inital
                                                         please.
                                                     </label>
                                                 </div>
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input name="action" type="checkbox" value="">Discussion/Dissemination/Posting
+                                                        <input name="action[]" type="checkbox" value="">Discussion/Dissemination/Posting
                                                         please.
                                                     </label>
                                                 </div>
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input name="action" type="checkbox" value="">Record/File
+                                                        <input name="action[]" type="checkbox" value="">Record/File
                                                         please.
                                                     </label>
                                                 </div>
@@ -198,53 +198,53 @@
                                                 </label>
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input name="actiondesired" type="checkbox" value="">Give me
+                                                        <input name="actiondesired[]" type="checkbox" value="">Give me
                                                         status/feedback please.
                                                     </label>
                                                 </div>
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input name="actiondesired" type="checkbox" value="">Please
+                                                        <input name="actiondesired[]" type="checkbox" value="">Please
                                                         attend to this.
                                                     </label>
                                                 </div>
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input name="actiondesired" type="checkbox" value="">Please
+                                                        <input name="actiondesired[]" type="checkbox" value="">Please
                                                         represent to me.
                                                     </label>
                                                 </div>
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input name="actiondesired" type="checkbox" value="">Please see
+                                                        <input name="actiondesired[]" type="checkbox" value="">Please see
                                                         me about this.
                                                     </label>
                                                 </div>
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input name="actiondesired" type="checkbox" value="">Please
+                                                        <input name="actiondesired[]" type="checkbox" value="">Please
                                                         prepare reply.
                                                     </label>
                                                 </div>
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input name="actiondesired" type="checkbox" value="">Please
+                                                        <input name="actiondesired[]" type="checkbox" value="">Please
                                                         submit report.
                                                     </label>
                                                 </div>
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input name="actiondesired" type="checkbox" value="">Please
+                                                        <input name="actiondesired[]" type="checkbox" value="">Please
                                                         inform pary concerned.
                                                     </label>
                                                 </div>
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input name="actiondesired" type="checkbox" value="">Please
+                                                        <input name="actiondesired[]" type="checkbox" value="">Please
                                                         schedule.
                                                     </label>
                                                     <label>
-                                                        <input name="actiondesired" type="checkbox" value="">Please
+                                                        <input name="actiondesired[]" type="checkbox" value="">Please
                                                         respond directly.
                                                     </label>
                                                 </div>
