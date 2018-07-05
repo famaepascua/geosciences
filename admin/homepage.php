@@ -465,6 +465,22 @@
                     $('#folderNo').val(data[0]);
                 }
             });
+            $.ajax({
+                url: 'getLocation.php',
+                data: {barangay: $id},
+                dataType: 'JSON',
+                success: function (data) {
+                    if(data != false){
+                        var municipality = data[0];
+                        var province = data[1];
+                        $('input[name=municipality]').val(municipality);
+                        $('input[name=province]').val(province);
+                    }else{
+                        $('input[name=municipality]').val('');
+                        $('input[name=province]').val('');
+                    }
+                }
+            });
             if($id == '54' || $id == '56'){
                 $('input[name=brgyname]').removeAttr('disabled');
             }else{
