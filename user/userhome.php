@@ -148,7 +148,6 @@
 
                         <!-- PANEL FOOTER -->
                         <div class="panel-footer">
-                            s
                         </div>
                         <!-- PANEL FOOTER END -->
                     </div>
