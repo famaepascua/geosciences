@@ -347,7 +347,6 @@
                                 <div class="col-lg-4">
                                         <label>Location</label>
                                         <?php
-                                        require 'config.php';
 
 
                                         $sql = "SELECT * FROM barangay ORDER BY name ASC";

@@ -16,8 +16,8 @@
 
    if($db->query($sql)->num_rows > 0 && $row[2] == 'admin'){
       header('Location: home.php');
-   }else{
-      header('Location: ../index.php');
+   }else if ($db->query($sql)->num_rows > 0 && $row[2] == 'user'){
+      header('Location: ../user/user.php');
    }
 
 ?>

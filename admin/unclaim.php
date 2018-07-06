@@ -174,7 +174,7 @@
                     <div class="modal-content ">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Document Information</h4>
+                            <h4 class="modal-title" align="center">Document Information</h4>
                         </div>
                         <!-- MODAL BODY -->
                         <div class="modal-body">
@@ -194,17 +194,17 @@
                                         <label>Date Received:</label> <span id="dateReceived"></span>
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
+                                <div class="col-lg-4">
                                     <div>
                                         <label>Applicant:</label> <span id="applicant"></span>
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
+                                <div class="col-lg-4">
                                     <div>
                                         <label>Sender:</label> <span id="sender"></span>
                                     </div>
                                 </div>
-                                <div class="col-lg-12">
+                                <div class="col-lg-4">
                                     <div>
                                         <label>Location/s:</label> <span id="location"></span>
                                     </div>
@@ -216,7 +216,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <h4 class="modal-title">Unclaim Form</h4>
+                                <h4 class="modal-title" align="center">Unclaim Form</h4>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>Date Inspected</label>
@@ -264,7 +264,7 @@
                         <!-- MODAL BODY END-->
                         <!-- MODAL FOOTER -->
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-success">Add Location</button>
+                            <button type="button" class="btn btn-success">Update Record</button>
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                         </div>
                         <!-- MODAL FOOTER END -->
