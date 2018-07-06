@@ -174,37 +174,37 @@
                     <div class="modal-content ">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title" align="center">Document Information</h4>
+                            <h3 class="modal-title" align="center">DOCUMENT INFORMATION</h3>
                         </div>
                         <!-- MODAL BODY -->
                         <div class="modal-body">
                             <div class="row">
-                                <div class="col-lg-4">
+                                <div class="col-lg-12">
                                     <div>
                                         <label>Code:</label> <span id="code"></span>
                                     </div>
                                 </div>
-                                <div class="col-lg-4">
+                                <div class="col-lg-12">
                                     <div>
                                         <label>Folder No:</label> <span id="folderNo"></span>
                                     </div>
                                 </div>
-                                <div class="col-lg-4">
+                                <div class="col-lg-12">
                                     <div>
                                         <label>Date Received:</label> <span id="dateReceived"></span>
                                     </div>
                                 </div>
-                                <div class="col-lg-4">
+                                <div class="col-lg-12">
                                     <div>
                                         <label>Applicant:</label> <span id="applicant"></span>
                                     </div>
                                 </div>
-                                <div class="col-lg-4">
+                                <div class="col-lg-12">
                                     <div>
                                         <label>Sender:</label> <span id="sender"></span>
                                     </div>
                                 </div>
-                                <div class="col-lg-4">
+                                <div class="col-lg-12">
                                     <div>
                                         <label>Location/s:</label> <span id="location"></span>
                                     </div>
@@ -216,7 +216,9 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <h4 class="modal-title" align="center">Unclaim Form</h4>
+                                <div class="form-group">
+                                <h2 class="modal-title" align="center">Unclaim Form</h2>
+                                </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>Date Inspected</label>
