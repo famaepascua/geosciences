@@ -79,7 +79,7 @@ if ($db->query($sql)) {
 
     if(!$db->query($sql)){
         var_dump($db->error);
-    }
+    }   
 
     header('Location: ../homepage.php');
 
