@@ -82,7 +82,7 @@
                             <a href="homepage.php"><i class="fa fa-search fa-fw"></i>For Inspection</a>
                         </li>
                         <li>
-                            <a href="unclaim.php"><i class="fa fa-file fa-fw"></i>Unclaimed</a>
+                            <a href="unclaim.php"><i class="fa fa-file fa-fw"></i>Receive</a>
                         </li>
                         <li>
                             <a href="release.php"><i class="fa fa-file-text fa-fw"></i> Release</a>
