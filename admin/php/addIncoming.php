@@ -71,9 +71,6 @@ if ($db->query($sql)) {
         $locationID = $db->insert_id;
 
     }
-   
-
-
     $sql = "INSERT INTO receive(code, dateReceived, applicant, sender, purpose, locationID, actionslipID) 
               VALUES('$code','$dateReceived','$applicant','$sender','$purpose','$locationID','$actionSlipID') ";
 

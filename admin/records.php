@@ -354,7 +354,7 @@
                                         echo "<select id='barangay' class='form-control' name='barangay'>";
                                         echo "<option selected disabled>Select Barangay</option>";
                                         while ($row = $res->fetch_assoc()) {
-                                            echo "<option value = '" . $row['name'] . "'>" . $row['name'] . "</option>";
+                                            echo "<option value = '" . $row['barangayID'] . "'>" . $row['name'] . "</option>";
                                         }
                                         echo "</select>";
 
@@ -559,20 +559,38 @@
 </body>
     <script>
     $(document).ready(function () {
-        $('#barangay').change(function () {
-            $id = $(this).val();
+        $('#barangay').change(function () { $id = $(this).val();
             $.ajax({
                 url: 'folderNo.php',
                 data: {barangay: $id},
                 dataType: 'JSON',
                 success: function (data) {
+                    console.log(data);
                     $('#folderNo').val(data[0]);
                 }
             });
-            if($id == 'Other Barangays' || $id == 'Other Municipalities'){
+            $.ajax({
+                url: 'getLocation.php',
+                data: {barangay: $id},
+                dataType: 'JSON',
+                success: function (data) {
+                    if(data != false){
+                        var municipality = data[0];
+                        var province = data[1];
+                        $('input[name=municipality]').val(municipality);
+                        $('input[name=province]').val(province);
+                    }else{
+                        $('input[name=municipality]').val('');
+                        $('input[name=province]').val('');
+                    }
+                }
+            });
+            if($id == '54' || $id == '56'){
                 $('input[name=brgyname]').removeAttr('disabled');
+                $('#folderNo').removeAttr('disabled');
             }else{
-                $('input[name=brgyname]').attr('disabled', 'disabled')
+                $('input[name=brgyname]').attr('disabled', 'disabled');
+                $('#folderNo').attr('disabled', 'disabled');
             }
         });
     });
