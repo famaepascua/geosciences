@@ -127,11 +127,7 @@
 
                         <!-- PANEL FOOTER -->
                         <div class="panel-footer">
-                            <div class="row">
-                                <div class="col-lg-11">
-                                </div>
-                                <button  type="button" class="btn btn-primary">View</button>
-                            </div>
+                            s
                         </div>
                         <!-- PANEL FOOTER END -->
                     </div>
