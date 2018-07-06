@@ -18,6 +18,8 @@
       header('Location: home.php');
    }else if ($db->query($sql)->num_rows > 0 && $row[2] == 'user'){
       header('Location: ../user/user.php');
+   }else{
+      header('Location: ../index.php');
    }
 
 ?>
