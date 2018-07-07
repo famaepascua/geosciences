@@ -52,7 +52,7 @@ if ($db->query($sql)) {
         $municipality = $_POST['municipality'];
         $province = $_POST['province'];
 
-        $sql = "Insert Into barangay(name,folderNumber) VALUES('$barangayName','$folderNumber') ";
+        $sql = "INSERT INTO barangay(name,folderNumber) VALUES('$barangayName','$folderNumber')";
 
         if(!$db->query($sql)){
             var_dump($db->error);
@@ -61,7 +61,7 @@ if ($db->query($sql)) {
         $barangayID = $db->insert_id;
 
         //insert into location
-        $sql = "Insert Into location(municipality,province,barangayID) VALUES('$municipality','$province','$barangayID') ";
+        $sql = "INSERT INTO location(municipality,province,barangayID) VALUES('$municipality','$province','$barangayID') ";
 
         if(!$db->query($sql)){
             var_dump($db->error);
