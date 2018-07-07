@@ -76,6 +76,14 @@ if ($db->query($sql)) {
 
     if(!$db->query($sql)){
         var_dump($db->error);
+    }  
+    $receiveID = $db->insert_id;
+
+    $sql = "INSERT INTO records(status,scanFile,receiveID) 
+              VALUES('inspection','temp.pdf','$receiveID') ";
+
+    if(!$db->query($sql)){
+        var_dump($db->error);
     }   
 
     header('Location: ../homepage.php');

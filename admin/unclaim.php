@@ -109,7 +109,7 @@
             <!-- PAGE HEADER -->
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Unclaimed Documents</h1>
+                    <h1 class="page-header">Received Documents</h1>
                 </div>
             </div>
             <!-- PAGE HEADER END -->
@@ -139,25 +139,28 @@
                                         <th>Location</th>
                                         <th>Purpose</th>
                                         <th hidden>Folder #</th>
+                                        <th hidden>Record ID</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
-                                        require 'config.php';
+                                    require 'config.php';
 
-                                        $sql = "SELECT *,b.name AS bn FROM actionslip JOIN receive r on actionslip.actionslipID = r.actionslipID JOIN location l on r.locationID = l.locationID JOIN barangay b on l.barangayID = b.barangayID";
-                                        $res = $db->query($sql);
-                                        while ($row = $res->fetch_assoc()){
-                                            echo "<tr style='cursor: pointer'>";
-                                            echo "<td>" . $row['dateReceived'] . "</td>";
-                                            echo "<td>" . $row['code'] . "</td>";
-                                            echo "<td>" . $row['applicant'] . "</td>";
-                                            echo "<td>" . $row['sender'] . "</td>";
-                                            echo "<td>" . $row['bn']. "," . $row['municipality'] . "," . $row['province']. "</td>";
-                                            echo "<td>" . $row['purpose']."</td>";
-                                            echo "<td hidden>" . $row['folderNumber']."</td>";
-                                            echo "</tr>";
-                                        }
+                                    $sql = "SELECT *,b.name AS bn FROM actionslip JOIN receive r on actionslip.actionslipID = r.actionslipID JOIN location l on r.locationID = l.locationID JOIN barangay b on l.barangayID = b.barangayID
+                                    inner join records on records.receiveID = r.receiveID where status='inspection'";
+                                    $res = $db->query($sql);
+                                    while ($row = $res->fetch_assoc()){
+                                        echo "<tr style='cursor: pointer'>";
+                                        echo "<td>" . $row['dateReceived'] . "</td>";
+                                        echo "<td>" . $row['code'] . "</td>";
+                                        echo "<td>" . $row['applicant'] . "</td>";
+                                        echo "<td>" . $row['sender'] . "</td>";
+                                        echo "<td>" . $row['bn']. "," . $row['municipality'] . "," . $row['province']. "</td>";
+                                        echo "<td>" . $row['purpose']."</td>";
+                                        echo "<td hidden>" . $row['folderNumber']."</td>";
+                                        echo "<td hidden>" . $row['recordID']."</td>";
+                                        echo "</tr>";
+                                    }
 
                                     ?>
                                 </tbody>
@@ -168,111 +171,113 @@
                     </div>
                     <!-- PANEL END -->
                     <!-- MODAL -->
-            <div class="modal fade" id="editUnclaim" role="dialog">
-                <!-- MODAL CONTENT-->
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content ">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title" align="center">Document Information</h4>
-                        </div>
-                        <!-- MODAL BODY -->
-                        <div class="modal-body">
-                            <div class="row">
-                                <div class="col-lg-4">
-                                    <div>
-                                        <label>Code:</label> <span id="code"></span>
+                    <form action="php/unclaim.php" method="POST">
+                        <div class="modal fade" id="editUnclaim" role="dialog">
+                            <!-- MODAL CONTENT-->
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content ">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title" align="center">Document Information</h4>
                                     </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div>
-                                        <label>Folder No:</label> <span id="folderNo"></span>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div>
-                                        <label>Date Received:</label> <span id="dateReceived"></span>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div>
-                                        <label>Applicant:</label> <span id="applicant"></span>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div>
-                                        <label>Sender:</label> <span id="sender"></span>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div>
-                                        <label>Location/s:</label> <span id="location"></span>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div>
-                                        <label>Purpose:</label> <span id="purpose"></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <h4 class="modal-title" align="center">Unclaim Form</h4>
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label>Date Inspected</label>
-                                        <input name="docudate" id="date" type="date" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label>Document Date</label>
-                                        <input name="date" id="date" type="date" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label>Inspector</label>
-                                        <input name="inspector" type="text" class="form-control"
-                                               placeholder="Enter Full Name">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label>Classification</label>
-                                            <select name="classification" class="form-control">
-                                                <option>Evacuation Site</option>
-                                                <option>Geohazard Assesment</option>
-                                                <option>GIR</option>
-                                                <option>Government Projects</option>
-                                                <option>OGI Report</option>
-                                                <option>Reinvestigation</option>
-                                                <option>Sanitary Landfill Site</option>
-                                                <option>Other OGI</option>
-                                            </select>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="form-group">
-                                            <div class="form-group">
-                                            <label>Subject</label>
-                                            <textarea name="subject" class="form-control" rows="2"></textarea>
+                                    <!-- MODAL BODY -->
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-lg-4">
+                                                <div>
+                                                    <label>Code:</label> <span id="code"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div>
+                                                    <label>Folder No:</label> <span id="folderNo"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div>
+                                                    <label>Date Received:</label> <span id="dateReceived"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div>
+                                                    <label>Applicant:</label> <span id="applicant"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div>
+                                                    <label>Sender:</label> <span id="sender"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div>
+                                                    <label>Location/s:</label> <span id="location"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div>
+                                                    <label>Purpose:</label> <span id="purpose"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <h4 class="modal-title" align="center">Unclaim Form</h4>
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label>Date Inspected</label>
+                                                    <input name="date" id="date" type="date" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label>Document Date</label>
+                                                    <input name="docudate" id="date" type="date" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label>Inspector</label>
+                                                    <input name="inspector" type="text" class="form-control"
+                                                    placeholder="Enter Full Name">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label>Classification</label>
+                                                    <select name="classification" class="form-control">
+                                                        <option>Evacuation Site</option>
+                                                        <option>Geohazard Assesment</option>
+                                                        <option>GIR</option>
+                                                        <option>Government Projects</option>
+                                                        <option>OGI Report</option>
+                                                        <option>Reinvestigation</option>
+                                                        <option>Sanitary Landfill Site</option>
+                                                        <option>Other OGI</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div class="form-group">
+                                                    <div class="form-group">
+                                                        <label>Subject</label>
+                                                        <textarea name="subject" class="form-control" rows="2"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
+                                    <!-- MODAL BODY END-->
+                                    <!-- MODAL FOOTER -->
+                                    <div class="modal-footer">
+                                        <button name="recordID" id="recordID" type="submit" class="btn btn-success">Update Record</button>
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                    </div>
+                                    <!-- MODAL FOOTER END -->
                                 </div>
+                                <!-- MODAL CONTENT END -->
                             </div>
                         </div>
-                        <!-- MODAL BODY END-->
-                        <!-- MODAL FOOTER -->
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-success">Update Record</button>
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                        </div>
-                        <!-- MODAL FOOTER END -->
-                    </div>
-                    <!-- MODAL CONTENT END -->
-                </div>
-            </div>
-            <!-- MODAL END -->
+                    </form>
+                    <!-- MODAL END -->
                 </div>
             </div>
             <!-- BODY END -->
@@ -300,24 +305,24 @@
 
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
     <script>
-    $(document).ready(function() {
-      var table =  $('#dataTables-example').DataTable({
+        $(document).ready(function() {
+          var table =  $('#dataTables-example').DataTable({
             responsive: true
         });
-    $('#dataTables-example tbody').on( 'click', 'tr', function () {
-        var data = table.row( this ).data();
-        console.log(data);
-        $('#code').html(data[1]);
-        $('#folderNo').html(data[6]);
-        $('#dateReceived').html(data[0]);
-        $('#applicant').html(data[2]);
-        $('#sender').html(data[3]);
-        $('#location').html(data[4]);
-        $('#purpose').html(data[5]);
-        $('#editUnclaim').modal();
-    } );
-    });
-    </script>
+          $('#dataTables-example tbody').on( 'click', 'tr', function () {
+            var data = table.row( this ).data();
+            $('#code').html(data[1]);
+            $('#folderNo').html(data[6]);
+            $('#dateReceived').html(data[0]);
+            $('#applicant').html(data[2]);
+            $('#sender').html(data[3]);
+            $('#location').html(data[4]);
+            $('#purpose').html(data[5]);
+            $('#recordID').val(data[7]);
+            $('#editUnclaim').modal();
+        } );
+      });
+  </script>
 
 </body>
 
