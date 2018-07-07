@@ -59,6 +59,12 @@
             <!-- NAV HEADER END -->
 
             <ul class="nav navbar-top-links navbar-right">
+                <li><p><b>
+                            <?php
+                            echo strtoupper($_SESSION['currentUser']);
+                            ?>
+                        </b></p>
+                </li>
 
                 <!-- DROPDOWN -->
                 <li class="dropdown">
@@ -68,11 +74,13 @@
                     <ul class="dropdown-menu dropdown-user">
                         <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a></li>
                         <li class="divider"></li>
-                        <li><a href="../index.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+
+                        <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
                 </li>
                 <!-- DROPDOWN END -->
+
             </ul>
 
         </nav>

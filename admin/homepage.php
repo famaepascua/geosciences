@@ -1,3 +1,28 @@
+<?php
+    session_start();
+
+
+
+    if(!isset($_SESSION['currentUser'])){
+        $m = "Please Login First";
+        echo "<script type='text/javascript'>";
+        echo "alert($m)";
+        echo "window.location.replace('../index.php');";
+        echo "</script>";
+
+    }
+
+    if($_SESSION['currentUserType'] != "user"){
+        $m = "Forbidden Access";
+        echo "<script type='text/javascript'>";
+        echo "alert($m)";
+        echo "window.location.replace('../index.php');";
+        echo "</script>";
+
+    }
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,6 +48,7 @@
 
     <!-- Morris Charts CSS -->
     <link href="vendor/morrisjs/morris.css" rel="stylesheet">
+
 
     <!-- Custom Fonts -->
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -51,11 +77,18 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.html">GEOSCIENCES DIVISION</a>
+            <a class="navbar-brand" href="homepage.php" style="text-shadow: 0 0 3px #FF0000;">GEOSCIENCES DIVISION</a>
+
         </div>
         <!-- NAVBAR HEADER END -->
 
         <ul class="nav navbar-top-links navbar-right">
+            <li><p><b>
+                    <?php
+                        echo strtoupper($_SESSION['currentUser']);
+                    ?>
+                    </b></p>
+            </li>
 
             <!-- DROPDOWN -->
             <li class="dropdown">
@@ -65,7 +98,8 @@
                 <ul class="dropdown-menu dropdown-user">
                     <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a></li>
                     <li class="divider"></li>
-                    <li><a href="../index.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+
+                    <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                     </li>
                 </ul>
             </li>

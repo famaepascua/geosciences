@@ -1,4 +1,4 @@
-<?php
+ <?php
    require("config.php");
    session_start();
    
@@ -15,6 +15,8 @@
    $row = $result->fetch_row();
 
    if($db->query($sql)->num_rows > 0 && $row[2] == 'admin'){
+      $_SESSION['currentUser'] = $row[0];
+      $_SESSION['currentUserType'] = $row[2];
       header('Location: home.php');
    }else if ($db->query($sql)->num_rows > 0 && $row[2] == 'user'){
       header('Location: ../user/user.php');
