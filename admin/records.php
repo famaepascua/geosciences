@@ -232,7 +232,6 @@ if ($_SESSION['currentUserType'] == "user") {
                                                 <div class="panel-body">
                                                     <div class="form-group">
                                                         <div class="checkbox">
-                                                            </label>
                                                         <label>
                                                             <input name="action[]" type="checkbox" value="Information and guidance please">Information and guidance please.
                                                         </label>
