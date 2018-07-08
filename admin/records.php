@@ -222,124 +222,151 @@ if ($_SESSION['currentUserType'] == "user") {
                                             <!-- ACTION SLIP -->
                                             <div class="col-lg-4">
                                                 <div class="panel panel-default">
-                                                    <!-- ACTION SLIP PANEL HEADING -->
-                                                    <div class="panel-heading">
-                                                     DOCUMENT ACTION SLIP
-                                                 </div>
-                                                 <!-- ACTION SLIP PANEL HEADING END -->
-                                                 <!-- ACTION SLIP PANEL BODY -->
-                                                 <div class="panel-body">
+                                                <!-- ACTION SLIP PANEL HEADING -->
+                                                <div class="panel-heading">
+                                                DOCUMENT ACTION SLIP
+                                                </div>
+                                                <!-- ACTION SLIP PANEL HEADING END -->
+
+                                                <!-- ACTION SLIP PANEL BODY -->
+                                                <div class="panel-body">
                                                     <div class="form-group">
                                                         <div class="checkbox">
-                                                            <label>
-                                                                <input type="checkbox" value="">Information and guidance please.
                                                             </label>
-                                                        </div>
-                                                        <div class="checkbox">
-                                                            <label>
-                                                                <input type="checkbox" value="">Compliance/Implementation please.
-                                                            </label>
-                                                        </div>
-                                                        <div class="checkbox">
-                                                            <label>
-                                                                <input type="checkbox" value="">Appropriate Action please.
-                                                            </label>
-                                                        </div>
-                                                        <div class="checkbox">
-                                                            <label>
-                                                                <input type="checkbox" value="">Immediate Investigation please.
-                                                            </label>
-                                                        </div>
-                                                        <div class="checkbox">
-                                                            <label>
-                                                                <input type="checkbox" value="">Comment and recommendation please.
-                                                            </label>
-                                                        </div>
-                                                        <div class="checkbox">
-                                                            <label>
-                                                                <input type="checkbox" value="">Review and inital please.
-                                                            </label>
-                                                        </div>
-                                                        <div class="checkbox">
-                                                            <label>
-                                                                <input type="checkbox" value="">Discussion/Dissemination/Posting please.
-                                                            </label>
-                                                        </div>
-                                                        <div class="checkbox">
-                                                            <label>
-                                                                <input type="checkbox" value="">Record/File please.
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
                                                         <label>
-                                                            Action Desired:
+                                                            <input name="action[]" type="checkbox" value="Information and guidance please">Information and guidance please.
                                                         </label>
-                                                        <div class="checkbox">
-                                                            <label>
-                                                                <input type="checkbox" value="">Give me status/feedback please.
-                                                            </label>
                                                         </div>
-                                                        <div class="checkbox">
-                                                            <label>
-                                                                <input type="checkbox" value="">Please attend to this.
-                                                            </label>
-                                                        </div>
-                                                        <div class="checkbox">
-                                                            <label>
-                                                                <input type="checkbox" value="">Please represent to me.
-                                                            </label>
-                                                        </div>
-                                                        <div class="checkbox">
-                                                            <label>
-                                                                <input type="checkbox" value="">Please see me about this.
-                                                            </label>
-                                                        </div>
-                                                        <div class="checkbox">
-                                                            <label>
-                                                                <input type="checkbox" value="">Please prepare reply.
-                                                            </label>
-                                                        </div>
-                                                        <div class="checkbox">
-                                                            <label>
-                                                                <input type="checkbox" value="">Please submit report.
-                                                            </label>
-                                                        </div>
-                                                        <div class="checkbox">
-                                                            <label>
-                                                                <input type="checkbox" value="">Please inform pary concerned.
-                                                            </label>
-                                                        </div>
-                                                        <div class="checkbox">
-                                                            <label>
-                                                                <input type="checkbox" value="">Please schedule.
-                                                            </label>
-                                                            <label>
-                                                                <input type="checkbox" value="">Please respond directly.
-                                                            </label>
-                                                        </div>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input name="action[]" type="checkbox" value="Compliance/Implementation
+                                                            please">Compliance/Implementation
+                                                            please.
+                                                        </label>
                                                     </div>
-                                                    <div class="form-group">
-                                                        <label>OICRD</label>
-                                                        <input class="form-control" placeholder="Enter Full Name">
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input name="action[]" type="checkbox" value="">Appropriate Action
+                                                            please.
+                                                        </label>
                                                     </div>
-                                                    <div class="form-group">
-                                                        <label>Note</label>
-                                                        <textarea class="form-control" rows="2"></textarea>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input name="action[]" type="checkbox" value="">Immediate
+                                                            Investigation please.
+                                                        </label>
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input name="action[]" type="checkbox" value="">Comment and
+                                                            recommendation please.
+                                                        </label>
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input name="action[]" type="checkbox" value="">Review and inital
+                                                            please.
+                                                        </label>
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input name="action[]" type="checkbox" value="">Discussion/Dissemination/Posting
+                                                            please.
+                                                        </label>
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input name="action[]" type="checkbox" value="">Record/File
+                                                            please.
+                                                        </label>
                                                     </div>
                                                 </div>
-                                                <!-- ACTION SLIP PANEL BODY END -->
+                                                <div class="form-group">
+                                                    <label>
+                                                        Action Desired:
+                                                    </label>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input name="actiondesired[]" type="checkbox" value="Give me
+                                                            status/feedback please">Give me
+                                                            status/feedback please.
+                                                        </label>
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input name="actiondesired[]" type="checkbox" value="Please
+                                                            attend to this">Please
+                                                            attend to this.
+                                                        </label>
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input name="actiondesired[]" type="checkbox" value="Please
+                                                            represent to me">Please
+                                                            represent to me.
+                                                        </label>
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input name="actiondesired[]" type="checkbox" value="Please see
+                                                            me about this">Please see
+                                                            me about this.
+                                                        </label>
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input name="actiondesired[]" type="checkbox" value="Please
+                                                            prepare reply">Please
+                                                            prepare reply.
+                                                        </label>
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input name="actiondesired[]" type="checkbox" value="Please
+                                                            submit report">Please
+                                                            submit report.
+                                                        </label>
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input name="actiondesired[]" type="checkbox" value="Please
+                                                            inform pary concerned">Please
+                                                            inform pary concerned.
+                                                        </label>
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input name="actiondesired[]" type="checkbox" value="Please
+                                                            schedule">Please
+                                                            schedule.
+                                                        </label>
+                                                        <label>
+                                                            <input name="actiondesired[]" type="checkbox" value="Please
+                                                            respond directly">Please
+                                                            respond directly.
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>OICRD</label>
+                                                    <input name="oicrd" type="text" class="form-control"
+                                                    placeholder="Enter Full Name">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Note</label>
+                                                    <textarea name="note" class="form-control" rows="2"></textarea>
+                                                </div>
                                             </div>
+                                            <!-- ACTION SLIP PANEL BODY END -->
                                         </div>
-                                        <!-- ACTION SLIP END -->
+                                    </div>
+                                    <!-- ACTION SLIP END -->
 
-                                        <!-- MAIN FORM -->
-                                        <div class="col-lg-8">
-                                        </div>
+                                    <!-- MAIN FORM -->
                                         <div class="col-lg-2">
                                             <div class="form-group">
                                                 <label>Code</label>
-                                                <input class="form-control" placeholder="Enter Code">
+                                                <input name="code" type="text" class="form-control" placeholder="Enter Code">
                                             </div>
                                         </div>
                                         <div class="col-lg-2">
@@ -352,25 +379,29 @@ if ($_SESSION['currentUserType'] == "user") {
                                         <div class="col-lg-4">
                                             <div class="form-group">
                                                 <label>Date Received</label>
-                                                <input class="form-control" type="date" name="date" id="date" required>
+                                                <input name="date" id="date" type="date" class="form-control">
                                             </div>
                                         </div>
                                         <div class="col-lg-8">
                                             <div class="form-group">
                                                 <label>Applicant</label>
-                                                <input class="form-control" placeholder="Enter Full Name">
+                                                <input name="applicant" type="text" class="form-control"
+                                                placeholder="Enter Full Name">
                                             </div>
                                         </div>
                                         <div class="col-lg-8">
                                             <div class="form-group">
                                                 <label>Sender</label>
-                                                <input class="form-control" placeholder="Enter Full Name">
+                                                <input name="sender" type="text" class="form-control"
+                                                placeholder="Enter Full Name">
                                             </div>
                                         </div>
+
                                         <div class="form-group">
                                             <div class="col-lg-4">
                                                 <label>Location</label>
                                                 <?php
+                                                require 'config.php';
 
 
                                                 $sql = "SELECT * FROM barangay ORDER BY name ASC";
@@ -390,107 +421,108 @@ if ($_SESSION['currentUserType'] == "user") {
                                                 <input disabled name="brgyname" class="form-control" placeholder="Enter Name">
                                             </div>
                                             <div class="col-lg-8">
-                                                <input name="province" class="form-control" placeholder="Province">
                                                 <input name="municipality" class="form-control" placeholder="Municipality">
+                                                <input name="province" class="form-control" placeholder="Province">
                                                 <button type="button" class="btn btn-success" data-toggle="modal"
                                                 data-target="#addLocation">Add Location
                                             </button>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-8">
-                                        <div class="form-group">
-                                            <div class="form-group">
-                                                <label>Purpose</label>
-                                                <textarea class="form-control" rows="15"></textarea>
                                             </div>
                                         </div>
-                                    </div>
-                                    <!-- MAIN FORM END -->
-                                </div>
-                                <!-- ROW -->
-                                <div class="row">
-                                    <div class="col-lg-4">
-                                        <div class="form-group">
-                                            <label>Inspection Date</label>
-                                            <input class="form-control" type="date" name="date" id="date" required>
+                                        <div class="col-lg-8">
+                                            <div class="form-group">
+                                                <div class="form-group">
+                                                    <label>Purpose</label>
+                                                    <textarea name="purpose" class="form-control" rows="14"></textarea>
+                                                </div>
+                                            </div>
                                         </div>
+                                        <!-- MAIN FORM END -->
                                     </div>
-                                    <div class="col-lg-8">
-                                        <div class="form-group">
-                                            <label>Inspector</label>
-                                            <input class="form-control" placeholder="Enter Full Name">
+                                    <!-- ROW -->
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label>Inspection Date</label>
+                                                <input class="form-control" type="date" name="date" id="date" required>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="form-group">
-                                            <label>Document Date</label>
-                                            <input class="form-control" type="date" name="date" id="date" required>
+                                        <div class="col-lg-8">
+                                            <div class="form-group">
+                                                <label>Inspector</label>
+                                                <input class="form-control" placeholder="Enter Full Name">
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-8">
-                                        <div class="form-group">
-                                            <label>Classification</label>
-                                            <select class="form-control">
-                                                <option>Evacuation Site</option>
-                                                <option>Geohazard Assesment</option>
-                                                <option>GIR</option>
-                                                <option>Government Projects</option>
-                                                <option>OGI Report</option>
-                                                <option>Reinvestigation</option>
-                                                <option>Sanitary Landfill Site</option>
-                                                <option>Other OGI</option>
-                                            </select>
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label>Document Date</label>
+                                                <input class="form-control" type="date" name="date" id="date" required>
+                                            </div>
                                         </div>
-                                    </div>
+                                        <div class="col-lg-8">
+                                            <div class="form-group">
+                                                <label>Classification</label>
+                                                <select class="form-control">
+                                                    <option>Evacuation Site</option>
+                                                    <option>Geohazard Assesment</option>
+                                                    <option>GIR</option>
+                                                    <option>Government Projects</option>
+                                                    <option>OGI Report</option>
+                                                    <option>Reinvestigation</option>
+                                                    <option>Sanitary Landfill Site</option>
+                                                    <option>Other OGI</option>
+                                                </select>
+                                            </div>
+                                        </div>
 
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
+                                        <div class="col-lg-12">
                                             <div class="form-group">
-                                                <label>Subject</label>
-                                                <textarea class="form-control" rows="2"></textarea>
+                                                <div class="form-group">
+                                                    <label>Subject</label>
+                                                    <textarea class="form-control" rows="2"></textarea>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <!-- ROW END-->
-                                <!-- ROW -->
-                                <div class="row">
-                                    <div class="col-lg-4">
-                                        <div class="form-group">
-                                            <label>Date Release</label>
-                                            <input class="form-control" type="date" name="date" id="date" required>
+                                    <!-- ROW END-->
+                                    <!-- ROW -->
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label>Date Release</label>
+                                                <input class="form-control" type="date" name="date" id="date" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-8">
+                                            <div class="form-group">
+                                                <label>Receive By.</label>
+                                                <input class="form-control" placeholder="Enter Full Name">
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-8">
-                                        <div class="form-group">
-                                            <label>Receive By.</label>
-                                            <input class="form-control" placeholder="Enter Full Name">
+                                    <!-- ROW END-->
+                                    <!-- ROW -->
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label>Upload File</label>
+                                                <input type="file">
+                                            </div>
                                         </div>
                                     </div>
+                                    <!-- ROW END-->    
                                 </div>
-                                <!-- ROW END-->
-                                <!-- ROW -->
-                                <div class="row">
-                                    <div class="col-lg-4">
-                                        <div class="form-group">
-                                            <label>Upload File</label>
-                                            <input type="file">
-                                        </div>
-                                    </div>
+                                <!-- MODAL BODY END-->
+                                <!-- MODAL FOOTER -->
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-success">Add Record</button>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                 </div>
-                                <!-- ROW END-->    
-                            </div>
-                            <!-- MODAL BODY END-->
-                            <!-- MODAL FOOTER -->
-                            <div class="modal-footer">
-                                <button type="submit" class="btn btn-success">Add Record</button>
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                            </div>
-                            <!-- MODAL FOOTER END -->
+                                <!-- MODAL FOOTER END -->
                         </div>
                         <!-- MODAL CONTENT END -->
                     </div>
                 </div>
+                <!-- MODAL -->
                 <div class="modal fade" id="addLocation" role="dialog">
                     <!-- MODAL CONTENT-->
                     <div class="modal-dialog">
@@ -502,20 +534,17 @@ if ($_SESSION['currentUserType'] == "user") {
                             <!-- MODAL BODY -->
                             <div class="modal-body">
                                 <div class="row">
+
                                     <div class="col-lg-5">
                                         <div class="form-group">
-                                            <input class="form-control" placeholder="No. of Location to Add">
+                                            <input id="numofinput" class="form-control" placeholder="No. of Location to Add">
                                         </div>
                                     </div>
-                                    <button type="button" class="btn btn-success">Go</button>
+                                    <button id="addlocation" type="button" class="btn btn-success">Go</button>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>Location</label>
-                                            <input class="form-control" placeholder="Barangay">
-                                            <input class="form-control" placeholder="Province">
-                                            <input class="form-control" placeholder="Municipality">
+                                        <div id="location" class="form-group">
                                         </div>
                                     </div>
                                 </div>
@@ -532,6 +561,7 @@ if ($_SESSION['currentUserType'] == "user") {
                         <!-- MODAL CONTENT END -->
                     </div>
                 </div>
+                <!-- MODAL END -->
             </form>
             <!-- MODAL END -->
         </div>
