@@ -1,3 +1,21 @@
+<?php
+session_start();
+if (!isset($_SESSION['currentUser'])) {
+    $m = "Please Login First";
+    echo "<script type='text/javascript'>
+    alert('$m');
+    window.location.replace('../index.php');
+    </script>";
+}
+if ($_SESSION['currentUserType'] != "user") {
+    session_destroy();
+    $m = "Unauthorized Access";
+    echo "<script type='text/javascript'>
+    alert('$m');
+    window.location.replace('../index.php');
+    </script>";
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,7 +72,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">MINES AND GEOSCIENCES BUREAU | GEOSCIENCES DIVISION</a>
+                <a class="navbar-brand" href="logout.php">MINES AND GEOSCIENCES BUREAU | GEOSCIENCES DIVISION</a>
             </div>
             <!-- NAV HEADER END -->
 

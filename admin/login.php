@@ -20,6 +20,9 @@
       $_SESSION['currentUserID'] = $row[3];
       header('Location: home.php');
    }else if ($db->query($sql)->num_rows > 0 && $row[2] == 'user'){
+       $_SESSION['currentUser'] = $row[0];
+       $_SESSION['currentUserType'] = $row[2];
+       $_SESSION['currentUserID'] = $row[3];
       header('Location: ../user/user.php');
    }else{
       header('Location: ../index.php');
