@@ -535,7 +535,7 @@ if($_SESSION['currentUserType'] != "user"){
         if(location.hash == '#success'){
             $.notify({
                 icon: 'glyphicon glyphicon-star',
-                message: "Successfully Added"
+                message: "Successfully added a new record!"
             },{
                 type: 'info',
                 animate: {
