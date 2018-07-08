@@ -72,24 +72,17 @@ if ($db->query($sql)) {
 
     }
     $sql = "INSERT INTO receive(code, dateReceived, applicant, sender, purpose, locationID, actionslipID) 
-              VALUES('$code','$dateReceived','$applicant','$sender','$purpose','$locationID','$actionSlipID') ";
+    VALUES('$code','$dateReceived','$applicant','$sender','$purpose','$locationID','$actionSlipID') ";
 
     if(!$db->query($sql)){
         var_dump($db->error);
     }  
     $receiveID = $db->insert_id;
 
-    $sql = "INSERT INTO records(status,scanFile,receiveID) 
-              VALUES('inspection','temp.pdf','$receiveID') ";
-
-    if(!$db->query($sql)){
-        var_dump($db->error);
-    }   
-    $recordID = $db->insert_id;
 }else{
     var_dump($db->error);
+    die;
 }
-
 $dateInspected = $_POST['date'];
 $documentDate = $_POST['docudate'];
 $inspector = $_POST['inspector'];
@@ -102,14 +95,20 @@ VALUES('$dateInspected','$documentDate','$inspector','$classification','$subject
 
 if(!$db->query($sql)){
     var_dump($db->error);
+    die;
 } 
 
 $unclaimID = $db->insert_id;
+$datereleased = $_POST['drelease'];
+$receiver = $_POST['receiver'];
 
-$sql = "Update records set status = 'unclaim', unclaimID = '$unclaimID' where recordID = '$recordID'";
+$sql = "INSERT INTO records(status,scanFile,receiveID,receiver,releaseDate,unclaimID) 
+VALUES('release','temp.pdf','$receiveID','$receiver','$datereleased','$unclaimID') ";
 
 if(!$db->query($sql)){
     var_dump($db->error);
-} 
+    die;
+}   
 
-    header('Location: ../unclaim.php');
+
+header('Location: ../records.php');

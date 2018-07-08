@@ -10,6 +10,7 @@ $sql = "Update records set status = 'release', releaseDate = '$datereleased',rec
 
 if(!$db->query($sql)){
 	var_dump($db->error);
+	die;
 } 
 
     header('Location: ../records.php');

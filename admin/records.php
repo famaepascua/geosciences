@@ -423,7 +423,6 @@ if ($_SESSION['currentUserType'] == "user") {
                                             <div class="col-lg-4">
                                                 <label>Location</label>
                                                 <?php
-                                                require 'config.php';
 
 
                                                 $sql = "SELECT * FROM barangay ORDER BY name ASC";
@@ -471,19 +470,19 @@ if ($_SESSION['currentUserType'] == "user") {
                                         <div class="col-lg-8">
                                             <div class="form-group">
                                                 <label>Inspector</label>
-                                                <input class="form-control" placeholder="Enter Full Name">
+                                                <input name="inspector" class="form-control" placeholder="Enter Full Name">
                                             </div>
                                         </div>
                                         <div class="col-lg-4">
                                             <div class="form-group">
                                                 <label>Document Date</label>
-                                                <input class="form-control" type="date" name="date" id="date" required>
+                                                <input class="form-control" type="date" name="docudate" id="date" required>
                                             </div>
                                         </div>
                                         <div class="col-lg-8">
                                             <div class="form-group">
                                                 <label>Classification</label>
-                                                <select class="form-control">
+                                                <select name="classification" class="form-control">
                                                     <option>Evacuation Site</option>
                                                     <option>Geohazard Assesment</option>
                                                     <option>GIR</option>
@@ -500,7 +499,7 @@ if ($_SESSION['currentUserType'] == "user") {
                                             <div class="form-group">
                                                 <div class="form-group">
                                                     <label>Subject</label>
-                                                    <textarea class="form-control" rows="2"></textarea>
+                                                    <textarea name="subject" class="form-control" rows="2"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -511,13 +510,13 @@ if ($_SESSION['currentUserType'] == "user") {
                                         <div class="col-lg-4">
                                             <div class="form-group">
                                                 <label>Date Release</label>
-                                                <input class="form-control" type="date" name="date" id="date" required>
+                                                <input class="form-control" type="date" name="drelease" id="date" required>
                                             </div>
                                         </div>
                                         <div class="col-lg-8">
                                             <div class="form-group">
                                                 <label>Receive By.</label>
-                                                <input class="form-control" placeholder="Enter Full Name">
+                                                <input name="receiver" class="form-control" placeholder="Enter Full Name">
                                             </div>
                                         </div>
                                     </div>
