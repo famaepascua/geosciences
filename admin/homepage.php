@@ -546,6 +546,27 @@ if ($_SESSION['currentUserType'] == "user") {
             window.location.replace(location.href.split('#')[0]+'#');
         }
 
+        if(location.hash == '#failed'){
+            $.notify({
+                icon: 'glyphicon glyphicon-star',
+                message: "Form addition Unsuccessful!,Contact Administrator"
+            },{
+                type: 'danger',
+                animate: {
+                    enter: 'animated fadeInUp',
+                    exit: 'animated fadeOutRight'
+                },
+                placement: {
+                    from: "top",
+                    align: "center"
+                },
+                offset: 10,
+                spacing: 10,
+                z_index: 1031,
+            });
+            window.location.replace(location.href.split('#')[0]+'#');
+        }
+
     })
 
 
