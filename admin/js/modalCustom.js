@@ -1,0 +1,3 @@
+function yeah() {
+    $.notify("ehehe");
+}

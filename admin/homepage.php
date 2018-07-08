@@ -473,6 +473,7 @@ if($_SESSION['currentUserType'] != "user"){
 
 <!-- Morris Charts JavaScript -->
 <script src="vendor/raphael/raphael.min.js"></script>
+<script src="js/bootstrap-notify.js"></script>
 <script src="vendor/morrisjs/morris.min.js"></script>
 <script src="data/morris-data.js"></script>
 
@@ -497,6 +498,7 @@ if($_SESSION['currentUserType'] != "user"){
 
 <script>
     $(document).ready(function () {
+        /*
         if(location.hash == '#success'){
             $('.alert.alert-success').removeAttr('hidden');
             window.location.replace(location.href.split('#')[0]+'#');
@@ -505,6 +507,7 @@ if($_SESSION['currentUserType'] != "user"){
             $('.alert.alert-danger').removeAttr('hidden');
             window.location.replace(location.href.split('#')[0]+'#');
         }
+        */
         $('#barangay').change(function () {
             $id = $(this).val();
             $.ajax({
@@ -532,6 +535,7 @@ if($_SESSION['currentUserType'] != "user"){
                     }
                 }
             });
+
             if($id == '54' || $id == '56'){
                 $('input[name=brgyname]').removeAttr('disabled');
                 $('#folderNo').removeAttr('disabled');
@@ -541,6 +545,33 @@ if($_SESSION['currentUserType'] != "user"){
             }
         });
     });
+</script>
+
+<script>
+    $(document).ready(function () {
+        if(location.hash == '#success'){
+            $.notify({
+                icon: 'glyphicon glyphicon-star',
+                message: "Successfully Added"
+            },{
+                type: 'info',
+                animate: {
+                    enter: 'animated fadeInUp',
+                    exit: 'animated fadeOutRight'
+                },
+                placement: {
+                    from: "top",
+                    align: "center"
+                },
+                offset: 10,
+                spacing: 10,
+                z_index: 1031,
+            });
+        }
+
+    })
+
+
 </script>
 
 </html>
