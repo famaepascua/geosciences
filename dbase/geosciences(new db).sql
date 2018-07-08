@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 07, 2018 at 01:39 AM
+-- Generation Time: Jul 08, 2018 at 11:53 AM
 -- Server version: 5.7.21
 -- PHP Version: 5.6.35
 
@@ -149,7 +149,7 @@ DROP TABLE IF EXISTS `logs`;
 CREATE TABLE IF NOT EXISTS `logs` (
   `logID` int(10) NOT NULL AUTO_INCREMENT,
   `logDate` date NOT NULL,
-  `logTime` time NOT NULL,
+  `logTime` varchar(150) NOT NULL,
   `activity` varchar(120) NOT NULL,
   `userID` int(10) NOT NULL,
   `receiveID` int(10) DEFAULT NULL,
