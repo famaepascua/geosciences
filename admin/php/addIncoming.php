@@ -88,7 +88,7 @@ if ($db->query($sql)) {
     $d = date('Y:n:j');
 
     $userID = $_SESSION['currentUserID'];
-    $act = "Added Action Slip";
+    $act = "Added new record";
     $sqlT = "INSERT INTO logs(logDate, logTime, activity, userID, receiveID) 
             VALUES ('$d','$t','$act','$userID','$receiveID')";
 
