@@ -173,6 +173,7 @@ if ($_SESSION['currentUserType'] == "user") {
                                         <th hidden>Document Date</th>
                                         <th hidden>Subject</th>
                                         <th hidden>Classification</th>
+                                        <th hidden>scanFile</th>
 
 
                                     </tr>
@@ -208,6 +209,7 @@ if ($_SESSION['currentUserType'] == "user") {
                                         echo "<td hidden>" . $row['documentDate']."</td>";
                                         echo "<td hidden>" . $row['subject']."</td>";
                                         echo "<td hidden>" . $row['classification']."</td>";
+                                        echo "<td hidden>" . $row['scanFile']."</td>";
                                         echo "</tr>";
                                     }
 
@@ -594,7 +596,7 @@ if ($_SESSION['currentUserType'] == "user") {
 </div>
 <!-- MAIN PAGE END -->
 </div>
- <form action="php/release.php" method="POST">
+ <form action="php/release.php" method="POST" enctype="multipart/form-data">
                         <div class="modal fade" id="editUnclaim" role="dialog">
                             <!-- MODAL CONTENT-->
                             <div class="modal-dialog modal-lg">
@@ -667,7 +669,7 @@ if ($_SESSION['currentUserType'] == "user") {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row">
+                                        <div id="releaseForm" class="row">
                                             <h4 class="modal-title" align="center">Release Form</h4>
                                             <div class="col-lg-6">
                                                 <div class="form-group">
@@ -682,6 +684,15 @@ if ($_SESSION['currentUserType'] == "user") {
                                                     placeholder="Enter Full Name">
                                                 </div>
                                             </div>
+                                        </div>
+                                        <div hidden id="uploadForm" class="row">
+                                            <h4 class="modal-title" align="center">Release Form</h4>
+                                             <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label>Upload File</label>
+                                                <input type="file" name="scannedFile">
+                                            </div>
+                                        </div>
                                         </div>
                                     </div>
                                     <!-- MODAL BODY END-->
@@ -737,7 +748,13 @@ if ($_SESSION['currentUserType'] == "user") {
         });
           $('#dataTables-example tbody').on( 'click', 'tr', function () {
             var data = table.row( this ).data();
-            console.log(data);
+            if(data[14]){
+                $('#releaseForm').removeAttr('hidden');
+                $('#uploadForm').attr('hidden','hidden');
+            }else{
+                $('#uploadForm').removeAttr('hidden');
+                $('#releaseForm').attr('hidden','hidden');
+            }
             $('#code').html(data[0]);
             $('#fNo').html(data[1]);
             $('#dateReceived').html(data[2]);
