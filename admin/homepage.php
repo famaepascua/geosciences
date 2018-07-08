@@ -1,27 +1,20 @@
 <?php
 session_start();
-
-
-
-if(!isset($_SESSION['currentUser'])){
+if (!isset($_SESSION['currentUser'])) {
     $m = "Please Login First";
-    echo "<script type='text/javascript'>";
-    echo "alert($m)";
-    echo "window.location.replace('../index.php');";
-    echo "</script>";
-
+    echo "<script type='text/javascript'>
+    alert('$m');
+    window.location.replace('../index.php');
+    </script>";
 }
-
-if($_SESSION['currentUserType'] != "user"){
-    $m = "Forbidden Access";
-    echo "<script type='text/javascript'>";
-    echo "alert($m)";
-    echo "window.location.replace('../index.php');";
-    echo "</script>";
-
+if ($_SESSION['currentUserType'] == "user") {
+    session_destroy();
+    $m = "Unauthorized Access";
+    echo "<script type='text/javascript'>
+    alert('$m');
+    window.location.replace('../index.php');
+    </script>";
 }
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -532,12 +525,33 @@ if($_SESSION['currentUserType'] != "user"){
 
 <script>
     $(document).ready(function () {
-        if(location.hash == '#success'){
+        if(location.hash === '#success'){
             $.notify({
                 icon: 'glyphicon glyphicon-star',
                 message: "Successfully added a new record!"
             },{
-                type: 'info',
+                type: 'success',
+                animate: {
+                    enter: 'animated fadeInUp',
+                    exit: 'animated fadeOutRight'
+                },
+                placement: {
+                    from: "top",
+                    align: "center"
+                },
+                offset: 10,
+                spacing: 10,
+                z_index: 1031,
+            });
+            window.location.replace(location.href.split('#')[0]+'#');
+        }
+
+        if(location.hash === '#failed'){
+            $.notify({
+                icon: 'glyphicon glyphicon-star',
+                message: "Failed to add data!,Contact Administrator"
+            },{
+                type: 'danger',
                 animate: {
                     enter: 'animated fadeInUp',
                     exit: 'animated fadeOutRight'

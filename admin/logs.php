@@ -1,25 +1,20 @@
 <?php
 session_start();
-
-if(!isset($_SESSION['currentUser'])){
+if (!isset($_SESSION['currentUser'])) {
     $m = "Please Login First";
-    echo "<script type='text/javascript'>";
-    echo "alert($m)";
-    echo "window.location.replace('../index.php');";
-    echo "</script>";
-
+    echo "<script type='text/javascript'>
+    alert('$m');
+    window.location.replace('../index.php');
+    </script>";
 }
-
-if($_SESSION['currentUserType'] != "user"){
-    $m = "Forbidden Access";
-    echo "<script type='text/javascript'>";
-    echo "alert($m)";
-    echo "window.location.replace('../index.php');";
-    echo "</script>";
-
+if ($_SESSION['currentUserType'] == "user") {
+    session_destroy();
+    $m = "Unauthorized Access";
+    echo "<script type='text/javascript'>
+    alert('$m');
+    window.location.replace('../index.php');
+    </script>";
 }
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -169,9 +164,20 @@ if($_SESSION['currentUserType'] != "user"){
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            
-                                        </tr>
+                                    <?php
+                                        require 'config.php';
+                                        $sql = "SELECT * FROM logs JOIN users ON logs.userID = users.userID";
+                                        $res = $db->query($sql);
+                                        while($row = $res->fetch_assoc()){
+                                            echo "<tr>";
+                                            echo "<td>" . $row['logDate'] . "</td>";
+                                            echo "<td>" . $row['logTime'] . "</td>";
+                                            echo "<td>" . $row['activity'] . "</td>";
+                                            echo "<td>" . strtoupper($row['username']) . "</td>";
+
+                                        }
+
+                                    ?>
                                     </tbody>
                                 </table>
                             </div>

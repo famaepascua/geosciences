@@ -1,7 +1,7 @@
 <?php 
 
 require '../config.php';
-
+session_start();
 
 //This are the variables for table actionSlip
 $action = $_POST['action'];
@@ -75,17 +75,34 @@ if ($db->query($sql)) {
               VALUES('$code','$dateReceived','$applicant','$sender','$purpose','$locationID','$actionSlipID') ";
 
     if(!$db->query($sql)){
-        var_dump($db->error);
+        var_dump($db->error . " " . $locationID);
+
     }  
     $receiveID = $db->insert_id;
 
     $sql = "INSERT INTO records(status,scanFile,receiveID) 
               VALUES('inspection','temp.pdf','$receiveID') ";
 
+
+    $t = date('h:i:a');
+    $d = date('Y:n:j');
+
+    $userID = $_SESSION['currentUserID'];
+    $act = "Added Action Slip";
+    $sqlT = "INSERT INTO logs(logDate, logTime, activity, userID, receiveID) 
+            VALUES ('$d','$t','$act','$userID','$receiveID')";
+
+    if(!$db->query($sqlT)){
+        var_dump($db->error);
+        die;
+    }
+
+
     if(!$db->query($sql)){
         var_dump($db->error);
     }   
     $numberOfRows = mysqli_affected_rows($db);
+
 
     if($numberOfRows > 0){
         header('Location: ../homepage.php#success');
