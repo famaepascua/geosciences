@@ -84,7 +84,7 @@ if ($db->query($sql)) {
               VALUES('inspection','temp.pdf','$receiveID') ";
 
 
-    $t = date('h:i:a');
+    $t = date('Y-m-d H:i:s');
     $d = date('Y:n:j');
 
     $userID = $_SESSION['currentUserID'];
