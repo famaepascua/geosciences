@@ -138,13 +138,6 @@ if ($_SESSION['currentUserType'] == "user") {
     <div class="row">
        
         <div class="col-lg-12">
-            <br>
-            <div hidden class="alert alert-success">
-                <strong>Success!</strong> Successfully added a new record!.
-            </div>
-            <div hidden class="alert alert-danger">
-                <strong>Failed!</strong> Record not added.
-            </div>
             <h1 class="page-header">For Inspection Form</h1>
         </div>
     </div>
@@ -491,16 +484,6 @@ if ($_SESSION['currentUserType'] == "user") {
 
 <script>
     $(document).ready(function () {
-        /*
-        if(location.hash == '#success'){
-            $('.alert.alert-success').removeAttr('hidden');
-            window.location.replace(location.href.split('#')[0]+'#');
-        }
-        if(location.hash == '#failed'){
-            $('.alert.alert-danger').removeAttr('hidden');
-            window.location.replace(location.href.split('#')[0]+'#');
-        }
-        */
         $('#barangay').change(function () {
             $id = $(this).val();
             $.ajax({
@@ -560,6 +543,7 @@ if ($_SESSION['currentUserType'] == "user") {
                 spacing: 10,
                 z_index: 1031,
             });
+            window.location.replace(location.href.split('#')[0]+'#');
         }
 
     })
