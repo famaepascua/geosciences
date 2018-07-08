@@ -164,6 +164,32 @@ if ($_SESSION['currentUserType'] == "user") {
                                     </tr>
                                 </thead>
                                 <tbody>
+                                     <?php
+                                    require 'config.php';
+
+                                    $sql = "SELECT *,b.folderNumber AS bf,b.name as bn FROM actionslip JOIN receive r on actionslip.actionslipID = r.actionslipID JOIN location l on r.locationID = l.locationID JOIN barangay b on l.barangayID = b.barangayID
+                                        inner join records on records.receiveID = r.receiveID
+                                        left join unclaim on unclaim.unclaimID = records.unclaimID";
+                                    $res = $db->query($sql);
+                                    while ($row = $res->fetch_assoc()){
+                                        echo "<tr style=cursor:pointer>";
+                                        echo "<td>" . $row['documentDate'] . "</td>";
+                                        echo "<td>" . $row['code'] . "</td>";
+                                        echo "<td>" . $row['applicant'] . "</td>";
+                                        echo "<td>" . $row['sender'] . "</td>";
+                                        echo "<td hidden>" . $row['bn']. "," . $row['municipality'] . "," . $row['province'] . "</td>";
+                                        echo "<td>" . $row['subject']."</td>";
+                                        echo "<td hidden>" . "For Inspection" ."</td>";
+                                        echo "<td hidden>" . $row['recordID']."</td>";
+                                        echo "<td hidden>" . $row['inspector']."</td>";
+                                        echo "<td hidden>" . $row['dateInspected']."</td>";
+                                        echo "<td hidden>" . $row['bf']."</td>";
+                                        echo "<td hidden>" . $row['purpose']."</td>";
+                                        echo "<td hidden>" . $row['classification']."</td>";
+                                        echo "</tr>";
+                                    }
+
+                                    ?>
                                 </tbody>
                             </table>
                             <!-- TABLE END -->

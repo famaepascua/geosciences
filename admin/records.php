@@ -167,16 +167,26 @@ if ($_SESSION['currentUserType'] == "user") {
                                         <th>Location</th>
                                         <th>Purpose</th>
                                         <th>Status</th>
+                                        <th hidden>Record ID</th>
+                                        <th hidden>Inspector</th>
+                                        <th hidden>Date Inspected</th>
+                                        <th hidden>Document Date</th>
+                                        <th hidden>Subject</th>
+                                        <th hidden>Classification</th>
+
+
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
                                     require 'config.php';
 
-                                    $sql = "SELECT *,b.folderNumber AS bf,b.name as bn FROM actionslip JOIN receive r on actionslip.actionslipID = r.actionslipID JOIN location l on r.locationID = l.locationID JOIN barangay b on l.barangayID = b.barangayID";
+                                    $sql = "SELECT *,b.folderNumber AS bf,b.name as bn FROM actionslip JOIN receive r on actionslip.actionslipID = r.actionslipID JOIN location l on r.locationID = l.locationID JOIN barangay b on l.barangayID = b.barangayID
+                                        inner join records on records.receiveID = r.receiveID
+                                        left join unclaim on unclaim.unclaimID = records.unclaimID";
                                     $res = $db->query($sql);
                                     while ($row = $res->fetch_assoc()){
-                                        echo "<tr>";
+                                        echo "<tr style=cursor:pointer>";
                                         echo "<td>" . $row['code'] . "</td>";
                                         echo "<td>" . $row['bf'] . "</td>";
                                         echo "<td>" . $row['dateReceived'] . "</td>";
@@ -184,7 +194,20 @@ if ($_SESSION['currentUserType'] == "user") {
                                         echo "<td>" . $row['sender'] . "</td>";
                                         echo "<td>" . $row['bn']. "," . $row['municipality'] . "," . $row['province'] . "</td>";
                                         echo "<td>" . $row['purpose']."</td>";
-                                        echo "<td>" . "For Inspection" ."</td>";
+                                        if($row['status'] == 'inspection' ){
+                                            $status = 'For Inspection';
+                                        }else if($row['status'] == 'unclaim'){
+                                            $status = 'Unclaimed';
+                                        }else{
+                                            $status = 'Released';
+                                        }
+                                        echo "<td>" . $status ."</td>";
+                                        echo "<td hidden>" . $row['recordID']."</td>";
+                                        echo "<td hidden>" . $row['inspector']."</td>";
+                                        echo "<td hidden>" . $row['dateInspected']."</td>";
+                                        echo "<td hidden>" . $row['documentDate']."</td>";
+                                        echo "<td hidden>" . $row['subject']."</td>";
+                                        echo "<td hidden>" . $row['classification']."</td>";
                                         echo "</tr>";
                                     }
 
@@ -543,7 +566,7 @@ if ($_SESSION['currentUserType'] == "user") {
 </div>
 <!-- MAIN PAGE END -->
 </div>
- <form action="php/unclaim.php" method="POST">
+ <form action="php/release.php" method="POST">
                         <div class="modal fade" id="editUnclaim" role="dialog">
                             <!-- MODAL CONTENT-->
                             <div class="modal-dialog modal-lg">
@@ -562,7 +585,7 @@ if ($_SESSION['currentUserType'] == "user") {
                                             </div>
                                             <div class="col-lg-4">
                                                 <div>
-                                                    <label>Folder No:</label> <span id="folderNo"></span>
+                                                    <label>Folder No:</label> <span id="fNo"></span>
                                                 </div>
                                             </div>
                                             <div class="col-lg-4">
@@ -592,27 +615,27 @@ if ($_SESSION['currentUserType'] == "user") {
                                             </div>
                                             <div class="col-lg-6">
                                                 <div>
-                                                    <label>Date Inspected:</label> <span id="purpose"></span>
+                                                    <label>Date Inspected:</label> <span id="dateInspected"></span>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div>
-                                                    <label>Document Date:</label> <span id="purpose"></span>
+                                                    <label>Document Date:</label> <span id="documentDate"></span>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div>
-                                                    <label>Inspector:</label> <span id="purpose"></span>
+                                                    <label>Inspector:</label> <span id="inspector"></span>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div>
-                                                    <label>Classification:</label> <span id="purpose"></span>
+                                                    <label>Classification:</label> <span id="classification"></span>
                                                 </div>
                                             </div>
                                             <div class="col-lg-12">
                                                 <div>
-                                                    <label>Subject:</label> <span id="purpose"></span>
+                                                    <label>Subject:</label> <span id="subject"></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -686,14 +709,20 @@ if ($_SESSION['currentUserType'] == "user") {
         });
           $('#dataTables-example tbody').on( 'click', 'tr', function () {
             var data = table.row( this ).data();
-            // $('#code').html(data[1]);
-            // $('#folderNo').html(data[6]);
-            // $('#dateReceived').html(data[0]);
-            // $('#applicant').html(data[2]);
-            // $('#sender').html(data[3]);
-            // $('#location').html(data[4]);
-            // $('#purpose').html(data[5]);
-            // $('#recordID').val(data[7]);
+            console.log(data);
+            $('#code').html(data[0]);
+            $('#fNo').html(data[1]);
+            $('#dateReceived').html(data[2]);
+            $('#applicant').html(data[3]);
+            $('#sender').html(data[4]);
+            $('#location').html(data[5]);
+            $('#purpose').html(data[6]);
+            $('#recordID').val(data[8]);
+            $('#inspector').html(data[9]);
+            $('#dateInspected').html(data[10]);
+            $('#documentDate').html(data[11]);
+            $('#subject').html(data[12]);
+            $('#classification').html(data[13]);
             $('#editUnclaim').modal();
         } );
         $('#barangay').change(function () { $id = $(this).val();
