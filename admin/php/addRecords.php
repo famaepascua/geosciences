@@ -1,6 +1,8 @@
 <?php 
 
 require '../config.php';
+include 'uploadFile.php';
+
 
 
 //This are the variables for table actionSlip
@@ -102,8 +104,9 @@ $unclaimID = $db->insert_id;
 $datereleased = $_POST['drelease'];
 $receiver = $_POST['receiver'];
 
+
 $sql = "INSERT INTO records(status,scanFile,receiveID,receiver,releaseDate,unclaimID) 
-VALUES('release','temp.pdf','$receiveID','$receiver','$datereleased','$unclaimID') ";
+VALUES('release','$filename','$receiveID','$receiver','$datereleased','$unclaimID') ";
 
 if(!$db->query($sql)){
     var_dump($db->error);

@@ -229,7 +229,7 @@ if ($_SESSION['currentUserType'] == "user") {
                         <!-- PANEL FOOTER END -->
                     </div>
                     <!--PANEL END -->
-                    <form method="POST" action="php/addRecords.php">
+                    <form method="POST" action="php/addRecords.php" enctype="multipart/form-data">
                         <!-- MODAL -->
                         <div class="modal fade" id="addRecord" role="dialog">
                             <!-- MODAL CONTENT-->
@@ -526,7 +526,7 @@ if ($_SESSION['currentUserType'] == "user") {
                                         <div class="col-lg-4">
                                             <div class="form-group">
                                                 <label>Upload File</label>
-                                                <input type="file">
+                                                <input type="file" name="scannedFile">
                                             </div>
                                         </div>
                                     </div>

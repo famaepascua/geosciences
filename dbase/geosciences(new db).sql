@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 08, 2018 at 11:53 AM
+-- Generation Time: Jul 08, 2018 at 04:09 PM
 -- Server version: 5.7.21
 -- PHP Version: 5.6.35
 
@@ -190,6 +190,7 @@ CREATE TABLE IF NOT EXISTS `records` (
   `status` enum('inspection','unclaim','release') NOT NULL,
   `scanFile` varchar(45) NOT NULL,
   `receiveID` int(10) NOT NULL,
+  `receiver` varchar(250) DEFAULT NULL,
   `unclaimID` int(10) DEFAULT NULL,
   `releaseDate` date DEFAULT NULL,
   PRIMARY KEY (`recordID`)
