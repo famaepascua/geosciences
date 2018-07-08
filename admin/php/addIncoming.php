@@ -85,8 +85,14 @@ if ($db->query($sql)) {
     if(!$db->query($sql)){
         var_dump($db->error);
     }   
+    $numberOfRows = mysqli_affected_rows($db);
 
-    header('Location: ../homepage.php');
+    if($numberOfRows > 0){
+        header('Location: ../homepage.php#success');
+    }else{
+        header('Location: ../homepage.php#failed');
+    }
+
 
 
 
