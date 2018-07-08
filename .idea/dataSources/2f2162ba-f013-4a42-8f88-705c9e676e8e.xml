@@ -936,499 +936,319 @@
     <table id="236" parent="3" name="records">
       <Engine>InnoDB</Engine>
     </table>
-    <table id="237" parent="3" name="release">
+    <table id="237" parent="3" name="unclaim">
       <Engine>InnoDB</Engine>
     </table>
-    <table id="238" parent="3" name="unclaim">
+    <table id="238" parent="3" name="users">
       <Engine>InnoDB</Engine>
     </table>
-    <table id="239" parent="3" name="users">
-      <Engine>InnoDB</Engine>
-    </table>
-    <column id="240" parent="231" name="actionslipID">
+    <column id="239" parent="231" name="actionslipID">
       <Position>1</Position>
       <DataType>int(10)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="241" parent="231" name="action">
+    <column id="240" parent="231" name="action">
       <Position>2</Position>
       <DataType>varchar(200)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="242" parent="231" name="actionDesired">
+    <column id="241" parent="231" name="actionDesired">
       <Position>3</Position>
       <DataType>varchar(200)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="243" parent="231" name="oicrd">
+    <column id="242" parent="231" name="oicrd">
       <Position>4</Position>
       <DataType>varchar(120)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="244" parent="231" name="note">
+    <column id="243" parent="231" name="note">
       <Position>5</Position>
       <DataType>text|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="245" parent="231" name="PRIMARY">
+    <key id="244" parent="231" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>actionslipID</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="246" parent="232" name="barangayID">
+    <column id="245" parent="232" name="barangayID">
       <Position>1</Position>
       <DataType>int(10)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="247" parent="232" name="name">
+    <column id="246" parent="232" name="name">
       <Position>2</Position>
       <DataType>varchar(45)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="248" parent="232" name="folderNumber">
+    <column id="247" parent="232" name="folderNumber">
       <Position>3</Position>
       <DataType>int(10)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="249" parent="232" name="PRIMARY">
+    <key id="248" parent="232" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>barangayID</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="250" parent="233" name="locationID">
+    <column id="249" parent="233" name="locationID">
       <Position>1</Position>
       <DataType>int(10)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="251" parent="233" name="municipality">
+    <column id="250" parent="233" name="municipality">
       <Position>2</Position>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="252" parent="233" name="province">
+    <column id="251" parent="233" name="province">
       <Position>3</Position>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="253" parent="233" name="barangayID">
+    <column id="252" parent="233" name="barangayID">
       <Position>4</Position>
       <DataType>int(10)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="254" parent="233" name="barangay">
-      <ColNames>barangayID</ColNames>
-      <Type>btree</Type>
-    </index>
-    <key id="255" parent="233" name="PRIMARY">
+    <key id="253" parent="233" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>locationID</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="256" parent="233" name="barangay">
-      <ColNames>barangayID</ColNames>
-      <RefSchemaName>geosciences</RefSchemaName>
-      <RefTableName>barangay</RefTableName>
-      <RefColNames>barangayID</RefColNames>
-    </foreign-key>
-    <column id="257" parent="234" name="logID">
+    <column id="254" parent="234" name="logID">
       <Position>1</Position>
       <DataType>int(10)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="258" parent="234" name="logDate">
+    <column id="255" parent="234" name="logDate">
       <Position>2</Position>
       <DataType>date|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="259" parent="234" name="logTime">
+    <column id="256" parent="234" name="logTime">
       <Position>3</Position>
       <DataType>time|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="260" parent="234" name="activity">
+    <column id="257" parent="234" name="activity">
       <Position>4</Position>
       <DataType>varchar(120)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="261" parent="234" name="userID">
+    <column id="258" parent="234" name="userID">
       <Position>5</Position>
       <DataType>int(10)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="262" parent="234" name="receiveID">
+    <column id="259" parent="234" name="receiveID">
       <Position>6</Position>
       <DataType>int(10)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="263" parent="234" name="unclaimID">
+    <column id="260" parent="234" name="unclaimID">
       <Position>7</Position>
       <DataType>int(10)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="264" parent="234" name="releaseID">
+    <column id="261" parent="234" name="releaseID">
       <Position>8</Position>
       <DataType>int(10)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="265" parent="234" name="recordID">
+    <column id="262" parent="234" name="recordID">
       <Position>9</Position>
       <DataType>int(10)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="266" parent="234" name="user">
-      <ColNames>userID</ColNames>
-      <Type>btree</Type>
-    </index>
-    <index id="267" parent="234" name="received_docu">
-      <ColNames>receiveID</ColNames>
-      <Type>btree</Type>
-    </index>
-    <index id="268" parent="234" name="unclaim_docu">
-      <ColNames>unclaimID</ColNames>
-      <Type>btree</Type>
-    </index>
-    <index id="269" parent="234" name="release_docu">
-      <ColNames>releaseID</ColNames>
-      <Type>btree</Type>
-    </index>
-    <index id="270" parent="234" name="record">
-      <ColNames>recordID</ColNames>
-      <Type>btree</Type>
-    </index>
-    <key id="271" parent="234" name="PRIMARY">
+    <key id="263" parent="234" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>logID</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="272" parent="234" name="user">
-      <ColNames>userID</ColNames>
-      <RefSchemaName>geosciences</RefSchemaName>
-      <RefTableName>users</RefTableName>
-      <RefColNames>userID</RefColNames>
-    </foreign-key>
-    <foreign-key id="273" parent="234" name="received_docu">
-      <ColNames>receiveID</ColNames>
-      <RefSchemaName>geosciences</RefSchemaName>
-      <RefTableName>receive</RefTableName>
-      <RefColNames>receiveID</RefColNames>
-    </foreign-key>
-    <foreign-key id="274" parent="234" name="unclaim_docu">
-      <ColNames>unclaimID</ColNames>
-      <RefSchemaName>geosciences</RefSchemaName>
-      <RefTableName>unclaim</RefTableName>
-      <RefColNames>unclaimID</RefColNames>
-    </foreign-key>
-    <foreign-key id="275" parent="234" name="release_docu">
-      <ColNames>releaseID</ColNames>
-      <RefSchemaName>geosciences</RefSchemaName>
-      <RefTableName>release</RefTableName>
-      <RefColNames>releaseID</RefColNames>
-    </foreign-key>
-    <foreign-key id="276" parent="234" name="record">
-      <ColNames>recordID</ColNames>
-      <RefSchemaName>geosciences</RefSchemaName>
-      <RefTableName>records</RefTableName>
-      <RefColNames>recordID</RefColNames>
-    </foreign-key>
-    <column id="277" parent="235" name="receiveID">
+    <column id="264" parent="235" name="receiveID">
       <Position>1</Position>
       <DataType>int(10)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="278" parent="235" name="code">
+    <column id="265" parent="235" name="code">
       <Position>2</Position>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="279" parent="235" name="dateReceived">
+    <column id="266" parent="235" name="dateReceived">
       <Position>3</Position>
       <DataType>date|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="280" parent="235" name="applicant">
+    <column id="267" parent="235" name="applicant">
       <Position>4</Position>
       <DataType>varchar(120)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="281" parent="235" name="sender">
+    <column id="268" parent="235" name="sender">
       <Position>5</Position>
       <DataType>varchar(120)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="282" parent="235" name="purpose">
+    <column id="269" parent="235" name="purpose">
       <Position>6</Position>
       <DataType>text|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="283" parent="235" name="locationID">
+    <column id="270" parent="235" name="locationID">
       <Position>7</Position>
       <DataType>int(10)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="284" parent="235" name="actionslipID">
+    <column id="271" parent="235" name="actionslipID">
       <Position>8</Position>
       <DataType>int(10)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="285" parent="235" name="location">
-      <ColNames>locationID</ColNames>
-      <Type>btree</Type>
-    </index>
-    <index id="286" parent="235" name="action_slip">
-      <ColNames>actionslipID</ColNames>
-      <Type>btree</Type>
-    </index>
-    <key id="287" parent="235" name="PRIMARY">
+    <key id="272" parent="235" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>receiveID</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="288" parent="235" name="location">
-      <ColNames>locationID</ColNames>
-      <RefSchemaName>geosciences</RefSchemaName>
-      <RefTableName>location</RefTableName>
-      <RefColNames>locationID</RefColNames>
-    </foreign-key>
-    <foreign-key id="289" parent="235" name="action_slip">
-      <ColNames>actionslipID</ColNames>
-      <RefSchemaName>geosciences</RefSchemaName>
-      <RefTableName>actionslip</RefTableName>
-      <RefColNames>actionslipID</RefColNames>
-    </foreign-key>
-    <column id="290" parent="236" name="recordID">
+    <column id="273" parent="236" name="recordID">
       <Position>1</Position>
       <DataType>int(10)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="291" parent="236" name="status">
+    <column id="274" parent="236" name="status">
       <Position>2</Position>
       <DataType>enum(&apos;inspection&apos;, &apos;unclaim&apos;, &apos;release&apos;)|0e</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="292" parent="236" name="scanFile">
+    <column id="275" parent="236" name="scanFile">
       <Position>3</Position>
       <DataType>varchar(45)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="293" parent="236" name="receiveID">
+    <column id="276" parent="236" name="receiveID">
       <Position>4</Position>
       <DataType>int(10)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="294" parent="236" name="unclaimID">
+    <column id="277" parent="236" name="unclaimID">
       <Position>5</Position>
       <DataType>int(10)|0s</DataType>
-      <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="295" parent="236" name="releaseID">
+    <column id="278" parent="236" name="releaseDate">
       <Position>6</Position>
-      <DataType>int(10)|0s</DataType>
-      <NotNull>1</NotNull>
+      <DataType>date|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="296" parent="236" name="received">
-      <ColNames>receiveID</ColNames>
-      <Type>btree</Type>
-    </index>
-    <index id="297" parent="236" name="unclaimed">
-      <ColNames>unclaimID</ColNames>
-      <Type>btree</Type>
-    </index>
-    <index id="298" parent="236" name="release">
-      <ColNames>releaseID</ColNames>
-      <Type>btree</Type>
-    </index>
-    <key id="299" parent="236" name="PRIMARY">
+    <key id="279" parent="236" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>recordID</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="300" parent="236" name="received">
-      <ColNames>receiveID</ColNames>
-      <RefSchemaName>geosciences</RefSchemaName>
-      <RefTableName>receive</RefTableName>
-      <RefColNames>receiveID</RefColNames>
-    </foreign-key>
-    <foreign-key id="301" parent="236" name="unclaimed">
-      <ColNames>unclaimID</ColNames>
-      <RefSchemaName>geosciences</RefSchemaName>
-      <RefTableName>unclaim</RefTableName>
-      <RefColNames>unclaimID</RefColNames>
-    </foreign-key>
-    <foreign-key id="302" parent="236" name="release">
-      <ColNames>releaseID</ColNames>
-      <RefSchemaName>geosciences</RefSchemaName>
-      <RefTableName>release</RefTableName>
-      <RefColNames>releaseID</RefColNames>
-    </foreign-key>
-    <column id="303" parent="237" name="releaseID">
+    <column id="280" parent="237" name="unclaimID">
       <Position>1</Position>
       <DataType>int(10)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="304" parent="237" name="releaseDate">
-      <Position>2</Position>
-      <DataType>date|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="305" parent="237" name="receiveID">
-      <Position>3</Position>
-      <DataType>int(10)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="306" parent="237" name="unclaimID">
-      <Position>4</Position>
-      <DataType>int(10)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <index id="307" parent="237" name="received_doc">
-      <ColNames>receiveID</ColNames>
-      <Type>btree</Type>
-    </index>
-    <index id="308" parent="237" name="unclaimed_doc">
-      <ColNames>unclaimID</ColNames>
-      <Type>btree</Type>
-    </index>
-    <key id="309" parent="237" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>releaseID</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <foreign-key id="310" parent="237" name="received_doc">
-      <ColNames>receiveID</ColNames>
-      <RefSchemaName>geosciences</RefSchemaName>
-      <RefTableName>receive</RefTableName>
-      <RefColNames>receiveID</RefColNames>
-    </foreign-key>
-    <foreign-key id="311" parent="237" name="unclaimed_doc">
-      <ColNames>unclaimID</ColNames>
-      <RefSchemaName>geosciences</RefSchemaName>
-      <RefTableName>unclaim</RefTableName>
-      <RefColNames>unclaimID</RefColNames>
-    </foreign-key>
-    <column id="312" parent="238" name="unclaimID">
-      <Position>1</Position>
-      <DataType>int(10)|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="313" parent="238" name="dateInspected">
+    <column id="281" parent="237" name="dateInspected">
       <Position>2</Position>
       <DataType>date|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="314" parent="238" name="documentDate">
+    <column id="282" parent="237" name="documentDate">
       <Position>3</Position>
       <DataType>date|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="315" parent="238" name="inspector">
+    <column id="283" parent="237" name="inspector">
       <Position>4</Position>
       <DataType>varchar(50)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="316" parent="238" name="classification">
+    <column id="284" parent="237" name="classification">
       <Position>5</Position>
       <DataType>varchar(120)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="317" parent="238" name="subject">
+    <column id="285" parent="237" name="subject">
       <Position>6</Position>
       <DataType>text|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="318" parent="238" name="receiveID">
-      <Position>7</Position>
-      <DataType>int(10)|0s</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <index id="319" parent="238" name="received_docs">
-      <ColNames>receiveID</ColNames>
-      <Type>btree</Type>
-    </index>
-    <key id="320" parent="238" name="PRIMARY">
+    <key id="286" parent="237" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>unclaimID</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="321" parent="238" name="received_docs">
-      <ColNames>receiveID</ColNames>
-      <RefSchemaName>geosciences</RefSchemaName>
-      <RefTableName>receive</RefTableName>
-      <RefColNames>receiveID</RefColNames>
-    </foreign-key>
-    <column id="322" parent="239" name="userID">
+    <column id="287" parent="238" name="userID">
       <Position>1</Position>
       <DataType>int(10)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="323" parent="239" name="username">
+    <column id="288" parent="238" name="username">
       <Position>2</Position>
       <DataType>varchar(45)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="324" parent="239" name="password">
+    <column id="289" parent="238" name="password">
       <Position>3</Position>
       <DataType>varchar(45)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="325" parent="239" name="firstName">
+    <column id="290" parent="238" name="firstName">
       <Position>4</Position>
       <DataType>varchar(45)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="326" parent="239" name="lastName">
+    <column id="291" parent="238" name="lastName">
       <Position>5</Position>
       <DataType>varchar(45)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="327" parent="239" name="userType">
+    <column id="292" parent="238" name="userType">
       <Position>6</Position>
       <DataType>enum(&apos;admin&apos;, &apos;user&apos;)|0e</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="328" parent="239" name="PRIMARY">
+    <key id="293" parent="238" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>userID</ColNames>
       <Primary>1</Primary>

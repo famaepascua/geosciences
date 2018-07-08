@@ -164,9 +164,20 @@ if ($_SESSION['currentUserType'] == "user") {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            
-                                        </tr>
+                                    <?php
+                                        require 'config.php';
+                                        $sql = "SELECT * FROM logs JOIN users ON logs.userID = users.userID";
+                                        $res = $db->query($sql);
+                                        while($row = $res->fetch_assoc()){
+                                            echo "<tr>";
+                                            echo "<td>" . $row['logDate'] . "</td>";
+                                            echo "<td>" . $row['logTime'] . "</td>";
+                                            echo "<td>" . $row['activity'] . "</td>";
+                                            echo "<td>" . strtoupper($row['username']) . "</td>";
+
+                                        }
+
+                                    ?>
                                     </tbody>
                                 </table>
                             </div>

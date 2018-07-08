@@ -525,7 +525,7 @@ if ($_SESSION['currentUserType'] == "user") {
 
 <script>
     $(document).ready(function () {
-        if(location.hash == '#success'){
+        if(location.hash === '#success'){
             $.notify({
                 icon: 'glyphicon glyphicon-star',
                 message: "Successfully Added"
@@ -546,10 +546,10 @@ if ($_SESSION['currentUserType'] == "user") {
             window.location.replace(location.href.split('#')[0]+'#');
         }
 
-        if(location.hash == '#failed'){
+        if(location.hash === '#failed'){
             $.notify({
                 icon: 'glyphicon glyphicon-star',
-                message: "Form addition Unsuccessful!,Contact Administrator"
+                message: "Failed to add data!,Contact Administrator"
             },{
                 type: 'danger',
                 animate: {
