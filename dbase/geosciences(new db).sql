@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 08, 2018 at 04:09 PM
+-- Generation Time: Jul 11, 2018 at 05:43 PM
 -- Server version: 5.7.21
 -- PHP Version: 5.6.35
 
@@ -58,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `barangay` (
 -- Dumping data for table `barangay`
 --
 
-INSERT INTO `barangay` (`barangayID`, `name`, `folderNumber`) VALUES
+INSERT INTO `barangay` VALUES
 (1, 'Asin Road', 1),
 (2, 'San Luis', 1),
 (3, 'Balacbac', 2),
@@ -129,15 +129,64 @@ CREATE TABLE IF NOT EXISTS `location` (
   `province` varchar(50) NOT NULL,
   `barangayID` int(10) NOT NULL,
   PRIMARY KEY (`locationID`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `location`
 --
 
-INSERT INTO `location` (`locationID`, `municipality`, `province`, `barangayID`) VALUES
-(1, 'Baguio City', 'Benguet', 21),
-(2, 'Baguio City', 'Benguet', 46);
+INSERT INTO `location` VALUES
+(1, 'Baguio City', 'Benguet', 1),
+(2, 'Baguio City', 'Benguet', 2),
+(3, 'Baguio City', 'Benguet', 3),
+(4, 'Baguio City', 'Benguet', 4),
+(5, 'Baguio City', 'Benguet', 5),
+(6, 'Baguio City', 'Benguet', 6),
+(7, 'Baguio City', 'Benguet', 7),
+(8, 'Baguio City', 'Benguet', 8),
+(9, 'Baguio City', 'Benguet', 9),
+(10, 'Baguio City', 'Benguet', 10),
+(11, 'Baguio City', 'Benguet', 11),
+(12, 'Baguio City', 'Benguet', 12),
+(13, 'Baguio City', 'Benguet', 13),
+(14, 'Baguio City', 'Benguet', 14),
+(15, 'Baguio City', 'Benguet', 15),
+(16, 'Baguio City', 'Benguet', 16),
+(17, 'Baguio City', 'Benguet', 17),
+(18, 'Baguio City', 'Benguet', 18),
+(19, 'Baguio City', 'Benguet', 19),
+(20, 'Baguio City', 'Benguet', 20),
+(21, 'Baguio City', 'Benguet', 21),
+(22, 'Baguio City', 'Benguet', 22),
+(23, 'Baguio City', 'Benguet', 23),
+(24, 'Baguio City', 'Benguet', 24),
+(25, 'Baguio City', 'Benguet', 25),
+(26, 'Baguio City', 'Benguet', 26),
+(27, 'Baguio City', 'Benguet', 27),
+(28, 'Baguio City', 'Benguet', 28),
+(29, 'Baguio City', 'Benguet', 29),
+(30, 'Baguio City', 'Benguet', 30),
+(31, 'Baguio City', 'Benguet', 31),
+(32, 'Baguio City', 'Benguet', 32),
+(33, 'Baguio City', 'Benguet', 33),
+(34, 'Baguio City', 'Benguet', 34),
+(35, 'Baguio City', 'Benguet', 35),
+(36, 'Baguio City', 'Benguet', 36),
+(37, 'Baguio City', 'Benguet', 37),
+(38, 'Baguio City', 'Benguet', 38),
+(39, 'Baguio City', 'Benguet', 39),
+(40, 'Baguio City', 'Benguet', 40),
+(41, 'Baguio City', 'Benguet', 41),
+(42, 'Baguio City', 'Benguet', 42),
+(43, 'Baguio City', 'Benguet', 43),
+(44, 'Baguio City', 'Benguet', 44),
+(45, 'Baguio City', 'Benguet', 45),
+(46, 'Baguio City', 'Benguet', 46),
+(47, 'Baguio City', 'Benguet', 47),
+(48, 'Baguio City', 'Benguet', 48),
+(49, 'Baguio City', 'Benguet', 49),
+(50, 'Baguio City', 'Benguet', 50),
+(51, 'Baguio City', 'Benguet', 51);
 
 -- --------------------------------------------------------
 
@@ -173,10 +222,23 @@ CREATE TABLE IF NOT EXISTS `receive` (
   `applicant` varchar(120) DEFAULT NULL,
   `sender` varchar(120) DEFAULT NULL,
   `purpose` text,
-  `locationID` int(10) DEFAULT NULL,
   `actionslipID` int(10) DEFAULT NULL,
   PRIMARY KEY (`receiveID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `receivelocations`
+--
+
+DROP TABLE IF EXISTS `receivelocations`;
+CREATE TABLE IF NOT EXISTS `receivelocations` (
+  `recLocID` int(11) NOT NULL AUTO_INCREMENT,
+  `receiveID` int(11) NOT NULL,
+  `locationID` int(11) NOT NULL,
+  PRIMARY KEY (`recLocID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -228,16 +290,17 @@ CREATE TABLE IF NOT EXISTS `users` (
   `lastName` varchar(45) NOT NULL,
   `userType` enum('admin','user') NOT NULL,
   PRIMARY KEY (`userID`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`userID`, `username`, `password`, `firstName`, `lastName`, `userType`) VALUES
+INSERT INTO `users` VALUES
 (1, 'adminmark', 'admin01', 'Raymark', 'Cuenca', 'admin'),
 (2, 'famaepascua', 'user1', 'Fatima Mae', 'Pascua', 'user'),
-(3, 'gabinanaman', 'gab02', 'Gab', 'Uy', 'user');
+(3, 'gabinanaman', 'gab02', 'Gab', 'Uy', 'user'),
+(4, 'kimpot', 'user3', 'Kimberly', 'Mercado', 'user');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
