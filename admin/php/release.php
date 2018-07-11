@@ -24,5 +24,5 @@ if(!$datereleased = $_POST['datereleased']){
 	} 	
 }
 
-header('Location: ../records.php');
+header('Location: ../release.php');
 

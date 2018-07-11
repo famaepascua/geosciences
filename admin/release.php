@@ -78,246 +78,255 @@ if ($_SESSION['currentUserType'] == "user") {
 
             <ul class="nav navbar-top-links navbar-right">
                 <li><p><b>
-                            <?php
-                            echo strtoupper($_SESSION['currentUser']);
-                            ?>
-                        </b></p>
-                </li>
+                    <?php
+                    echo strtoupper($_SESSION['currentUser']);
+                    ?>
+                </b></p>
+            </li>
 
-                <!-- DROPDOWN -->
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a></li>
-                        <li class="divider"></li>
+            <!-- DROPDOWN -->
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a></li>
+                    <li class="divider"></li>
 
-                        <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-                        </li>
-                    </ul>
-                </li>
-                <!-- DROPDOWN END -->
+                    <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                    </li>
+                </ul>
+            </li>
+            <!-- DROPDOWN END -->
 
-            </ul>
-            
-            <!-- SIDEBAR-->
-            <div class="navbar-default sidebar" role="navigation">
-                <div class="sidebar-nav navbar-collapse">
-                    <ul class="nav" id="side-menu">
-                        <li>
-                            <a href="homepage.php"><i class="fa fa-search fa-fw"></i>For Inspection</a>
-                        </li>
-                        <li>
-                            <a href="unclaim.php"><i class="fa fa-file fa-fw"></i>Receive</a>
-                        </li>
-                        <li>
-                            <a href="release.php"><i class="fa fa-file-text fa-fw"></i> Release</a>
-                        </li>
-                        <li>
-                            <a href="records.php"><i class="fa fa-folder fa-fw"></i>Records</a>
-                        </li>
-                        <li>
-                            <a href="users.php"><i class="fa fa-user fa-fw"></i>Users</a>
-                        </li>
-                        <li>
-                            <a href="logs.php"><i class="fa fa-th-list fa-fw"></i>Logs</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <!-- SIDEBAR END -->
-        </nav>
+        </ul>
 
-        <!-- MAIN PAGE -->
-        <div id="page-wrapper">
-
-            <!-- PAGE HEADER -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">Release Documents</h1>
-                </div>
-            </div>
-            <!-- PAGE HEADER END -->
-
-            <div class="row">
-                <div class="col-lg-12">
-
-                    <!-- PANEL -->
-                    <div class="panel panel-default">
-
-                        <!-- PANEL HEADER -->
-                        <div class="panel-heading"> 
-                        </div>
-                        <!-- PANEL HEADER END -->
-
-                        <!-- PANEL BODY -->
-                        <div class="panel-body">
-                            <!-- TABLE -->
-                            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                <thead>
-                                    <tr>
-                                        <th>Document Date</th>
-                                        <th>Code</th>
-                                        <th>Applicant</th>
-                                        <th>Sender</th>
-                                        <th>Subject</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                     <?php
-                                    require 'config.php';
-
-                                    $sql = "SELECT *,b.folderNumber AS bf,b.name as bn FROM actionslip JOIN receive r on actionslip.actionslipID = r.actionslipID JOIN location l on r.locationID = l.locationID JOIN barangay b on l.barangayID = b.barangayID
-                                        inner join records on records.receiveID = r.receiveID
-                                        left join unclaim on unclaim.unclaimID = records.unclaimID where status != 'inspection'";
-                                    $res = $db->query($sql);
-                                    while ($row = $res->fetch_assoc()){
-                                        echo "<tr style=cursor:pointer>";
-                                        echo "<td>" . $row['documentDate'] . "</td>";
-                                        echo "<td>" . $row['code'] . "</td>";
-                                        echo "<td>" . $row['applicant'] . "</td>";
-                                        echo "<td>" . $row['sender'] . "</td>";
-                                        echo "<td hidden>" . $row['bn']. "," . $row['municipality'] . "," . $row['province'] . "</td>";
-                                        echo "<td>" . $row['subject']."</td>";
-                                        echo "<td hidden>" . "Unclaimed" ."</td>";
-                                        echo "<td hidden>" . $row['recordID']."</td>";
-                                        echo "<td hidden>" . $row['inspector']."</td>";
-                                        echo "<td hidden>" . $row['dateInspected']."</td>";
-                                        echo "<td hidden>" . $row['bf']."</td>";
-                                        echo "<td hidden>" . $row['purpose']."</td>";
-                                        echo "<td hidden>" . $row['classification']."</td>";
-                                        echo "<td hidden>" . $row['dateReceived']."</td>";
-                                        echo "</tr>";
-                                    }
-
-                                    ?>
-                                </tbody>
-                            </table>
-                            <!-- TABLE END -->
-                        </div>
-                        <!-- PANEL BODY END -->
-                    </div>
-                    <!-- PANEL END -->
-                </div>
+        <!-- SIDEBAR-->
+        <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav navbar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li>
+                        <a href="homepage.php"><i class="fa fa-search fa-fw"></i>For Inspection</a>
+                    </li>
+                    <li>
+                        <a href="unclaim.php"><i class="fa fa-file fa-fw"></i>Receive</a>
+                    </li>
+                    <li>
+                        <a href="release.php"><i class="fa fa-file-text fa-fw"></i> Release</a>
+                    </li>
+                    <li>
+                        <a href="records.php"><i class="fa fa-folder fa-fw"></i>Records</a>
+                    </li>
+                    <li>
+                        <a href="users.php"><i class="fa fa-user fa-fw"></i>Users</a>
+                    </li>
+                    <li>
+                        <a href="logs.php"><i class="fa fa-th-list fa-fw"></i>Logs</a>
+                    </li>
+                </ul>
             </div>
         </div>
-        <!-- MAIN PAGE END -->
+        <!-- SIDEBAR END -->
+    </nav>
 
+    <!-- MAIN PAGE -->
+    <div id="page-wrapper">
+
+        <!-- PAGE HEADER -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Release Documents</h1>
+            </div>
+        </div>
+        <!-- PAGE HEADER END -->
+
+        <div class="row">
+            <div class="col-lg-12">
+
+                <!-- PANEL -->
+                <div class="panel panel-default">
+
+                    <!-- PANEL HEADER -->
+                    <div class="panel-heading"> 
+                    </div>
+                    <!-- PANEL HEADER END -->
+
+                    <!-- PANEL BODY -->
+                    <div class="panel-body">
+                        <!-- TABLE -->
+                        <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                            <thead>
+                                <tr>
+                                    <th>Document Date</th>
+                                    <th>Code</th>
+                                    <th>Applicant</th>
+                                    <th>Sender</th>
+                                    <th hidden>locations</th>
+                                    <th>Subject</th>
+                                    <th hidden>status</th>
+                                    <th hidden>recordID</th>
+                                    <th hidden>Inspector</th>
+                                    <th hidden>Date Inspected</th>
+                                    <th hidden>Folder Number</th>
+                                    <th hidden>Purpose</th>
+                                    <th hidden>Classification</th>
+                                    <th hidden>Date Received</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                               <?php
+                               require 'config.php';
+
+                               $sql = "SELECT GROUP_CONCAT(CONCAT(province,',',municipality,',',barangay.name)SEPARATOR '<br>') as locations,receive.*,records.*,folderNumber,unclaim.* FROM receive INNER JOIN receivelocations on receive.receiveID = receivelocations.receiveID INNER JOIN location on receivelocations.locationID = location.locationID INNER JOIN barangay ON barangay.barangayID = location.barangayID inner JOIN records on records.receiveID = receive.receiveID
+                               left join unclaim on unclaim.unclaimID = records.unclaimID where status!='inspection'
+                               GROUP BY province";
+                               $res = $db->query($sql);
+                               while ($row = $res->fetch_assoc()){
+                                echo "<tr style=cursor:pointer>";
+                                echo "<td>" . $row['documentDate'] . "</td>";
+                                echo "<td>" . $row['code'] . "</td>";
+                                echo "<td>" . $row['applicant'] . "</td>";
+                                echo "<td>" . $row['sender'] . "</td>";
+                                echo "<td hidden>" . $row['locations']. "</td>";
+                                echo "<td>" . $row['subject']."</td>";
+                                echo "<td hidden>" . $row['status'] ."</td>";
+                                echo "<td hidden>" . $row['recordID']."</td>";
+                                echo "<td hidden>" . $row['inspector']."</td>";
+                                echo "<td hidden>" . $row['dateInspected']."</td>";
+                                echo "<td hidden>" . $row['folderNumber']."</td>";
+                                echo "<td hidden>" . $row['purpose']."</td>";
+                                echo "<td hidden>" . $row['classification']."</td>";
+                                echo "<td hidden>" . $row['dateReceived']."</td>";
+                                echo "</tr>";
+                            }
+
+                            ?>
+                        </tbody>
+                    </table>
+                    <!-- TABLE END -->
+                </div>
+                <!-- PANEL BODY END -->
+            </div>
+            <!-- PANEL END -->
+        </div>
     </div>
-    <!-- /#wrapper -->
+</div>
+<!-- MAIN PAGE END -->
 
-     <form action="php/release.php" method="POST">
-                        <div class="modal fade" id="editRelease" role="dialog">
-                            <!-- MODAL CONTENT-->
-                            <div class="modal-dialog modal-lg">
-                                <div class="modal-content ">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        <h4 class="modal-title" align="center">Document Information</h4>
+</div>
+<!-- /#wrapper -->
+
+<form action="php/release.php" method="POST">
+    <div class="modal fade" id="editRelease" role="dialog">
+        <!-- MODAL CONTENT-->
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content ">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" align="center">Document Information</h4>
+                </div>
+                <!-- MODAL BODY -->
+                <div class="panel panel-green">
+                    <div class="panel-body">
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div>
+                                        <label>Code:</label> <span id="code"></span>
                                     </div>
-                                    <!-- MODAL BODY -->
-                                    <div class="panel panel-green">
-                                    <div class="panel-body">
-                                    <div class="modal-body">
-                                        <div class="row">
-                                            <div class="col-lg-4">
-                                                <div>
-                                                    <label>Code:</label> <span id="code"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div>
-                                                    <label>Folder No:</label> <span id="folderno"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div>
-                                                    <label>Date Received:</label> <span id="dateReceived"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div>
-                                                    <label>Applicant:</label> <span id="applicant"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div>
-                                                    <label>Sender:</label> <span id="sender"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div>
-                                                    <label>Location/s:</label> <span id="location"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div>
-                                                    <label>Purpose:</label> <span id="purpose"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div>
-                                                    <label>Date Inspected:</label> <span id="dateInspected"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div>
-                                                    <label>Document Date:</label> <span id="documentDate"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div>
-                                                    <label>Inspector:</label> <span id="inspector"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div>
-                                                    <label>Classification:</label> <span id="classification"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12">
-                                                <div>
-                                                    <label>Subject:</label> <span id="subject"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    </div>
-                                        <div class="panel panel-green">
-                                        <div id="releaseForm" class="row">
-                                            <div class="panel-heading" align="center">
-                                            <h4 class="modal-title" align="center">Release Form</h4>
-                                            </div>
-                                            <div class="panel-body">
-                                            <div class="col-lg-6">
-                                                <div class="form-group">
-                                                    <label>Date Released</label>
-                                                    <input name="datereleased" id="dateReleased" type="date" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div class="form-group">
-                                                    <label>Receive By.</label>
-                                                    <input name="receiver" type="text" class="form-control"
-                                                    placeholder="Enter Full Name">
-                                                </div>
-                                            </div>
-                                            </div>
-                                        </div>
-                                        </div>
-                                    <!-- MODAL BODY END-->
-                                    <!-- MODAL FOOTER -->
-                                    <div class="modal-footer">
-                                        <button name="recordUpdate" id="recordUpdate" type="submit" class="btn btn-success">Release</button>
-                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                    </div>
-                                    <!-- MODAL FOOTER END -->
                                 </div>
-                                <!-- MODAL CONTENT END -->
+                                <div class="col-lg-4">
+                                    <div>
+                                        <label>Folder No:</label> <span id="folderno"></span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div>
+                                        <label>Date Received:</label> <span id="dateReceived"></span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div>
+                                        <label>Applicant:</label> <span id="applicant"></span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div>
+                                        <label>Sender:</label> <span id="sender"></span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div>
+                                        <label>Location/s:</label> <span id="location"></span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div>
+                                        <label>Purpose:</label> <span id="purpose"></span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div>
+                                        <label>Date Inspected:</label> <span id="dateInspected"></span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div>
+                                        <label>Document Date:</label> <span id="documentDate"></span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div>
+                                        <label>Inspector:</label> <span id="inspector"></span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div>
+                                        <label>Classification:</label> <span id="classification"></span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div>
+                                        <label>Subject:</label> <span id="subject"></span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </form>
+                    </div>
+                    <div class="panel panel-green">
+                        <div id="releaseForm" class="row">
+                            <div class="panel-heading" align="center">
+                                <h4 class="modal-title" align="center">Release Form</h4>
+                            </div>
+                            <div class="panel-body">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>Date Released</label>
+                                        <input name="datereleased" id="dateReleased" type="date" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>Receive By.</label>
+                                        <input name="receiver" type="text" class="form-control"
+                                        placeholder="Enter Full Name">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- MODAL BODY END-->
+                    <!-- MODAL FOOTER -->
+                    <div class="modal-footer">
+                        <button name="recordID" id="recordID" type="submit" class="btn btn-success">Release</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                    <!-- MODAL FOOTER END -->
+                </div>
+                <!-- MODAL CONTENT END -->
+            </div>
+        </div>
+    </form>
 
     <!-- jQuery -->
     <script src="vendor/jquery/jquery.min.js"></script>
@@ -346,7 +355,7 @@ if ($_SESSION['currentUserType'] == "user") {
           $('#dataTables-example tbody').on( 'click', 'tr', function () {
             var data = table.row( this ).data();
             $('#code').html(data[1]);
-            $('#folderNo').html(data[10]);
+            $('#folderno').html(data[10]);
             $('#dateReceived').html(data[13]);
             $('#applicant').html(data[2]);
             $('#sender').html(data[3]);
@@ -356,6 +365,9 @@ if ($_SESSION['currentUserType'] == "user") {
             $('#inspector').html(data[8]);
             $('#documentDate').html(data[0]);
             $('#recordUpdate').val(data[7]);
+            $('#classification').html(data[12]);
+            $('#subject').html(data[5]);
+            $('#recordID').val(data[7]);
             $('#editRelease').modal();
         } );
       });

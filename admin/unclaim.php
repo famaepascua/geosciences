@@ -173,8 +173,8 @@ if ($_SESSION['currentUserType'] == "user") {
                                     <?php
                                     require 'config.php';
 
-                                    $sql = "SELECT *,b.name AS bn FROM actionslip JOIN receive r on actionslip.actionslipID = r.actionslipID JOIN location l on r.locationID = l.locationID JOIN barangay b on l.barangayID = b.barangayID
-                                    inner join records on records.receiveID = r.receiveID where status='inspection'";
+                                    $sql = "SELECT GROUP_CONCAT(CONCAT(province,',',municipality,',',barangay.name)SEPARATOR'<br>') as locations,receive.*,records.*,folderNumber FROM receive INNER JOIN receivelocations on receive.receiveID = receivelocations.receiveID INNER JOIN location on receivelocations.locationID = location.locationID INNER JOIN barangay ON barangay.barangayID = location.barangayID inner JOIN records on records.receiveID = receive.receiveID where status='inspection'
+                                        GROUP BY province";
                                     $res = $db->query($sql);
                                     while ($row = $res->fetch_assoc()){
                                         echo "<tr style='cursor: pointer'>";
@@ -182,7 +182,7 @@ if ($_SESSION['currentUserType'] == "user") {
                                         echo "<td>" . $row['code'] . "</td>";
                                         echo "<td>" . $row['applicant'] . "</td>";
                                         echo "<td>" . $row['sender'] . "</td>";
-                                        echo "<td>" . $row['bn']. "," . $row['municipality'] . "," . $row['province']. "</td>";
+                                        echo "<td>" . $row['locations'].  "</td>";
                                         echo "<td>" . $row['purpose']."</td>";
                                         echo "<td hidden>" . $row['folderNumber']."</td>";
                                         echo "<td hidden>" . $row['recordID']."</td>";
@@ -239,7 +239,7 @@ if ($_SESSION['currentUserType'] == "user") {
                                             </div>
                                             <div class="col-lg-6">
                                                 <div>
-                                                    <label>Location/s:</label> <span id="location"></span>
+                                                    <label>Location/s:</label> <span class="text-center" id="location"></span>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">

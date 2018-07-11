@@ -79,186 +79,196 @@ if ($_SESSION['currentUserType'] == "user") {
 
             <ul class="nav navbar-top-links navbar-right">
                 <li><p><b>
-                            <?php
-                            echo strtoupper($_SESSION['currentUser']);
-                            ?>
-                        </b></p>
-                </li>
+                    <?php
+                    echo strtoupper($_SESSION['currentUser']);
+                    ?>
+                </b></p>
+            </li>
 
-                <!-- DROPDOWN -->
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a></li>
-                        <li class="divider"></li>
+            <!-- DROPDOWN -->
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a></li>
+                    <li class="divider"></li>
 
-                        <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-                        </li>
-                    </ul>
-                </li>
-                <!-- DROPDOWN END -->
+                    <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                    </li>
+                </ul>
+            </li>
+            <!-- DROPDOWN END -->
 
-            </ul>
+        </ul>
 
-            <!-- SIDEBAR-->
-            <div class="navbar-default sidebar" role="navigation">
-                <div class="sidebar-nav navbar-collapse">
-                    <ul class="nav" id="side-menu">
-                        <li>
-                            <a href="homepage.php"><i class="fa fa-search fa-fw"></i>For Inspection</a>
-                        </li>
-                        <li>
-                            <a href="unclaim.php"><i class="fa fa-file fa-fw"></i>Receive</a>
-                        </li>
-                        <li>
-                            <a href="release.php"><i class="fa fa-file-text fa-fw"></i> Release</a>
-                        </li>
-                        <li>
-                            <a href="records.php"><i class="fa fa-folder fa-fw"></i>Records</a>
-                        </li>
-                        <li>
-                            <a href="users.php"><i class="fa fa-user fa-fw"></i>Users</a>
-                        </li>
-                        <li>
-                            <a href="logs.php"><i class="fa fa-th-list fa-fw"></i>Logs</a>
-                        </li>
-                    </ul>
-                </div>
+        <!-- SIDEBAR-->
+        <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav navbar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li>
+                        <a href="homepage.php"><i class="fa fa-search fa-fw"></i>For Inspection</a>
+                    </li>
+                    <li>
+                        <a href="unclaim.php"><i class="fa fa-file fa-fw"></i>Receive</a>
+                    </li>
+                    <li>
+                        <a href="release.php"><i class="fa fa-file-text fa-fw"></i> Release</a>
+                    </li>
+                    <li>
+                        <a href="records.php"><i class="fa fa-folder fa-fw"></i>Records</a>
+                    </li>
+                    <li>
+                        <a href="users.php"><i class="fa fa-user fa-fw"></i>Users</a>
+                    </li>
+                    <li>
+                        <a href="logs.php"><i class="fa fa-th-list fa-fw"></i>Logs</a>
+                    </li>
+                </ul>
             </div>
-            <!-- SIDEBAR END -->
-        </nav>
-        <!-- NAVIGATION END -->
+        </div>
+        <!-- SIDEBAR END -->
+    </nav>
+    <!-- NAVIGATION END -->
 
-        <!-- MAIN PAGE -->
-        <div id="page-wrapper">
+    <!-- MAIN PAGE -->
+    <div id="page-wrapper">
 
-            <!-- PAGE HEADER -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">Records</h1>
-                </div>
+        <!-- PAGE HEADER -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Records</h1>
             </div>
-            <!-- PAGE HEADER END-->
+        </div>
+        <!-- PAGE HEADER END-->
 
-            <!-- BODY -->
-            <div class="row">
-                <div class="col-lg-12">
+        <!-- BODY -->
+        <div class="row">
+            <div class="col-lg-12">
 
-                    <!-- PANEL -->
-                    <div class="panel panel-default">
+                <!-- PANEL -->
+                <div class="panel panel-default">
 
-                        <!-- PANEL HEADER -->
-                        <div class="panel-heading"> 
-                            <ul class="nav nav-tabs">
-                                <li class="active"><a href="#dataTables-example" data-toggle="tab">Saved</a>
-                                </li>
-                                <li><a href="#archived" data-toggle="tab">Archived</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- PANEL HEADER END -->
-                        
-                        <!-- PANEL BODY -->
-                        <div class="panel-body">
-                            <!-- TABLE -->
-                            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                <thead>
-                                    <tr>
-                                        <th>Code</th>
-                                        <th>Folder</th>
-                                        <th>Date Received</th>
-                                        <th>Applicant</th>
-                                        <th>Sender</th>
-                                        <th>Location</th>
-                                        <th>Purpose</th>
-                                        <th>Status</th>
-                                        <th hidden>Record ID</th>
-                                        <th hidden>Inspector</th>
-                                        <th hidden>Date Inspected</th>
-                                        <th hidden>Document Date</th>
-                                        <th hidden>Subject</th>
-                                        <th hidden>Classification</th>
-                                        <th hidden>scanFile</th>
-                                        <th hidden>Date Released</th>
-                                        <th hidden>Receiver </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    require 'config.php';
-
-                                    $sql = "SELECT *,b.folderNumber AS bf,b.name as bn FROM actionslip JOIN receive r on actionslip.actionslipID = r.actionslipID JOIN location l on r.locationID = l.locationID JOIN barangay b on l.barangayID = b.barangayID
-                                        inner join records on records.receiveID = r.receiveID
-                                        left join unclaim on unclaim.unclaimID = records.unclaimID";
-                                    $res = $db->query($sql);
-                                    while ($row = $res->fetch_assoc()){
-                                        echo "<tr style=cursor:pointer>";
-                                        echo "<td>" . $row['code'] . "</td>";
-                                        echo "<td>" . $row['bf'] . "</td>";
-                                        echo "<td>" . $row['dateReceived'] . "</td>";
-                                        echo "<td>" . $row['applicant'] . "</td>";
-                                        echo "<td>" . $row['sender'] . "</td>";
-                                        echo "<td>" . $row['bn']. "," . $row['municipality'] . "," . $row['province'] . "</td>";
-                                        echo "<td>" . $row['purpose']."</td>";
-                                        if($row['status'] == 'inspection' ){
-                                            $status = 'For Inspection';
-                                        }else if($row['status'] == 'unclaim'){
-                                            $status = 'Unclaimed';
-                                        }else{
-                                            $status = 'Released';
-                                        }
-                                        echo "<td>" . $status ."</td>";
-                                        echo "<td hidden>" . $row['recordID']."</td>";
-                                        echo "<td hidden>" . $row['inspector']."</td>";
-                                        echo "<td hidden>" . $row['dateInspected']."</td>";
-                                        echo "<td hidden>" . $row['documentDate']."</td>";
-                                        echo "<td hidden>" . $row['subject']."</td>";
-                                        echo "<td hidden>" . $row['classification']."</td>";
-                                        echo "<td hidden>" . $row['scanFile']."</td>";
-                                        echo "<td hidden>" . $row['releaseDate']."</td>";
-                                        echo "<td hidden>" . $row['receiver']."</td>";
-                                        echo "</tr>";
-                                    }
-
-                                    ?>
-                                </tbody>
-                            </table>
-                            <!-- TABLE END -->
-                        </div>
-                        <!-- PANEL BODY END -->
-
-                        <!-- PANEL FOOTER -->
-                        <div class="panel-footer">
-                            <div class="row">
-                                <div class="col-lg-10">
-                                </div>
-                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addRecord">Add Record</button>
-                            </div>
-                        </div>
-                        <!-- PANEL FOOTER END -->
+                    <!-- PANEL HEADER -->
+                    <div class="panel-heading"> 
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#dataTables-example" data-toggle="tab">Saved</a>
+                            </li>
+                            <li><a href="#archived" data-toggle="tab">Archived</a>
+                            </li>
+                        </ul>
                     </div>
-                    <!--PANEL END -->
-                    <form method="POST" action="php/addRecords.php" enctype="multipart/form-data">
-                        <!-- MODAL -->
-                        <div class="modal fade" id="addRecord" role="dialog">
-                            <!-- MODAL CONTENT-->
-                            <div class="modal-dialog modal-lg">
-                                <div class="modal-content ">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        <h4 class="modal-title">Add New Record</h4>
-                                    </div>
-                                    <!-- MODAL BODY -->
-                                    <div class="modal-body">
-                                        <div class="row">
-                                            <!-- ACTION SLIP -->
-                                            <div class="col-lg-4">
-                                                <div class="panel panel-default">
+                    <!-- PANEL HEADER END -->
+
+                    <!-- PANEL BODY -->
+                    <div class="panel-body">
+                        <!-- TABLE -->
+                        <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                            <thead>
+                                <tr>
+                                    <th>Code</th>
+                                    <th>Folder</th>
+                                    <th>Date Received</th>
+                                    <th>Applicant</th>
+                                    <th>Sender</th>
+                                    <th>Location</th>
+                                    <th>Purpose</th>
+                                    <th>Status</th>
+                                    <th hidden>Record ID</th>
+                                    <th hidden>Inspector</th>
+                                    <th hidden>Date Inspected</th>
+                                    <th hidden>Document Date</th>
+                                    <th hidden>Subject</th>
+                                    <th hidden>Classification</th>
+                                    <th hidden>scanFile</th>
+                                    <th hidden>Date Released</th>
+                                    <th hidden>Receiver </th>
+                                    <th hidden>Action </th>
+                                    <th hidden>Action Desired</th>
+                                    <th hidden>note </th>
+                                    <th hidden>OICRD </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                require 'config.php';
+
+                                $sql = "SELECT GROUP_CONCAT(CONCAT(province,',',municipality,',',barangay.name)SEPARATOR '<br>') as locations,receive.*,records.*,folderNumber,unclaim.*,actionslip.* FROM receive INNER JOIN receivelocations on receive.receiveID = receivelocations.receiveID INNER JOIN location on receivelocations.locationID = location.locationID INNER JOIN barangay ON barangay.barangayID = location.barangayID inner JOIN records on records.receiveID = receive.receiveID
+                                inner join actionslip on actionslip.actionslipID = receive.actionslipID
+                                left join unclaim on unclaim.unclaimID = records.unclaimID
+                                GROUP BY province";
+                                $res = $db->query($sql);
+                                while ($row = $res->fetch_assoc()){
+                                    echo "<tr style=cursor:pointer>";
+                                    echo "<td>" . $row['code'] . "</td>";
+                                    echo "<td>" . $row['folderNumber'] . "</td>";
+                                    echo "<td>" . $row['dateReceived'] . "</td>";
+                                    echo "<td>" . $row['applicant'] . "</td>";
+                                    echo "<td>" . $row['sender'] . "</td>";
+                                    echo "<td>" . $row['locations']. "</td>";
+                                    echo "<td>" . $row['purpose']."</td>";
+                                    if($row['status'] == 'inspection' ){
+                                        $status = 'For Inspection';
+                                    }else if($row['status'] == 'unclaim'){
+                                        $status = 'Unclaimed';
+                                    }else{
+                                        $status = 'Released';
+                                    }
+                                    echo "<td>" . $status ."</td>";
+                                    echo "<td hidden>" . $row['recordID']."</td>";
+                                    echo "<td hidden>" . $row['inspector']."</td>";
+                                    echo "<td hidden>" . $row['dateInspected']."</td>";
+                                    echo "<td hidden>" . $row['documentDate']."</td>";
+                                    echo "<td hidden>" . $row['subject']."</td>";
+                                    echo "<td hidden>" . $row['classification']."</td>";
+                                    echo "<td hidden>" . $row['scanFile']."</td>";
+                                    echo "<td hidden>" . $row['releaseDate']."</td>";
+                                    echo "<td hidden>" . $row['receiver']."</td>";
+                                    echo "<td hidden>" . $row['action']."</td>";
+                                    echo "<td hidden>" . $row['actionDesired']."</td>";
+                                    echo "<td hidden>" . $row['note']."</td>";
+                                    echo "<td hidden>" . $row['oicrd']."</td>";
+
+                                    echo "</tr>";
+                                }
+
+                                ?>
+                            </tbody>
+                        </table>
+                        <!-- TABLE END -->
+                    </div>
+                    <!-- PANEL BODY END -->
+
+                    <!-- PANEL FOOTER -->
+                    <div class="panel-footer">
+                        <div class="row">
+                            <div class="col-lg-10">
+                            </div>
+                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addRecord">Add Record</button>
+                        </div>
+                    </div>
+                    <!-- PANEL FOOTER END -->
+                </div>
+                <!--PANEL END -->
+                <form method="POST" action="php/addRecords.php" enctype="multipart/form-data">
+                    <!-- MODAL -->
+                    <div class="modal fade" id="addRecord" role="dialog">
+                        <!-- MODAL CONTENT-->
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content ">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Add New Record</h4>
+                                </div>
+                                <!-- MODAL BODY -->
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <!-- ACTION SLIP -->
+                                        <div class="col-lg-4">
+                                            <div class="panel panel-default">
                                                 <!-- ACTION SLIP PANEL HEADING -->
                                                 <div class="panel-heading">
-                                                DOCUMENT ACTION SLIP
+                                                    DOCUMENT ACTION SLIP
                                                 </div>
                                                 <!-- ACTION SLIP PANEL HEADING END -->
 
@@ -266,136 +276,136 @@ if ($_SESSION['currentUserType'] == "user") {
                                                 <div class="panel-body">
                                                     <div class="form-group">
                                                         <div class="checkbox">
-                                                        <label>
-                                                            <input name="action[]" type="checkbox" value="Information and guidance please">Information and guidance please.
-                                                        </label>
+                                                            <label>
+                                                                <input name="action[]" type="checkbox" value="Information and guidance please">Information and guidance please.
+                                                            </label>
                                                         </div>
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <input name="action[]" type="checkbox" value="Compliance/Implementation
-                                                            please">Compliance/Implementation
-                                                            please.
-                                                        </label>
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input name="action[]" type="checkbox" value="Compliance/Implementation
+                                                                please">Compliance/Implementation
+                                                                please.
+                                                            </label>
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input name="action[]" type="checkbox" value="">Appropriate Action
+                                                                please.
+                                                            </label>
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input name="action[]" type="checkbox" value="">Immediate
+                                                                Investigation please.
+                                                            </label>
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input name="action[]" type="checkbox" value="">Comment and
+                                                                recommendation please.
+                                                            </label>
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input name="action[]" type="checkbox" value="">Review and inital
+                                                                please.
+                                                            </label>
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input name="action[]" type="checkbox" value="">Discussion/Dissemination/Posting
+                                                                please.
+                                                            </label>
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input name="action[]" type="checkbox" value="">Record/File
+                                                                please.
+                                                            </label>
+                                                        </div>
                                                     </div>
-                                                    <div class="checkbox">
+                                                    <div class="form-group">
                                                         <label>
-                                                            <input name="action[]" type="checkbox" value="">Appropriate Action
-                                                            please.
+                                                            Action Desired:
                                                         </label>
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input name="actiondesired[]" type="checkbox" value="Give me
+                                                                status/feedback please">Give me
+                                                                status/feedback please.
+                                                            </label>
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input name="actiondesired[]" type="checkbox" value="Please
+                                                                attend to this">Please
+                                                                attend to this.
+                                                            </label>
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input name="actiondesired[]" type="checkbox" value="Please
+                                                                represent to me">Please
+                                                                represent to me.
+                                                            </label>
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input name="actiondesired[]" type="checkbox" value="Please see
+                                                                me about this">Please see
+                                                                me about this.
+                                                            </label>
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input name="actiondesired[]" type="checkbox" value="Please
+                                                                prepare reply">Please
+                                                                prepare reply.
+                                                            </label>
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input name="actiondesired[]" type="checkbox" value="Please
+                                                                submit report">Please
+                                                                submit report.
+                                                            </label>
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input name="actiondesired[]" type="checkbox" value="Please
+                                                                inform pary concerned">Please
+                                                                inform pary concerned.
+                                                            </label>
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input name="actiondesired[]" type="checkbox" value="Please
+                                                                schedule">Please
+                                                                schedule.
+                                                            </label>
+                                                            <label>
+                                                                <input name="actiondesired[]" type="checkbox" value="Please
+                                                                respond directly">Please
+                                                                respond directly.
+                                                            </label>
+                                                        </div>
                                                     </div>
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <input name="action[]" type="checkbox" value="">Immediate
-                                                            Investigation please.
-                                                        </label>
+                                                    <div class="form-group">
+                                                        <label>OICRD</label>
+                                                        <input name="oicrd" type="text" class="form-control"
+                                                        placeholder="Enter Full Name">
                                                     </div>
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <input name="action[]" type="checkbox" value="">Comment and
-                                                            recommendation please.
-                                                        </label>
-                                                    </div>
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <input name="action[]" type="checkbox" value="">Review and inital
-                                                            please.
-                                                        </label>
-                                                    </div>
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <input name="action[]" type="checkbox" value="">Discussion/Dissemination/Posting
-                                                            please.
-                                                        </label>
-                                                    </div>
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <input name="action[]" type="checkbox" value="">Record/File
-                                                            please.
-                                                        </label>
+                                                    <div class="form-group">
+                                                        <label>Note</label>
+                                                        <textarea name="note" class="form-control" rows="2"></textarea>
                                                     </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label>
-                                                        Action Desired:
-                                                    </label>
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <input name="actiondesired[]" type="checkbox" value="Give me
-                                                            status/feedback please">Give me
-                                                            status/feedback please.
-                                                        </label>
-                                                    </div>
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <input name="actiondesired[]" type="checkbox" value="Please
-                                                            attend to this">Please
-                                                            attend to this.
-                                                        </label>
-                                                    </div>
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <input name="actiondesired[]" type="checkbox" value="Please
-                                                            represent to me">Please
-                                                            represent to me.
-                                                        </label>
-                                                    </div>
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <input name="actiondesired[]" type="checkbox" value="Please see
-                                                            me about this">Please see
-                                                            me about this.
-                                                        </label>
-                                                    </div>
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <input name="actiondesired[]" type="checkbox" value="Please
-                                                            prepare reply">Please
-                                                            prepare reply.
-                                                        </label>
-                                                    </div>
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <input name="actiondesired[]" type="checkbox" value="Please
-                                                            submit report">Please
-                                                            submit report.
-                                                        </label>
-                                                    </div>
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <input name="actiondesired[]" type="checkbox" value="Please
-                                                            inform pary concerned">Please
-                                                            inform pary concerned.
-                                                        </label>
-                                                    </div>
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <input name="actiondesired[]" type="checkbox" value="Please
-                                                            schedule">Please
-                                                            schedule.
-                                                        </label>
-                                                        <label>
-                                                            <input name="actiondesired[]" type="checkbox" value="Please
-                                                            respond directly">Please
-                                                            respond directly.
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>OICRD</label>
-                                                    <input name="oicrd" type="text" class="form-control"
-                                                    placeholder="Enter Full Name">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Note</label>
-                                                    <textarea name="note" class="form-control" rows="2"></textarea>
-                                                </div>
+                                                <!-- ACTION SLIP PANEL BODY END -->
                                             </div>
-                                            <!-- ACTION SLIP PANEL BODY END -->
                                         </div>
-                                    </div>
-                                    <!-- ACTION SLIP END -->
+                                        <!-- ACTION SLIP END -->
 
-                                    <!-- MAIN FORM -->
+                                        <!-- MAIN FORM -->
                                         <div class="col-lg-2">
                                             <div class="form-group">
                                                 <label>Code</label>
@@ -458,102 +468,102 @@ if ($_SESSION['currentUserType'] == "user") {
                                                 <button type="button" class="btn btn-success" data-toggle="modal"
                                                 data-target="#addLocation">Add Location
                                             </button>
-                                            </div>
                                         </div>
-                                        <div class="col-lg-8">
-                                            <div class="form-group">
-                                                <div class="form-group">
-                                                    <label>Purpose</label>
-                                                    <textarea name="purpose" class="form-control" rows="14"></textarea>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- MAIN FORM END -->
                                     </div>
-                                    <!-- ROW -->
-                                    <div class="row">
-                                        <div class="col-lg-4">
+                                    <div class="col-lg-8">
+                                        <div class="form-group">
                                             <div class="form-group">
-                                                <label>Inspection Date</label>
-                                                <input class="form-control" type="date" name="date" id="date" required>
+                                                <label>Purpose</label>
+                                                <textarea name="purpose" class="form-control" rows="14"></textarea>
                                             </div>
                                         </div>
-                                        <div class="col-lg-8">
-                                            <div class="form-group">
-                                                <label>Inspector</label>
-                                                <input name="inspector" class="form-control" placeholder="Enter Full Name">
-                                            </div>
+                                    </div>
+                                    <!-- MAIN FORM END -->
+                                </div>
+                                <!-- ROW -->
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label>Inspection Date</label>
+                                            <input class="form-control" type="date" name="date" id="date" required>
                                         </div>
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-                                                <label>Document Date</label>
-                                                <input class="form-control" type="date" name="docudate" id="date" required>
-                                            </div>
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <div class="form-group">
+                                            <label>Inspector</label>
+                                            <input name="inspector" class="form-control" placeholder="Enter Full Name">
                                         </div>
-                                        <div class="col-lg-8">
-                                            <div class="form-group">
-                                                <label>Classification</label>
-                                                <select name="classification" class="form-control">
-                                                    <option>Evacuation Site</option>
-                                                    <option>Geohazard Assesment</option>
-                                                    <option>GIR</option>
-                                                    <option>Government Projects</option>
-                                                    <option>OGI Report</option>
-                                                    <option>Reinvestigation</option>
-                                                    <option>Sanitary Landfill Site</option>
-                                                    <option>Other OGI</option>
-                                                </select>
-                                            </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label>Document Date</label>
+                                            <input class="form-control" type="date" name="docudate" id="date" required>
                                         </div>
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <div class="form-group">
+                                            <label>Classification</label>
+                                            <select name="classification" class="form-control">
+                                                <option>Evacuation Site</option>
+                                                <option>Geohazard Assesment</option>
+                                                <option>GIR</option>
+                                                <option>Government Projects</option>
+                                                <option>OGI Report</option>
+                                                <option>Reinvestigation</option>
+                                                <option>Sanitary Landfill Site</option>
+                                                <option>Other OGI</option>
+                                            </select>
+                                        </div>
+                                    </div>
 
-                                        <div class="col-lg-12">
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
                                             <div class="form-group">
-                                                <div class="form-group">
-                                                    <label>Subject</label>
-                                                    <textarea name="subject" class="form-control" rows="2"></textarea>
-                                                </div>
+                                                <label>Subject</label>
+                                                <textarea name="subject" class="form-control" rows="2"></textarea>
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- ROW END-->
-                                    <!-- ROW -->
-                                    <div class="row">
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-                                                <label>Date Release</label>
-                                                <input class="form-control" type="date" name="drelease" id="date" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-8">
-                                            <div class="form-group">
-                                                <label>Receive By.</label>
-                                                <input name="receiver" class="form-control" placeholder="Enter Full Name">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- ROW END-->
-                                    <!-- ROW -->
-                                    <div class="row">
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-                                                <label>Upload File</label>
-                                                <input type="file" name="scannedFile">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- ROW END-->    
                                 </div>
-                                <!-- MODAL BODY END-->
-                                <!-- MODAL FOOTER -->
-                                <div class="modal-footer">   
-                                    <button type="reset" class="btn btn-primary">Reset</button>
-                                    <button type="submit" class="btn btn-success">Add Record</button>
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                <!-- ROW END-->
+                                <!-- ROW -->
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label>Date Release</label>
+                                            <input class="form-control" type="date" name="drelease" id="date" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <div class="form-group">
+                                            <label>Receive By.</label>
+                                            <input name="receiver" class="form-control" placeholder="Enter Full Name">
+                                        </div>
+                                    </div>
                                 </div>
-                                <!-- MODAL FOOTER END -->
+                                <!-- ROW END-->
+                                <!-- ROW -->
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label>Upload File</label>
+                                            <input type="file" name="scannedFile">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- ROW END-->    
+                            </div>
+                            <!-- MODAL BODY END-->
+                            <!-- MODAL FOOTER -->
+                            <div class="modal-footer">   
+                                <button type="reset" class="btn btn-primary">Reset</button>
+                                <button type="submit" class="btn btn-success">Add Record</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            </div>
+                            <!-- MODAL FOOTER END -->
                         </div>
                         <!-- MODAL CONTENT END -->
-                    
+
                     </div>
 
 
@@ -607,159 +617,159 @@ if ($_SESSION['currentUserType'] == "user") {
 <!-- MAIN PAGE END -->
 </div>
 
-        <!--VIEW RECORDS MODAL -->
-                    <form action="php/unclaim.php" method="POST">
-                        <div class="modal fade" id="recordinfo" role="dialog">
-                            <!-- MODAL CONTENT-->
-                            <div class="modal-dialog modal-lg">
-                                <div class="modal-content ">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        <h4 class="modal-title" align="center">Document Information</h4>
-                                    </div>
-                                    <!-- MODAL BODY -->
-                                    <div class="modal-body">
-                                    <div class="panel panel-green">
-                                        <!-- ACTION SLIP PANEL HEADING -->
-                                        <div class="panel-heading" align="center">
-                                        ACTION SLIP
-                                        </div>
-                                        <!-- ACTION SLIP PANEL HEADING END -->
-                                        <div class="panel-body">
-                                            <div class="col-lg-6">
-                                                <div>
-                                                    <label>Action:</label> <span id="action"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div>
-                                                    <label>Action Desired:</label> <span id="actiondesired"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12">
-                                                <div>
-                                                    <label>OICRD:</label> <span id="oicrd"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12">
-                                                <div>
-                                                    <label>Note:</label> <span id="note"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="panel panel-green">
-                                        <div class="panel-body">
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <div>
-                                                    <label>Code:</label> <span id="code"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12">
-                                                <div>
-                                                    <label>Folder No:</label> <span id="fNo"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12">
-                                                <div>
-                                                    <label>Date Received:</label> <span id="dateReceived"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div>
-                                                    <label>Applicant:</label> <span id="applicant"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div>
-                                                    <label>Sender:</label> <span id="sender"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div>
-                                                    <label>Location/s:</label> <span id="loc"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div>
-                                                    <label>Purpose:</label> <span id="purpose"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div>
-                                                    <label>Date Inspected:</label> <span id="dateInspected"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div>
-                                                    <label>Document Date:</label> <span id="documentDate"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div>
-                                                    <label>Inspector:</label> <span id="inspector"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div>
-                                                    <label>Classification:</label> <span id="classification"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12">
-                                                <div>
-                                                    <label>Subject:</label> <span id="subject"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div>
-                                                    <label>Date Released:</label> <span id="dateReleased"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div>
-                                                    <label>Receive By:</label> <span id="receiver"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        </div>
-                                    </div>
-                                    <div class="panel panel-green">
-                                        <div class="panel-body">
-                                        <div id="uploadForm" class="row">
-                                             <div class="col-lg-12" align="center">
-                                            <div class="form-group">
-                                                <label>Upload File</label>
-                                                <input type="file" name="scannedFile">
-
-                                            </div>
-                                            </div>
-                                            <div class="col-lg-12" align="center">
-                                            <button name="saveUpload" id="save" class="btn btn-outline btn-success">Save</button>
-                                            </div>
-                                        </div>
-                                        </div>
-                                    </div>
-                                       
-                                    </div>
-                                    <!-- MODAL BODY END-->
-                                    <!-- MODAL FOOTER -->
-                                    <div class="modal-footer">
-                                        <button name="printRecord" id="printRecord" class="btn btn-success">Print</button>
-                                        <button name="editRecord" id="editRecord" class="btn btn-primary">Edit</button>
-                                        <button name="archiveRecord" id="archiveRecord" type="button" class="btn btn-danger" data-dismiss="modal">Archive</button>
-                                    </div>
-                                    <!-- MODAL FOOTER END -->
+<!--VIEW RECORDS MODAL -->
+<form action="php/unclaim.php" method="POST">
+    <div class="modal fade" id="recordinfo" role="dialog">
+        <!-- MODAL CONTENT-->
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content ">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" align="center">Document Information</h4>
+                </div>
+                <!-- MODAL BODY -->
+                <div class="modal-body">
+                    <div class="panel panel-green">
+                        <!-- ACTION SLIP PANEL HEADING -->
+                        <div class="panel-heading" align="center">
+                            ACTION SLIP
+                        </div>
+                        <!-- ACTION SLIP PANEL HEADING END -->
+                        <div class="panel-body">
+                            <div class="col-lg-6">
+                                <div>
+                                    <label>Action:</label> <span id="action"></span>
                                 </div>
-                                <!-- MODAL CONTENT END -->
+                            </div>
+                            <div class="col-lg-6">
+                                <div>
+                                    <label>Action Desired:</label> <span id="actiondesired"></span>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div>
+                                    <label>OICRD:</label> <span id="oicrd"></span>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div>
+                                    <label>Note:</label> <span id="note"></span>
+                                </div>
                             </div>
                         </div>
-                    </form>
-        <!-- VIEW RECORDS MODAL END -->
+                    </div>
+                    <div class="panel panel-green">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div>
+                                        <label>Code:</label> <span id="code"></span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div>
+                                        <label>Folder No:</label> <span id="fNo"></span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div>
+                                        <label>Date Received:</label> <span id="dateReceived"></span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div>
+                                        <label>Applicant:</label> <span id="applicant"></span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div>
+                                        <label>Sender:</label> <span id="sender"></span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div>
+                                        <label>Location/s:</label> <span id="loc"></span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div>
+                                        <label>Purpose:</label> <span id="purpose"></span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div>
+                                        <label>Date Inspected:</label> <span id="dateInspected"></span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div>
+                                        <label>Document Date:</label> <span id="documentDate"></span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div>
+                                        <label>Inspector:</label> <span id="inspector"></span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div>
+                                        <label>Classification:</label> <span id="classification"></span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div>
+                                        <label>Subject:</label> <span id="subject"></span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div>
+                                        <label>Date Released:</label> <span id="dateReleased"></span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div>
+                                        <label>Receive By:</label> <span id="receiver"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-green">
+                        <div class="panel-body">
+                            <div id="uploadForm" class="row">
+                             <div class="col-lg-12" align="center">
+                                <div class="form-group">
+                                    <label>Upload File</label>
+                                    <input type="file" name="scannedFile">
 
-        <!--EDIT RECORDS MODAL -->
-                    <!--*same as add record*-->
-        <!-- EDIT RECORDS MODAL END -->
+                                </div>
+                            </div>
+                            <div class="col-lg-12" align="center">
+                                <button name="saveUpload" id="save" class="btn btn-outline btn-success">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- MODAL BODY END-->
+            <!-- MODAL FOOTER -->
+            <div class="modal-footer">
+                <button name="printRecord" id="printRecord" class="btn btn-success">Print</button>
+                <button name="editRecord" id="editRecord" class="btn btn-primary">Edit</button>
+                <button name="archiveRecord" id="archiveRecord" type="button" class="btn btn-danger" data-dismiss="modal">Archive</button>
+            </div>
+            <!-- MODAL FOOTER END -->
+        </div>
+        <!-- MODAL CONTENT END -->
+    </div>
+</div>
+</form>
+<!-- VIEW RECORDS MODAL END -->
+
+<!--EDIT RECORDS MODAL -->
+<!--*same as add record*-->
+<!-- EDIT RECORDS MODAL END -->
 
 
 <!-- jQuery -->
@@ -782,7 +792,7 @@ if ($_SESSION['currentUserType'] == "user") {
 <!-- Page-Level Demo Scripts - Tables - Use for reference -->
 <script>
     $('#addlocation').click(function(){
-      
+
         var numberOfInputs = $('#numofinput').val();
         var label = '<label>Location</label>';
         var input = '<input class="form-control" placeholder="Barangay">'+
@@ -801,7 +811,7 @@ if ($_SESSION['currentUserType'] == "user") {
         var table = $('#dataTables-example').DataTable({
             responsive: true
         });
-          $('#dataTables-example tbody').on( 'click', 'tr', function () {
+        $('#dataTables-example tbody').on( 'click', 'tr', function () {
             var data = table.row( this ).data();
             // if(data[14]){
             //     $('#releaseForm').removeAttr('hidden');
@@ -825,6 +835,10 @@ if ($_SESSION['currentUserType'] == "user") {
             $('#classification').html(data[13]);
             $('#dateReleased').html(data[15]);
             $('#receiver').html(data[16]);
+            $('#action').html(data[17]);
+            $('#actiondesired').html(data[18]);
+            $('#note').html(data[19]);
+            $('#oicrd').html(data[20]);
             $('#recordinfo').modal();
         } );
         $('#barangay').change(function () { $id = $(this).val();

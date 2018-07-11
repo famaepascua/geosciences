@@ -13,7 +13,7 @@ $note = $_POST['note'];
 $actionsJoined = "";
 if($action){
     foreach ($action as $a){
-        $actionsJoined .= $a . ",";
+        $actionsJoined .= $a . "<br>";
     }    
 }
 
@@ -22,7 +22,7 @@ $actiondesired = $_POST['actiondesired'];
 $actionsDesiredJoined = "";
 if($actiondesired){
     foreach ($actiondesired as $a){
-        $actionsDesiredJoined .= $a . ",";
+        $actionsDesiredJoined .= $a . "<br>";
     }   
 }
 
