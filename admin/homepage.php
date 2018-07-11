@@ -474,6 +474,7 @@ if ($_SESSION['currentUserType'] == "user") {
         var counter =0;
 
        $('#addlocation').click(function(){
+        $('#folderNo').removeAttr('disabled')
         var numberOfInputs = $('#numofinput').val();
 
         var label = '<label>Location</label>';
