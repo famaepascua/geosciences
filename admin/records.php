@@ -597,6 +597,116 @@ if ($_SESSION['currentUserType'] == "user") {
 <!-- MAIN PAGE END -->
 </div>
 
+<!-- MODAL -->
+                    <form action="php/unclaim.php" method="POST">
+                        <div class="modal fade" id="recordinfo" role="dialog">
+                            <!-- MODAL CONTENT-->
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content ">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title" align="center">Document Information</h4>
+                                    </div>
+                                    <!-- MODAL BODY -->
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-lg-4">
+                                                <div>
+                                                    <label>Code:</label> <span id="code"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div>
+                                                    <label>Folder No:</label> <span id="fNo"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div>
+                                                    <label>Date Received:</label> <span id="dateReceived"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div>
+                                                    <label>Applicant:</label> <span id="applicant"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div>
+                                                    <label>Sender:</label> <span id="sender"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div>
+                                                    <label>Location/s:</label> <span id="location"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div>
+                                                    <label>Purpose:</label> <span id="purpose"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div>
+                                                    <label>Date Inspected:</label> <span id="dateInspected"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div>
+                                                    <label>Document Date:</label> <span id="documentDate"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div>
+                                                    <label>Inspector:</label> <span id="inspector"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div>
+                                                    <label>Classification:</label> <span id="classification"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div>
+                                                    <label>Subject:</label> <span id="subject"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div>
+                                                    <label>Date Released:</label> <span id="dateReleased"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div>
+                                                    <label>Receive By:</label> <span id="receiver"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div hidden id="uploadForm" class="row">
+                                            <h4 class="modal-title" align="center">Upload Scanned File</h4>
+                                             <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label>Upload File</label>
+                                                <input type="file" name="scannedFile">
+                                            </div>
+                                            </div>
+                                        </div>
+                                       
+                                    </div>
+                                    <!-- MODAL BODY END-->
+                                    <!-- MODAL FOOTER -->
+                                    <div class="modal-footer">
+                                        <button name="printRecord" id="printRecord" class="btn btn-success">Print</button>
+                                        <button name="editRecord" id="editRecord" class="btn btn-primary">Edit</button>
+                                        <button name="archiveRecord" id="archiveRecord" type="button" class="btn btn-danger" data-dismiss="modal">Archive</button>
+                                    </div>
+                                    <!-- MODAL FOOTER END -->
+                                </div>
+                                <!-- MODAL CONTENT END -->
+                            </div>
+                        </div>
+                    </form>
+                    <!-- MODAL END -->
+
 
 <!-- jQuery -->
 <script src="vendor/jquery/jquery.min.js"></script>

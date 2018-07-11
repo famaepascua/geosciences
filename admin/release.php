@@ -283,7 +283,7 @@ if ($_SESSION['currentUserType'] == "user") {
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label>Date Released</label>
-                                                    <input name="datereleased" id="date" type="date" class="form-control">
+                                                    <input name="datereleased" id="dateReleased" type="date" class="form-control">
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
@@ -294,20 +294,12 @@ if ($_SESSION['currentUserType'] == "user") {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div hidden id="uploadForm" class="row">
-                                            <h4 class="modal-title" align="center">Release Form</h4>
-                                             <div class="col-lg-4">
-                                            <div class="form-group">
-                                                <label>Upload File</label>
-                                                <input type="file" name="scannedFile">
-                                            </div>
-                                        </div>
-                                        </div>
+                                        
                                     </div>
                                     <!-- MODAL BODY END-->
                                     <!-- MODAL FOOTER -->
                                     <div class="modal-footer">
-                                        <button name="recordID" id="recordID" type="submit" class="btn btn-success">Release</button>
+                                        <button name="editRecord" id="editRecord" class="btn btn-success">Release</button>
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                     </div>
                                     <!-- MODAL FOOTER END -->
