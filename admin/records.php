@@ -176,8 +176,6 @@ if ($_SESSION['currentUserType'] == "user") {
                                         <th hidden>scanFile</th>
                                         <th hidden>Date Released</th>
                                         <th hidden>Receiver </th>
-
-
                                     </tr>
                                 </thead>
                                 <tbody>
