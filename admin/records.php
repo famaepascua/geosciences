@@ -174,6 +174,8 @@ if ($_SESSION['currentUserType'] == "user") {
                                         <th hidden>Subject</th>
                                         <th hidden>Classification</th>
                                         <th hidden>scanFile</th>
+                                        <th hidden>Date Released</th>
+                                        <th hidden>Receiver </th>
 
 
                                     </tr>
@@ -210,6 +212,8 @@ if ($_SESSION['currentUserType'] == "user") {
                                         echo "<td hidden>" . $row['subject']."</td>";
                                         echo "<td hidden>" . $row['classification']."</td>";
                                         echo "<td hidden>" . $row['scanFile']."</td>";
+                                        echo "<td hidden>" . $row['releaseDate']."</td>";
+                                        echo "<td hidden>" . $row['receiver']."</td>";
                                         echo "</tr>";
                                     }
 
@@ -637,7 +641,7 @@ if ($_SESSION['currentUserType'] == "user") {
                                             </div>
                                             <div class="col-lg-6">
                                                 <div>
-                                                    <label>Location/s:</label> <span id="location"></span>
+                                                    <label>Location/s:</label> <span id="loc"></span>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
@@ -748,27 +752,29 @@ if ($_SESSION['currentUserType'] == "user") {
         });
           $('#dataTables-example tbody').on( 'click', 'tr', function () {
             var data = table.row( this ).data();
-            if(data[14]){
-                $('#releaseForm').removeAttr('hidden');
-                $('#uploadForm').attr('hidden','hidden');
-            }else{
-                $('#uploadForm').removeAttr('hidden');
-                $('#releaseForm').attr('hidden','hidden');
-            }
+            // if(data[14]){
+            //     $('#releaseForm').removeAttr('hidden');
+            //     $('#uploadForm').attr('hidden','hidden');
+            // }else{
+            //     $('#uploadForm').removeAttr('hidden');
+            //     $('#releaseForm').attr('hidden','hidden');
+            // }
             $('#code').html(data[0]);
             $('#fNo').html(data[1]);
             $('#dateReceived').html(data[2]);
             $('#applicant').html(data[3]);
             $('#sender').html(data[4]);
-            $('#location').html(data[5]);
+            $('#loc').html(data[5]);
             $('#purpose').html(data[6]);
-            $('#recordID').val(data[8]);
-            $('#inspector').html(data[9]);
             $('#dateInspected').html(data[10]);
             $('#documentDate').html(data[11]);
+            $('#recordID').val(data[8]);
+            $('#inspector').html(data[9]);
             $('#subject').html(data[12]);
             $('#classification').html(data[13]);
-            $('#editUnclaim').modal();
+            $('#dateReleased').html(data[15]);
+            $('#receiver').html(data[16]);
+            $('#recordinfo').modal();
         } );
         $('#barangay').change(function () { $id = $(this).val();
             $.ajax({
