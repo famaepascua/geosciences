@@ -170,7 +170,7 @@ if ($_SESSION['currentUserType'] == "user") {
 
                                     $sql = "SELECT *,b.folderNumber AS bf,b.name as bn FROM actionslip JOIN receive r on actionslip.actionslipID = r.actionslipID JOIN location l on r.locationID = l.locationID JOIN barangay b on l.barangayID = b.barangayID
                                         inner join records on records.receiveID = r.receiveID
-                                        left join unclaim on unclaim.unclaimID = records.unclaimID";
+                                        left join unclaim on unclaim.unclaimID = records.unclaimID where status != 'inspection'";
                                     $res = $db->query($sql);
                                     while ($row = $res->fetch_assoc()){
                                         echo "<tr style=cursor:pointer>";

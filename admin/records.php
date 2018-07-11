@@ -545,7 +545,8 @@ if ($_SESSION['currentUserType'] == "user") {
                                 </div>
                                 <!-- MODAL BODY END-->
                                 <!-- MODAL FOOTER -->
-                                <div class="modal-footer">
+                                <div class="modal-footer">   
+                                    <button type="reset" class="btn btn-primary">Reset</button>
                                     <button type="submit" class="btn btn-success">Add Record</button>
                                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                 </div>
@@ -781,6 +782,7 @@ if ($_SESSION['currentUserType'] == "user") {
 <!-- Page-Level Demo Scripts - Tables - Use for reference -->
 <script>
     $('#addlocation').click(function(){
+      
         var numberOfInputs = $('#numofinput').val();
         var label = '<label>Location</label>';
         var input = '<input class="form-control" placeholder="Barangay">'+
