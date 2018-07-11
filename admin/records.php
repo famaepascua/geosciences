@@ -685,7 +685,8 @@ if ($_SESSION['currentUserType'] == "user") {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div hidden id="uploadForm" class="row">
+
+                                        <div id="uploadForm" class="row">
                                             <h4 class="modal-title" align="center">Upload Scanned File</h4>
                                              <div class="col-lg-4">
                                             <div class="form-group">
