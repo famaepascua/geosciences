@@ -69,7 +69,8 @@ if ($_SESSION['currentUserType'] == "user") {
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="homepage.php" style="text-shadow: 0 0 3px #FF0000;">GEOSCIENCES DIVISION</a>
+                <img src="../images/mgbcarlogo.png" width="45px" height="45px">
+                <a href="homepage.php" style="text-shadow: 0 0 3px #026603; font-size: 20px">MINES AND GEOSCIENCES BUREAU | GEOSCIENCES DIVISION</a>
             </div>
             <!-- NAV HEADER END -->
 

@@ -70,7 +70,8 @@ if ($_SESSION['currentUserType'] == "user") {
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="homepage.php" style="text-shadow: 0 0 3px #FF0000;">GEOSCIENCES DIVISION</a>
+                <img src="../images/mgbcarlogo.png" width="45px" height="45px">
+                <a href="homepage.php" style="text-shadow: 0 0 3px #026603; font-size: 20px">MINES AND GEOSCIENCES BUREAU | GEOSCIENCES DIVISION</a>
 
             </div>
             <!-- NAVBAR HEADER END -->
@@ -309,7 +310,7 @@ if ($_SESSION['currentUserType'] == "user") {
                             <div class="col-lg-2">
                                 <div class="form-group">
                                     <label>Code</label>
-                                    <input name="code" type="text" class="form-control" placeholder="Enter Code">
+                                    <input name="code" type="text" class="form-control" placeholder="Enter Code" required>
                                 </div>
                             </div>
                             <div class="col-lg-2">
@@ -322,7 +323,7 @@ if ($_SESSION['currentUserType'] == "user") {
                             <div class="col-lg-4">
                                 <div class="form-group">
                                     <label>Date Received</label>
-                                    <input name="date" id="date" type="date" class="form-control">
+                                    <input name="date" id="date" type="date" class="form-control" required>
                                 </div>
                             </div>
                             <div class="col-lg-8">

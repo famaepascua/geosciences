@@ -72,7 +72,8 @@ if ($_SESSION['currentUserType'] == "user") {
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="homepage.php" style="text-shadow: 0 0 3px #FF0000;">MINES AND GEOSCIENCES BUREAU | GEOSCIENCES DIVISION</a>
+                <img src="../images/mgbcarlogo.png" width="45px" height="45px">
+                <a href="homepage.php" style="text-shadow: 0 0 3px #026603; font-size: 20px">MINES AND GEOSCIENCES BUREAU | GEOSCIENCES DIVISION</a>
             </div>
             <!-- NAV HEADER END -->
 
@@ -150,6 +151,12 @@ if ($_SESSION['currentUserType'] == "user") {
 
                         <!-- PANEL HEADER -->
                         <div class="panel-heading"> 
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#dataTables-example" data-toggle="tab">Saved</a>
+                                </li>
+                                <li><a href="#archived" data-toggle="tab">Archived</a>
+                                </li>
+                            </ul>
                         </div>
                         <!-- PANEL HEADER END -->
                         
@@ -599,7 +606,7 @@ if ($_SESSION['currentUserType'] == "user") {
 <!-- MAIN PAGE END -->
 </div>
 
-<!-- MODAL -->
+        <!--VIEW RECORDS MODAL -->
                     <form action="php/unclaim.php" method="POST">
                         <div class="modal fade" id="recordinfo" role="dialog">
                             <!-- MODAL CONTENT-->
@@ -611,18 +618,49 @@ if ($_SESSION['currentUserType'] == "user") {
                                     </div>
                                     <!-- MODAL BODY -->
                                     <div class="modal-body">
+                                    <div class="panel panel-green">
+                                        <!-- ACTION SLIP PANEL HEADING -->
+                                        <div class="panel-heading" align="center">
+                                        ACTION SLIP
+                                        </div>
+                                        <!-- ACTION SLIP PANEL HEADING END -->
+                                        <div class="panel-body">
+                                            <div class="col-lg-6">
+                                                <div>
+                                                    <label>Action:</label> <span id="action"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div>
+                                                    <label>Action Desired:</label> <span id="actiondesired"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div>
+                                                    <label>OICRD:</label> <span id="oicrd"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div>
+                                                    <label>Note:</label> <span id="note"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-green">
+                                        <div class="panel-body">
                                         <div class="row">
-                                            <div class="col-lg-4">
+                                            <div class="col-lg-12">
                                                 <div>
                                                     <label>Code:</label> <span id="code"></span>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-4">
+                                            <div class="col-lg-12">
                                                 <div>
                                                     <label>Folder No:</label> <span id="fNo"></span>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-4">
+                                            <div class="col-lg-12">
                                                 <div>
                                                     <label>Date Received:</label> <span id="dateReceived"></span>
                                                 </div>
@@ -683,16 +721,24 @@ if ($_SESSION['currentUserType'] == "user") {
                                                 </div>
                                             </div>
                                         </div>
-
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-green">
+                                        <div class="panel-body">
                                         <div id="uploadForm" class="row">
-                                            <h4 class="modal-title" align="center">Upload Scanned File</h4>
-                                             <div class="col-lg-4">
+                                             <div class="col-lg-12" align="center">
                                             <div class="form-group">
                                                 <label>Upload File</label>
                                                 <input type="file" name="scannedFile">
+
                                             </div>
+                                            </div>
+                                            <div class="col-lg-12" align="center">
+                                            <button name="saveUpload" id="save" class="btn btn-outline btn-success">Save</button>
                                             </div>
                                         </div>
+                                        </div>
+                                    </div>
                                        
                                     </div>
                                     <!-- MODAL BODY END-->
@@ -708,7 +754,11 @@ if ($_SESSION['currentUserType'] == "user") {
                             </div>
                         </div>
                     </form>
-                    <!-- MODAL END -->
+        <!-- VIEW RECORDS MODAL END -->
+
+        <!--EDIT RECORDS MODAL -->
+                    <!--*same as add record*-->
+        <!-- EDIT RECORDS MODAL END -->
 
 
 <!-- jQuery -->

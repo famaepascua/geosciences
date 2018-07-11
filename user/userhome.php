@@ -72,7 +72,8 @@ if ($_SESSION['currentUserType'] != "user") {
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="logout.php">MINES AND GEOSCIENCES BUREAU | GEOSCIENCES DIVISION</a>
+                <img src="../images/mgbcarlogo.png" width="45px" height="45px">
+                <a href="homepage.php" style="text-shadow: 0 0 3px #026603; font-size: 20px">MINES AND GEOSCIENCES BUREAU | GEOSCIENCES DIVISION</a>
             </div>
             <!-- NAV HEADER END -->
 
@@ -120,7 +121,7 @@ if ($_SESSION['currentUserType'] != "user") {
                 <div class="col-lg-12">
 
                     <!-- PANEL -->
-                    <div class="panel panel-default">
+                    <div class="panel panel-green">
 
                         <!-- PANEL HEADER -->
                         <div class="panel-heading"> 
@@ -185,6 +186,155 @@ if ($_SESSION['currentUserType'] != "user") {
         </div>
         <!-- MAIN PAGE END -->
     </div>
+
+    <!--VIEW RECORDS MODAL -->
+                    <form action="php/unclaim.php" method="POST">
+                        <div class="modal fade" id="recordinfo" role="dialog">
+                            <!-- MODAL CONTENT-->
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content ">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title" align="center">Document Information</h4>
+                                    </div>
+                                    <!-- MODAL BODY -->
+                                    <div class="modal-body">
+                                    <div class="panel panel-default">
+                                        <!-- ACTION SLIP PANEL HEADING -->
+                                        <div class="panel-heading" align="center">
+                                        ACTION SLIP
+                                        </div>
+                                        <!-- ACTION SLIP PANEL HEADING END -->
+                                        <div class="panel-body">
+                                            <div class="col-lg-6">
+                                                <div>
+                                                    <label>Action:</label> <span id="action"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div>
+                                                    <label>Action Desired:</label> <span id="actiondesired"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div>
+                                                    <label>OICRD:</label> <span id="oicrd"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div>
+                                                    <label>Note:</label> <span id="note"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div>
+                                                    <label>Code:</label> <span id="code"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div>
+                                                    <label>Folder No:</label> <span id="fNo"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div>
+                                                    <label>Date Received:</label> <span id="dateReceived"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div>
+                                                    <label>Applicant:</label> <span id="applicant"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div>
+                                                    <label>Sender:</label> <span id="sender"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div>
+                                                    <label>Location/s:</label> <span id="loc"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div>
+                                                    <label>Purpose:</label> <span id="purpose"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div>
+                                                    <label>Date Inspected:</label> <span id="dateInspected"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div>
+                                                    <label>Document Date:</label> <span id="documentDate"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div>
+                                                    <label>Inspector:</label> <span id="inspector"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div>
+                                                    <label>Classification:</label> <span id="classification"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div>
+                                                    <label>Subject:</label> <span id="subject"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div>
+                                                    <label>Date Released:</label> <span id="dateReleased"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div>
+                                                    <label>Receive By:</label> <span id="receiver"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                        <div id="uploadForm" class="row">
+                                             <div class="col-lg-12" align="center">
+                                            <div class="form-group">
+                                                <label>Upload File</label>
+                                                <input type="file" name="scannedFile">
+
+                                            </div>
+                                            </div>
+                                            <div class="col-lg-12" align="center">
+                                            <button name="saveUpload" id="save" class="btn btn-outline btn-primary">Save</button>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                       
+                                    </div>
+                                    <!-- MODAL BODY END-->
+                                    <!-- MODAL FOOTER -->
+                                    <div class="modal-footer">
+                                        <button name="printRecord" id="printRecord" class="btn btn-success">Print</button>
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                    </div>
+                                    <!-- MODAL FOOTER END -->
+                                </div>
+                                <!-- MODAL CONTENT END -->
+                            </div>
+                        </div>
+                    </form>
+        <!-- VIEW RECORDS MODAL END -->
     
     <!-- jQuery -->
     <script src="vendor/jquery/jquery.min.js"></script>

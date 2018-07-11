@@ -71,7 +71,8 @@ if ($_SESSION['currentUserType'] == "user") {
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="homepage.php" style="text-shadow: 0 0 3px #FF0000;">GEOSCIENCES DIVISION</a>
+                <img src="../images/mgbcarlogo.png" width="45px" height="45px">
+                <a href="homepage.php" style="text-shadow: 0 0 3px #026603; font-size: 20px">MINES AND GEOSCIENCES BUREAU | GEOSCIENCES DIVISION</a>
             </div>
             <!-- NAV HEADER END -->
 
@@ -179,13 +180,14 @@ if ($_SESSION['currentUserType'] == "user") {
                                         echo "<td>" . $row['sender'] . "</td>";
                                         echo "<td hidden>" . $row['bn']. "," . $row['municipality'] . "," . $row['province'] . "</td>";
                                         echo "<td>" . $row['subject']."</td>";
-                                        echo "<td hidden>" . "For Inspection" ."</td>";
+                                        echo "<td hidden>" . "Unclaimed" ."</td>";
                                         echo "<td hidden>" . $row['recordID']."</td>";
                                         echo "<td hidden>" . $row['inspector']."</td>";
                                         echo "<td hidden>" . $row['dateInspected']."</td>";
                                         echo "<td hidden>" . $row['bf']."</td>";
                                         echo "<td hidden>" . $row['purpose']."</td>";
                                         echo "<td hidden>" . $row['classification']."</td>";
+                                        echo "<td hidden>" . $row['dateReceived']."</td>";
                                         echo "</tr>";
                                     }
 
@@ -205,8 +207,8 @@ if ($_SESSION['currentUserType'] == "user") {
     </div>
     <!-- /#wrapper -->
 
-     <form action="php/release.php" method="POST" enctype="multipart/form-data">
-                        <div class="modal fade" id="editUnclaim" role="dialog">
+     <form action="php/release.php" method="POST">
+                        <div class="modal fade" id="editRelease" role="dialog">
                             <!-- MODAL CONTENT-->
                             <div class="modal-dialog modal-lg">
                                 <div class="modal-content ">
@@ -215,6 +217,8 @@ if ($_SESSION['currentUserType'] == "user") {
                                         <h4 class="modal-title" align="center">Document Information</h4>
                                     </div>
                                     <!-- MODAL BODY -->
+                                    <div class="panel panel-green">
+                                    <div class="panel-body">
                                     <div class="modal-body">
                                         <div class="row">
                                             <div class="col-lg-4">
@@ -224,7 +228,7 @@ if ($_SESSION['currentUserType'] == "user") {
                                             </div>
                                             <div class="col-lg-4">
                                                 <div>
-                                                    <label>Folder No:</label> <span id="fNo"></span>
+                                                    <label>Folder No:</label> <span id="folderno"></span>
                                                 </div>
                                             </div>
                                             <div class="col-lg-4">
@@ -278,8 +282,14 @@ if ($_SESSION['currentUserType'] == "user") {
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
+                                    </div>
+                                        <div class="panel panel-green">
                                         <div id="releaseForm" class="row">
+                                            <div class="panel-heading" align="center">
                                             <h4 class="modal-title" align="center">Release Form</h4>
+                                            </div>
+                                            <div class="panel-body">
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label>Date Released</label>
@@ -293,13 +303,13 @@ if ($_SESSION['currentUserType'] == "user") {
                                                     placeholder="Enter Full Name">
                                                 </div>
                                             </div>
+                                            </div>
                                         </div>
-                                        
-                                    </div>
+                                        </div>
                                     <!-- MODAL BODY END-->
                                     <!-- MODAL FOOTER -->
                                     <div class="modal-footer">
-                                        <button name="editRecord" id="editRecord" class="btn btn-success">Release</button>
+                                        <button name="recordUpdate" id="recordUpdate" type="submit" class="btn btn-success">Release</button>
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                     </div>
                                     <!-- MODAL FOOTER END -->
@@ -327,13 +337,29 @@ if ($_SESSION['currentUserType'] == "user") {
     <script src="dist/js/sb-admin-2.js"></script>
 
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
     <script>
-    $(document).ready(function() {
-        $('#dataTables-example').DataTable({
+        $(document).ready(function() {
+          var table =  $('#dataTables-example').DataTable({
             responsive: true
         });
-    });
-    </script>
+          $('#dataTables-example tbody').on( 'click', 'tr', function () {
+            var data = table.row( this ).data();
+            $('#code').html(data[1]);
+            $('#folderNo').html(data[10]);
+            $('#dateReceived').html(data[13]);
+            $('#applicant').html(data[2]);
+            $('#sender').html(data[3]);
+            $('#location').html(data[4]);
+            $('#purpose').html(data[11]);
+            $('#dateInspected').html(data[9]);
+            $('#inspector').html(data[8]);
+            $('#documentDate').html(data[0]);
+            $('#recordUpdate').val(data[7]);
+            $('#editRelease').modal();
+        } );
+      });
+  </script>
 
 </body>
 

@@ -71,7 +71,8 @@ if ($_SESSION['currentUserType'] == "user") {
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="homepage.php" style="text-shadow: 0 0 3px #FF0000;">GEOSCIENCES DIVISION</a>
+                <img src="../images/mgbcarlogo.png" width="45px" height="45px">
+                <a href="homepage.php" style="text-shadow: 0 0 3px #026603; font-size: 20px">MINES AND GEOSCIENCES BUREAU | GEOSCIENCES DIVISION</a>
             </div>
             <!-- NAV HEADER END -->
 
@@ -209,44 +210,52 @@ if ($_SESSION['currentUserType'] == "user") {
                                     <!-- MODAL BODY -->
                                     <div class="modal-body">
                                         <div class="row">
-                                            <div class="col-lg-4">
+                                            <div class="panel panel-green">
+                                            <div class="panel-body">
+                                            <div class="col-lg-12">
                                                 <div>
                                                     <label>Code:</label> <span id="code"></span>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-4">
+                                            <div class="col-lg-12">
                                                 <div>
                                                     <label>Folder No:</label> <span id="folderNo"></span>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-4">
+                                            <div class="col-lg-12">
                                                 <div>
                                                     <label>Date Received:</label> <span id="dateReceived"></span>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-4">
+                                            <div class="col-lg-6">
                                                 <div>
                                                     <label>Applicant:</label> <span id="applicant"></span>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-4">
+                                            <div class="col-lg-6">
                                                 <div>
                                                     <label>Sender:</label> <span id="sender"></span>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-4">
+                                            <div class="col-lg-6">
                                                 <div>
                                                     <label>Location/s:</label> <span id="location"></span>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-12">
+                                            <div class="col-lg-6">
                                                 <div>
                                                     <label>Purpose:</label> <span id="purpose"></span>
                                                 </div>
                                             </div>
                                         </div>
+                                        </div>
+                                        </div>
                                         <div class="row">
+                                            <div class="panel panel-green">
+                                            <div class="panel-heading" align="center">
                                             <h4 class="modal-title" align="center">Unclaim Form</h4>
+                                            </div>
+                                            <div class="panel-body">
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label>Date Inspected</label>
@@ -289,7 +298,8 @@ if ($_SESSION['currentUserType'] == "user") {
                                                     </div>
                                                 </div>
                                             </div>
-
+                                            </div>
+                                        </div>
                                         </div>
                                     </div>
                                     <!-- MODAL BODY END-->
