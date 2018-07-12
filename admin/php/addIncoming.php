@@ -114,8 +114,8 @@ if ($db->query($sql)) {
         }  
     }
 
-    $sql = "INSERT INTO records(status,scanFile,receiveID) 
-    VALUES('inspection','temp.pdf','$receiveID') ";
+    $sql = "INSERT INTO records(status,receiveID) 
+    VALUES('inspection','$receiveID') ";
 
 
 
