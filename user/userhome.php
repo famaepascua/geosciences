@@ -204,138 +204,12 @@ if ($_SESSION['currentUserType'] != "user") {
                             <div class="modal-dialog modal-lg">
                                 <div class="modal-content ">
                                     <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        <h4 class="modal-title" align="center">Document Information</h4>
                                     </div>
                                     <!-- MODAL BODY -->
                                     <div class="modal-body">
-                                    <div class="panel panel-default">
-                                        <!-- ACTION SLIP PANEL HEADING -->
-                                        <div class="panel-heading" align="center">
-                                        ACTION SLIP
-                                        </div>
-                                        <!-- ACTION SLIP PANEL HEADING END -->
-                                        <div class="panel-body">
-                                            <div class="col-lg-6">
-                                                <div>
-                                                    <label>Action:</label> <span id="action"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div>
-                                                    <label>Action Desired:</label> <span id="actiondesired"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12">
-                                                <div>
-                                                    <label>OICRD:</label> <span id="oicrd"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12">
-                                                <div>
-                                                    <label>Note:</label> <span id="note"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="panel panel-default">
-                                        <div class="panel-body">
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <div>
-                                                    <label>Code:</label> <span id="code"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12">
-                                                <div>
-                                                    <label>Folder No:</label> <span id="fNo"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12">
-                                                <div>
-                                                    <label>Date Received:</label> <span id="dateReceived"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div>
-                                                    <label>Applicant:</label> <span id="applicant"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div>
-                                                    <label>Sender:</label> <span id="sender"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div>
-                                                    <label>Location/s:</label> <span id="loc"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div>
-                                                    <label>Purpose:</label> <span id="purpose"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div>
-                                                    <label>Date Inspected:</label> <span id="dateInspected"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div>
-                                                    <label>Document Date:</label> <span id="documentDate"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div>
-                                                    <label>Inspector:</label> <span id="inspector"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div>
-                                                    <label>Classification:</label> <span id="classification"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12">
-                                                <div>
-                                                    <label>Subject:</label> <span id="subject"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div>
-                                                    <label>Date Released:</label> <span id="dateReleased"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div>
-                                                    <label>Receive By:</label> <span id="receiver"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        </div>
-                                    </div>
-                                    <div class="panel panel-default">
-                                        <div class="panel-body">
-                                        <div id="uploadForm" class="row">
-                                             <div class="col-lg-12" align="center">
-                                            <div class="form-group">
-                                                <label>Upload File</label>
-                                                <input type="file" name="scannedFile">
-
-                                            </div>
-                                            </div>
-                                            <div class="col-lg-12" align="center">
-                                            <button name="saveUpload" id="save" class="btn btn-outline btn-primary">Save</button>
-                                            </div>
-                                        </div>
-                                        </div>
-                                    </div>
-                                       
-                                    </div>
-                                    <!-- MODAL BODY END-->
+                                        <h4>The record was archived, Please contact Administrator.</h4>
                                     <!-- MODAL FOOTER -->
                                     <div class="modal-footer">
-                                        <button name="printRecord" id="printRecord" class="btn btn-success">Print</button>
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                     </div>
                                     <!-- MODAL FOOTER END -->
@@ -384,10 +258,49 @@ if ($_SESSION['currentUserType'] != "user") {
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
     <script>
     $(document).ready(function() {
-        $('#dataTables-example').DataTable({
+        $('#dataTables-example')({
             responsive: true
         });
     });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            var table = $('#dataTables-example').DataTable({
+                responsive: true
+            });
+            $('#dataTables-example tbody').on( 'click', 'tr', function () {
+                var data = table.row( this ).data();
+                // if(data[14]){
+                //     $('#releaseForm').removeAttr('hidden');
+                //     $('#uploadForm').attr('hidden','hidden');
+                // }else{
+                //     $('#uploadForm').removeAttr('hidden');
+                //     $('#releaseForm').attr('hidden','hidden');
+                // }
+                $('#code').html(data[0]);
+                $('#fNo').html(data[1]);
+                $('#dateReceived').html(data[2]);
+                $('#applicant').html(data[3]);
+                $('#sender').html(data[4]);
+                $('#loc').html(data[5]);
+                $('#purpose').html(data[6]);
+                $('#dateInspected').html(data[10]);
+                $('#documentDate').html(data[11]);
+                $('#recordID').val(data[8]);
+                $('#inspector').html(data[9]);
+                $('#subject').html(data[12]);
+                $('#classification').html(data[13]);
+                $('#dateReleased').html(data[15]);
+                $('#receiver').html(data[16]);
+                $('#action').html(data[17]);
+                $('#actiondesired').html(data[18]);
+                $('#note').html(data[19]);
+                $('#oicrd').html(data[20]);
+                $('#recordinfo').modal();
+            } );
+
+        });
     </script>
 
 </body>
