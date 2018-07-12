@@ -169,8 +169,7 @@ if ($_SESSION['currentUserType'] != "user") {
                                     }else{
                                         $status = 'Released';
                                     }
-                                    echo "<td>" . "<button type='button' class='btn btn-primary' data-toggle='modal' data-target='#exampleModal'>
-                                        Archived</button>" ."</td>";
+                                    echo "<td>" . $status ."</td>";
 
                                     echo "</tr>";
                                 }
