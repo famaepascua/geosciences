@@ -145,16 +145,16 @@ if ($_SESSION['currentUserType'] == "user") {
         <!-- PAGE HEADER END -->
         <!-- FORM -->
         <form action="php/addIncoming.php" method="post">
-        <!-- BODY -->
-        <div class="row">
-            <!-- PANEL -->
-            <div class="col-lg-12">
-                <div class="panel panel-green">
+            <!-- BODY -->
+            <div class="row">
+                <!-- PANEL -->
+                <div class="col-lg-12">
+                    <div class="panel panel-green">
 
-                    <!-- PANEL HEADER START -->
-                    <div class="panel-heading">
-                    </div>
-                    <!-- PANEL HEADER END -->
+                        <!-- PANEL HEADER START -->
+                        <div class="panel-heading">
+                        </div>
+                        <!-- PANEL HEADER END -->
 
                         <!-- PANEL BODY -->
                         <div class="panel-body">
@@ -389,9 +389,9 @@ if ($_SESSION['currentUserType'] == "user") {
                     <div class="panel-footer">
                         <div class="row">
                             <div class="col-lg-12" align="center">
-                            
-                            <input type="submit" class="btn btn-success" value="Add Record"/>
-                            <button type="reset" class="btn btn-primary">Reset</button>
+                                
+                                <input type="submit" class="btn btn-success" value="Add Record"/>
+                                <button type="reset" class="btn btn-primary">Reset</button>
                             </div>
                         </div>
                     </div>
@@ -496,45 +496,45 @@ if ($_SESSION['currentUserType'] == "user") {
         $('select[name^=barangay]').change(function () {
             $id = $(this).val();
             $num = $(this).data('num');
-            if($num > 0){
+            if($num != '0'){
                 $('#folderNo').removeAttr('disabled');
                 $('#folderNo').val('');
             }else{
-                $.ajax({
-                url: 'folderNo.php',
-                data: {barangay: $id},
-                dataType: 'JSON',
-                success: function (data) {
-                    $('#folderNo').val(data[0]);
-                }
-                }); 
-            }
-           
-            $.ajax({
-                url: 'getLocation.php',
-                data: {barangay: $id},
-                dataType: 'JSON',
-                success: function (data) {
-                    if(data != false){
-                        var municipality = data[0];
-                        var province = data[1];
-                        $('#m'+$num).val(municipality);
-                        $('#p'+$num).val(province);
-                    }else{
-                        $('#m'+$num).val('');
-                        $('#p'+$num).val('');
-                    }
-                }
-            });
-
-            if($id == '54' || $id == '56'){
+             if($id == '54' || $id == '56'){
                 $('#brgyname'+$num).removeAttr('disabled');
                 $('#folderNo').removeAttr('disabled');
             }else{
                 $('#brgyname'+$num).attr('disabled', 'disabled');
                 $('#folderNo').attr('disabled', 'disabled');
             }
+        }
+        $.ajax({
+            url: 'folderNo.php',
+            data: {barangay: $id},
+            dataType: 'JSON',
+            success: function (data) {
+                $('#folderNo').val(data[0]);
+            }
+        }); 
+        $.ajax({
+            url: 'getLocation.php',
+            data: {barangay: $id},
+            dataType: 'JSON',
+            success: function (data) {
+                if(data != false){
+                    var municipality = data[0];
+                    var province = data[1];
+                    $('#m'+$num).val(municipality);
+                    $('#p'+$num).val(province);
+                }else{
+                    $('#m'+$num).val('');
+                    $('#p'+$num).val('');
+                }
+            }
         });
+
+        
+    });
     }
 </script>
 
