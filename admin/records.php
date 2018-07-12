@@ -827,6 +827,11 @@ if ($_SESSION['currentUserType'] == "user") {
                                 <button name="recordID" id="recordID" class="btn btn-outline btn-success">Save</button>
                             </div>
                         </div>
+                         <div hidden id="scannedFile" class="row">
+                             <div class="col-lg-12" align="center">
+                                 <a id="viewfile" href="" class="text-success">View Scanned File</a>
+                             </div>
+                        </div>
                     </div>
                 </div>
             </form>
@@ -890,6 +895,7 @@ if ($_SESSION['currentUserType'] == "user") {
         var table = $('#dataTables-example').DataTable({
             responsive: true
         });
+
         $('#dataTables-example tbody').on( 'click', 'tr', function () {
             var data = table.row( this ).data();
             // if(data[14]){
@@ -918,7 +924,16 @@ if ($_SESSION['currentUserType'] == "user") {
             $('#actiondesired').html(data[18]);
             $('#note').html(data[19]);
             $('#oicrd').html(data[20]);
+            $('#viewfile').attr('href','../admin/uploads/'+data[14]);
             $('#recordinfo').modal();
+
+            if(data[14]){
+                $('#uploadForm').attr('hidden','hidden');
+                $('#scannedFile').removeAttr('hidden');
+            }else{
+                $('#scannedFile').attr('hidden','hidden');
+                $('#uploadForm').removeAttr('hidden');
+            }
         } );
         $('#barangay').change(function () { $id = $(this).val();
             $.ajax({
