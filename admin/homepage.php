@@ -475,7 +475,7 @@ if ($_SESSION['currentUserType'] == "user") {
         var counter =0;
 
         $('#addlocation').click(function(){
-            $('#folderNo').removeAttr('disabled')
+            $('#folderNo').removeAttr('disabled');
             var numberOfInputs = $('#numofinput').val();
 
             var label = '<label>Location</label>';
@@ -488,7 +488,6 @@ if ($_SESSION['currentUserType'] == "user") {
                 var province = $('#p0').clone().val('').attr('id','p'+counter).attr('name','province['+counter+']').appendTo('#location');
             }
             locationChange();
-
         })
 
     });
@@ -497,6 +496,10 @@ if ($_SESSION['currentUserType'] == "user") {
         $('select[name^=barangay]').change(function () {
             $id = $(this).val();
             $num = $(this).data('num');
+            if($num > 0){
+                $('#folderNo').removeAttr('disabled');
+                $('#folderNo').val('');
+            }
             $.ajax({
                 url: 'folderNo.php',
                 data: {barangay: $id},
