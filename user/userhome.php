@@ -23,7 +23,7 @@ if ($_SESSION['currentUserType'] != "user") {
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">r
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -121,7 +121,7 @@ if ($_SESSION['currentUserType'] != "user") {
                 <div class="col-lg-12">
 
                     <!-- PANEL -->
-                    <div class="panel panel-green">
+                    <div class="">
 
                         <!-- PANEL HEADER -->
                         <div class="panel-heading"> 
@@ -129,19 +129,18 @@ if ($_SESSION['currentUserType'] != "user") {
                         <!-- PANEL HEADER END -->
                         
                         <!-- PANEL BODY -->
-                        <div class="panel-body">
+                        <div class="">
                             <!-- TABLE -->
-                            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                            <table width="100%" class="table table-hover" id="dataTables-example">
                                 <thead>
                                     <tr>
-                                        <th>Code</th>
-                                        <th>Folder</th>
-                                        <th>Date Received</th>
-                                        <th>Applicant</th>
+                                        <th style="width: 8%">Code</th>
+                                        <th style="width: 8%">Folder</th>
+                                        <th style="width: 10%">Date Received</th>
+                                        <th style="width: 10%">Applicant</th>
                                         <th>Sender</th>
                                         <th>Location</th>
                                         <th>Purpose</th>
-                                        <th>Subject</th>
                                         <th>Status</th>
                                     </tr>
                                 </thead>
@@ -152,7 +151,7 @@ if ($_SESSION['currentUserType'] != "user") {
                                 $sql = "SELECT *,b.folderNumber AS bf,b.name as bn FROM actionslip JOIN receive r on actionslip.actionslipID = r.actionslipID JOIN location l on r.locationID = l.locationID JOIN barangay b on l.barangayID = b.barangayID";
                                 $res = $db->query($sql);
                                 while ($row = $res->fetch_assoc()){
-                                    echo "<tr>";
+                                    echo "<tr data-href='#'>";
                                     echo "<td>" . $row['code'] . "</td>";
                                     echo "<td>" . $row['bf'] . "</td>";
                                     echo "<td>" . $row['dateReceived'] . "</td>";
@@ -160,8 +159,8 @@ if ($_SESSION['currentUserType'] != "user") {
                                     echo "<td>" . $row['sender'] . "</td>";
                                     echo "<td>" . $row['bn']. "," . $row['municipality'] . "," . $row['province'] . "</td>";
                                     echo "<td>" . $row['purpose']."</td>";
-                                    echo "<td>" . " " ."</td>";
-                                    echo "<td>" . "For Inspection" ."</td>";
+                                    echo "<td>" . "<button type='button' class='btn btn-primary' data-toggle='modal' data-target='#exampleModal'>
+                                        Archived</button>" ."</td>";
                                     echo "</tr>";
                                 }
 
@@ -335,6 +334,24 @@ if ($_SESSION['currentUserType'] != "user") {
                         </div>
                     </form>
         <!-- VIEW RECORDS MODAL END -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                </div>
+                <div class="modal-body">
+                    <h4>The record was archived, Please contact Administrator.</h4>
+                </div>
+                <div class="modal-footer">
+                    <div class="text-center">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     
     <!-- jQuery -->
     <script src="vendor/jquery/jquery.min.js"></script>
