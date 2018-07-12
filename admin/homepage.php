@@ -148,7 +148,7 @@ if ($_SESSION['currentUserType'] == "user") {
         <div class="row">
             <!-- PANEL -->
             <div class="col-lg-12">
-                <div class="panel panel-default">
+                <div class="panel panel-green">
 
                     <!-- PANEL HEADER START -->
                     <div class="panel-heading">
@@ -163,7 +163,7 @@ if ($_SESSION['currentUserType'] == "user") {
                             <div class="row">
                                 <!-- ACTION SLIP -->
                                 <div class="col-lg-4">
-                                    <div class="panel panel-default">
+                                    <div class="panel panel-green">
                                         <!-- ACTION SLIP PANEL HEADING -->
                                         <div class="panel-heading">
                                             DOCUMENT ACTION SLIP
