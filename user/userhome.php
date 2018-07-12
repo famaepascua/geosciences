@@ -131,18 +131,31 @@ if ($_SESSION['currentUserType'] != "user") {
                         <!-- PANEL BODY -->
                         <div class="">
                             <!-- TABLE -->
-                            <table width="100%" class="table table-hover" id="dataTables-example">
+                            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
-                                    <tr>
-                                        <th style="width: 8%">Code</th>
-                                        <th style="width: 8%">Folder</th>
-                                        <th style="width: 10%">Date Received</th>
-                                        <th style="width: 10%">Applicant</th>
-                                        <th>Sender</th>
-                                        <th>Location</th>
-                                        <th>Purpose</th>
-                                        <th>Status</th>
-                                    </tr>
+                                <tr>
+                                    <th>Code</th>
+                                    <th>Folder</th>
+                                    <th>Date Received</th>
+                                    <th>Applicant</th>
+                                    <th>Sender</th>
+                                    <th>Location</th>
+                                    <th>Purpose</th>
+                                    <th>Status</th>
+                                    <th hidden>Record ID</th>
+                                    <th hidden>Inspector</th>
+                                    <th hidden>Date Inspected</th>
+                                    <th hidden>Document Date</th>
+                                    <th hidden>Subject</th>
+                                    <th hidden>Classification</th>
+                                    <th hidden>scanFile</th>
+                                    <th hidden>Date Released</th>
+                                    <th hidden>Receiver </th>
+                                    <th hidden>Action </th>
+                                    <th hidden>Action Desired</th>
+                                    <th hidden>note </th>
+                                    <th hidden>OICRD </th>
+                                </tr>
                                 </thead>
                                 <tbody>
                                 <?php
@@ -170,13 +183,24 @@ if ($_SESSION['currentUserType'] != "user") {
                                         $status = 'Released';
                                     }
                                     echo "<td>" . $status ."</td>";
+                                    echo "<td hidden>" . $row['recordID']."</td>";
+                                    echo "<td hidden>" . $row['inspector']."</td>";
+                                    echo "<td hidden>" . $row['dateInspected']."</td>";
+                                    echo "<td hidden>" . $row['documentDate']."</td>";
+                                    echo "<td hidden>" . $row['subject']."</td>";
+                                    echo "<td hidden>" . $row['classification']."</td>";
+                                    echo "<td hidden>" . $row['scanFile']."</td>";
+                                    echo "<td hidden>" . $row['releaseDate']."</td>";
+                                    echo "<td hidden>" . $row['receiver']."</td>";
+                                    echo "<td hidden>" . $row['action']."</td>";
+                                    echo "<td hidden>" . $row['actionDesired']."</td>";
+                                    echo "<td hidden>" . $row['note']."</td>";
+                                    echo "<td hidden>" . $row['oicrd']."</td>";
 
                                     echo "</tr>";
                                 }
 
                                 ?>
-
-                                </tbody>
                                 </tbody>
                             </table>
                             <!-- TABLE END -->
@@ -316,17 +340,6 @@ if ($_SESSION['currentUserType'] != "user") {
                     <form action="php/uploadScannedFile.php" method="POST" enctype="multipart/form-data">
                         <div class="panel panel-green">
                             <div class="panel-body">
-                                <div id="uploadForm" class="row">
-                                    <div class="col-lg-12" align="center">
-                                        <div class="form-group">
-                                            <label>Upload File</label>
-                                            <input type="file" name="scannedFile">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12" align="center">
-                                        <button name="recordID" id="recordID" class="btn btn-outline btn-success">Save</button>
-                                    </div>
-                                </div>
                                 <div hidden id="scannedFile" class="row">
                                     <div class="col-lg-12" align="center">
                                         <a id="viewfile" href="" class="text-success">View Scanned File</a>
@@ -406,6 +419,14 @@ if ($_SESSION['currentUserType'] != "user") {
                 $('#note').html(data[19]);
                 $('#oicrd').html(data[20]);
                 $('#recordinfo').modal();
+
+                if(data[14]){
+                    $('#uploadForm').attr('hidden','hidden');
+                    $('#scannedFile').removeAttr('hidden');
+                }else{
+                    $('#scannedFile').attr('hidden','hidden');
+                    $('#uploadForm').removeAttr('hidden');
+                }
             } );
 
         });
