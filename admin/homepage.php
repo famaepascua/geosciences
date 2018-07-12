@@ -499,15 +499,17 @@ if ($_SESSION['currentUserType'] == "user") {
             if($num > 0){
                 $('#folderNo').removeAttr('disabled');
                 $('#folderNo').val('');
-            }
-            $.ajax({
+            }else{
+                $.ajax({
                 url: 'folderNo.php',
                 data: {barangay: $id},
                 dataType: 'JSON',
                 success: function (data) {
                     $('#folderNo').val(data[0]);
                 }
-            });
+                }); 
+            }
+           
             $.ajax({
                 url: 'getLocation.php',
                 data: {barangay: $id},
