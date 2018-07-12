@@ -152,7 +152,7 @@ if ($_SESSION['currentUserType'] == "user") {
                     <!-- PANEL HEADER -->
                     <div class="panel-heading"> 
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#dataTables-example" data-toggle="tab">Saved</a>
+                            <li class="active"><a href="#saved" data-toggle="tab">Saved</a>
                             </li>
                             <li><a href="#archived" data-toggle="tab">Archived</a>
                             </li>
@@ -162,79 +162,161 @@ if ($_SESSION['currentUserType'] == "user") {
 
                     <!-- PANEL BODY -->
                     <div class="panel-body">
-                        <!-- TABLE -->
-                        <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
-                            <thead>
-                                <tr>
-                                    <th>Code</th>
-                                    <th>Folder</th>
-                                    <th>Date Received</th>
-                                    <th>Applicant</th>
-                                    <th>Sender</th>
-                                    <th>Location</th>
-                                    <th>Purpose</th>
-                                    <th>Status</th>
-                                    <th hidden>Record ID</th>
-                                    <th hidden>Inspector</th>
-                                    <th hidden>Date Inspected</th>
-                                    <th hidden>Document Date</th>
-                                    <th hidden>Subject</th>
-                                    <th hidden>Classification</th>
-                                    <th hidden>scanFile</th>
-                                    <th hidden>Date Released</th>
-                                    <th hidden>Receiver </th>
-                                    <th hidden>Action </th>
-                                    <th hidden>Action Desired</th>
-                                    <th hidden>note </th>
-                                    <th hidden>OICRD </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                require 'config.php';
+                        <div class="tab-content">
+                            <div id="saved" class="tab-pane fade in active">
+                                <!-- TABLE -->
+                                <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                        <tr>
+                                            <th>Code</th>
+                                            <th>Folder</th>
+                                            <th>Date Received</th>
+                                            <th>Applicant</th>
+                                            <th>Sender</th>
+                                            <th>Location</th>
+                                            <th>Purpose</th>
+                                            <th>Status</th>
+                                            <th hidden>Record ID</th>
+                                            <th hidden>Inspector</th>
+                                            <th hidden>Date Inspected</th>
+                                            <th hidden>Document Date</th>
+                                            <th hidden>Subject</th>
+                                            <th hidden>Classification</th>
+                                            <th hidden>scanFile</th>
+                                            <th hidden>Date Released</th>
+                                            <th hidden>Receiver </th>
+                                            <th hidden>Action </th>
+                                            <th hidden>Action Desired</th>
+                                            <th hidden>note </th>
+                                            <th hidden>OICRD </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        require 'config.php';
 
-                                $sql = "SELECT GROUP_CONCAT(CONCAT(barangay.name,',',municipality,',',province)SEPARATOR '<br>') as locations,receive.*,records.*,folderNumber,unclaim.*,actionslip.* FROM receive INNER JOIN receivelocations on receive.receiveID = receivelocations.receiveID INNER JOIN location on receivelocations.locationID = location.locationID INNER JOIN barangay ON barangay.barangayID = location.barangayID inner JOIN records on records.receiveID = receive.receiveID
-                                inner join actionslip on actionslip.actionslipID = receive.actionslipID
-                                left join unclaim on unclaim.unclaimID = records.unclaimID
-                                GROUP BY records.recordID";
-                                $res = $db->query($sql);
-                                while ($row = $res->fetch_assoc()){
-                                    echo "<tr style=cursor:pointer>";
-                                    echo "<td>" . $row['code'] . "</td>";
-                                    echo "<td>" . $row['folderNumber'] . "</td>";
-                                    echo "<td>" . $row['dateReceived'] . "</td>";
-                                    echo "<td>" . $row['applicant'] . "</td>";
-                                    echo "<td>" . $row['sender'] . "</td>";
-                                    echo "<td>" . $row['locations']. "</td>";
-                                    echo "<td>" . $row['purpose']."</td>";
-                                    if($row['status'] == 'inspection' ){
-                                        $status = 'For Inspection';
-                                    }else if($row['status'] == 'unclaim'){
-                                        $status = 'Unclaimed';
-                                    }else{
-                                        $status = 'Released';
-                                    }
-                                    echo "<td>" . $status ."</td>";
-                                    echo "<td hidden>" . $row['recordID']."</td>";
-                                    echo "<td hidden>" . $row['inspector']."</td>";
-                                    echo "<td hidden>" . $row['dateInspected']."</td>";
-                                    echo "<td hidden>" . $row['documentDate']."</td>";
-                                    echo "<td hidden>" . $row['subject']."</td>";
-                                    echo "<td hidden>" . $row['classification']."</td>";
-                                    echo "<td hidden>" . $row['scanFile']."</td>";
-                                    echo "<td hidden>" . $row['releaseDate']."</td>";
-                                    echo "<td hidden>" . $row['receiver']."</td>";
-                                    echo "<td hidden>" . $row['action']."</td>";
-                                    echo "<td hidden>" . $row['actionDesired']."</td>";
-                                    echo "<td hidden>" . $row['note']."</td>";
-                                    echo "<td hidden>" . $row['oicrd']."</td>";
+                                        $sql = "SELECT GROUP_CONCAT(CONCAT(barangay.name,',',municipality,',',province)SEPARATOR '<br>') as locations,receive.*,records.*,folderNumber,unclaim.*,actionslip.* FROM receive INNER JOIN receivelocations on receive.receiveID = receivelocations.receiveID INNER JOIN location on receivelocations.locationID = location.locationID INNER JOIN barangay ON barangay.barangayID = location.barangayID inner JOIN records on records.receiveID = receive.receiveID
+                                        inner join actionslip on actionslip.actionslipID = receive.actionslipID
+                                        left join unclaim on unclaim.unclaimID = records.unclaimID WHERE status != 'archived'
+                                        GROUP BY records.recordID";
+                                        $res = $db->query($sql);
+                                        while ($row = $res->fetch_assoc()){
+                                            echo "<tr style=cursor:pointer>";
+                                            echo "<td>" . $row['code'] . "</td>";
+                                            echo "<td>" . $row['folderNumber'] . "</td>";
+                                            echo "<td>" . $row['dateReceived'] . "</td>";
+                                            echo "<td>" . $row['applicant'] . "</td>";
+                                            echo "<td>" . $row['sender'] . "</td>";
+                                            echo "<td>" . $row['locations']. "</td>";
+                                            echo "<td>" . $row['purpose']."</td>";
+                                            if($row['status'] == 'inspection' ){
+                                                $status = 'For Inspection';
+                                            }else if($row['status'] == 'unclaim'){
+                                                $status = 'Unclaimed';
+                                            }else if($row['status'] == 'release'){
+                                                $status = 'Released';
+                                            }else{
+                                                $status = 'Archived';
+                                            }
+                                            echo "<td>" . $status ."</td>";
+                                            echo "<td hidden>" . $row['recordID']."</td>";
+                                            echo "<td hidden>" . $row['inspector']."</td>";
+                                            echo "<td hidden>" . $row['dateInspected']."</td>";
+                                            echo "<td hidden>" . $row['documentDate']."</td>";
+                                            echo "<td hidden>" . $row['subject']."</td>";
+                                            echo "<td hidden>" . $row['classification']."</td>";
+                                            echo "<td hidden>" . $row['scanFile']."</td>";
+                                            echo "<td hidden>" . $row['releaseDate']."</td>";
+                                            echo "<td hidden>" . $row['receiver']."</td>";
+                                            echo "<td hidden>" . $row['action']."</td>";
+                                            echo "<td hidden>" . $row['actionDesired']."</td>";
+                                            echo "<td hidden>" . $row['note']."</td>";
+                                            echo "<td hidden>" . $row['oicrd']."</td>";
 
-                                    echo "</tr>";
-                                }
+                                            echo "</tr>";
+                                        }
 
-                                ?>
-                            </tbody>
-                        </table>
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div id="archived" class="tab-pane fade">
+                                <!-- TABLE -->
+                                <table width="100%" class="table table-striped table-bordered table-hover" id="archivedTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Code</th>
+                                            <th>Folder</th>
+                                            <th>Date Received</th>
+                                            <th>Applicant</th>
+                                            <th>Sender</th>
+                                            <th>Location</th>
+                                            <th>Purpose</th>
+                                            <th>Status</th>
+                                            <th hidden>Record ID</th>
+                                            <th hidden>Inspector</th>
+                                            <th hidden>Date Inspected</th>
+                                            <th hidden>Document Date</th>
+                                            <th hidden>Subject</th>
+                                            <th hidden>Classification</th>
+                                            <th hidden>scanFile</th>
+                                            <th hidden>Date Released</th>
+                                            <th hidden>Receiver </th>
+                                            <th hidden>Action </th>
+                                            <th hidden>Action Desired</th>
+                                            <th hidden>note </th>
+                                            <th hidden>OICRD </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+
+                                        $sql = "SELECT GROUP_CONCAT(CONCAT(barangay.name,',',municipality,',',province)SEPARATOR '<br>') as locations,receive.*,records.*,folderNumber,unclaim.*,actionslip.* FROM receive INNER JOIN receivelocations on receive.receiveID = receivelocations.receiveID INNER JOIN location on receivelocations.locationID = location.locationID INNER JOIN barangay ON barangay.barangayID = location.barangayID inner JOIN records on records.receiveID = receive.receiveID
+                                        inner join actionslip on actionslip.actionslipID = receive.actionslipID
+                                        left join unclaim on unclaim.unclaimID = records.unclaimID WHERE status = 'archived'
+                                        GROUP BY records.recordID";
+                                        $res = $db->query($sql);
+                                        while ($row = $res->fetch_assoc()){
+                                            echo "<tr style=cursor:pointer>";
+                                            echo "<td>" . $row['code'] . "</td>";
+                                            echo "<td>" . $row['folderNumber'] . "</td>";
+                                            echo "<td>" . $row['dateReceived'] . "</td>";
+                                            echo "<td>" . $row['applicant'] . "</td>";
+                                            echo "<td>" . $row['sender'] . "</td>";
+                                            echo "<td>" . $row['locations']. "</td>";
+                                            echo "<td>" . $row['purpose']."</td>";
+                                            if($row['status'] == 'inspection' ){
+                                                $status = 'For Inspection';
+                                            }else if($row['status'] == 'unclaim'){
+                                                $status = 'Unclaimed';
+                                            }else if($row['status'] == 'release'){
+                                                $status = 'Released';
+                                            }else{
+                                                $status = 'Archived';
+                                            }
+                                            echo "<td>" . $status ."</td>";
+                                            echo "<td hidden>" . $row['recordID']."</td>";
+                                            echo "<td hidden>" . $row['inspector']."</td>";
+                                            echo "<td hidden>" . $row['dateInspected']."</td>";
+                                            echo "<td hidden>" . $row['documentDate']."</td>";
+                                            echo "<td hidden>" . $row['subject']."</td>";
+                                            echo "<td hidden>" . $row['classification']."</td>";
+                                            echo "<td hidden>" . $row['scanFile']."</td>";
+                                            echo "<td hidden>" . $row['releaseDate']."</td>";
+                                            echo "<td hidden>" . $row['receiver']."</td>";
+                                            echo "<td hidden>" . $row['action']."</td>";
+                                            echo "<td hidden>" . $row['actionDesired']."</td>";
+                                            echo "<td hidden>" . $row['note']."</td>";
+                                            echo "<td hidden>" . $row['oicrd']."</td>";
+
+                                            echo "</tr>";
+                                        }
+
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                         <!-- TABLE END -->
                     </div>
                     <!-- PANEL BODY END -->
@@ -817,7 +899,7 @@ if ($_SESSION['currentUserType'] == "user") {
                     <div class="panel panel-green">
                         <div class="panel-body">
                             <div id="uploadForm" class="row">
-                             <div class="col-lg-12" align="center">
+                               <div class="col-lg-12" align="center">
                                 <div class="form-group">
                                     <label>Upload File</label>
                                     <input type="file" name="scannedFile">
@@ -828,18 +910,18 @@ if ($_SESSION['currentUserType'] == "user") {
                             </div>
                         </div>
                         <div hidden id="scannedFile" class="row">
-                         <div class="col-lg-12" align="center">
-                             <a id="viewfile" href="" class="text-success">View Scanned File</a>
-                         </div>
-                     </div>
-                 </div>
-             </div>
-         </form>
+                           <div class="col-lg-12" align="center">
+                               <a id="viewfile" href="" class="text-success">View Scanned File</a>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </form>
 
-     </div>
-     <!-- MODAL BODY END-->
-     <!-- MODAL FOOTER -->
-     <div class="modal-footer">
+       </div>
+       <!-- MODAL BODY END-->
+       <!-- MODAL FOOTER -->
+       <div class="modal-footer">
         <button name="printRecord" id="printRecord" class="btn btn-success">Print</button>
         <button name="editRecord" id="editRecord" class="btn btn-primary">Edit</button>
         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
@@ -924,16 +1006,16 @@ if ($_SESSION['currentUserType'] == "user") {
         var table = $('#dataTables-example').DataTable({
             responsive: true
         });
+        var tableArch = $('#archivedTable').DataTable({
+            responsive: true
+        });
 
-        $('#dataTables-example tbody').on( 'click', 'tr', function () {
-            var data = table.row( this ).data();
-            // if(data[14]){
-            //     $('#releaseForm').removeAttr('hidden');
-            //     $('#uploadForm').attr('hidden','hidden');
-            // }else{
-            //     $('#uploadForm').removeAttr('hidden');
-            //     $('#releaseForm').attr('hidden','hidden');
-            // }
+        $('table tbody').on( 'click', 'tr', function () {
+            if($('.tab-pane.fade.in.active').attr('id')=='saved'){
+                var data = table.row( this ).data();
+            }else{
+                var data = tableArch.row( this ).data();
+            }
             $('#code').html(data[0]);
             $('#fNo').html(data[1]);
             $('#dateReceived').html(data[2]);
