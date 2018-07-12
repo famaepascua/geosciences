@@ -586,7 +586,12 @@ if ($_SESSION['currentUserType'] == "user") {
 
     })
 
+    function myPrint() {
+        window.print();
+    }
 
 </script>
+
+
 
 </html>
