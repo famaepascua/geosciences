@@ -47,12 +47,11 @@ if ($db->query($sql)) {
     $barangayList = "";
     if(isset($_POST['barangay'])){
         $barangayID = array_map('intval', $_POST['barangay']);
-        $barangayList = implode("''", $barangayID);
+        $barangayList = implode("','", $barangayID);
     }
 
     $location=[];
     //For locations of other municipality/barangay
-
     foreach ($barangayID as $key => $value) {
         if(isset($barangayID[$key])){
             if($barangayID[$key] == '54' || $barangayID[$key] == '56'){
@@ -83,7 +82,7 @@ if ($db->query($sql)) {
 
         }
     }
-
+    //For locations saved in the database
     if($barangayList){
        $sql = "SELECT locationID FROM location WHERE barangayID IN ('$barangayList')";
        $res = $db->query($sql);
@@ -95,6 +94,8 @@ if ($db->query($sql)) {
        foreach ($r as $loc) {
             $location[] = intval($loc[0]); 
        }
+    var_dump($barangayList);
+
     }
 
     $sql = "INSERT INTO receive(code, dateReceived, applicant, sender, purpose, actionslipID) 
