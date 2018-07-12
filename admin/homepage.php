@@ -389,10 +389,11 @@ if ($_SESSION['currentUserType'] == "user") {
                     <!-- PANEL FOOTER -->
                     <div class="panel-footer">
                         <div class="row">
-                            <div class="col-lg-9">
-                            </div>
+                            <div class="col-lg-12" align="center">
+                            
                             <input type="submit" class="btn btn-success" value="Add Record"/>
                             <button type="reset" class="btn btn-primary">Reset</button>
+                            </div>
                         </div>
                     </div>
                     <!-- PANEL FOOTER END -->
