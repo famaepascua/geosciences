@@ -618,7 +618,6 @@ if ($_SESSION['currentUserType'] == "user") {
 </div>
 
 <!--VIEW RECORDS MODAL -->
-<form action="php/unclaim.php" method="POST">
     <div class="modal fade" id="recordinfo" role="dialog">
         <!-- MODAL CONTENT-->
         <div class="modal-dialog modal-lg">
@@ -734,6 +733,7 @@ if ($_SESSION['currentUserType'] == "user") {
                             </div>
                         </div>
                     </div>
+                <form action="php/uploadScannedFile.php" method="POST" enctype="multipart/form-data">
                     <div class="panel panel-green">
                         <div class="panel-body">
                             <div id="uploadForm" class="row">
@@ -741,15 +741,15 @@ if ($_SESSION['currentUserType'] == "user") {
                                 <div class="form-group">
                                     <label>Upload File</label>
                                     <input type="file" name="scannedFile">
-
                                 </div>
                             </div>
                             <div class="col-lg-12" align="center">
-                                <button name="saveUpload" id="save" class="btn btn-outline btn-success">Save</button>
+                                <button name="recordID" id="recordID" class="btn btn-outline btn-success">Save</button>
                             </div>
                         </div>
                     </div>
                 </div>
+            </form>
 
             </div>
             <!-- MODAL BODY END-->
@@ -764,7 +764,6 @@ if ($_SESSION['currentUserType'] == "user") {
         <!-- MODAL CONTENT END -->
     </div>
 </div>
-</form>
 <!-- VIEW RECORDS MODAL END -->
 
 <!--EDIT RECORDS MODAL -->
