@@ -144,7 +144,7 @@ if ($_SESSION['currentUserType'] == "user") {
                 <div class="col-lg-12">
 
                     <!-- PANEL -->
-                    <div class="panel panel-default">
+                    <div class="panel panel-green">
 
                         <!-- PANEL HEAD -->
                         <div class="panel-heading"> 

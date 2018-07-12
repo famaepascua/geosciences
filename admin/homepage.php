@@ -145,17 +145,16 @@ if ($_SESSION['currentUserType'] == "user") {
         <!-- PAGE HEADER END -->
         <!-- FORM -->
         <form action="php/addIncoming.php" method="post">
-            <!-- BODY -->
-            <div class="row">
-                <!-- PANEL -->
-                <div class="col-lg-12">
-                    <div class="panel panel-default">
+        <!-- BODY -->
+        <div class="row">
+            <!-- PANEL -->
+            <div class="col-lg-12">
+                <div class="panel panel-green">
 
-                        <!-- PANEL HEADER START -->
-                        <div class="panel-heading">
-                        </div>
-                        <!-- PANEL HEADER END -->
-
+                    <!-- PANEL HEADER START -->
+                    <div class="panel-heading">
+                    </div>
+                    <!-- PANEL HEADER END -->
 
                         <!-- PANEL BODY -->
                         <div class="panel-body">
@@ -163,7 +162,7 @@ if ($_SESSION['currentUserType'] == "user") {
                             <div class="row">
                                 <!-- ACTION SLIP -->
                                 <div class="col-lg-4">
-                                    <div class="panel panel-default">
+                                    <div class="panel panel-green">
                                         <!-- ACTION SLIP PANEL HEADING -->
                                         <div class="panel-heading">
                                             DOCUMENT ACTION SLIP
