@@ -171,19 +171,6 @@ if ($_SESSION['currentUserType'] != "user") {
                                     }
                                     echo "<td>" . "<button type='button' class='btn btn-primary' data-toggle='modal' data-target='#exampleModal'>
                                         Archived</button>" ."</td>";
-                                    echo "<td hidden>" . $row['recordID']."</td>";
-                                    echo "<td hidden>" . $row['inspector']."</td>";
-                                    echo "<td hidden>" . $row['dateInspected']."</td>";
-                                    echo "<td hidden>" . $row['documentDate']."</td>";
-                                    echo "<td hidden>" . $row['subject']."</td>";
-                                    echo "<td hidden>" . $row['classification']."</td>";
-                                    echo "<td hidden>" . $row['scanFile']."</td>";
-                                    echo "<td hidden>" . $row['releaseDate']."</td>";
-                                    echo "<td hidden>" . $row['receiver']."</td>";
-                                    echo "<td hidden>" . $row['action']."</td>";
-                                    echo "<td hidden>" . $row['actionDesired']."</td>";
-                                    echo "<td hidden>" . $row['note']."</td>";
-                                    echo "<td hidden>" . $row['oicrd']."</td>";
 
                                     echo "</tr>";
                                 }
