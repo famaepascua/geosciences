@@ -892,7 +892,7 @@ if ($_SESSION['currentUserType'] == "user") {
 <script src="vendor/datatables/js/jquery.dataTables.min.js"></script>
 <script src="vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
 <script src="vendor/datatables-responsive/dataTables.responsive.js"></script>
-
+    <script src="js/bootstrap-notify.js"></script>
 <!-- Custom Theme JavaScript -->
 <script src="dist/js/sb-admin-2.js"></script>
 
@@ -994,5 +994,55 @@ if ($_SESSION['currentUserType'] == "user") {
         });
     });
 </script>
+
+<script>
+    $(document).ready(function () {
+        if(location.hash === '#success'){
+            $.notify({
+                icon: 'glyphicon glyphicon-star',
+                message: "Scanned files Successfully Saved!"
+            },{
+                type: 'success',
+                animate: {
+                    enter: 'animated fadeInUp',
+                    exit: 'animated fadeOutRight'
+                },
+                placement: {
+                    from: "top",
+                    align: "center"
+                },
+                offset: 10,
+                spacing: 10,
+                z_index: 1031,
+            });
+            window.location.replace(location.href.split('#')[0]+'#');
+        }
+
+        if(location.hash === '#failed'){
+            $.notify({
+                icon: 'glyphicon glyphicon-star',
+                message: "Failed to add data!,Contact Administrator"
+            },{
+                type: 'danger',
+                animate: {
+                    enter: 'animated fadeInUp',
+                    exit: 'animated fadeOutRight'
+                },
+                placement: {
+                    from: "top",
+                    align: "center"
+                },
+                offset: 10,
+                spacing: 10,
+                z_index: 1031,
+            });
+            window.location.replace(location.href.split('#')[0]+'#');
+        }
+
+    })
+
+
+</script>
+
 
 </html>

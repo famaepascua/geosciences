@@ -25,5 +25,5 @@ if(!$db->query($sql)){
 	var_dump($db->error);
 } 
 
-    header('Location: ../unclaim.php');
+    header('Location: ../unclaim.php#success');
 
