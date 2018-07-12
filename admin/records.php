@@ -243,8 +243,8 @@ if ($_SESSION['currentUserType'] == "user") {
                     <div class="panel-footer">
                         <div class="row">
                             <div class="col-lg-12" align="center">
-                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addRecord">Add Record</button>
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#generateReport">Generate Report</button>
+                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addRecord">Add Record</button>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#generateReport">Generate Report</button>
                             </div>
                         </div>
                     </div>
@@ -616,203 +616,203 @@ if ($_SESSION['currentUserType'] == "user") {
 </div>
 
 <!-- GENERATE REPORT MODAL -->
-            <form method="POST" action="php/generateReport.php" enctype="multipart/form-data">
-                <div class="modal fade" id="generateReport" role="dialog">
-                    <!-- MODAL CONTENT-->
-                    <div class="modal-dialog">
-                        <div class="modal-content modal-lg">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title">Generate Report</h4>
-                            </div>
-                            <!-- MODAL BODY -->
-                            <div class="modal-body">
-                                <div class="row">
-                                    <div class="col-lg-5">
-                                        <div class="form-group">
-                                            <select class="form-control">
-                                                <option>Barangay</option>
-                                                <option>Classification</option>
-                                                <option>Code</option>
-                                                <option>Date Inspected</option>
-                                                <option>Date Received</option>
-                                                <option>Date Released</option>
-                                                <option>Document Date</option>
-                                                <option>Folder No.</option>
-                                                <option>Municipality</option>
-                                                <option>Province</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-5">
-                                        <div class="form-group">
-                                            <input name="search" class="form-control" placeholder="Search Here">
-                                        </div>
-                                    </div>
-                                    <button id="searchrecord" type="button" class="btn btn-success">Go</button>
-                                </div>
-                <div class="row">             
-                    <div class="col-lg-12">
-                    <div class="panel panel-green">
-                        <div class="panel-heading">
-                        </div>
-            
-                        <div class="panel-body">
-                            <div class="table-responsive table-bordered">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th>Code</th>
-                                            <th>Folder</th>
-                                            <th>Applicant</th>
-                                            <th>Sender</th>
-                                            <th>Location</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                
-                                    </tbody>
-                                </table>
-                            
-                                </div>                         
-                            </div>
-                            <div class="panel-footer">
-                                    <div class="row">
-                                    <div class="col-lg-12" align="center">
-                                    <button type="button" class="btn btn-primary">Generate Report</button>
-                                    </div>
-                                    </div>
-                            </div>
-                            </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            <!-- MODAL BODY END-->
-                
-                        </div>
-                        <!-- MODAL CONTENT END -->
-                    </div>
-                <!-- MODAL END -->
-            </form>
-            <!-- GENERATE REPORT MODAL END -->
-
-<!--VIEW RECORDS MODAL -->
-    <div class="modal fade" id="recordinfo" role="dialog">
+<form method="POST" action="php/generateReport.php" enctype="multipart/form-data">
+    <div class="modal fade" id="generateReport" role="dialog">
         <!-- MODAL CONTENT-->
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content ">
+        <div class="modal-dialog">
+            <div class="modal-content modal-lg">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title" align="center">Document Information</h4>
+                    <h4 class="modal-title">Generate Report</h4>
                 </div>
                 <!-- MODAL BODY -->
                 <div class="modal-body">
-                    <div class="panel panel-green">
-                        <!-- ACTION SLIP PANEL HEADING -->
-                        <div class="panel-heading" align="center">
-                            ACTION SLIP
-                        </div>
-                        <!-- ACTION SLIP PANEL HEADING END -->
-                        <div class="panel-body">
-                            <div class="col-lg-6">
-                                <div>
-                                    <label>Action:</label> <span id="action"></span>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div>
-                                    <label>Action Desired:</label> <span id="actiondesired"></span>
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div>
-                                    <label>OICRD:</label> <span id="oicrd"></span>
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div>
-                                    <label>Note:</label> <span id="note"></span>
-                                </div>
+                    <div class="row">
+                        <div class="col-lg-5">
+                            <div class="form-group">
+                                <select class="form-control">
+                                    <option>Barangay</option>
+                                    <option>Classification</option>
+                                    <option>Code</option>
+                                    <option>Date Inspected</option>
+                                    <option>Date Received</option>
+                                    <option>Date Released</option>
+                                    <option>Document Date</option>
+                                    <option>Folder No.</option>
+                                    <option>Municipality</option>
+                                    <option>Province</option>
+                                </select>
                             </div>
                         </div>
+                        <div class="col-lg-5">
+                            <div class="form-group">
+                                <input name="search" class="form-control" placeholder="Search Here">
+                            </div>
+                        </div>
+                        <button id="searchrecord" type="button" class="btn btn-success">Go</button>
                     </div>
-                    <div class="panel panel-green">
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div>
-                                        <label>Code:</label> <span id="code"></span>
-                                    </div>
+                    <div class="row">             
+                        <div class="col-lg-12">
+                            <div class="panel panel-green">
+                                <div class="panel-heading">
                                 </div>
-                                <div class="col-lg-12">
-                                    <div>
-                                        <label>Folder No:</label> <span id="fNo"></span>
-                                    </div>
+
+                                <div class="panel-body">
+                                    <div class="table-responsive table-bordered">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Code</th>
+                                                    <th>Folder</th>
+                                                    <th>Applicant</th>
+                                                    <th>Sender</th>
+                                                    <th>Location</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                            </tbody>
+                                        </table>
+
+                                    </div>                         
                                 </div>
-                                <div class="col-lg-12">
-                                    <div>
-                                        <label>Date Received:</label> <span id="dateReceived"></span>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div>
-                                        <label>Applicant:</label> <span id="applicant"></span>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div>
-                                        <label>Sender:</label> <span id="sender"></span>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div>
-                                        <label>Location/s:</label> <span id="loc"></span>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div>
-                                        <label>Purpose:</label> <span id="purpose"></span>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div>
-                                        <label>Date Inspected:</label> <span id="dateInspected"></span>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div>
-                                        <label>Document Date:</label> <span id="documentDate"></span>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div>
-                                        <label>Inspector:</label> <span id="inspector"></span>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div>
-                                        <label>Classification:</label> <span id="classification"></span>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div>
-                                        <label>Subject:</label> <span id="subject"></span>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div>
-                                        <label>Date Released:</label> <span id="dateReleased"></span>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div>
-                                        <label>Receive By:</label> <span id="receiver"></span>
+                                <div class="panel-footer">
+                                    <div class="row">
+                                        <div class="col-lg-12" align="center">
+                                            <button type="button" class="btn btn-primary">Generate Report</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+            <!-- MODAL BODY END-->
+
+        </div>
+        <!-- MODAL CONTENT END -->
+    </div>
+    <!-- MODAL END -->
+</form>
+<!-- GENERATE REPORT MODAL END -->
+
+<!--VIEW RECORDS MODAL -->
+<div class="modal fade" id="recordinfo" role="dialog">
+    <!-- MODAL CONTENT-->
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content ">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title" align="center">Document Information</h4>
+            </div>
+            <!-- MODAL BODY -->
+            <div class="modal-body">
+                <div class="panel panel-green">
+                    <!-- ACTION SLIP PANEL HEADING -->
+                    <div class="panel-heading" align="center">
+                        ACTION SLIP
+                    </div>
+                    <!-- ACTION SLIP PANEL HEADING END -->
+                    <div class="panel-body">
+                        <div class="col-lg-6">
+                            <div>
+                                <label>Action:</label> <span id="action"></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div>
+                                <label>Action Desired:</label> <span id="actiondesired"></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div>
+                                <label>OICRD:</label> <span id="oicrd"></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div>
+                                <label>Note:</label> <span id="note"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-green">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div>
+                                    <label>Code:</label> <span id="code"></span>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div>
+                                    <label>Folder No:</label> <span id="fNo"></span>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div>
+                                    <label>Date Received:</label> <span id="dateReceived"></span>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div>
+                                    <label>Applicant:</label> <span id="applicant"></span>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div>
+                                    <label>Sender:</label> <span id="sender"></span>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div>
+                                    <label>Location/s:</label> <span id="loc"></span>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div>
+                                    <label>Purpose:</label> <span id="purpose"></span>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div>
+                                    <label>Date Inspected:</label> <span id="dateInspected"></span>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div>
+                                    <label>Document Date:</label> <span id="documentDate"></span>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div>
+                                    <label>Inspector:</label> <span id="inspector"></span>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div>
+                                    <label>Classification:</label> <span id="classification"></span>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div>
+                                    <label>Subject:</label> <span id="subject"></span>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div>
+                                    <label>Date Released:</label> <span id="dateReleased"></span>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div>
+                                    <label>Receive By:</label> <span id="receiver"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <form action="php/uploadScannedFile.php" method="POST" enctype="multipart/form-data">
                     <div class="panel panel-green">
                         <div class="panel-body">
@@ -827,52 +827,55 @@ if ($_SESSION['currentUserType'] == "user") {
                                 <button name="recordID" id="recordID" class="btn btn-outline btn-success">Save</button>
                             </div>
                         </div>
-                         <div hidden id="scannedFile" class="row">
-                             <div class="col-lg-12" align="center">
-                                 <a id="viewfile" href="" class="text-success">View Scanned File</a>
-                             </div>
-                        </div>
-                    </div>
-                </div>
-            </form>
+                        <div hidden id="scannedFile" class="row">
+                         <div class="col-lg-12" align="center">
+                             <a id="viewfile" href="" class="text-success">View Scanned File</a>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </form>
 
-            </div>
-            <!-- MODAL BODY END-->
-            <!-- MODAL FOOTER -->
-            <div class="modal-footer">
-                <button name="printRecord" id="printRecord" class="btn btn-success">Print</button>
-                <button name="editRecord" id="editRecord" class="btn btn-primary">Edit</button>
-                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
-                    Archive
-                </button>
-            </div>
-            <!-- MODAL FOOTER END -->
-        </div>
-        <!-- MODAL CONTENT END -->
+     </div>
+     <!-- MODAL BODY END-->
+     <!-- MODAL FOOTER -->
+     <div class="modal-footer">
+        <button name="printRecord" id="printRecord" class="btn btn-success">Print</button>
+        <button name="editRecord" id="editRecord" class="btn btn-primary">Edit</button>
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+            Archive
+        </button>
+
     </div>
+    <!-- MODAL FOOTER END -->
+</div>
+<!-- MODAL CONTENT END -->
+</div>
 </div>
 <!-- VIEW RECORDS MODAL END -->
-    <!-- Modal -->
+<!-- Modal -->
+<form action="php/archive.php" method="POST">
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
 
-                    Anya ngay
+                    Are you sure you want to archive this record?
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button id="btnArch" name="recordID" type="submit" class="btn btn-success">Yes</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
                 </div>
             </div>
         </div>
     </div>
+</form>
 
 <!--EDIT RECORDS MODAL -->
 <!--*same as add record*-->
@@ -915,6 +918,9 @@ if ($_SESSION['currentUserType'] == "user") {
 </body>
 <script>
     $(document).ready(function () {
+        $('#exampleModal').on('show.bs.modal',function(){
+            $('#btnArch').val($('#recordID').val());
+        });
         var table = $('#dataTables-example').DataTable({
             responsive: true
         });
