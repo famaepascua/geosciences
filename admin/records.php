@@ -842,7 +842,9 @@ if ($_SESSION['currentUserType'] == "user") {
             <div class="modal-footer">
                 <button name="printRecord" id="printRecord" class="btn btn-success">Print</button>
                 <button name="editRecord" id="editRecord" class="btn btn-primary">Edit</button>
-                <button name="archiveRecord" id="archiveRecord" type="button" class="btn btn-danger" data-dismiss="modal">Archive</button>
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+                    Archive
+                </button>
             </div>
             <!-- MODAL FOOTER END -->
         </div>
@@ -850,6 +852,27 @@ if ($_SESSION['currentUserType'] == "user") {
     </div>
 </div>
 <!-- VIEW RECORDS MODAL END -->
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    Anya ngay
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 <!--EDIT RECORDS MODAL -->
 <!--*same as add record*-->
