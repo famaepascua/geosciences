@@ -145,26 +145,51 @@ if ($_SESSION['currentUserType'] != "user") {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php
+                                <?php
                                 require '../admin/config.php';
 
-                                $sql = "SELECT *,b.folderNumber AS bf,b.name as bn FROM actionslip JOIN receive r on actionslip.actionslipID = r.actionslipID JOIN location l on r.locationID = l.locationID JOIN barangay b on l.barangayID = b.barangayID";
+                                $sql = "SELECT GROUP_CONCAT(CONCAT(barangay.name,',',municipality,',',province)SEPARATOR '<br>') as locations,receive.*,records.*,folderNumber,unclaim.*,actionslip.* FROM receive INNER JOIN receivelocations on receive.receiveID = receivelocations.receiveID INNER JOIN location on receivelocations.locationID = location.locationID INNER JOIN barangay ON barangay.barangayID = location.barangayID inner JOIN records on records.receiveID = receive.receiveID
+                                inner join actionslip on actionslip.actionslipID = receive.actionslipID
+                                left join unclaim on unclaim.unclaimID = records.unclaimID
+                                GROUP BY records.recordID";
                                 $res = $db->query($sql);
                                 while ($row = $res->fetch_assoc()){
-                                    echo "<tr data-href='#'>";
+                                    echo "<tr style=cursor:pointer>";
                                     echo "<td>" . $row['code'] . "</td>";
-                                    echo "<td>" . $row['bf'] . "</td>";
+                                    echo "<td>" . $row['folderNumber'] . "</td>";
                                     echo "<td>" . $row['dateReceived'] . "</td>";
                                     echo "<td>" . $row['applicant'] . "</td>";
                                     echo "<td>" . $row['sender'] . "</td>";
-                                    echo "<td>" . $row['bn']. "," . $row['municipality'] . "," . $row['province'] . "</td>";
+                                    echo "<td>" . $row['locations']. "</td>";
                                     echo "<td>" . $row['purpose']."</td>";
+                                    if($row['status'] == 'inspection' ){
+                                        $status = 'For Inspection';
+                                    }else if($row['status'] == 'unclaim'){
+                                        $status = 'Unclaimed';
+                                    }else{
+                                        $status = 'Released';
+                                    }
                                     echo "<td>" . "<button type='button' class='btn btn-primary' data-toggle='modal' data-target='#exampleModal'>
                                         Archived</button>" ."</td>";
+                                    echo "<td hidden>" . $row['recordID']."</td>";
+                                    echo "<td hidden>" . $row['inspector']."</td>";
+                                    echo "<td hidden>" . $row['dateInspected']."</td>";
+                                    echo "<td hidden>" . $row['documentDate']."</td>";
+                                    echo "<td hidden>" . $row['subject']."</td>";
+                                    echo "<td hidden>" . $row['classification']."</td>";
+                                    echo "<td hidden>" . $row['scanFile']."</td>";
+                                    echo "<td hidden>" . $row['releaseDate']."</td>";
+                                    echo "<td hidden>" . $row['receiver']."</td>";
+                                    echo "<td hidden>" . $row['action']."</td>";
+                                    echo "<td hidden>" . $row['actionDesired']."</td>";
+                                    echo "<td hidden>" . $row['note']."</td>";
+                                    echo "<td hidden>" . $row['oicrd']."</td>";
+
                                     echo "</tr>";
                                 }
 
                                 ?>
+
                                 </tbody>
                                 </tbody>
                             </table>
