@@ -143,20 +143,20 @@ if ($_SESSION['currentUserType'] == "user") {
             </div>
         </div>
         <!-- PAGE HEADER END -->
+        <!-- FORM -->
+        <form action="php/addIncoming.php" method="post">
+            <!-- BODY -->
+            <div class="row">
+                <!-- PANEL -->
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
 
-        <!-- BODY -->
-        <div class="row">
-            <!-- PANEL -->
-            <div class="col-lg-12">
-                <div class="panel panel-default">
+                        <!-- PANEL HEADER START -->
+                        <div class="panel-heading">
+                        </div>
+                        <!-- PANEL HEADER END -->
 
-                    <!-- PANEL HEADER START -->
-                    <div class="panel-heading">
-                    </div>
-                    <!-- PANEL HEADER END -->
 
-                    <!-- FORM -->
-                    <form action="php/addIncoming.php" method="post">
                         <!-- PANEL BODY -->
                         <div class="panel-body">
                             <!--ROW START -->
@@ -350,8 +350,8 @@ if ($_SESSION['currentUserType'] == "user") {
 
                                         $sql = "SELECT * FROM barangay ORDER BY name ASC";
                                         $res = $db->query($sql);
-                                        echo "<select id='barangay' data-num='0' class='form-control' name='barangay' required>";
-                                        echo "<option selected disabled>Select Barangay</option>";
+                                        echo "<select id='barangay' data-num='0' class='form-control' name='barangay[0]' required>";
+                                        echo "<option val='nosel' selected disabled>Select Barangay</option>";
                                         while ($row = $res->fetch_assoc()) {
                                             echo "<option value = '" . $row['barangayID'] . "'>" . $row['name'] . "</option>";
                                         }
@@ -362,11 +362,11 @@ if ($_SESSION['currentUserType'] == "user") {
                                     </div>
                                     <div class="col-lg-4">
                                         <label>For Other Barangay/Municipality</label>
-                                        <input disabled name="brgyname" class="form-control" placeholder="Enter Name" required>
+                                        <input id="brgyname0" disabled name="brgyname[0]" class="form-control" placeholder="Enter Name" required>
                                     </div>
                                     <div class="col-lg-8">
-                                        <input name="municipality" id="m0" class="form-control" placeholder="Municipality" required>
-                                        <input name="province" id="p0" class="form-control" placeholder="Province" required>
+                                        <input name="municipality[0]" id="m0" class="form-control" placeholder="Municipality" required>
+                                        <input name="province[0]" id="p0" class="form-control" placeholder="Province" required>
                                         <button type="button" class="btn btn-success" data-toggle="modal"
                                         data-target="#addLocation">Add Location
                                     </button>
@@ -396,55 +396,56 @@ if ($_SESSION['currentUserType'] == "user") {
                         </div>
                     </div>
                     <!-- PANEL FOOTER END -->
-                </form>
-                <!-- FORM END -->
 
 
-            </div>
-        </div>
-        <!-- PANEL END-->
-        <!-- MODAL -->
-        <div class="modal fade" id="addLocation" role="dialog">
-            <!-- MODAL CONTENT-->
-            <div class="modal-dialog">
-                <div class="modal-content ">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Add More Location</h4>
-                    </div>
-                    <!-- MODAL BODY -->
-                    <div class="modal-body">
-                        <div class="row">
 
-                            <div class="col-lg-5">
-                                <div class="form-group">
-                                    <input id="numofinput" class="form-control" placeholder="No. of Location to Add">
-                                </div>
-                            </div>
-                            <button id="addlocation" type="button" class="btn btn-success">Go</button>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div id="location" class="form-group">
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <!-- MODAL BODY END-->
-                    <!-- MODAL FOOTER -->
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-success">Add Location</button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                    </div>
-                    <!-- MODAL FOOTER END -->
                 </div>
-                <!-- MODAL CONTENT END -->
             </div>
+            <!-- PANEL END-->
+            <!-- MODAL -->
+            <div class="modal fade" id="addLocation" role="dialog">
+                <!-- MODAL CONTENT-->
+                <div class="modal-dialog">
+                    <div class="modal-content ">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Add More Location</h4>
+                        </div>
+                        <!-- MODAL BODY -->
+                        <div class="modal-body">
+                            <div class="row">
+
+                                <div class="col-lg-5">
+                                    <div class="form-group">
+                                        <input id="numofinput" class="form-control" placeholder="No. of Location to Add">
+                                    </div>
+                                </div>
+                                <button id="addlocation" type="button" class="btn btn-success">Go</button>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div id="location" class="form-group">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- MODAL BODY END-->
+                        <!-- MODAL FOOTER -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success" data-dismiss="modal">Add Location</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div>
+                        <!-- MODAL FOOTER END -->
+                    </div>
+                    <!-- MODAL CONTENT END -->
+                </div>
+            </div>
+            <!-- MODAL END -->
         </div>
-        <!-- MODAL END -->
-    </div>
-    <!-- BODY END -->
+        <!-- BODY END -->
+    </form>
+    <!-- FORM END -->
 </div>
 <!-- MAIN PAGE END -->
 </div>
@@ -473,62 +474,62 @@ if ($_SESSION['currentUserType'] == "user") {
     $(document).ready(function () {
         var counter =0;
 
-       $('#addlocation').click(function(){
-        $('#folderNo').removeAttr('disabled')
-        var numberOfInputs = $('#numofinput').val();
+        $('#addlocation').click(function(){
+            $('#folderNo').removeAttr('disabled')
+            var numberOfInputs = $('#numofinput').val();
 
-        var label = '<label>Location</label>';
-        for(i=1; i <= numberOfInputs; i++){
-            counter++;
-            var barangay = $('#barangay').clone().attr('data-num',counter);
-            $('#location').append(label);
-            barangay.appendTo('#location');
-            $('#location').append('<input id=m'+counter+' class="form-control" placeholder="Municipality">'+
-        '<input id=p'+counter+' class="form-control" placeholder="Province">');
-        }
-    locationChange();
+            var label = '<label>Location</label>';
+            for(i=1; i <= numberOfInputs; i++){
+                counter++;
+                $('#location').append(label);
+                var barangay = $('#barangay').clone().attr('data-num',counter).attr('name','barangay['+counter+']').appendTo('#location');
+                var other = $('#brgyname0').clone().val('').attr('id','brgyname'+counter).attr('name','brgyname['+counter+']').appendTo('#location');
+                var municipality = $('#m0').clone().val('').attr('id','m'+counter).attr('name','municipality['+counter+']').appendTo('#location');
+                var province = $('#p0').clone().val('').attr('id','p'+counter).attr('name','province['+counter+']').appendTo('#location');
+            }
+            locationChange();
 
-    })
-   
-   });
+        })
+
+    });
     locationChange();
     function locationChange(){
-            $('select[name=barangay]').change(function () {
-        $id = $(this).val();
-        $num = $(this).data('num');
-        $.ajax({
-            url: 'folderNo.php',
-            data: {barangay: $id},
-            dataType: 'JSON',
-            success: function (data) {
-                $('#folderNo').val(data[0]);
-            }
-        });
-        $.ajax({
-            url: 'getLocation.php',
-            data: {barangay: $id},
-            dataType: 'JSON',
-            success: function (data) {
-                if(data != false){
-                    var municipality = data[0];
-                    var province = data[1];
-                    $('#m'+$num).val(municipality);
-                    $('#p'+$num).val(province);
-                }else{
-                    $('#m'+$num).val('');
-                    $('#p'+$num).val('');
+        $('select[name^=barangay]').change(function () {
+            $id = $(this).val();
+            $num = $(this).data('num');
+            $.ajax({
+                url: 'folderNo.php',
+                data: {barangay: $id},
+                dataType: 'JSON',
+                success: function (data) {
+                    $('#folderNo').val(data[0]);
                 }
+            });
+            $.ajax({
+                url: 'getLocation.php',
+                data: {barangay: $id},
+                dataType: 'JSON',
+                success: function (data) {
+                    if(data != false){
+                        var municipality = data[0];
+                        var province = data[1];
+                        $('#m'+$num).val(municipality);
+                        $('#p'+$num).val(province);
+                    }else{
+                        $('#m'+$num).val('');
+                        $('#p'+$num).val('');
+                    }
+                }
+            });
+
+            if($id == '54' || $id == '56'){
+                $('#brgyname'+$num).removeAttr('disabled');
+                $('#folderNo').removeAttr('disabled');
+            }else{
+                $('#brgyname'+$num).attr('disabled', 'disabled');
+                $('#folderNo').attr('disabled', 'disabled');
             }
         });
-
-        if($id == '54' || $id == '56'){
-            $('input[name=brgyname]').removeAttr('disabled');
-            $('#folderNo').removeAttr('disabled');
-        }else{
-            $('input[name=brgyname]').attr('disabled', 'disabled');
-            $('#folderNo').attr('disabled', 'disabled');
-        }
-    });
     }
 </script>
 
