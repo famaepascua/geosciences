@@ -13,4 +13,4 @@
 		die;
 	} 	
 
-    header('Location: ../records.php');
+    header('Location: ../records.php#success');
