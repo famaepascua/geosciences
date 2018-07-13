@@ -226,9 +226,9 @@ if ($_SESSION['currentUserType'] == "user") {
                     <h4 class="modal-title" align="center">Document Information</h4>
                 </div>
                 <!-- MODAL BODY -->
-                <div class="panel panel-green">
-                    <div class="panel-body">
-                        <div class="modal-body">
+                <div class="modal-body">
+                    <div class="panel panel-green">
+                        <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-4">
                                     <div>
@@ -293,11 +293,13 @@ if ($_SESSION['currentUserType'] == "user") {
                             </div>
                         </div>
                     </div>
+                    
+                    
                     <div class="panel panel-green">
-                        <div id="releaseForm" class="row">
                             <div class="panel-heading" align="center">
                                 <h4 class="modal-title" align="center">Release Form</h4>
                             </div>
+                        <div id="releaseForm" class="row">
                             <div class="panel-body">
                                 <div class="col-lg-6">
                                     <div class="form-group">
@@ -315,17 +317,16 @@ if ($_SESSION['currentUserType'] == "user") {
                             </div>
                         </div>
                     </div>
-                    <!-- MODAL BODY END-->
-                    <!-- MODAL FOOTER -->
-                    <div class="modal-footer">
+                </div>
+                <div class="modal-footer">
                         <button name="recordID" id="recordID" type="submit" class="btn btn-success">Release</button>
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                    </div>
-                    <!-- MODAL FOOTER END -->
                 </div>
-                <!-- MODAL CONTENT END -->
+                    <!-- MODAL FOOTER END -->
             </div>
+                <!-- MODAL CONTENT END -->
         </div>
+    </div>
     </form>
 
     <!-- jQuery -->

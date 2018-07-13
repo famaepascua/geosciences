@@ -209,9 +209,10 @@ if ($_SESSION['currentUserType'] == "user") {
                                     </div>
                                     <!-- MODAL BODY -->
                                     <div class="modal-body">
-                                        <div class="row">
+                                        
                                             <div class="panel panel-green">
                                             <div class="panel-body">
+                                            <div class="row">
                                             <div class="col-lg-12">
                                                 <div>
                                                     <label>Code:</label> <span id="code"></span>
@@ -250,12 +251,14 @@ if ($_SESSION['currentUserType'] == "user") {
                                         </div>
                                         </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="panel panel-green">
+                                        
+                                        <div class="panel panel-green">
                                             <div class="panel-heading" align="center">
                                             <h4 class="modal-title" align="center">Unclaim Form</h4>
                                             </div>
-                                            <div class="panel-body">
+
+                                        <div class="panel-body">
+                                            <div class="row">
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label>Date Inspected</label>
@@ -301,6 +304,7 @@ if ($_SESSION['currentUserType'] == "user") {
                                             </div>
                                         </div>
                                         </div>
+                                    
                                     </div>
                                     <!-- MODAL BODY END-->
                                     <!-- MODAL FOOTER -->
