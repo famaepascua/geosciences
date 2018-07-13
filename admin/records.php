@@ -242,9 +242,10 @@ if ($_SESSION['currentUserType'] == "user") {
                     <!-- PANEL FOOTER -->
                     <div class="panel-footer">
                         <div class="row">
-                            <div class="col-lg-10">
-                            </div>
+                            <div class="col-lg-12" align="center">
                             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addRecord">Add Record</button>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#generateReport">Generate Report</button>
+                            </div>
                         </div>
                     </div>
                     <!-- PANEL FOOTER END -->
@@ -563,16 +564,13 @@ if ($_SESSION['currentUserType'] == "user") {
                             <!-- MODAL FOOTER END -->
                         </div>
                         <!-- MODAL CONTENT END -->
-
                     </div>
-
-
                 </div>
-                <!-- MODAL -->
+                <!-- ADD LOCATION MODAL -->
                 <div class="modal fade" id="addLocation" role="dialog">
                     <!-- MODAL CONTENT-->
                     <div class="modal-dialog">
-                        <div class="modal-content ">
+                        <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                                 <h4 class="modal-title">Add More Location</h4>
@@ -607,7 +605,7 @@ if ($_SESSION['currentUserType'] == "user") {
                         <!-- MODAL CONTENT END -->
                     </div>
                 </div>
-                <!-- MODAL END -->
+                <!-- ADD LOCATION MODAL END -->
             </form>
             <!-- MODAL END -->
         </div>
@@ -616,6 +614,88 @@ if ($_SESSION['currentUserType'] == "user") {
 </div>
 <!-- MAIN PAGE END -->
 </div>
+
+<!-- GENERATE REPORT MODAL -->
+            <form method="POST" action="php/generateReport.php" enctype="multipart/form-data">
+                <div class="modal fade" id="generateReport" role="dialog">
+                    <!-- MODAL CONTENT-->
+                    <div class="modal-dialog">
+                        <div class="modal-content modal-lg">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Generate Report</h4>
+                            </div>
+                            <!-- MODAL BODY -->
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-lg-5">
+                                        <div class="form-group">
+                                            <select class="form-control">
+                                                <option>Barangay</option>
+                                                <option>Classification</option>
+                                                <option>Code</option>
+                                                <option>Date Inspected</option>
+                                                <option>Date Received</option>
+                                                <option>Date Released</option>
+                                                <option>Document Date</option>
+                                                <option>Folder No.</option>
+                                                <option>Municipality</option>
+                                                <option>Province</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-5">
+                                        <div class="form-group">
+                                            <input name="search" class="form-control" placeholder="Search Here">
+                                        </div>
+                                    </div>
+                                    <button id="searchrecord" type="button" class="btn btn-success">Go</button>
+                                </div>
+                <div class="row">             
+                    <div class="col-lg-12">
+                    <div class="panel panel-green">
+                        <div class="panel-heading">
+                        </div>
+            
+                        <div class="panel-body">
+                            <div class="table-responsive table-bordered">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Code</th>
+                                            <th>Folder</th>
+                                            <th>Applicant</th>
+                                            <th>Sender</th>
+                                            <th>Location</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                
+                                    </tbody>
+                                </table>
+                            
+                                </div>                         
+                            </div>
+                            <div class="panel-footer">
+                                    <div class="row">
+                                    <div class="col-lg-12" align="center">
+                                    <button type="button" class="btn btn-primary">Generate Report</button>
+                                    </div>
+                                    </div>
+                            </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <!-- MODAL BODY END-->
+                
+                        </div>
+                        <!-- MODAL CONTENT END -->
+                    </div>
+                <!-- MODAL END -->
+            </form>
+            <!-- GENERATE REPORT MODAL END -->
 
 <!--VIEW RECORDS MODAL -->
     <div class="modal fade" id="recordinfo" role="dialog">
