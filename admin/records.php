@@ -899,7 +899,7 @@ if ($_SESSION['currentUserType'] == "user") {
                     <div class="panel panel-green">
                         <div class="panel-body">
                             <div id="uploadForm" class="row">
-                             <div class="col-lg-12" align="center">
+                               <div class="col-lg-12" align="center">
                                 <div class="form-group">
                                     <label>Upload File</label>
                                     <input type="file" name="scannedFile">
@@ -910,20 +910,21 @@ if ($_SESSION['currentUserType'] == "user") {
                             </div>
                         </div>
                         <div hidden id="scannedFile" class="row">
-                         <div class="col-lg-12" align="center">
-                             <a id="viewfile" href="" class="text-success">View Scanned File</a>
-                         </div>
-                     </div>
-                 </div>
-             </div>
-         </form>
+                           <div class="col-lg-12" align="center">
+                               <a id="viewfile" href="" class="text-success">View Scanned File</a>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </form>
 
-     </div>
-     <!-- MODAL BODY END-->
-     <!-- MODAL FOOTER -->
-     <div class="modal-footer">
+       </div>
+       <!-- MODAL BODY END-->
+       <!-- MODAL FOOTER -->
+       <div class="modal-footer">
         <button name="printRecord" id="printRecord" class="btn btn-success">Print</button>
         <button name="editRecord" id="editRecord" class="btn btn-primary">Edit</button>
+        <button name="saveRecord" id="saveRecord" class="hidden btn btn-success">Save</button>
         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
             Archive
         </button>
@@ -1009,40 +1010,82 @@ if ($_SESSION['currentUserType'] == "user") {
         var tableArch = $('#archivedTable').DataTable({
             responsive: true
         });
+        $('#saveRecord').click(function(){
+            $(this).addClass('hidden');
+            $('#editRecord').removeClass('hidden');
+            var text = $('.toSpanText');
+            var date = $('.toSpanDate');
+            var textarea = $('.toSpanTextArea');
+            text.each(function(){
+                var $span = $('<span>',{
+                    text: $(this).val(),
+                    class: 'text',
+                    id: $(this).attr('name')
+                })
+                $(this).replaceWith($span);
+            })
+            date.each(function(){
+                var $span = $('<span>',{
+                    text: $(this).val(),
+                    class: 'date',
+                    id: $(this).attr('name')
+                })
+                $(this).replaceWith($span);
+
+            })
+            textarea.each(function(){
+                var $span = $('<span>',{
+                    text: $(this).val(),
+                    class: 'textarea',
+                    id: $(this).attr('name')
+                })
+                $(this).replaceWith($span);
+
+            })
+        })
         $('#editRecord').click(function(){
-             var text = $('#recordinfo').find('span.text');
-             var date = $('#recordinfo').find('span.date');
-             var textarea = $('#recordinfo').find('span.textarea');
-             text.each(function(){
+            $(this).addClass('hidden');
+            $('#saveRecord').removeClass('hidden');
+            var text = $('#recordinfo').find('span.text');
+            var date = $('#recordinfo').find('span.date');
+            var textarea = $('#recordinfo').find('span.textarea');
+            var classif = $('.classif');
+            text.each(function(){
                 var $input = $('<input>',{
                     val: $(this).text(),
                     type: "text",
-                    class: 'form-control',
+                    class: 'form-control toSpanText',
                     name: $(this).attr('id')
                 })
                 $(this).replaceWith($input);
-             })
+            })
             date.each(function(){
                 var $input = $('<input>',{
                     val: $(this).text(),
                     type: "date",
-                    class: 'form-control',
+                    class: 'form-control toSpanDate',
                     name: $(this).attr('id')
                 })
                 $(this).replaceWith($input);
-             })
+            })
             textarea.each(function(){
                 var $input = $('<input>',{
                     val: $(this).text(),
                     type: "textarea",
-                    class: 'form-control',
+                    class: 'form-control toSpanTextArea',
                     name: $(this).attr('id')
                 })
                 $(this).replaceWith($input);
-             })
+            });
+            var $classification = $('select[name=classification]').clone();
+            console.log(classif);
+            classif.replaceWith($classification);
+
+
         })
+
         $('table tbody').on( 'click', 'tr', function () {
-           
+
 
             if($('.tab-pane.fade.in.active').attr('id')=='saved'){
                 var data = table.row( this ).data();
