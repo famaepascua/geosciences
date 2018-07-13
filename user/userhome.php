@@ -127,7 +127,7 @@ if ($_SESSION['currentUserType'] != "user") {
                     <div class="panel-heading"> 
                     </div>
                     <!-- PANEL HEADER END -->
-                    
+
                     <!-- PANEL BODY -->
                     <div class="panel-body">
                         <!-- TABLE -->
@@ -155,6 +155,7 @@ if ($_SESSION['currentUserType'] != "user") {
                                     <th hidden>Action Desired</th>
                                     <th hidden>note </th>
                                     <th hidden>OICRD </th>
+                                    <th hidden>Archive </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -201,6 +202,7 @@ if ($_SESSION['currentUserType'] != "user") {
                                     echo "<td hidden>" . $row['actionDesired']."</td>";
                                     echo "<td hidden>" . $row['note']."</td>";
                                     echo "<td hidden>" . $row['oicrd']."</td>";
+                                    echo "<td hidden>" . $row['archive']."</td>";
 
                                     echo "</tr>";
                                 }
@@ -218,14 +220,33 @@ if ($_SESSION['currentUserType'] != "user") {
                     <!-- PANEL FOOTER END -->
                 </div>
                 <!--PANEL END -->
-                
+
             </div>
         </div>
         <!-- BODY END -->
+
     </div>
     <!-- MAIN PAGE END -->
 </div>
+  <div class="modal fade" id="contact" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
 
+                    The record has been archived. Please contact the Adminstrator.
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 <!--VIEW RECORDS MODAL -->
 <div class="modal fade" id="recordinfo" role="dialog">
     <!-- MODAL CONTENT-->
@@ -362,7 +383,7 @@ if ($_SESSION['currentUserType'] != "user") {
             <!-- MODAL FOOTER END -->
         </div>
 
-        
+
         <!-- jQuery -->
         <script src="vendor/jquery/jquery.min.js"></script>
 
@@ -396,6 +417,7 @@ if ($_SESSION['currentUserType'] != "user") {
                 });
                 $('#dataTables-example tbody').on( 'click', 'tr', function () {
                     var data = table.row( this ).data();
+
                 // if(data[14]){
                 //     $('#releaseForm').removeAttr('hidden');
                 //     $('#uploadForm').attr('hidden','hidden');
@@ -422,7 +444,11 @@ if ($_SESSION['currentUserType'] != "user") {
                 $('#actiondesired').html(data[18]);
                 $('#note').html(data[19]);
                 $('#oicrd').html(data[20]);
-                $('#recordinfo').modal();
+                if(data[20] == '0'){
+                    $('#recordinfo').modal();
+                }else{
+                    $('#contact').modal();
+                }
 
                 if(data[14]){
                     $('#uploadForm').attr('hidden','hidden');
