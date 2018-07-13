@@ -250,7 +250,6 @@ if ($_SESSION['currentUserType'] == "user") {
                                             <th>Sender</th>
                                             <th>Location</th>
                                             <th>Purpose</th>
-                                            <th>Status</th>
                                             <th hidden>Record ID</th>
                                             <th hidden>Inspector</th>
                                             <th hidden>Date Inspected</th>
@@ -283,14 +282,6 @@ if ($_SESSION['currentUserType'] == "user") {
                                             echo "<td>" . $row['sender'] . "</td>";
                                             echo "<td>" . $row['locations']. "</td>";
                                             echo "<td>" . $row['purpose']."</td>";
-                                            if($row['status'] == 'inspection' ){
-                                                $status = 'For Inspection';
-                                            }else if($row['status'] == 'unclaim'){
-                                                $status = 'Unclaimed';
-                                            }else{
-                                                $status = 'Released';
-                                            }
-                                            echo "<td>" . $status ."</td>";
                                             echo "<td hidden>" . $row['recordID']."</td>";
                                             echo "<td hidden>" . $row['inspector']."</td>";
                                             echo "<td hidden>" . $row['dateInspected']."</td>";
