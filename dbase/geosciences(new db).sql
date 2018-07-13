@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 12, 2018 at 02:58 PM
+-- Generation Time: Jul 13, 2018 at 07:00 AM
 -- Server version: 5.7.21
 -- PHP Version: 5.6.35
 
@@ -38,7 +38,16 @@ CREATE TABLE IF NOT EXISTS `actionslip` (
   `oicrd` varchar(120) NOT NULL,
   `note` text,
   PRIMARY KEY (`actionslipID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `actionslip`
+--
+
+INSERT INTO `actionslip` (`actionslipID`, `action`, `actionDesired`, `oicrd`, `note`) VALUES
+(1, 'Information and\r\n                                                        guidance please.<br>Compliance/Implementation\r\n                                                        please.<br>', '', '', ''),
+(2, 'Information and\r\n                                                        guidance please.<br>Compliance/Implementation\r\n                                                        please.<br>', 'Please\r\n                                                        prepare reply.<br>Please\r\n                                                        submit report.<br>', 'oicrd', 'note'),
+(3, 'Review and inital\r\n                                                        please.<br>Discussion/Dissemination/Posting\r\n                                                        please.<br>', 'Please\r\n                                                        represent to me.<br>Please see\r\n                                                        me about this.<br>', '', '');
 
 -- --------------------------------------------------------
 
@@ -206,7 +215,18 @@ CREATE TABLE IF NOT EXISTS `logs` (
   `releaseID` int(10) DEFAULT NULL,
   `recordID` int(10) DEFAULT NULL,
   PRIMARY KEY (`logID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `logs`
+--
+
+INSERT INTO `logs` (`logID`, `logDate`, `logTime`, `activity`, `userID`, `receiveID`, `unclaimID`, `releaseID`, `recordID`) VALUES
+(1, '2018-07-13', '02:46:pm', 'Added new record', 1, 1, NULL, NULL, NULL),
+(2, '2018-07-13', '02:47:pm', 'Deleted a record', 1, 1, NULL, NULL, NULL),
+(3, '2018-07-13', '02:48:pm', 'Added new record', 1, 2, NULL, NULL, NULL),
+(4, '2018-07-13', '02:48:pm', 'Deleted a record', 1, 2, NULL, NULL, NULL),
+(5, '2018-07-13', '02:54:pm', 'Added new record', 1, 3, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -224,7 +244,14 @@ CREATE TABLE IF NOT EXISTS `receive` (
   `purpose` text,
   `actionslipID` int(10) DEFAULT NULL,
   PRIMARY KEY (`receiveID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `receive`
+--
+
+INSERT INTO `receive` (`receiveID`, `code`, `dateReceived`, `applicant`, `sender`, `purpose`, `actionslipID`) VALUES
+(3, '1', '2018-07-13', 'applicant', 'sender', 'purpose', 3);
 
 -- --------------------------------------------------------
 
@@ -238,7 +265,14 @@ CREATE TABLE IF NOT EXISTS `receivelocations` (
   `receiveID` int(11) NOT NULL,
   `locationID` int(11) NOT NULL,
   PRIMARY KEY (`recLocID`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `receivelocations`
+--
+
+INSERT INTO `receivelocations` (`recLocID`, `receiveID`, `locationID`) VALUES
+(3, 3, 21);
 
 -- --------------------------------------------------------
 
@@ -249,14 +283,22 @@ CREATE TABLE IF NOT EXISTS `receivelocations` (
 DROP TABLE IF EXISTS `records`;
 CREATE TABLE IF NOT EXISTS `records` (
   `recordID` int(10) NOT NULL AUTO_INCREMENT,
-  `status` enum('inspection','unclaim','release','archived') NOT NULL,
+  `status` enum('inspection','unclaim','release') NOT NULL,
   `scanFile` varchar(45) DEFAULT NULL,
   `receiveID` int(10) NOT NULL,
   `receiver` varchar(250) DEFAULT NULL,
   `unclaimID` int(10) DEFAULT NULL,
+  `archive` int(11) NOT NULL DEFAULT '0',
   `releaseDate` date DEFAULT NULL,
   PRIMARY KEY (`recordID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `records`
+--
+
+INSERT INTO `records` (`recordID`, `status`, `scanFile`, `receiveID`, `receiver`, `unclaimID`, `archive`, `releaseDate`) VALUES
+(3, 'inspection', NULL, 3, NULL, NULL, 1, NULL);
 
 -- --------------------------------------------------------
 

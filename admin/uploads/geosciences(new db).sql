@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 11, 2018 at 05:43 PM
+-- Generation Time: Jul 12, 2018 at 02:58 PM
 -- Server version: 5.7.21
 -- PHP Version: 5.6.35
 
@@ -58,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `barangay` (
 -- Dumping data for table `barangay`
 --
 
-INSERT INTO `barangay` VALUES
+INSERT INTO `barangay` (`barangayID`, `name`, `folderNumber`) VALUES
 (1, 'Asin Road', 1),
 (2, 'San Luis', 1),
 (3, 'Balacbac', 2),
@@ -135,7 +135,7 @@ CREATE TABLE IF NOT EXISTS `location` (
 -- Dumping data for table `location`
 --
 
-INSERT INTO `location` VALUES
+INSERT INTO `location` (`locationID`, `municipality`, `province`, `barangayID`) VALUES
 (1, 'Baguio City', 'Benguet', 1),
 (2, 'Baguio City', 'Benguet', 2),
 (3, 'Baguio City', 'Benguet', 3),
@@ -249,8 +249,8 @@ CREATE TABLE IF NOT EXISTS `receivelocations` (
 DROP TABLE IF EXISTS `records`;
 CREATE TABLE IF NOT EXISTS `records` (
   `recordID` int(10) NOT NULL AUTO_INCREMENT,
-  `status` enum('inspection','unclaim','release') NOT NULL,
-  `scanFile` varchar(45) NOT NULL,
+  `status` enum('inspection','unclaim','release','archived') NOT NULL,
+  `scanFile` varchar(45) DEFAULT NULL,
   `receiveID` int(10) NOT NULL,
   `receiver` varchar(250) DEFAULT NULL,
   `unclaimID` int(10) DEFAULT NULL,
@@ -296,7 +296,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` VALUES
+INSERT INTO `users` (`userID`, `username`, `password`, `firstName`, `lastName`, `userType`) VALUES
 (1, 'adminmark', 'admin01', 'Raymark', 'Cuenca', 'admin'),
 (2, 'famaepascua', 'user1', 'Fatima Mae', 'Pascua', 'user'),
 (3, 'gabinanaman', 'gab02', 'Gab', 'Uy', 'user'),

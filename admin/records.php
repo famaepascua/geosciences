@@ -195,9 +195,9 @@ if ($_SESSION['currentUserType'] == "user") {
                                         <?php
                                         require 'config.php';
 
-                                        $sql = "SELECT GROUP_CONCAT(CONCAT(barangay.name,',',municipality,',',province)SEPARATOR '<br>') as locations,receive.*,records.*,folderNumber,unclaim.*,actionslip.* FROM receive INNER JOIN receivelocations on receive.receiveID = receivelocations.receiveID INNER JOIN location on receivelocations.locationID = location.locationID INNER JOIN barangay ON barangay.barangayID = location.barangayID inner JOIN records on records.receiveID = receive.receiveID
+                                        $sql = "SELECT archive,GROUP_CONCAT(CONCAT(barangay.name,',',municipality,',',province)SEPARATOR '<br>') as locations,receive.*,records.*,folderNumber,unclaim.*,actionslip.* FROM receive INNER JOIN receivelocations on receive.receiveID = receivelocations.receiveID INNER JOIN location on receivelocations.locationID = location.locationID INNER JOIN barangay ON barangay.barangayID = location.barangayID inner JOIN records on records.receiveID = receive.receiveID
                                         inner join actionslip on actionslip.actionslipID = receive.actionslipID
-                                        left join unclaim on unclaim.unclaimID = records.unclaimID WHERE status != 'archived'
+                                        left join unclaim on unclaim.unclaimID = records.unclaimID WHERE archive = '0'
                                         GROUP BY records.recordID";
                                         $res = $db->query($sql);
                                         while ($row = $res->fetch_assoc()){
@@ -209,15 +209,13 @@ if ($_SESSION['currentUserType'] == "user") {
                                             echo "<td>" . $row['sender'] . "</td>";
                                             echo "<td>" . $row['locations']. "</td>";
                                             echo "<td>" . $row['purpose']."</td>";
-                                            if($row['status'] == 'inspection' ){
+                                            if($row['status'] == 'inspection'){
                                                 $status = 'For Inspection';
                                             }else if($row['status'] == 'unclaim'){
                                                 $status = 'Unclaimed';
-                                            }else if($row['status'] == 'release'){
-                                                $status = 'Released';
                                             }else{
-                                                $status = 'Archived';
-                                            }
+                                                $status = 'Released';
+                                            }   
                                             echo "<td>" . $status ."</td>";
                                             echo "<td hidden>" . $row['recordID']."</td>";
                                             echo "<td hidden>" . $row['inspector']."</td>";
@@ -273,7 +271,7 @@ if ($_SESSION['currentUserType'] == "user") {
 
                                         $sql = "SELECT GROUP_CONCAT(CONCAT(barangay.name,',',municipality,',',province)SEPARATOR '<br>') as locations,receive.*,records.*,folderNumber,unclaim.*,actionslip.* FROM receive INNER JOIN receivelocations on receive.receiveID = receivelocations.receiveID INNER JOIN location on receivelocations.locationID = location.locationID INNER JOIN barangay ON barangay.barangayID = location.barangayID inner JOIN records on records.receiveID = receive.receiveID
                                         inner join actionslip on actionslip.actionslipID = receive.actionslipID
-                                        left join unclaim on unclaim.unclaimID = records.unclaimID WHERE status = 'archived'
+                                        left join unclaim on unclaim.unclaimID = records.unclaimID WHERE archive = '1'
                                         GROUP BY records.recordID";
                                         $res = $db->query($sql);
                                         while ($row = $res->fetch_assoc()){
@@ -289,10 +287,8 @@ if ($_SESSION['currentUserType'] == "user") {
                                                 $status = 'For Inspection';
                                             }else if($row['status'] == 'unclaim'){
                                                 $status = 'Unclaimed';
-                                            }else if($row['status'] == 'release'){
-                                                $status = 'Released';
                                             }else{
-                                                $status = 'Archived';
+                                                $status = 'Released';
                                             }
                                             echo "<td>" . $status ."</td>";
                                             echo "<td hidden>" . $row['recordID']."</td>";
@@ -726,43 +722,56 @@ if ($_SESSION['currentUserType'] == "user") {
                                 </select>
                             </div>
                         </div>
-                        <div class="col-lg-5">
+                        <div hidden class="col-lg-5">
                             <div class="form-group">
                                 <input name="search" class="form-control" placeholder="Search Here">
                             </div>
                         </div>
-                        <button id="searchrecord" type="button" class="btn btn-success">Go</button>
+                        <div id="date">
+                         <div class="col-lg-3">
+                            <div class="form-group">
+                                <label>From: </label>
+                                <input type="date" name="from" class="form-control" placeholder="From">
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label>To: </label>
+                                <input type="date" name="to" class="form-control" placeholder="To">
+                            </div>
+                        </div>
                     </div>
-                    <div class="row">             
-                        <div class="col-lg-12">
-                            <div class="panel panel-green">
-                                <div class="panel-heading">
-                                </div>
+                    <button id="searchrecord" type="button" class="btn btn-success">Go</button>
+                </div>
+                <div class="row">             
+                    <div class="col-lg-12">
+                        <div class="panel panel-green">
+                            <div class="panel-heading">
+                            </div>
 
-                                <div class="panel-body">
-                                    <div class="table-responsive table-bordered">
-                                        <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th>Code</th>
-                                                    <th>Folder</th>
-                                                    <th>Applicant</th>
-                                                    <th>Sender</th>
-                                                    <th>Location</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
+                            <div class="panel-body">
+                                <div class="table-responsive table-bordered">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Code</th>
+                                                <th>Folder</th>
+                                                <th>Applicant</th>
+                                                <th>Sender</th>
+                                                <th>Location</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
 
-                                            </tbody>
-                                        </table>
+                                        </tbody>
+                                    </table>
 
-                                    </div>                         
-                                </div>
-                                <div class="panel-footer">
-                                    <div class="row">
-                                        <div class="col-lg-12" align="center">
-                                            <button type="button" class="btn btn-primary">Generate Report</button>
-                                        </div>
+                                </div>                         
+                            </div>
+                            <div class="panel-footer">
+                                <div class="row">
+                                    <div class="col-lg-12" align="center">
+                                        <button type="button" class="btn btn-primary">Generate Report</button>
                                     </div>
                                 </div>
                             </div>
@@ -770,12 +779,13 @@ if ($_SESSION['currentUserType'] == "user") {
                     </div>
                 </div>
             </div>
-            <!-- MODAL BODY END-->
-
         </div>
-        <!-- MODAL CONTENT END -->
+        <!-- MODAL BODY END-->
+
     </div>
-    <!-- MODAL END -->
+    <!-- MODAL CONTENT END -->
+</div>
+<!-- MODAL END -->
 </form>
 <!-- GENERATE REPORT MODAL END -->
 
@@ -790,7 +800,7 @@ if ($_SESSION['currentUserType'] == "user") {
             </div>
             <!-- MODAL BODY -->
             <div class="modal-body">
-                <div class="panel panel-green">
+                <div id="actionPanel" class="panel panel-green">
                     <!-- ACTION SLIP PANEL HEADING -->
                     <div class="panel-heading" align="center">
                         ACTION SLIP
@@ -895,8 +905,8 @@ if ($_SESSION['currentUserType'] == "user") {
                         </div>
                     </div>
                 </div>
-                <form action="php/uploadScannedFile.php" method="POST" enctype="multipart/form-data">
-                    <div class="panel panel-green">
+                <form id="" action="php/uploadScannedFile.php" method="POST" enctype="multipart/form-data">
+                    <div id="uploadPanel" class="panel panel-green">
                         <div class="panel-body">
                             <div id="uploadForm" class="row">
                                <div class="col-lg-12" align="center">
@@ -911,7 +921,7 @@ if ($_SESSION['currentUserType'] == "user") {
                         </div>
                         <div hidden id="scannedFile" class="row">
                            <div class="col-lg-12" align="center">
-                               <a id="viewfile" href="" class="text-success">View Scanned File</a>
+                               <a id="viewfile" href="" class="text-success">View Scanned File</a> | <a href="#" id="editFile">Edit File</a>
                            </div>
                        </div>
                    </div>
@@ -922,11 +932,16 @@ if ($_SESSION['currentUserType'] == "user") {
        <!-- MODAL BODY END-->
        <!-- MODAL FOOTER -->
        <div class="modal-footer">
-        <button name="printRecord" id="printRecord" class="btn btn-success">Print</button>
         <button name="editRecord" id="editRecord" class="btn btn-primary">Edit</button>
         <button name="saveRecord" id="saveRecord" class="hidden btn btn-success">Save</button>
-        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+        <button id="archbtn" type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
             Archive
+        </button>
+        <button id="rvrtbtn" type="button" class="hidden btn btn-success" data-toggle="modal" data-target="#exampleModal">
+            Revert
+        </button>
+        <button id="dltbtn" type="button" class="hidden btn btn-danger" data-toggle="modal" data-target="#deleteRecord">
+            Delete
         </button>
 
     </div>
@@ -953,6 +968,30 @@ if ($_SESSION['currentUserType'] == "user") {
                 </div>
                 <div class="modal-footer">
                     <button id="btnArch" name="recordID" type="submit" class="btn btn-success">Yes</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<!-- Modal -->
+<form action="php/deleteRecord.php" method="POST">
+    <div class="modal fade" id="deleteRecord" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    WARNING: Deleting will remove the record permanently from the database!!
+                    Are you sure you want to delete this record?
+
+                </div>
+                <div class="modal-footer">
+                    <button id="btnDel" name="recordID" type="submit" class="btn btn-success">Yes</button>
                     <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
                 </div>
             </div>
@@ -1001,9 +1040,15 @@ if ($_SESSION['currentUserType'] == "user") {
 </body>
 <script>
     $(document).ready(function () {
+        $('#editFile').on('click',function(e){
+            $('#scannedFile').attr('hidden','hidden');
+            $('#uploadForm').removeAttr('hidden');
+        })
+
         $('#exampleModal').on('show.bs.modal',function(){
             $('#btnArch').val($('#recordID').val());
         });
+
         var table = $('#dataTables-example').DataTable({
             responsive: true
         });
@@ -1059,7 +1104,7 @@ if ($_SESSION['currentUserType'] == "user") {
 
             })
             var recordID = $('#recordID').val();
-            
+
             $.ajax({
               type: "POST",
               url: 'php/updateRecord.php',
@@ -1138,12 +1183,21 @@ if ($_SESSION['currentUserType'] == "user") {
         })
 
         $('table tbody').on( 'click', 'tr', function () {
-
+            $('#deleteRecord').on('show.bs.modal',function(){
+                $('#btnDel').val($('#recordID').val());
+            });
 
             if($('.tab-pane.fade.in.active').attr('id')=='saved'){
                 var data = table.row( this ).data();
             }else{
                 var data = tableArch.row( this ).data();
+                $('#editRecord').toggleClass('hidden');
+                $('#rvrtbtn').toggleClass('hidden');
+                $('#dltbtn').toggleClass('hidden');
+                $('#archbtn').toggleClass('hidden');
+                $('#uploadPanel').addClass('hidden');
+                $('#actionPanel').addClass('hidden');
+
             }
             $('#code').html(data[0]);
             $('#fNo').html(data[1]);
