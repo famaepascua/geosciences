@@ -2,25 +2,30 @@
 
 require '../config.php';
 include 'uploadFile.php';
-
+session_start();
 
 
 //This are the variables for table actionSlip
-$action = $_POST['action'];
+
 $oicrd = $_POST['oicrd'];
 $note = $_POST['note'];
 
 
 //Store all checkbox selected to just one variable separated by comma
 $actionsJoined = "";
-foreach ($action as $a){
-    $actionsJoined .= $a . ",";
+if(isset($_POST['action'])){
+    $action = $_POST['action'];
+    foreach ($action as $a){
+        $actionsJoined .= $a . "<br>";
+    }    
 }
 
-$actiondesired = $_POST['actiondesired'];
 $actionsDesiredJoined = "";
-foreach ($actiondesired as $a){
-    $actionsDesiredJoined .= $a . ",";
+if(isset($_POST['actiondesired'])){
+    $actiondesired = $_POST['actiondesired'];
+    foreach ($actiondesired as $a){
+        $actionsDesiredJoined .= $a . "<br>";
+    }   
 }
 
 $sql = "INSERT INTO actionslip(action,actionDesired,oicrd,note) VALUES ('$actionsJoined','$actionsDesiredJoined','$oicrd','$note')";
@@ -35,8 +40,16 @@ if ($db->query($sql)) {
     $applicant = $_POST['applicant'];
     $sender = $_POST['sender'];
     $purpose = $_POST['purpose'];
-    $barangayID = $_POST['barangay'];
 
+
+    // Locations
+
+    $barangayList = "";
+    if(isset($_POST['barangay'])){
+        $barangayID = array_map('intval', $_POST['barangay']);
+        $barangayList = implode("','", $barangayID);
+    }
+    
     //For other municipalities or other barangay
     if($barangayID != '54' && $barangayID != '56'){
         $sql = "SELECT locationID FROM location WHERE barangayID = '$barangayID'";
