@@ -824,72 +824,72 @@ if ($_SESSION['currentUserType'] == "user") {
                         <div class="row">
                             <div class="col-lg-12">
                                 <div>
-                                    <label>Code:</label> <span id="code"></span>
+                                    <label>Code:</label> <span class="text" id="code"></span>
                                 </div>
                             </div>
                             <div class="col-lg-12">
                                 <div>
-                                    <label>Folder No:</label> <span id="fNo"></span>
+                                    <label>Folder No:</label> <span class="text" id="fNo"></span>
                                 </div>
                             </div>
                             <div class="col-lg-12">
                                 <div>
-                                    <label>Date Received:</label> <span id="dateReceived"></span>
+                                    <label>Date Received:</label> <span class="date" id="dateReceived"></span>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div>
-                                    <label>Applicant:</label> <span id="applicant"></span>
+                                    <label>Applicant:</label> <span class="text" id="applicant"></span>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div>
-                                    <label>Sender:</label> <span id="sender"></span>
+                                    <label>Sender:</label> <span class="text" id="sender"></span>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div>
-                                    <label>Location/s:</label> <span id="loc"></span>
+                                    <label>Location/s:</label> <span class="locSelect" id="loc"></span>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div>
-                                    <label>Purpose:</label> <span id="purpose"></span>
+                                    <label>Purpose:</label> <span class="textarea" id="purpose"></span>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div>
-                                    <label>Date Inspected:</label> <span id="dateInspected"></span>
+                                    <label>Date Inspected:</label> <span class="date" id="dateInspected"></span>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div>
-                                    <label>Document Date:</label> <span id="documentDate"></span>
+                                    <label>Document Date:</label> <span class="date" id="documentDate"></span>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div>
-                                    <label>Inspector:</label> <span id="inspector"></span>
+                                    <label>Inspector:</label> <span class="text" id="inspector"></span>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div>
-                                    <label>Classification:</label> <span id="classification"></span>
+                                    <label>Classification:</label> <span class="classif" id="classification"></span>
                                 </div>
                             </div>
                             <div class="col-lg-12">
                                 <div>
-                                    <label>Subject:</label> <span id="subject"></span>
+                                    <label>Subject:</label> <span class="text" id="subject"></span>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div>
-                                    <label>Date Released:</label> <span id="dateReleased"></span>
+                                    <label>Date Released:</label> <span class="date" id="dateReleased"></span>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div>
-                                    <label>Receive By:</label> <span id="receiver"></span>
+                                    <label>Receive By:</label> <span class="text" id="receiver"></span>
                                 </div>
                             </div>
                         </div>
@@ -899,7 +899,7 @@ if ($_SESSION['currentUserType'] == "user") {
                     <div class="panel panel-green">
                         <div class="panel-body">
                             <div id="uploadForm" class="row">
-                               <div class="col-lg-12" align="center">
+                             <div class="col-lg-12" align="center">
                                 <div class="form-group">
                                     <label>Upload File</label>
                                     <input type="file" name="scannedFile">
@@ -910,18 +910,18 @@ if ($_SESSION['currentUserType'] == "user") {
                             </div>
                         </div>
                         <div hidden id="scannedFile" class="row">
-                           <div class="col-lg-12" align="center">
-                               <a id="viewfile" href="" class="text-success">View Scanned File</a>
-                           </div>
-                       </div>
-                   </div>
-               </div>
-           </form>
+                         <div class="col-lg-12" align="center">
+                             <a id="viewfile" href="" class="text-success">View Scanned File</a>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </form>
 
-       </div>
-       <!-- MODAL BODY END-->
-       <!-- MODAL FOOTER -->
-       <div class="modal-footer">
+     </div>
+     <!-- MODAL BODY END-->
+     <!-- MODAL FOOTER -->
+     <div class="modal-footer">
         <button name="printRecord" id="printRecord" class="btn btn-success">Print</button>
         <button name="editRecord" id="editRecord" class="btn btn-primary">Edit</button>
         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
@@ -977,7 +977,7 @@ if ($_SESSION['currentUserType'] == "user") {
 <script src="vendor/datatables/js/jquery.dataTables.min.js"></script>
 <script src="vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
 <script src="vendor/datatables-responsive/dataTables.responsive.js"></script>
-    <script src="js/bootstrap-notify.js"></script>
+<script src="js/bootstrap-notify.js"></script>
 <!-- Custom Theme JavaScript -->
 <script src="dist/js/sb-admin-2.js"></script>
 
@@ -1009,8 +1009,41 @@ if ($_SESSION['currentUserType'] == "user") {
         var tableArch = $('#archivedTable').DataTable({
             responsive: true
         });
-
+        $('#editRecord').click(function(){
+             var text = $('#recordinfo').find('span.text');
+             var date = $('#recordinfo').find('span.date');
+             var textarea = $('#recordinfo').find('span.textarea');
+             text.each(function(){
+                var $input = $('<input>',{
+                    val: $(this).text(),
+                    type: "text",
+                    class: 'form-control',
+                    name: $(this).attr('id')
+                })
+                $(this).replaceWith($input);
+             })
+            date.each(function(){
+                var $input = $('<input>',{
+                    val: $(this).text(),
+                    type: "date",
+                    class: 'form-control',
+                    name: $(this).attr('id')
+                })
+                $(this).replaceWith($input);
+             })
+            textarea.each(function(){
+                var $input = $('<input>',{
+                    val: $(this).text(),
+                    type: "textarea",
+                    class: 'form-control',
+                    name: $(this).attr('id')
+                })
+                $(this).replaceWith($input);
+             })
+        })
         $('table tbody').on( 'click', 'tr', function () {
+           
+
             if($('.tab-pane.fade.in.active').attr('id')=='saved'){
                 var data = table.row( this ).data();
             }else{
