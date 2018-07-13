@@ -340,17 +340,6 @@ if ($_SESSION['currentUserType'] != "user") {
                     <form action="php/uploadScannedFile.php" method="POST" enctype="multipart/form-data">
                         <div class="panel panel-green">
                             <div class="panel-body">
-                                <div id="uploadForm" class="row">
-                                    <div class="col-lg-12" align="center">
-                                        <div class="form-group">
-                                            <label>Upload File</label>
-                                            <input type="file" name="scannedFile">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12" align="center">
-                                        <button name="recordID" id="recordID" class="btn btn-outline btn-success">Save</button>
-                                    </div>
-                                </div>
                                 <div hidden id="scannedFile" class="row">
                                     <div class="col-lg-12" align="center">
                                         <a id="viewfile" href="" class="text-success">View Scanned File</a>
@@ -430,6 +419,14 @@ if ($_SESSION['currentUserType'] != "user") {
                 $('#note').html(data[19]);
                 $('#oicrd').html(data[20]);
                 $('#recordinfo').modal();
+
+                if(data[14]){
+                    $('#uploadForm').attr('hidden','hidden');
+                    $('#scannedFile').removeAttr('hidden');
+                }else{
+                    $('#scannedFile').attr('hidden','hidden');
+                    $('#uploadForm').removeAttr('hidden');
+                }
             } );
 
         });
