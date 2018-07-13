@@ -279,14 +279,14 @@ if ($_SESSION['currentUserType'] == "user") {
                                                 <div class="form-group">
                                                     <label>Classification</label>
                                                     <select name="classification" class="form-control">
-                                                        <option>Evacuation Site</option>
-                                                        <option>Geohazard Assesment</option>
-                                                        <option>GIR</option>
-                                                        <option>Government Projects</option>
-                                                        <option>OGI Report</option>
-                                                        <option>Reinvestigation</option>
-                                                        <option>Sanitary Landfill Site</option>
-                                                        <option>Other OGI</option>
+                                                        <option value="Evacuation Site">Evacuation Site</option>
+                                                        <option value="Geohazard Assesment">Geohazard Assesment</option>
+                                                        <option value="GIR">GIR</option>
+                                                        <option value="Government Projects">Government Projects</option>
+                                                        <option value="OGI Report">OGI Report</option>
+                                                        <option value="Reinvestigation">Reinvestigation</option>
+                                                        <option value="Sanitary Landfill Site">Sanitary Landfill Site</option>
+                                                        <option value="Other OGI">Other OGI</option>
                                                     </select>
                                                 </div>
                                             </div>

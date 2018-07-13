@@ -523,7 +523,7 @@ if ($_SESSION['currentUserType'] == "user") {
                                             </div>
                                         </div>
 
-                                        <div class="form-group">
+                                        <div id="locDiv" class="form-group">
                                             <div class="col-lg-4">
                                                 <label>Location</label>
                                                 <?php
@@ -587,112 +587,112 @@ if ($_SESSION['currentUserType'] == "user") {
                                         <div class="form-group">
                                             <label>Classification</label>
                                             <select name="classification" class="form-control">
-                                                <option>Evacuation Site</option>
-                                                <option>Geohazard Assesment</option>
-                                                <option>GIR</option>
-                                                <option>Government Projects</option>
-                                                <option>OGI Report</option>
-                                                <option>Reinvestigation</option>
-                                                <option>Sanitary Landfill Site</option>
-                                                <option>Other OGI</option>
-                                            </select>
-                                        </div>
-                                    </div>
+                                               <option value="Evacuation Site">Evacuation Site</option>
+                                               <option value="Geohazard Assesment">Geohazard Assesment</option>
+                                               <option value="GIR">GIR</option>
+                                               <option value="Government Projects">Government Projects</option>
+                                               <option value="OGI Report">OGI Report</option>
+                                               <option value="Reinvestigation">Reinvestigation</option>
+                                               <option value="Sanitary Landfill Site">Sanitary Landfill Site</option>
+                                               <option value="Other OGI">Other OGI</option>
+                                           </select>
+                                       </div>
+                                   </div>
 
-                                    <div class="col-lg-12">
+                                   <div class="col-lg-12">
+                                    <div class="form-group">
                                         <div class="form-group">
-                                            <div class="form-group">
-                                                <label>Subject</label>
-                                                <textarea name="subject" class="form-control" rows="2"></textarea>
-                                            </div>
+                                            <label>Subject</label>
+                                            <textarea name="subject" class="form-control" rows="2"></textarea>
                                         </div>
                                     </div>
                                 </div>
-                                <!-- ROW END-->
-                                <!-- ROW -->
-                                <div class="row">
-                                    <div class="col-lg-4">
-                                        <div class="form-group">
-                                            <label>Date Release</label>
-                                            <input class="form-control" type="date" name="drelease" id="date" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-8">
-                                        <div class="form-group">
-                                            <label>Receive By.</label>
-                                            <input name="receiver" class="form-control" placeholder="Enter Full Name">
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- ROW END-->
-                                <!-- ROW -->
-                                <div class="row">
-                                    <div class="col-lg-4">
-                                        <div class="form-group">
-                                            <label>Upload File</label>
-                                            <input type="file" name="scannedFile">
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- ROW END-->    
                             </div>
-                            <!-- MODAL BODY END-->
-                            <!-- MODAL FOOTER -->
-                            <div class="modal-footer">   
-                                <button type="reset" class="btn btn-primary">Reset</button>
-                                <button type="submit" class="btn btn-success">Add Record</button>
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            <!-- ROW END-->
+                            <!-- ROW -->
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label>Date Release</label>
+                                        <input class="form-control" type="date" name="drelease" id="date" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8">
+                                    <div class="form-group">
+                                        <label>Receive By.</label>
+                                        <input name="receiver" class="form-control" placeholder="Enter Full Name">
+                                    </div>
+                                </div>
                             </div>
-                            <!-- MODAL FOOTER END -->
+                            <!-- ROW END-->
+                            <!-- ROW -->
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label>Upload File</label>
+                                        <input type="file" name="scannedFile">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ROW END-->    
                         </div>
-                        <!-- MODAL CONTENT END -->
-                    </div>
-                </div>
-                <!-- ADD LOCATION MODAL -->
-                <div class="modal fade" id="addLocation" role="dialog">
-                    <!-- MODAL CONTENT-->
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title">Add More Location</h4>
-                            </div>
-                            <!-- MODAL BODY -->
-                            <div class="modal-body">
-                                <div class="row">
-
-                                    <div class="col-lg-5">
-                                        <div class="form-group">
-                                            <input id="numofinput" class="form-control" placeholder="No. of Location to Add">
-                                        </div>
-                                    </div>
-                                    <button id="addlocation" type="button" class="btn btn-success">Go</button>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div id="location" class="form-group">
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <!-- MODAL BODY END-->
-                            <!-- MODAL FOOTER -->
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-success">Add Location</button>
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                            </div>
-                            <!-- MODAL FOOTER END -->
+                        <!-- MODAL BODY END-->
+                        <!-- MODAL FOOTER -->
+                        <div class="modal-footer">   
+                            <button type="reset" class="btn btn-primary">Reset</button>
+                            <button type="submit" class="btn btn-success">Add Record</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                         </div>
-                        <!-- MODAL CONTENT END -->
+                        <!-- MODAL FOOTER END -->
                     </div>
+                    <!-- MODAL CONTENT END -->
                 </div>
-                <!-- ADD LOCATION MODAL END -->
-            </form>
-            <!-- MODAL END -->
-        </div>
+            </div>
+            <!-- ADD LOCATION MODAL -->
+            <div class="modal fade" id="addLocation" role="dialog">
+                <!-- MODAL CONTENT-->
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Add More Location</h4>
+                        </div>
+                        <!-- MODAL BODY -->
+                        <div class="modal-body">
+                            <div class="row">
+
+                                <div class="col-lg-5">
+                                    <div class="form-group">
+                                        <input id="numofinput" class="form-control" placeholder="No. of Location to Add">
+                                    </div>
+                                </div>
+                                <button id="addlocation" type="button" class="btn btn-success">Go</button>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div id="location" class="form-group">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- MODAL BODY END-->
+                        <!-- MODAL FOOTER -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success">Add Location</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div>
+                        <!-- MODAL FOOTER END -->
+                    </div>
+                    <!-- MODAL CONTENT END -->
+                </div>
+            </div>
+            <!-- ADD LOCATION MODAL END -->
+        </form>
+        <!-- MODAL END -->
     </div>
-    <!-- BODY END -->
+</div>
+<!-- BODY END -->
 </div>
 <!-- MAIN PAGE END -->
 </div>
@@ -899,7 +899,7 @@ if ($_SESSION['currentUserType'] == "user") {
                     <div class="panel panel-green">
                         <div class="panel-body">
                             <div id="uploadForm" class="row">
-                               <div class="col-lg-12" align="center">
+                             <div class="col-lg-12" align="center">
                                 <div class="form-group">
                                     <label>Upload File</label>
                                     <input type="file" name="scannedFile">
@@ -910,18 +910,18 @@ if ($_SESSION['currentUserType'] == "user") {
                             </div>
                         </div>
                         <div hidden id="scannedFile" class="row">
-                           <div class="col-lg-12" align="center">
-                               <a id="viewfile" href="" class="text-success">View Scanned File</a>
-                           </div>
-                       </div>
-                   </div>
-               </div>
-           </form>
+                         <div class="col-lg-12" align="center">
+                             <a id="viewfile" href="" class="text-success">View Scanned File</a>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </form>
 
-       </div>
-       <!-- MODAL BODY END-->
-       <!-- MODAL FOOTER -->
-       <div class="modal-footer">
+     </div>
+     <!-- MODAL BODY END-->
+     <!-- MODAL FOOTER -->
+     <div class="modal-footer">
         <button name="printRecord" id="printRecord" class="btn btn-success">Print</button>
         <button name="editRecord" id="editRecord" class="btn btn-primary">Edit</button>
         <button name="saveRecord" id="saveRecord" class="hidden btn btn-success">Save</button>
@@ -1011,11 +1011,12 @@ if ($_SESSION['currentUserType'] == "user") {
             responsive: true
         });
         $('#saveRecord').click(function(){
-            $(this).addClass('hidden');
-            $('#editRecord').removeClass('hidden');
+            $(this).toggleClass('hidden');
+            $('#editRecord').toggleClass('hidden');
             var text = $('.toSpanText');
             var date = $('.toSpanDate');
             var textarea = $('.toSpanTextArea');
+            var classif = $('.classif');
             text.each(function(){
                 var $span = $('<span>',{
                     text: $(this).val(),
@@ -1042,14 +1043,21 @@ if ($_SESSION['currentUserType'] == "user") {
                 $(this).replaceWith($span);
 
             })
+            var $span = $('<span>',{
+                text: classif.val(),
+                class: 'classif',
+                id: $(this).attr('name')
+            })
+            classif.replaceWith($span);
         })
         $('#editRecord').click(function(){
-            $(this).addClass('hidden');
-            $('#saveRecord').removeClass('hidden');
+            $(this).toggleClass('hidden');
+            $('#saveRecord').toggleClass('hidden');
             var text = $('#recordinfo').find('span.text');
             var date = $('#recordinfo').find('span.date');
             var textarea = $('#recordinfo').find('span.textarea');
             var classif = $('.classif');
+            var locSelect = $('.locSelect');
             text.each(function(){
                 var $input = $('<input>',{
                     val: $(this).text(),
@@ -1077,10 +1085,16 @@ if ($_SESSION['currentUserType'] == "user") {
                 })
                 $(this).replaceWith($input);
             });
-            var $classification = $('select[name=classification]').clone();
-            console.log(classif);
-            classif.replaceWith($classification);
+           
+            classif.each(function(){
+                var $classification = $('select[name=classification]').clone().addClass('classif').val($(this).text());
+                $(this).replaceWith($classification);
+            });
+            // var locations = locSelect.html().split('<br>');
+            // locations.each(function(){
 
+            // });
+            // console.log($('#locDiv').clone());
 
         })
 
