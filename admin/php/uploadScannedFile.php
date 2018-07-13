@@ -1,16 +1,16 @@
 <?php 
 
-	require '../config.php';
-	require 'uploadFile.php';
+require '../config.php';
+require 'uploadFile.php';
 
-	$recordID = $_POST['recordID'];
+$recordID = $_POST['recordID'];
 
-	
-	$sql = "Update records set scanFile ='$filename' where recordID = '$recordID'";
 
-	if(!$db->query($sql)){
-		var_dump($db->error);
-		die;
-	} 	
+$sql = "Update records set scanFile ='$filename' where recordID = '$recordID'";
+
+if(!$db->query($sql)){
+	var_dump($db->error);
+	die;
+} 	
 
     header('Location: ../records.php#success');

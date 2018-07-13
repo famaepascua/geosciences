@@ -1059,6 +1059,7 @@ if ($_SESSION['currentUserType'] == "user") {
 
             })
             var recordID = $('#recordID').val();
+            
             $.ajax({
               type: "POST",
               url: 'php/updateRecord.php',
@@ -1067,6 +1068,12 @@ if ($_SESSION['currentUserType'] == "user") {
 
               }
           });
+            $.ajax({
+                url: 'php/getScannedFile.php',
+                success: function(link){
+                    $('#viewfile').attr('href','../admin/uploads/'+link);
+                },
+            });
         })
         $('#editRecord').click(function(){
             $(this).toggleClass('hidden');
@@ -1076,6 +1083,7 @@ if ($_SESSION['currentUserType'] == "user") {
             var textarea = $('#recordinfo').find('span.textarea');
             var classif = $('.classif');
             var locSelect = $('.locSelect');
+            var disabled = "";
             text.each(function(){
                 var $input = $('<input>',{
                     val: $(this).text(),
@@ -1083,6 +1091,9 @@ if ($_SESSION['currentUserType'] == "user") {
                     class: 'form-control toSpanText',
                     name: $(this).attr('id')
                 })
+                if(!$(this).text().trim()){
+                    $input.attr('disabled','disabled');
+                }
                 $(this).replaceWith($input);
             })
             date.each(function(){
@@ -1092,6 +1103,9 @@ if ($_SESSION['currentUserType'] == "user") {
                     class: 'form-control toSpanDate',
                     name: $(this).attr('id')
                 })
+                if(!$(this).text().trim()){
+                    $input.attr('disabled','disabled');
+                }
                 $(this).replaceWith($input);
             })
             textarea.each(function(){
@@ -1101,14 +1115,20 @@ if ($_SESSION['currentUserType'] == "user") {
                     class: 'form-control toSpanTextArea',
                     name: $(this).attr('id')
                 })
+                if(!$(this).text().trim()){
+                    $input.attr('disabled','disabled');
+                }
                 $(this).replaceWith($input);
             });
 
             classif.each(function(){
                 var $classification = $('select[name=classification]').clone().addClass('classif').val($(this).text());
+                if(!$(this).text().trim()){
+                    $classification.attr('disabled','disabled');
+                }
                 $(this).replaceWith($classification);
             });
-       
+
             // var locations = locSelect.html().split('<br>');
             // locations.each(function(){
 
