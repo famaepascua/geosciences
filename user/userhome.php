@@ -121,7 +121,7 @@ if ($_SESSION['currentUserType'] != "user") {
                 <div class="col-lg-12">
 
                     <!-- PANEL -->
-                    <div class="">
+                    <div class="panel panel-green">
 
                         <!-- PANEL HEADER -->
                         <div class="panel-heading"> 
@@ -129,7 +129,7 @@ if ($_SESSION['currentUserType'] != "user") {
                         <!-- PANEL HEADER END -->
                         
                         <!-- PANEL BODY -->
-                        <div class="">
+                        <div class="panel-body">
                             <!-- TABLE -->
                             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
