@@ -15,7 +15,7 @@ if ($_SESSION['currentUserType'] == "user") {
     window.location.replace('../index.php');
     </script>";
 }
-?>
+?> 
 <!DOCTYPE html>
 <html lang="en">
 
@@ -188,43 +188,37 @@ if ($_SESSION['currentUserType'] == "user") {
                                                 </div>
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input name="action[]" type="checkbox" value="Appropriate Action
-                                                        please">Appropriate Action
+                                                        <input name="action[]" type="checkbox" value="">Appropriate Action
                                                         please.
                                                     </label>
                                                 </div>
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input name="action[]" type="checkbox" value="Immediate
-                                                        Investigation please">Immediate
+                                                        <input name="action[]" type="checkbox" value="">Immediate
                                                         Investigation please.
                                                     </label>
                                                 </div>
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input name="action[]" type="checkbox" value="Comment and
-                                                        recommendation please">Comment and
+                                                        <input name="action[]" type="checkbox" value="">Comment and
                                                         recommendation please.
                                                     </label>
                                                 </div>
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input name="action[]" type="checkbox" value="Review and inital
-                                                        please">Review and inital
+                                                        <input name="action[]" type="checkbox" value="">Review and inital
                                                         please.
                                                     </label>
                                                 </div>
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input name="action[]" type="checkbox" value="Discussion/Dissemination/Posting
-                                                        please">Discussion/Dissemination/Posting
+                                                        <input name="action[]" type="checkbox" value="">Discussion/Dissemination/Posting
                                                         please.
                                                     </label>
                                                 </div>
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input name="action[]" type="checkbox" value="Record/File
-                                                        please">Record/File
+                                                        <input name="action[]" type="checkbox" value="">Record/File
                                                         please.
                                                     </label>
                                                 </div>
@@ -288,6 +282,8 @@ if ($_SESSION['currentUserType'] == "user") {
                                                         schedule">Please
                                                         schedule.
                                                     </label>
+                                                </div>
+                                                <div class="checkbox">
                                                     <label>
                                                         <input name="actiondesired[]" type="checkbox" value="Please
                                                         respond directly">Please
@@ -489,7 +485,7 @@ if ($_SESSION['currentUserType'] == "user") {
                 counter++;
                 $('#location').append(label);
                 var barangay = $('#barangay').clone().attr('data-num',counter).attr('name','barangay['+counter+']').appendTo('#location');
-                var other = $('#brgyname0').clone().val('').attr('id','brgyname'+counter).attr('name','brgyname['+counter+']').attr('disabled','disabled').appendTo('#location');
+                var other = $('#brgyname0').clone().val('').attr('id','brgyname'+counter).attr('name','brgyname['+counter+']').appendTo('#location');
                 var municipality = $('#m0').clone().val('').attr('id','m'+counter).attr('name','municipality['+counter+']').appendTo('#location');
                 var province = $('#p0').clone().val('').attr('id','p'+counter).attr('name','province['+counter+']').appendTo('#location');
             }
