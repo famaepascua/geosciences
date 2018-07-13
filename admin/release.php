@@ -178,7 +178,7 @@ if ($_SESSION['currentUserType'] == "user") {
                                require 'config.php';
 
                                $sql = "SELECT GROUP_CONCAT(CONCAT(barangay.name,',',municipality,',',province)SEPARATOR '<br>') as locations,receive.*,records.*,folderNumber,unclaim.* FROM receive INNER JOIN receivelocations on receive.receiveID = receivelocations.receiveID INNER JOIN location on receivelocations.locationID = location.locationID INNER JOIN barangay ON barangay.barangayID = location.barangayID inner JOIN records on records.receiveID = receive.receiveID
-                               left join unclaim on unclaim.unclaimID = records.unclaimID where status not in ('inspection', 'release','archived')
+                               left join unclaim on unclaim.unclaimID = records.unclaimID where status = 'unclaim'
                                GROUP BY records.recordID";
                                $res = $db->query($sql);
                                while ($row = $res->fetch_assoc()){

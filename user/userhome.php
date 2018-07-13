@@ -179,8 +179,10 @@ if ($_SESSION['currentUserType'] != "user") {
                                         $status = 'For Inspection';
                                     }else if($row['status'] == 'unclaim'){
                                         $status = 'Unclaimed';
-                                    }else{
+                                    }else if($row['status'] == 'release'){
                                         $status = 'Released';
+                                    }else{
+                                        $status = 'Archived';
                                     }
                                     echo "<td>" . $status ."</td>";
                                     echo "<td hidden>" . $row['recordID']."</td>";
@@ -353,7 +355,6 @@ if ($_SESSION['currentUserType'] != "user") {
                 <!-- MODAL BODY END-->
                 <!-- MODAL FOOTER -->
                 <div class="modal-footer">
-                    <button onclick="printContent('recordinfo')" name="printRecord" id="printRecord" class="btn btn-success">Print</button>
                 </div>
                 <!-- MODAL FOOTER END -->
             </div>

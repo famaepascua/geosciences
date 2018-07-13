@@ -587,19 +587,19 @@ if ($_SESSION['currentUserType'] == "user") {
                                         <div class="form-group">
                                             <label>Classification</label>
                                             <select name="classification" class="form-control">
-                                               <option value="Evacuation Site">Evacuation Site</option>
-                                               <option value="Geohazard Assesment">Geohazard Assesment</option>
-                                               <option value="GIR">GIR</option>
-                                               <option value="Government Projects">Government Projects</option>
-                                               <option value="OGI Report">OGI Report</option>
-                                               <option value="Reinvestigation">Reinvestigation</option>
-                                               <option value="Sanitary Landfill Site">Sanitary Landfill Site</option>
-                                               <option value="Other OGI">Other OGI</option>
-                                           </select>
-                                       </div>
-                                   </div>
+                                             <option value="Evacuation Site">Evacuation Site</option>
+                                             <option value="Geohazard Assesment">Geohazard Assesment</option>
+                                             <option value="GIR">GIR</option>
+                                             <option value="Government Projects">Government Projects</option>
+                                             <option value="OGI Report">OGI Report</option>
+                                             <option value="Reinvestigation">Reinvestigation</option>
+                                             <option value="Sanitary Landfill Site">Sanitary Landfill Site</option>
+                                             <option value="Other OGI">Other OGI</option>
+                                         </select>
+                                     </div>
+                                 </div>
 
-                                   <div class="col-lg-12">
+                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <div class="form-group">
                                             <label>Subject</label>
@@ -899,7 +899,7 @@ if ($_SESSION['currentUserType'] == "user") {
                     <div class="panel panel-green">
                         <div class="panel-body">
                             <div id="uploadForm" class="row">
-                             <div class="col-lg-12" align="center">
+                               <div class="col-lg-12" align="center">
                                 <div class="form-group">
                                     <label>Upload File</label>
                                     <input type="file" name="scannedFile">
@@ -910,18 +910,18 @@ if ($_SESSION['currentUserType'] == "user") {
                             </div>
                         </div>
                         <div hidden id="scannedFile" class="row">
-                         <div class="col-lg-12" align="center">
-                             <a id="viewfile" href="" class="text-success">View Scanned File</a>
-                         </div>
-                     </div>
-                 </div>
-             </div>
-         </form>
+                           <div class="col-lg-12" align="center">
+                               <a id="viewfile" href="" class="text-success">View Scanned File</a>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </form>
 
-     </div>
-     <!-- MODAL BODY END-->
-     <!-- MODAL FOOTER -->
-     <div class="modal-footer">
+       </div>
+       <!-- MODAL BODY END-->
+       <!-- MODAL FOOTER -->
+       <div class="modal-footer">
         <button name="printRecord" id="printRecord" class="btn btn-success">Print</button>
         <button name="editRecord" id="editRecord" class="btn btn-primary">Edit</button>
         <button name="saveRecord" id="saveRecord" class="hidden btn btn-success">Save</button>
@@ -1017,6 +1017,7 @@ if ($_SESSION['currentUserType'] == "user") {
             var date = $('.toSpanDate');
             var textarea = $('.toSpanTextArea');
             var classif = $('.classif');
+            var data = {};
             text.each(function(){
                 var $span = $('<span>',{
                     text: $(this).val(),
@@ -1024,6 +1025,8 @@ if ($_SESSION['currentUserType'] == "user") {
                     id: $(this).attr('name')
                 })
                 $(this).replaceWith($span);
+                data[$(this).attr('name')] = $(this).val();
+
             })
             date.each(function(){
                 var $span = $('<span>',{
@@ -1032,6 +1035,7 @@ if ($_SESSION['currentUserType'] == "user") {
                     id: $(this).attr('name')
                 })
                 $(this).replaceWith($span);
+                data[$(this).attr('name')] = $(this).val();
 
             })
             textarea.each(function(){
@@ -1041,14 +1045,28 @@ if ($_SESSION['currentUserType'] == "user") {
                     id: $(this).attr('name')
                 })
                 $(this).replaceWith($span);
+                data[$(this).attr('name')] = $(this).val();
 
             })
-            var $span = $('<span>',{
-                text: classif.val(),
-                class: 'classif',
-                id: $(this).attr('name')
+            classif.each(function(){
+                var $span = $('<span>',{
+                    text: $(this).val(),
+                    class: 'classif',
+                    id: $(this).attr('name')
+                })
+                $(this).replaceWith($span);
+                data[$(this).attr('name')] = $(this).val();
+
             })
-            classif.replaceWith($span);
+            var recordID = $('#recordID').val();
+            $.ajax({
+              type: "POST",
+              url: 'php/updateRecord.php',
+              data: {data: data, recordID: recordID },
+              success: function(data){
+
+              }
+          });
         })
         $('#editRecord').click(function(){
             $(this).toggleClass('hidden');
@@ -1085,11 +1103,12 @@ if ($_SESSION['currentUserType'] == "user") {
                 })
                 $(this).replaceWith($input);
             });
-           
+
             classif.each(function(){
                 var $classification = $('select[name=classification]').clone().addClass('classif').val($(this).text());
                 $(this).replaceWith($classification);
             });
+       
             // var locations = locSelect.html().split('<br>');
             // locations.each(function(){
 
