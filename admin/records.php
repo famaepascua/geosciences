@@ -250,6 +250,7 @@ if ($_SESSION['currentUserType'] == "user") {
                                             <th>Sender</th>
                                             <th>Location</th>
                                             <th>Purpose</th>
+                                            <th hidden>Status</th>
                                             <th hidden>Record ID</th>
                                             <th hidden>Inspector</th>
                                             <th hidden>Date Inspected</th>
@@ -282,6 +283,7 @@ if ($_SESSION['currentUserType'] == "user") {
                                             echo "<td>" . $row['sender'] . "</td>";
                                             echo "<td>" . $row['locations']. "</td>";
                                             echo "<td>" . $row['purpose']."</td>";
+                                            echo "<td hidden>" . $row['status']."</td>";
                                             echo "<td hidden>" . $row['recordID']."</td>";
                                             echo "<td hidden>" . $row['inspector']."</td>";
                                             echo "<td hidden>" . $row['dateInspected']."</td>";
