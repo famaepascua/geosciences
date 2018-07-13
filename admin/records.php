@@ -937,7 +937,7 @@ if ($_SESSION['currentUserType'] == "user") {
         <button id="archbtn" type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
             Archive
         </button>
-        <button id="rvrtbtn" type="button" class="hidden btn btn-success" data-toggle="modal" data-target="#exampleModal">
+        <button id="rvrtbtn" type="button" class="hidden btn btn-success" data-toggle="modal" data-target="#revertRecord">
             Revert
         </button>
         <button id="dltbtn" type="button" class="hidden btn btn-danger" data-toggle="modal" data-target="#deleteRecord">
@@ -992,6 +992,29 @@ if ($_SESSION['currentUserType'] == "user") {
                 </div>
                 <div class="modal-footer">
                     <button id="btnDel" name="recordID" type="submit" class="btn btn-success">Yes</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<!-- Modal -->
+<form action="php/revertRecord.php" method="POST">
+    <div class="modal fade" id="revertRecord" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    Record will be reverted. Do you want to continue ?
+
+                </div>
+                <div class="modal-footer">
+                    <button id="btnRev" name="recordID" type="submit" class="btn btn-success">Yes</button>
                     <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
                 </div>
             </div>
@@ -1185,6 +1208,9 @@ if ($_SESSION['currentUserType'] == "user") {
         $('table tbody').on( 'click', 'tr', function () {
             $('#deleteRecord').on('show.bs.modal',function(){
                 $('#btnDel').val($('#recordID').val());
+            });
+             $('#revertRecord').on('show.bs.modal',function(){
+                $('#btnRev').val($('#recordID').val());
             });
 
             if($('.tab-pane.fade.in.active').attr('id')=='saved'){
