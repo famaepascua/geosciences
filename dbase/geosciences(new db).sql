@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 13, 2018 at 07:00 AM
+-- Generation Time: Jul 15, 2018 at 01:50 AM
 -- Server version: 5.7.21
 -- PHP Version: 5.6.35
 
@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `actionslip` (
   `oicrd` varchar(120) NOT NULL,
   `note` text,
   PRIMARY KEY (`actionslipID`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `actionslip`
@@ -47,7 +47,8 @@ CREATE TABLE IF NOT EXISTS `actionslip` (
 INSERT INTO `actionslip` (`actionslipID`, `action`, `actionDesired`, `oicrd`, `note`) VALUES
 (1, 'Information and\r\n                                                        guidance please.<br>Compliance/Implementation\r\n                                                        please.<br>', '', '', ''),
 (2, 'Information and\r\n                                                        guidance please.<br>Compliance/Implementation\r\n                                                        please.<br>', 'Please\r\n                                                        prepare reply.<br>Please\r\n                                                        submit report.<br>', 'oicrd', 'note'),
-(3, 'Review and inital\r\n                                                        please.<br>Discussion/Dissemination/Posting\r\n                                                        please.<br>', 'Please\r\n                                                        represent to me.<br>Please see\r\n                                                        me about this.<br>', '', '');
+(3, 'Review and inital\r\n                                                        please.<br>Discussion/Dissemination/Posting\r\n                                                        please.<br>', 'Please\r\n                                                        represent to me.<br>Please see\r\n                                                        me about this.<br>', '', ''),
+(4, 'Compliance/Implementation\r\n                                                        please.<br>Appropriate Action\r\n                                                        please.<br>', 'Please see\r\n                                                        me about this.<br>Please\r\n                                                        prepare reply.<br>', 'oicrd', 'note');
 
 -- --------------------------------------------------------
 
@@ -215,7 +216,7 @@ CREATE TABLE IF NOT EXISTS `logs` (
   `releaseID` int(10) DEFAULT NULL,
   `recordID` int(10) DEFAULT NULL,
   PRIMARY KEY (`logID`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `logs`
@@ -226,7 +227,10 @@ INSERT INTO `logs` (`logID`, `logDate`, `logTime`, `activity`, `userID`, `receiv
 (2, '2018-07-13', '02:47:pm', 'Deleted a record', 1, 1, NULL, NULL, NULL),
 (3, '2018-07-13', '02:48:pm', 'Added new record', 1, 2, NULL, NULL, NULL),
 (4, '2018-07-13', '02:48:pm', 'Deleted a record', 1, 2, NULL, NULL, NULL),
-(5, '2018-07-13', '02:54:pm', 'Added new record', 1, 3, NULL, NULL, NULL);
+(5, '2018-07-13', '02:54:pm', 'Added new record', 1, 3, NULL, NULL, NULL),
+(6, '2018-07-13', '03:07:pm', 'Deleted a record', 1, 3, NULL, NULL, NULL),
+(7, '2018-07-13', '03:10:pm', 'Added new record', 1, 4, NULL, NULL, NULL),
+(8, '2018-07-13', '09:54:pm', 'Deleted a record', 1, 4, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -244,14 +248,7 @@ CREATE TABLE IF NOT EXISTS `receive` (
   `purpose` text,
   `actionslipID` int(10) DEFAULT NULL,
   PRIMARY KEY (`receiveID`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `receive`
---
-
-INSERT INTO `receive` (`receiveID`, `code`, `dateReceived`, `applicant`, `sender`, `purpose`, `actionslipID`) VALUES
-(3, '1', '2018-07-13', 'applicant', 'sender', 'purpose', 3);
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -265,14 +262,7 @@ CREATE TABLE IF NOT EXISTS `receivelocations` (
   `receiveID` int(11) NOT NULL,
   `locationID` int(11) NOT NULL,
   PRIMARY KEY (`recLocID`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `receivelocations`
---
-
-INSERT INTO `receivelocations` (`recLocID`, `receiveID`, `locationID`) VALUES
-(3, 3, 21);
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -291,14 +281,7 @@ CREATE TABLE IF NOT EXISTS `records` (
   `archive` int(11) NOT NULL DEFAULT '0',
   `releaseDate` date DEFAULT NULL,
   PRIMARY KEY (`recordID`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `records`
---
-
-INSERT INTO `records` (`recordID`, `status`, `scanFile`, `receiveID`, `receiver`, `unclaimID`, `archive`, `releaseDate`) VALUES
-(3, 'inspection', NULL, 3, NULL, NULL, 1, NULL);
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -315,7 +298,22 @@ CREATE TABLE IF NOT EXISTS `unclaim` (
   `classification` varchar(120) DEFAULT NULL,
   `subject` text,
   PRIMARY KEY (`unclaimID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `userlogs`
+--
+
+DROP TABLE IF EXISTS `userlogs`;
+CREATE TABLE IF NOT EXISTS `userlogs` (
+  `userLogID` int(11) NOT NULL AUTO_INCREMENT,
+  `userID` int(11) NOT NULL,
+  `timeIN` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `timeOut` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`userLogID`)
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
