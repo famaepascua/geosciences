@@ -209,16 +209,13 @@ if ($_SESSION['currentUserType'] == "user") {
                                             echo "<td>" . $row['sender'] . "</td>";
                                             echo "<td>" . $row['locations']. "</td>";
                                             echo "<td>" . $row['purpose']."</td>";
-                                            if($row['archive'] = '1'){
-                                                $status = 'Archived';
+
+                                            if($row['status'] == 'inspection'){
+                                                $status = 'For Inspection';
+                                            }else if($row['status'] == 'unclaim'){
+                                                $status = 'Unclaimed';
                                             }else{
-                                                if($row['status'] == 'inspection' ){
-                                                    $status = 'For Inspection';
-                                                }else if($row['status'] == 'unclaim'){
-                                                    $status = 'Unclaimed';
-                                                }else{
-                                                    $status = 'Released';
-                                                }
+                                                $status = 'Released';
                                             }
                                             echo "<td>" . $status ."</td>";
                                             echo "<td hidden>" . $row['recordID']."</td>";
