@@ -176,7 +176,7 @@ if ($_SESSION['currentUserType'] != "user") {
                                     echo "<td>" . $row['sender'] . "</td>";
                                     echo "<td>" . $row['locations']. "</td>";
                                     echo "<td>" . $row['purpose']."</td>";
-                                    if($row['archive'] = '1'){
+                                    if($row['archive'] == '1'){
                                         $status = 'Archived';
                                     }else{
                                         if($row['status'] == 'inspection' ){
