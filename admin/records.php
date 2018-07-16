@@ -209,13 +209,17 @@ if ($_SESSION['currentUserType'] == "user") {
                                             echo "<td>" . $row['sender'] . "</td>";
                                             echo "<td>" . $row['locations']. "</td>";
                                             echo "<td>" . $row['purpose']."</td>";
-                                            if($row['status'] == 'inspection'){
-                                                $status = 'For Inspection';
-                                            }else if($row['status'] == 'unclaim'){
-                                                $status = 'Unclaimed';
+                                            if($row['archive'] = '1'){
+                                                $status = 'Archived';
                                             }else{
-                                                $status = 'Released';
-                                            }   
+                                                if($row['status'] == 'inspection' ){
+                                                    $status = 'For Inspection';
+                                                }else if($row['status'] == 'unclaim'){
+                                                    $status = 'Unclaimed';
+                                                }else{
+                                                    $status = 'Released';
+                                                }
+                                            }
                                             echo "<td>" . $status ."</td>";
                                             echo "<td hidden>" . $row['recordID']."</td>";
                                             echo "<td hidden>" . $row['inspector']."</td>";
@@ -283,6 +287,9 @@ if ($_SESSION['currentUserType'] == "user") {
                                             echo "<td>" . $row['sender'] . "</td>";
                                             echo "<td>" . $row['locations']. "</td>";
                                             echo "<td>" . $row['purpose']."</td>";
+
+
+
                                             echo "<td hidden>" . $row['status']."</td>";
                                             echo "<td hidden>" . $row['recordID']."</td>";
                                             echo "<td hidden>" . $row['inspector']."</td>";
