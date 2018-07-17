@@ -705,17 +705,17 @@ if ($_SESSION['currentUserType'] == "user") {
                     <div class="row">
                         <div class="col-lg-5">
                             <div class="form-group">
-                                <select class="form-control">
-                                    <option>Barangay</option>
-                                    <option>Classification</option>
-                                    <option>Code</option>
-                                    <option>Date Inspected</option>
-                                    <option>Date Received</option>
-                                    <option>Date Released</option>
-                                    <option>Document Date</option>
-                                    <option>Folder No.</option>
-                                    <option>Municipality</option>
-                                    <option>Province</option>
+                                <select id="filter" class="form-control">
+                                    <option value="barangay">Barangay</option>
+                                    <option value="classification">Classification</option>
+                                    <option value="code">Code</option>
+                                    <option value="dateInsp">Date Inspected</option>
+                                    <option value="dateRec">Date Received</option>
+                                    <option value="dateRel">Date Released</option>
+                                    <option value="docDate">Document Date</option>
+                                    <option value="folderNum">Folder No.</option>
+                                    <option value="municipality">Municipality</option>
+                                    <option value="province">Province</option>
                                 </select>
                             </div>
                         </div>
