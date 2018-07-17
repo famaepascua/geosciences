@@ -444,7 +444,8 @@ if ($_SESSION['currentUserType'] != "user") {
                 $('#actiondesired').html(data[18]);
                 $('#note').html(data[19]);
                 $('#oicrd').html(data[20]);
-                if(data[20] == '0'){
+
+                if(data[21] == '0'){
                     $('#recordinfo').modal();
                 }else{
                     $('#contact').modal();
