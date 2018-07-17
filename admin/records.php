@@ -719,12 +719,12 @@ if ($_SESSION['currentUserType'] == "user") {
                                 </select>
                             </div>
                         </div>
-                        <div hidden class="col-lg-5">
+                        <div id="searchFilter" class="col-lg-5">
                             <div class="form-group">
                                 <input name="search" class="form-control" placeholder="Search Here">
                             </div>
                         </div>
-                        <div id="date">
+                        <div hidden id="dateFilter">
                          <div class="col-lg-3">
                             <div class="form-group">
                                 <label>From: </label>
@@ -1060,6 +1060,20 @@ if ($_SESSION['currentUserType'] == "user") {
 </body>
 <script>
     $(document).ready(function () {
+        $('#filter').change(function(){
+            if($(this).val() == 'dateInsp' || $(this).val() == 'dateRec' || $(this).val() == 'dateRel' || $(this).val() == 'docDate' ){
+                $('#dateFilter').removeAttr('hidden');
+                $('#searchFilter').attr('hidden','hidden');
+
+            }else{
+                $('#searchFilter').removeAttr('hidden');
+                $('#dateFilter').attr('hidden','hidden');
+            }
+        })
+        
+
+
+
         $('#editFile').on('click',function(e){
             $('#scannedFile').attr('hidden','hidden');
             $('#uploadForm').removeAttr('hidden');
