@@ -740,7 +740,7 @@ if ($_SESSION['currentUserType'] == "user") {
                             </div>
                         </div>
                     </div>
-                    <button id="searchrecord" type="button" class="btn btn-success">Go</button>
+                    <button onclick="searchReport()" id="searchrecord" type="button" class="btn btn-success">Go</button>
                 </div>
                 <div class="row">             
                     <div class="col-lg-12">
@@ -750,7 +750,7 @@ if ($_SESSION['currentUserType'] == "user") {
 
                             <div class="panel-body">
                                 <div class="table-responsive table-bordered">
-                                    <table class="table">
+                                    <table id="repTable" class="table">
                                         <thead>
                                             <tr>
                                                 <th>Code</th>
@@ -1081,7 +1081,7 @@ if ($_SESSION['currentUserType'] == "user") {
         $('#filter').change(function(){
             if($(this).val() == 'dateInsp' || $(this).val() == 'dateRec' || $(this).val() == 'dateRel' || $(this).val() == 'docDate' ){
                 $('#dateFilter').removeAttr('hidden');
-                $('#searchFilter').attr('hidden','hidden');
+             $('#searchFilter').attr('hidden','hidden');
             }else{
                 $.ajax({
                   type: "POST",
@@ -1335,7 +1335,20 @@ if ($_SESSION['currentUserType'] == "user") {
 </script>
 
 <script>
+    function searchReport(){
+        var filterClassification = $('#filter').val();
+        var searchValue = $('input[name=search]').val();
+        $('#repTable').DataTable( {
+         "ajax": {
+            "url": "php/report.php",
+            "type": "POST",
+            'data': {key: filterClassification, value: searchValue}
+        },
+    } );
+    }
     $(document).ready(function () {
+
+
         if(location.hash === '#success'){
             $.notify({
                 icon: 'glyphicon glyphicon-star',
