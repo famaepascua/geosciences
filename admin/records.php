@@ -580,19 +580,19 @@ if ($_SESSION['currentUserType'] == "user") {
                                         <div class="form-group">
                                             <label>Classification</label>
                                             <select name="classification" class="form-control">
-                                             <option value="Evacuation Site">Evacuation Site</option>
-                                             <option value="Geohazard Assesment">Geohazard Assesment</option>
-                                             <option value="GIR">GIR</option>
-                                             <option value="Government Projects">Government Projects</option>
-                                             <option value="OGI Report">OGI Report</option>
-                                             <option value="Reinvestigation">Reinvestigation</option>
-                                             <option value="Sanitary Landfill Site">Sanitary Landfill Site</option>
-                                             <option value="Other OGI">Other OGI</option>
-                                         </select>
-                                     </div>
-                                 </div>
+                                               <option value="Evacuation Site">Evacuation Site</option>
+                                               <option value="Geohazard Assesment">Geohazard Assesment</option>
+                                               <option value="GIR">GIR</option>
+                                               <option value="Government Projects">Government Projects</option>
+                                               <option value="OGI Report">OGI Report</option>
+                                               <option value="Reinvestigation">Reinvestigation</option>
+                                               <option value="Sanitary Landfill Site">Sanitary Landfill Site</option>
+                                               <option value="Other OGI">Other OGI</option>
+                                           </select>
+                                       </div>
+                                   </div>
 
-                                 <div class="col-lg-12">
+                                   <div class="col-lg-12">
                                     <div class="form-group">
                                         <div class="form-group">
                                             <label>Subject</label>
@@ -721,11 +721,13 @@ if ($_SESSION['currentUserType'] == "user") {
                         </div>
                         <div id="searchFilter" class="col-lg-5">
                             <div class="form-group">
-                                <input name="search" class="form-control" placeholder="Search Here">
+                                <input name="search" list="searchKeys" class="form-control" placeholder="Search Here">
+                                <datalist id="searchKeys">
+                                </datalist>
                             </div>
                         </div>
                         <div hidden id="dateFilter">
-                         <div class="col-lg-3">
+                           <div class="col-lg-3">
                             <div class="form-group">
                                 <label>From: </label>
                                 <input type="date" name="from" class="form-control" placeholder="From">
@@ -906,7 +908,7 @@ if ($_SESSION['currentUserType'] == "user") {
                     <div id="uploadPanel" class="panel panel-green">
                         <div class="panel-body">
                             <div id="uploadForm" class="row">
-                               <div class="col-lg-12" align="center">
+                             <div class="col-lg-12" align="center">
                                 <div class="form-group">
                                     <label>Upload File</label>
                                     <input type="file" name="scannedFile">
@@ -917,18 +919,18 @@ if ($_SESSION['currentUserType'] == "user") {
                             </div>
                         </div>
                         <div hidden id="scannedFile" class="row">
-                           <div class="col-lg-12" align="center">
-                               <a id="viewfile" href="" class="text-success">View Scanned File</a> | <a href="#" id="editFile">Edit File</a>
-                           </div>
-                       </div>
-                   </div>
-               </div>
-           </form>
+                         <div class="col-lg-12" align="center">
+                             <a id="viewfile" href="" class="text-success">View Scanned File</a> | <a href="#" id="editFile">Edit File</a>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </form>
 
-       </div>
-       <!-- MODAL BODY END-->
-       <!-- MODAL FOOTER -->
-       <div class="modal-footer">
+     </div>
+     <!-- MODAL BODY END-->
+     <!-- MODAL FOOTER -->
+     <div class="modal-footer">
         <button name="editRecord" id="editRecord" class="btn btn-primary">Edit</button>
         <button name="saveRecord" id="saveRecord" class="hidden btn btn-success">Save</button>
         <button id="archbtn" type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
@@ -1060,17 +1062,50 @@ if ($_SESSION['currentUserType'] == "user") {
 </body>
 <script>
     $(document).ready(function () {
+        $.ajax({
+                  type: "POST",
+                  dataType: 'JSON',
+                  data: {key: $('#filter').val()},
+                  url: 'php/getFilterKeys.php',
+                  success: function(data){
+                    var options = [];
+
+                    $.each(data, function(key, value) {
+                        options.push("<option value="+value+">"+value+"</option>");
+                    })
+
+                    $('#searchKeys').html(options);
+                    console.log(options);
+                }
+            })
         $('#filter').change(function(){
             if($(this).val() == 'dateInsp' || $(this).val() == 'dateRec' || $(this).val() == 'dateRel' || $(this).val() == 'docDate' ){
                 $('#dateFilter').removeAttr('hidden');
                 $('#searchFilter').attr('hidden','hidden');
 
             }else{
+                $.ajax({
+                  type: "POST",
+                  dataType: 'JSON',
+                  data: {key: $(this).val()},
+                  url: 'php/getFilterKeys.php',
+                  success: function(data){
+                    var options = [];
+
+                    $.each(data, function(key, value) {
+                        options.push("<option value="+value+">"+value+"</option>");
+                    })
+
+                    $('#searchKeys').html(options);
+                    console.log(options);
+                }
+            })
+
                 $('#searchFilter').removeAttr('hidden');
                 $('#dateFilter').attr('hidden','hidden');
             }
         })
-        
+
 
 
 
@@ -1220,7 +1255,7 @@ if ($_SESSION['currentUserType'] == "user") {
             $('#deleteRecord').on('show.bs.modal',function(){
                 $('#btnDel').val($('#recordID').val());
             });
-             $('#revertRecord').on('show.bs.modal',function(){
+            $('#revertRecord').on('show.bs.modal',function(){
                 $('#btnRev').val($('#recordID').val());
             });
 
