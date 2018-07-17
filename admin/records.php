@@ -1077,12 +1077,11 @@ if ($_SESSION['currentUserType'] == "user") {
                     $('#searchKeys').html(options);
                     console.log(options);
                 }
-            })
+            });
         $('#filter').change(function(){
             if($(this).val() == 'dateInsp' || $(this).val() == 'dateRec' || $(this).val() == 'dateRel' || $(this).val() == 'docDate' ){
                 $('#dateFilter').removeAttr('hidden');
                 $('#searchFilter').attr('hidden','hidden');
-
             }else{
                 $.ajax({
                   type: "POST",
@@ -1105,9 +1104,6 @@ if ($_SESSION['currentUserType'] == "user") {
                 $('#dateFilter').attr('hidden','hidden');
             }
         })
-
-
-
 
         $('#editFile').on('click',function(e){
             $('#scannedFile').attr('hidden','hidden');
