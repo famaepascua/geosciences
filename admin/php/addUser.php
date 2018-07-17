@@ -17,3 +17,16 @@ if($db->query($sql)){
     header('Location: ../users.php');
 
 }
+	$t = date('h:i:a');
+    $d = date('Y:n:j');
+
+    $userID = $_SESSION['currentUserID'];
+    $adduserID = $db-> insert_id;
+    $act = "Added new user";
+    $sqlT = "INSERT INTO logs(logDate, logTime, activity, userID, addUserID) 
+    VALUES ('$d','$t','$act','$userID','$adduserID')";
+
+    if(!$db->query($sqlT)){
+        var_dump($db->error);
+        die;
+    }
