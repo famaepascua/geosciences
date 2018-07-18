@@ -1,20 +1,26 @@
 <?php 
 require '../config.php';
 
+
 $key = $_POST['key'];
-$value = $_POST['value'];
 $location = [];
+if(isset($_POST['from'])){
+    $from = $_POST['from'];
+    $to = $_POST['to'];
+}else{
+    $value = $_POST['value'];
+}
 
 if($key == 'barangay'){
     $where = "AND name = '$value'"; 
 }else if ($key == 'dateInsp'){
-    $where = "AND dateInspected = '$value'"; 
+    $where = "AND (dateInspected >= '$from' AND dateInspected <= '$to')"; 
 }else if ($key == 'dateRec'){
-    $where = "AND dateReceived = '$value'"; 
+    $where = "AND (dateReceived >= '$from' AND dateReceived <= '$to')"; 
 }else if ($key == 'dateRel'){
-    $where = "AND dateReleased = '$value'"; 
+    $where = "AND (dateReleased >= '$from' AND dateReleased <= '$to')";
 }else if ($key == 'docDate'){
-    $where = "AND documentDate = '$value'"; 
+    $where = "AND (documentDate >= '$from' AND documentDate <= '$to')"; 
 }else if ($key == 'folderNum'){
     $where = "AND folderNumber = '$value'"; 
 }else if ($key == 'municipality'){

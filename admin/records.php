@@ -722,6 +722,7 @@ if ($_SESSION['currentUserType'] == "user") {
                                     <label>From: </label>
                                     <input type="date" name="from" class="form-control" placeholder="From">
                                 </div>
+                            </div>
                                 <div class="col-lg-3">
                                     <div class="form-group">
                                         <label>To: </label>
@@ -729,7 +730,6 @@ if ($_SESSION['currentUserType'] == "user") {
                                     </div>
                                 </div>
                             </div>
-                        </div>
                         <div hidden class="col-lg-5" id="classifFilter">
                             <div class="form-group">
                               <select name="classification" class="form-control">
@@ -1389,9 +1389,14 @@ if ($_SESSION['currentUserType'] == "user") {
 
 <script>
     function searchReport(){
+        var from = '';
+        var to = '';
         var filterClassification = $('#filter').val();
         if(filterClassification == 'classification'){
             var searchValue = $('#classifFilter').find('select').val();
+        }else if(filterClassification == 'dateInsp' || filterClassification == 'dateRec' || filterClassification == 'dateRel' || filterClassification == 'docDate' ){
+            from = $('input[name=from]').val();
+            to = $('input[name=to]').val();
         }else{
             var searchValue = $('input[name=search]').val();
         }
@@ -1400,7 +1405,7 @@ if ($_SESSION['currentUserType'] == "user") {
             "url": "php/report.php",
             "type": "POST",
             "dataSrc":'',
-            'data': {key: filterClassification, value: searchValue},
+            'data': {key: filterClassification, value: searchValue,from: from,to: to},
             "columns": [
             { "data": "code" },
             { "data": "folderNumber" },
