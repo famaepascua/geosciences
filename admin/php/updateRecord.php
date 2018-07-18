@@ -1,7 +1,7 @@
 <?php
 
 require '../config.php';
-
+session_start();
 
 $data = $_POST['data'];
 $recordID = $_POST['recordID'];
@@ -47,5 +47,17 @@ if($dateReleased){
 		die;
 	} 
 }	
+	$t = date('h:i:a');
+    $d = date('Y:n:j');
+
+    $userID = $_SESSION['currentUserID'];
+    $act = "Updated record ".$code;
+    $sqlT = "INSERT INTO logs(logDate, logTime, activity, userID, receiveID) 
+    VALUES ('$d','$t','$act','$userID','$receiveID')";
+
+    if(!$db->query($sqlT)){
+        var_dump($db->error);
+        die;
+    }
 
 die;

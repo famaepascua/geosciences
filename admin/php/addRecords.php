@@ -146,7 +146,7 @@ $t = date('h:i:a');
 $d = date('Y:n:j');
 
 $userID = $_SESSION['currentUserID'];
-$act = "Added new record";
+$act = "Added new record ".$code;
 $sqlT = "INSERT INTO logs(logDate, logTime, activity, userID, receiveID) 
 VALUES ('$d','$t','$act','$userID','$receiveID')";
 

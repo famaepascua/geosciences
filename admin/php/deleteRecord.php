@@ -7,7 +7,7 @@ session_start();
 $recordID = $_POST['recordID'];
 
 
-	$sql = "Select unclaimID,receiveID from records where recordID='$recordID'";
+	$sql = "Select unclaimID,receive.receiveID,code from records inner join receive on receive.receiveID = records.receiveID where records.recordID='$recordID'";
 
 	if(!$db->query($sql)){
 		var_dump($db->error);
@@ -17,6 +17,7 @@ $recordID = $_POST['recordID'];
       $r = $res->fetch_row();
 
       $unclaimID = $r[0];
+      $code = $r[2];
       if($unclaimID){
       	$sql = "Delete from unclaim where unclaimID='$unclaimID'";
 
@@ -50,7 +51,7 @@ $recordID = $_POST['recordID'];
     $d = date('Y:n:j');
 
     $userID = $_SESSION['currentUserID'];
-    $act = "Deleted a record";
+    $act = "Deleted record ".$code;
     $sqlT = "INSERT INTO logs(logDate, logTime, activity, userID, receiveID) 
     VALUES ('$d','$t','$act','$userID','$receiveID')";
 
