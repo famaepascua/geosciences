@@ -725,6 +725,7 @@ if ($_SESSION['currentUserType'] == "user") {
                                 <datalist id="searchKeys">
                                 </datalist>
                             </div>
+
                         </div>
                         <div hidden id="dateFilter">
                            <div class="col-lg-3">
@@ -732,14 +733,29 @@ if ($_SESSION['currentUserType'] == "user") {
                                 <label>From: </label>
                                 <input type="date" name="from" class="form-control" placeholder="From">
                             </div>
-                        </div>
-                        <div class="col-lg-3">
+                             <div class="col-lg-3">
                             <div class="form-group">
                                 <label>To: </label>
                                 <input type="date" name="to" class="form-control" placeholder="To">
                             </div>
                         </div>
+                        </div>
                     </div>
+                           <div hidden class="col-lg-5" id="classifFilter">
+                            <div class="form-group">
+                              <select name="classification" class="form-control">
+                                               <option value="Evacuation Site">Evacuation Site</option>
+                                               <option value="Geohazard Assesment">Geohazard Assesment</option>
+                                               <option value="GIR">GIR</option>
+                                               <option value="Government Projects">Government Projects</option>
+                                               <option value="OGI Report">OGI Report</option>
+                                               <option value="Reinvestigation">Reinvestigation</option>
+                                               <option value="Sanitary Landfill Site">Sanitary Landfill Site</option>
+                                               <option value="Other OGI">Other OGI</option>
+                              </select>
+                            </div>
+                        </div>
+                       
                     <button onclick="searchReport()" id="searchrecord" type="button" class="btn btn-success">Go</button>
                 </div>
                 <div class="row">             
@@ -1078,6 +1094,11 @@ if ($_SESSION['currentUserType'] == "user") {
             if($(this).val() == 'dateInsp' || $(this).val() == 'dateRec' || $(this).val() == 'dateRel' || $(this).val() == 'docDate' ){
                 $('#dateFilter').removeAttr('hidden');
              $('#searchFilter').attr('hidden','hidden');
+                $("#classifFilter").attr('hidden','hidden');
+            }else if($(this).val() == 'classification'){
+                $("#classifFilter").removeAttr('hidden');
+                $('#searchFilter').attr('hidden','hidden');
+                $('#dateFilter').attr('hidden','hidden');
             }else{
                 $.ajax({
                   type: "POST",
@@ -1098,6 +1119,7 @@ if ($_SESSION['currentUserType'] == "user") {
 
                 $('#searchFilter').removeAttr('hidden');
                 $('#dateFilter').attr('hidden','hidden');
+                $("#classifFilter").attr('hidden','hidden');
             }
         })
 
@@ -1327,7 +1349,11 @@ if ($_SESSION['currentUserType'] == "user") {
 <script>
     function searchReport(){
         var filterClassification = $('#filter').val();
-        var searchValue = $('input[name=search]').val();
+        if(filterClassification == 'classification'){
+            var searchValue = $('#classifFilter').find('select').val();
+        }else{
+            var searchValue = $('input[name=search]').val();
+        }
         $('#repTable').DataTable( {
          "ajax": {
             "url": "php/report.php",
