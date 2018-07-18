@@ -760,9 +760,6 @@ if ($_SESSION['currentUserType'] == "user") {
                                                 <th>Location</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-
-                                        </tbody>
                                     </table>
 
                                 </div>                         
@@ -1071,11 +1068,10 @@ if ($_SESSION['currentUserType'] == "user") {
                     var options = [];
 
                     $.each(data, function(key, value) {
-                        options.push("<option value="+value+">"+value+"</option>");
+                        options.push("<option value='"+value+"'>"+value+"</option>");
                     })
 
                     $('#searchKeys').html(options);
-                    console.log(options);
                 }
             });
         $('#filter').change(function(){
@@ -1239,11 +1235,6 @@ if ($_SESSION['currentUserType'] == "user") {
                 $(this).replaceWith($classification);
             });
 
-            // var locations = locSelect.html().split('<br>');
-            // locations.each(function(){
-
-            // });
-            // console.log($('#locDiv').clone());
 
         })
 
@@ -1303,7 +1294,6 @@ if ($_SESSION['currentUserType'] == "user") {
                 data: {barangay: $id},
                 dataType: 'JSON',
                 success: function (data) {
-                    console.log(data);
                     $('#folderNo').val(data[0]);
                 }
             });
@@ -1342,9 +1332,16 @@ if ($_SESSION['currentUserType'] == "user") {
          "ajax": {
             "url": "php/report.php",
             "type": "POST",
-            'data': {key: filterClassification, value: searchValue}
+            "dataSrc":'',
+            'data': {key: filterClassification, value: searchValue},
+             "columns": [
+            { "data": "code" },
+            { "data": "folderNumber" },
+            { "data": "applicant" },
+            { "data": "sender" },
+            { "data": "location" }        ]
         },
-    } );
+    } ).destroy();
     }
     $(document).ready(function () {
 
