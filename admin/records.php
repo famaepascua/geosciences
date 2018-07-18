@@ -516,7 +516,7 @@ if ($_SESSION['currentUserType'] == "user") {
                                             </div>
                                         </div>
 
-                                        <div id="locDiv" class="form-group">
+                                        <div class="form-group">
                                             <div class="col-lg-4">
                                                 <label>Location</label>
                                                 <?php
@@ -524,8 +524,8 @@ if ($_SESSION['currentUserType'] == "user") {
 
                                                 $sql = "SELECT * FROM barangay ORDER BY name ASC";
                                                 $res = $db->query($sql);
-                                                echo "<select id='barangay' class='form-control' name='barangay'>";
-                                                echo "<option selected disabled>Select Barangay</option>";
+                                                echo "<select id='barangay' data-num='0' class='form-control' name='barangay[0]' required>";
+                                                echo "<option val='nosel' selected disabled>Select Barangay</option>";
                                                 while ($row = $res->fetch_assoc()) {
                                                     echo "<option value = '" . $row['barangayID'] . "'>" . $row['name'] . "</option>";
                                                 }
@@ -536,229 +536,218 @@ if ($_SESSION['currentUserType'] == "user") {
                                             </div>
                                             <div class="col-lg-4">
                                                 <label>For Other Barangay/Municipality</label>
-                                                <input disabled name="brgyname" class="form-control" placeholder="Enter Name">
+                                                <input id="brgyname0" disabled name="brgyname[0]" class="form-control" placeholder="Enter Name" required>
                                             </div>
                                             <div class="col-lg-8">
-                                                <input name="municipality" class="form-control" placeholder="Municipality">
-                                                <input name="province" class="form-control" placeholder="Province">
+                                                <input name="municipality[0]" id="m0" class="form-control" placeholder="Municipality" required>
+                                                <input name="province[0]" id="p0" class="form-control" placeholder="Province" required>
                                                 <button type="button" class="btn btn-success" data-toggle="modal"
-                                                data-target="#addLocation">Add Location
-                                            </button>
+                                                data-target="#addLocation">Add Location</button>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-8">
-                                        <div class="form-group">
+                                        <div class="col-lg-8">
                                             <div class="form-group">
-                                                <label>Purpose</label>
-                                                <textarea name="purpose" class="form-control" rows="14"></textarea>
+                                                <div class="form-group">
+                                                    <label>Purpose</label>
+                                                    <textarea name="purpose" class="form-control" rows="14"></textarea>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- MAIN FORM END -->
+                                    <!-- ROW -->
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label>Inspection Date</label>
+                                                <input class="form-control" type="date" name="date" id="date" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-8">
+                                            <div class="form-group">
+                                                <label>Inspector</label>
+                                                <input name="inspector" class="form-control" placeholder="Enter Full Name">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label>Document Date</label>
+                                                <input class="form-control" type="date" name="docudate" id="date" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-8">
+                                            <div class="form-group">
+                                                <label>Classification</label>
+                                                <select name="classification" class="form-control">
+                                                 <option value="Evacuation Site">Evacuation Site</option>
+                                                 <option value="Geohazard Assesment">Geohazard Assesment</option>
+                                                 <option value="GIR">GIR</option>
+                                                 <option value="Government Projects">Government Projects</option>
+                                                 <option value="OGI Report">OGI Report</option>
+                                                 <option value="Reinvestigation">Reinvestigation</option>
+                                                 <option value="Sanitary Landfill Site">Sanitary Landfill Site</option>
+                                                 <option value="Other OGI">Other OGI</option>
+                                             </select>
+                                         </div>
+                                     </div>
+                                     <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <div class="form-group">
+                                                <label>Subject</label>
+                                                <textarea name="subject" class="form-control" rows="2"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
+                                <!-- ROW END-->
                                 <!-- ROW -->
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label>Inspection Date</label>
-                                            <input class="form-control" type="date" name="date" id="date" required>
+                                            <label>Date Release</label>
+                                            <input class="form-control" type="date" name="datereleased" id="date" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-8">
                                         <div class="form-group">
-                                            <label>Inspector</label>
-                                            <input name="inspector" class="form-control" placeholder="Enter Full Name">
+                                            <label>Receive By.</label>
+                                            <input name="receiver" class="form-control" placeholder="Enter Full Name">
                                         </div>
                                     </div>
+                                </div>
+                                <!-- ROW END-->
+                                <!-- ROW -->
+                                <div class="row">
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label>Document Date</label>
-                                            <input class="form-control" type="date" name="docudate" id="date" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-8">
-                                        <div class="form-group">
-                                            <label>Classification</label>
-                                            <select name="classification" class="form-control">
-                                               <option value="Evacuation Site">Evacuation Site</option>
-                                               <option value="Geohazard Assesment">Geohazard Assesment</option>
-                                               <option value="GIR">GIR</option>
-                                               <option value="Government Projects">Government Projects</option>
-                                               <option value="OGI Report">OGI Report</option>
-                                               <option value="Reinvestigation">Reinvestigation</option>
-                                               <option value="Sanitary Landfill Site">Sanitary Landfill Site</option>
-                                               <option value="Other OGI">Other OGI</option>
-                                           </select>
-                                       </div>
-                                   </div>
-
-                                   <div class="col-lg-12">
-                                    <div class="form-group">
-                                        <div class="form-group">
-                                            <label>Subject</label>
-                                            <textarea name="subject" class="form-control" rows="2"></textarea>
+                                            <label>Upload File</label>
+                                            <input type="file" name="scannedFile">
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <!-- ROW END-->
-                            <!-- ROW -->
-                            <div class="row">
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <label>Date Release</label>
-                                        <input class="form-control" type="date" name="drelease" id="date" required>
-                                    </div>
-                                </div>
-                                <div class="col-lg-8">
-                                    <div class="form-group">
-                                        <label>Receive By.</label>
-                                        <input name="receiver" class="form-control" placeholder="Enter Full Name">
-                                    </div>
-                                </div>
+                            <div class="modal-footer">   
+                                <button type="reset" class="btn btn-primary">Reset</button>
+                                <button type="submit" class="btn btn-success">Add Record</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                             </div>
-                            <!-- ROW END-->
-                            <!-- ROW -->
-                            <div class="row">
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <label>Upload File</label>
-                                        <input type="file" name="scannedFile">
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- ROW END-->    
-                        </div>
-                        <!-- MODAL BODY END-->
-                        <!-- MODAL FOOTER -->
-                        <div class="modal-footer">   
-                            <button type="reset" class="btn btn-primary">Reset</button>
-                            <button type="submit" class="btn btn-success">Add Record</button>
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                        </div>
-                        <!-- MODAL FOOTER END -->
+                        </form>
                     </div>
-                    <!-- MODAL CONTENT END -->
+                    <!-- MODAL END -->
                 </div>
             </div>
-            <!-- ADD LOCATION MODAL -->
-            <div class="modal fade" id="addLocation" role="dialog">
-                <!-- MODAL CONTENT-->
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Add More Location</h4>
-                        </div>
-                        <!-- MODAL BODY -->
-                        <div class="modal-body">
-                            <div class="row">
-
-                                <div class="col-lg-5">
-                                    <div class="form-group">
-                                        <input id="numofinput" class="form-control" placeholder="No. of Location to Add">
-                                    </div>
-                                </div>
-                                <button id="addlocation" type="button" class="btn btn-success">Go</button>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div id="location" class="form-group">
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <!-- MODAL BODY END-->
-                        <!-- MODAL FOOTER -->
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-success">Add Location</button>
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                        </div>
-                        <!-- MODAL FOOTER END -->
-                    </div>
-                    <!-- MODAL CONTENT END -->
-                </div>
-            </div>
-            <!-- ADD LOCATION MODAL END -->
-        </form>
-        <!-- MODAL END -->
+            <!-- BODY END -->
+        </div>
+        <!-- MAIN PAGE END -->
     </div>
-</div>
-<!-- BODY END -->
-</div>
-<!-- MAIN PAGE END -->
-</div>
-
-<!-- GENERATE REPORT MODAL -->
-<form method="POST" action="php/generateReport.php" enctype="multipart/form-data">
-    <div class="modal fade" id="generateReport" role="dialog">
+    <!-- ADD LOCATION MODAL -->
+    <div class="modal fade" id="addLocation" role="dialog">
         <!-- MODAL CONTENT-->
         <div class="modal-dialog">
-            <div class="modal-content modal-lg">
+            <div class="modal-content ">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Generate Report</h4>
+                    <h4 class="modal-title">Add More Location</h4>
                 </div>
                 <!-- MODAL BODY -->
                 <div class="modal-body">
                     <div class="row">
+
                         <div class="col-lg-5">
                             <div class="form-group">
-                                <select id="filter" class="form-control">
-                                    <option value="barangay">Barangay</option>
-                                    <option value="classification">Classification</option>
-                                    <option value="code">Code</option>
-                                    <option value="dateInsp">Date Inspected</option>
-                                    <option value="dateRec">Date Received</option>
-                                    <option value="dateRel">Date Released</option>
-                                    <option value="docDate">Document Date</option>
-                                    <option value="folderNum">Folder No.</option>
-                                    <option value="municipality">Municipality</option>
-                                    <option value="province">Province</option>
-                                </select>
+                                <input id="numofinput" class="form-control" placeholder="No. of Location to Add">
                             </div>
                         </div>
-                        <div id="searchFilter" class="col-lg-5">
-                            <div class="form-group">
-                                <input name="search" list="searchKeys" class="form-control" placeholder="Search Here">
-                                <datalist id="searchKeys">
-                                </datalist>
+                        <button id="addlocation" type="button" class="btn btn-success">Go</button>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div id="location" class="form-group">
                             </div>
-
-                        </div>
-                        <div hidden id="dateFilter">
-                           <div class="col-lg-3">
-                            <div class="form-group">
-                                <label>From: </label>
-                                <input type="date" name="from" class="form-control" placeholder="From">
-                            </div>
-                             <div class="col-lg-3">
-                            <div class="form-group">
-                                <label>To: </label>
-                                <input type="date" name="to" class="form-control" placeholder="To">
-                            </div>
-                        </div>
                         </div>
                     </div>
-                           <div hidden class="col-lg-5" id="classifFilter">
-                            <div class="form-group">
-                              <select name="classification" class="form-control">
-                                               <option value="Evacuation Site">Evacuation Site</option>
-                                               <option value="Geohazard Assesment">Geohazard Assesment</option>
-                                               <option value="GIR">GIR</option>
-                                               <option value="Government Projects">Government Projects</option>
-                                               <option value="OGI Report">OGI Report</option>
-                                               <option value="Reinvestigation">Reinvestigation</option>
-                                               <option value="Sanitary Landfill Site">Sanitary Landfill Site</option>
-                                               <option value="Other OGI">Other OGI</option>
-                              </select>
+
+                </div>
+                <!-- MODAL BODY END-->
+                <!-- MODAL FOOTER -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Add Location</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+                <!-- MODAL FOOTER END -->
+            </div>
+            <!-- MODAL CONTENT END -->
+        </div>
+    </div>
+    <!-- ADD LOCATION MODAL END -->
+    <!-- GENERATE REPORT MODAL -->
+    <form method="POST" action="php/generateReport.php" enctype="multipart/form-data">
+        <div class="modal fade" id="generateReport" role="dialog">
+            <!-- MODAL CONTENT-->
+            <div class="modal-dialog">
+                <div class="modal-content modal-lg">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Generate Report</h4>
+                    </div>
+                    <!-- MODAL BODY -->
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-5">
+                                <div class="form-group">
+                                    <select id="filter" class="form-control">
+                                        <option value="barangay">Barangay</option>
+                                        <option value="classification">Classification</option>
+                                        <option value="code">Code</option>
+                                        <option value="dateInsp">Date Inspected</option>
+                                        <option value="dateRec">Date Received</option>
+                                        <option value="dateRel">Date Released</option>
+                                        <option value="docDate">Document Date</option>
+                                        <option value="folderNum">Folder No.</option>
+                                        <option value="municipality">Municipality</option>
+                                        <option value="province">Province</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div id="searchFilter" class="col-lg-5">
+                                <div class="form-group">
+                                    <input name="search" list="searchKeys" class="form-control" placeholder="Search Here">
+                                    <datalist id="searchKeys">
+                                    </datalist>
+                                </div>
+
+                            </div>
+                            <div hidden id="dateFilter">
+                             <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label>From: </label>
+                                    <input type="date" name="from" class="form-control" placeholder="From">
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="form-group">
+                                        <label>To: </label>
+                                        <input type="date" name="to" class="form-control" placeholder="To">
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                       
-                    <button onclick="searchReport()" id="searchrecord" type="button" class="btn btn-success">Go</button>
-                </div>
-                <div class="row">             
+                        <div hidden class="col-lg-5" id="classifFilter">
+                            <div class="form-group">
+                              <select name="classification" class="form-control">
+                                 <option value="Evacuation Site">Evacuation Site</option>
+                                 <option value="Geohazard Assesment">Geohazard Assesment</option>
+                                 <option value="GIR">GIR</option>
+                                 <option value="Government Projects">Government Projects</option>
+                                 <option value="OGI Report">OGI Report</option>
+                                 <option value="Reinvestigation">Reinvestigation</option>
+                                 <option value="Sanitary Landfill Site">Sanitary Landfill Site</option>
+                                 <option value="Other OGI">Other OGI</option>
+                             </select>
+                         </div>
+                     </div>
+
+                     <button onclick="searchReport()" id="searchrecord" type="button" class="btn btn-success">Go</button>
+                 </div>
+                 <div class="row">             
                     <div class="col-lg-12">
                         <div class="panel panel-green">
                             <div class="panel-heading">
@@ -921,7 +910,7 @@ if ($_SESSION['currentUserType'] == "user") {
                     <div id="uploadPanel" class="panel panel-green">
                         <div class="panel-body">
                             <div id="uploadForm" class="row">
-                             <div class="col-lg-12" align="center">
+                               <div class="col-lg-12" align="center">
                                 <div class="form-group">
                                     <label>Upload File</label>
                                     <input type="file" name="scannedFile">
@@ -932,18 +921,18 @@ if ($_SESSION['currentUserType'] == "user") {
                             </div>
                         </div>
                         <div hidden id="scannedFile" class="row">
-                         <div class="col-lg-12" align="center">
-                             <a id="viewfile" href="" class="text-success">View Scanned File</a> | <a href="#" id="editFile">Edit File</a>
-                         </div>
-                     </div>
-                 </div>
-             </div>
-         </form>
+                           <div class="col-lg-12" align="center">
+                               <a id="viewfile" href="" class="text-success">View Scanned File</a> | <a href="#" id="editFile">Edit File</a>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </form>
 
-     </div>
-     <!-- MODAL BODY END-->
-     <!-- MODAL FOOTER -->
-     <div class="modal-footer">
+       </div>
+       <!-- MODAL BODY END-->
+       <!-- MODAL FOOTER -->
+       <div class="modal-footer">
         <button name="editRecord" id="editRecord" class="btn btn-primary">Edit</button>
         <button name="saveRecord" id="saveRecord" class="hidden btn btn-success">Save</button>
         <button id="archbtn" type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
@@ -1058,42 +1047,93 @@ if ($_SESSION['currentUserType'] == "user") {
 
 <!-- Page-Level Demo Scripts - Tables - Use for reference -->
 <script>
-    $('#addlocation').click(function(){
+    $(document).ready(function () {
+        var counter =0;
 
-        var numberOfInputs = $('#numofinput').val();
-        var label = '<label>Location</label>';
-        var input = '<input class="form-control" placeholder="Barangay">'+
-        '<input class="form-control" placeholder="Province">'+
-        '<input class="form-control" placeholder="Municipality">';
-        for(i=1; i <= numberOfInputs; i++){
-            $('#location').append(label+input);
+        $('#addlocation').click(function(){
+            $('#folderNo').removeAttr('disabled');
+            var numberOfInputs = $('#numofinput').val();
+
+            var label = '<label>Location</label>';
+            for(i=1; i <= numberOfInputs; i++){
+                counter++;
+                $('#location').append(label);
+                var barangay = $('#barangay').clone().attr('data-num',counter).attr('name','barangay['+counter+']').appendTo('#location');
+                var other = $('#brgyname0').clone().val('').attr('id','brgyname'+counter).attr('name','brgyname['+counter+']').appendTo('#location');
+                var municipality = $('#m0').clone().val('').attr('id','m'+counter).attr('name','municipality['+counter+']').appendTo('#location');
+                var province = $('#p0').clone().val('').attr('id','p'+counter).attr('name','province['+counter+']').appendTo('#location');
+            }
+            locationChange();
+        })
+
+    });
+    locationChange();
+    function locationChange(){
+        $('select[name^=barangay]').change(function () {
+            $id = $(this).val();
+            $num = $(this).data('num');
+            if($num != '0'){
+                $('#folderNo').removeAttr('disabled');
+                $('#folderNo').val('');
+            }else{
+               if($id == '54' || $id == '56'){
+                $('#brgyname'+$num).removeAttr('disabled');
+                $('#folderNo').removeAttr('disabled');
+            }else{
+                $('#brgyname'+$num).attr('disabled', 'disabled');
+                $('#folderNo').attr('disabled', 'disabled');
+            }
         }
-
-    })
+        $.ajax({
+            url: 'folderNo.php',
+            data: {barangay: $id},
+            dataType: 'JSON',
+            success: function (data) {
+                $('#folderNo').val(data[0]);
+            }
+        }); 
+        $.ajax({
+            url: 'getLocation.php',
+            data: {barangay: $id},
+            dataType: 'JSON',
+            success: function (data) {
+                if(data != false){
+                    var municipality = data[0];
+                    var province = data[1];
+                    $('#m'+$num).val(municipality);
+                    $('#p'+$num).val(province);
+                }else{
+                    $('#m'+$num).val('');
+                    $('#p'+$num).val('');
+                }
+            }
+        });
+    });
+    }
 </script>
 
 </body>
 <script>
     $(document).ready(function () {
         $.ajax({
-                  type: "POST",
-                  dataType: 'JSON',
-                  data: {key: $('#filter').val()},
-                  url: 'php/getFilterKeys.php',
-                  success: function(data){
-                    var options = [];
+          type: "POST",
+          dataType: 'JSON',
+          data: {key: $('#filter').val()},
+          url: 'php/getFilterKeys.php',
+          success: function(data){
+            var options = [];
 
-                    $.each(data, function(key, value) {
-                        options.push("<option value='"+value+"'>"+value+"</option>");
-                    })
+            $.each(data, function(key, value) {
+                options.push("<option value='"+value+"'>"+value+"</option>");
+            })
 
-                    $('#searchKeys').html(options);
-                }
-            });
+            $('#searchKeys').html(options);
+        }
+    });
         $('#filter').change(function(){
             if($(this).val() == 'dateInsp' || $(this).val() == 'dateRec' || $(this).val() == 'dateRel' || $(this).val() == 'docDate' ){
                 $('#dateFilter').removeAttr('hidden');
-             $('#searchFilter').attr('hidden','hidden');
+                $('#searchFilter').attr('hidden','hidden');
                 $("#classifFilter").attr('hidden','hidden');
             }else if($(this).val() == 'classification'){
                 $("#classifFilter").removeAttr('hidden');
@@ -1344,6 +1384,7 @@ if ($_SESSION['currentUserType'] == "user") {
             }
         });
     });
+
 </script>
 
 <script>
@@ -1355,12 +1396,12 @@ if ($_SESSION['currentUserType'] == "user") {
             var searchValue = $('input[name=search]').val();
         }
         $('#repTable').DataTable( {
-         "ajax": {
+           "ajax": {
             "url": "php/report.php",
             "type": "POST",
             "dataSrc":'',
             'data': {key: filterClassification, value: searchValue},
-             "columns": [
+            "columns": [
             { "data": "code" },
             { "data": "folderNumber" },
             { "data": "applicant" },

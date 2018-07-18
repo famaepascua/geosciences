@@ -1,9 +1,11 @@
 <?php 
 
 require '../config.php';
-include 'uploadFile.php';
+require 'uploadFile.php';
+
 session_start();
 
+// ADD RECEIVE
 
 //This are the variables for table actionSlip
 
@@ -20,6 +22,7 @@ if(isset($_POST['action'])){
     }    
 }
 
+
 $actionsDesiredJoined = "";
 if(isset($_POST['actiondesired'])){
     $actiondesired = $_POST['actiondesired'];
@@ -27,6 +30,7 @@ if(isset($_POST['actiondesired'])){
         $actionsDesiredJoined .= $a . "<br>";
     }   
 }
+
 
 $sql = "INSERT INTO actionslip(action,actionDesired,oicrd,note) VALUES ('$actionsJoined','$actionsDesiredJoined','$oicrd','$note')";
 if ($db->query($sql)) {
@@ -40,8 +44,6 @@ if ($db->query($sql)) {
     $applicant = $_POST['applicant'];
     $sender = $_POST['sender'];
     $purpose = $_POST['purpose'];
-
-
     // Locations
 
     $barangayList = "";
@@ -49,55 +51,70 @@ if ($db->query($sql)) {
         $barangayID = array_map('intval', $_POST['barangay']);
         $barangayList = implode("','", $barangayID);
     }
-    
-    //For other municipalities or other barangay
-    if($barangayID != '54' && $barangayID != '56'){
-        $sql = "SELECT locationID FROM location WHERE barangayID = '$barangayID'";
-        $res = $db->query($sql);
-        $r = $res->fetch_row();
-        if(!$res){
-            var_dump($db->error);
-        }  
-        //Get the location ID from the query above
-        $locationID = $r[0];
-    }else{
-        //insert new barangay
-        $barangayName = $_POST['brgyname'];
-        $folderNumber = $_POST['folder'];
-        $municipality = $_POST['municipality'];
-        $province = $_POST['province'];
 
-        $sql = "Insert Into barangay(name,folderNumber) VALUES('$barangayName','$folderNumber') ";
+    $location=[];
+    //For locations of other municipality/barangay
+    foreach ($barangayID as $key => $value) {
+        if(isset($barangayID[$key])){
+            if($barangayID[$key] == '54' || $barangayID[$key] == '56'){
+                $bgyName = $_POST['brgyname'][$key];
+                $folder = $_POST['folder'];
+                $sql = "INSERT INTO barangay(name,folderNumber) VALUES('$bgyName','$folder')";
 
-        if(!$db->query($sql)){
-            var_dump($db->error);
-        }  
-        //get barangay ID
-        $barangayID = $db->insert_id;
+                if(!$db->query($sql)){
+                    var_dump($db->error);
+                }  
+                 //get barangay ID
+                $bID = $db->insert_id;
 
-        //insert into location
-        $sql = "Insert Into location(municipality,province,barangayID) VALUES('$municipality','$province','$barangayID') ";
+                //insert into location
+                $municipalityTemp = $_POST['municipality'][$key];
+                $provinceTemp = $_POST['province'][$key];
 
-        if(!$db->query($sql)){
-            var_dump($db->error);
-            die;
-        } 
-        //get the new location ID
-        $locationID = $db->insert_id;
+                $sql = "INSERT INTO location(municipality,province,barangayID) VALUES('$municipalityTemp','$provinceTemp','$bID') ";
 
+                if(!$db->query($sql)){
+                    var_dump($db->error);
+                    die;
+                }
+                $location[] = $db->insert_id; 
+                unset($barangayID[$key]);
+
+            }
+
+        }
     }
-    $sql = "INSERT INTO receive(code, dateReceived, applicant, sender, purpose, locationID, actionslipID) 
-    VALUES('$code','$dateReceived','$applicant','$sender','$purpose','$locationID','$actionSlipID') ";
-
-    if(!$db->query($sql)){
+    //For locations saved in the database
+    if($barangayList){
+     $sql = "SELECT locationID FROM location WHERE barangayID IN ('$barangayList')";
+     $res = $db->query($sql);
+     $r = $res->fetch_all();
+     if(!$res){
         var_dump($db->error);
     }  
-    $receiveID = $db->insert_id;
-
-}else{
-    var_dump($db->error);
-    die;
+        //Get the location ID's from the query above
+    foreach ($r as $loc) {
+        $location[] = intval($loc[0]); 
+    }
 }
+
+$sql = "INSERT INTO receive(code, dateReceived, applicant, sender, purpose, actionslipID) 
+VALUES('$code','$dateReceived','$applicant','$sender','$purpose','$actionSlipID') ";
+
+if(!$db->query($sql)){
+    var_dump($db->error . " " . $locationID);
+}  
+$receiveID = $db->insert_id;
+
+foreach ($location as $value) {
+    $sql = "INSERT INTO receivelocations(receiveID, locationID) VALUES('$receiveID','$value')";
+    if(!$db->query($sql)){
+        var_dump($db->error . " " . $locationID);
+    }  
+}
+
+//Unclaim
+
 $dateInspected = $_POST['date'];
 $documentDate = $_POST['docudate'];
 $inspector = $_POST['inspector'];
@@ -110,21 +127,47 @@ VALUES('$dateInspected','$documentDate','$inspector','$classification','$subject
 
 if(!$db->query($sql)){
     var_dump($db->error);
-    die;
 } 
 
 $unclaimID = $db->insert_id;
-$datereleased = $_POST['drelease'];
+
 $receiver = $_POST['receiver'];
+$datereleased = $_POST['datereleased'];
 
-
-$sql = "INSERT INTO records(status,scanFile,receiveID,receiver,releaseDate,unclaimID) 
-VALUES('release','$filename','$receiveID','$receiver','$datereleased','$unclaimID') ";
+$sql = "INSERT INTO records(status,receiveID,scanFile,unclaimID,releaseDate,receiver) 
+VALUES('release','$receiveID','$filename','$unclaimID','$datereleased','$receiver')";
 
 if(!$db->query($sql)){
     var_dump($db->error);
     die;
+}
+
+$t = date('h:i:a');
+$d = date('Y:n:j');
+
+$userID = $_SESSION['currentUserID'];
+$act = "Added new record";
+$sqlT = "INSERT INTO logs(logDate, logTime, activity, userID, receiveID) 
+VALUES ('$d','$t','$act','$userID','$receiveID')";
+
+if(!$db->query($sqlT)){
+    var_dump($db->error);
+    die;
+}
+
+
+if(!$db->query($sql)){
+    var_dump($db->error);
 }   
+$numberOfRows = mysqli_affected_rows($db);
 
 
-header('Location: ../records.php');
+if($numberOfRows > 0){
+    header('Location: ../homepage.php#success');
+}else{
+    header('Location: ../homepage.php#failed');
+}
+}else{
+    var_dump($db->error);
+}
+

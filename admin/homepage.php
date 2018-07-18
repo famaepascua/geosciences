@@ -441,7 +441,7 @@ if ($_SESSION['currentUserType'] == "user") {
                         <!-- MODAL BODY END-->
                         <!-- MODAL FOOTER -->
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-success" data-dismiss="modal">Add Location</button>
+                            <button onclick="$('#addLocation').modal()" type="button" class="btn btn-success">Add Location</button>
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                         </div>
                         <!-- MODAL FOOTER END -->
