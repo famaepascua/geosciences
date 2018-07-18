@@ -154,11 +154,6 @@ if(!$db->query($sqlT)){
     var_dump($db->error);
     die;
 }
-
-
-if(!$db->query($sql)){
-    var_dump($db->error);
-}   
 $numberOfRows = mysqli_affected_rows($db);
 
 
