@@ -1088,7 +1088,7 @@ if ($_SESSION['currentUserType'] == "user") {
                     var options = [];
 
                     $.each(data, function(key, value) {
-                        options.push("<option value="+value+">"+value+"</option>");
+                        options.push("<option value='"+value+"''>"+value+"</option>");
                     })
 
                     $('#searchKeys').html(options);
