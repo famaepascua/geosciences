@@ -4,11 +4,12 @@ require '../config.php';
 
 $key = $_POST['key'];
 $location = [];
-if(isset($_POST['from'])){
+if($_POST['from']){
     $from = $_POST['from'];
     $to = $_POST['to'];
 }else{
     $value = $_POST['value'];
+
 }
 
 if($key == 'barangay'){
