@@ -76,83 +76,91 @@ if ($_SESSION['currentUserType'] == "user") {
 
             <ul class="nav navbar-top-links navbar-right">
                 <li><p><b>
-                            <?php
-                            echo strtoupper($_SESSION['currentUser']);
-                            ?>
-                        </b></p>
-                </li>
+                    <?php
+                    echo strtoupper($_SESSION['currentUser']);
+                    ?>
+                </b></p>
+            </li>
 
-                <!-- DROPDOWN -->
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a></li>
-                        <li class="divider"></li>
+            <!-- DROPDOWN -->
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a></li>
+                    <li class="divider"></li>
 
-                        <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-                        </li>
-                    </ul>
-                </li>
-                <!-- DROPDOWN END -->
+                    <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                    </li>
+                </ul>
+            </li>
+            <!-- DROPDOWN END -->
 
-            </ul>
+        </ul>
 
-            <!-- SIDEBAR-->
-            <div class="navbar-default sidebar" role="navigation">
-                <div class="sidebar-nav navbar-collapse">
-                    <ul class="nav" id="side-menu">
-                        <li>
-                            <a href="homepage.php"><i class="fa fa-search fa-fw"></i>For Inspection</a>
+        <!-- SIDEBAR-->
+        <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav navbar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li>
+                        <a href="homepage.php"><i class="fa fa-search fa-fw"></i>For Inspection</a>
+                    </li>
+                    <li>
+                        <a href="unclaim.php"><i class="fa fa-file fa-fw"></i>Receive</a>
+                    </li>
+                    <li>
+                        <a href="release.php"><i class="fa fa-file-text fa-fw"></i> Release</a>
+                    </li>
+                    <li>
+                        <a href="records.php"><i class="fa fa-folder fa-fw"></i>Records</a>
+                    </li>
+                    <li>
+                        <a href="users.php"><i class="fa fa-user fa-fw"></i>Users</a>
+                    </li>
+                    <li>
+                        <a href="logs.php"><i class="fa fa-th-list fa-fw"></i>Logs</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- SIDEBAR END -->
+    </nav>
+    <!-- NAVIGATION END -->
+
+    <!-- MAIN PAGE -->
+    <div id="page-wrapper">
+
+        <!-- PAGE HEADER -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Logs</h1>
+            </div>
+        </div>
+        <!-- PAGE HEADER END -->
+
+        <!-- BODY -->
+        <div class="row">
+            <div class="col-lg-12">
+
+                <!-- PANEL -->
+                <div class="panel panel-green">
+
+                  <!-- PANEL HEADER -->
+                  <div class="panel-heading"> 
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#activity" data-toggle="tab">Activity Logs</a>
                         </li>
-                        <li>
-                            <a href="unclaim.php"><i class="fa fa-file fa-fw"></i>Receive</a>
-                        </li>
-                        <li>
-                            <a href="release.php"><i class="fa fa-file-text fa-fw"></i> Release</a>
-                        </li>
-                        <li>
-                            <a href="records.php"><i class="fa fa-folder fa-fw"></i>Records</a>
-                        </li>
-                        <li>
-                            <a href="users.php"><i class="fa fa-user fa-fw"></i>Users</a>
-                        </li>
-                        <li>
-                            <a href="logs.php"><i class="fa fa-th-list fa-fw"></i>Logs</a>
+                        <li><a href="#userlogs" data-toggle="tab">User Logs</a>
                         </li>
                     </ul>
                 </div>
-            </div>
-            <!-- SIDEBAR END -->
-        </nav>
-        <!-- NAVIGATION END -->
+                <!-- PANEL HEAD END -->
 
-        <!-- MAIN PAGE -->
-        <div id="page-wrapper">
-
-            <!-- PAGE HEADER -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">Logs</h1>
-                </div>
-            </div>
-            <!-- PAGE HEADER END -->
-
-            <!-- BODY -->
-            <div class="row">
-                <div class="col-lg-12">
-
-                    <!-- PANEL -->
-                    <div class="panel panel-green">
-
-                        <!-- PANEL HEAD -->
-                        <div class="panel-heading"> 
-                        </div>
-                        <!-- PANEL HEAD END -->
-
-                        <!-- PANEL BODY -->
-                        <div class="panel-body">
+                <!-- PANEL BODY -->
+                <div class="panel-body">
+                    <div class="tab-content">
+                        <div id="activity" class="tab-pane fade in active">
                             <!-- TABLE -->
                             <div class="table-responsive">
                                 <table class="table table-hover">
@@ -165,7 +173,7 @@ if ($_SESSION['currentUserType'] == "user") {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    <?php
+                                        <?php
                                         require 'config.php';
                                         $sql = "SELECT * FROM logs JOIN users ON logs.userID = users.userID ORDER by logDate DESC";
                                         $res = $db->query($sql);
@@ -178,38 +186,72 @@ if ($_SESSION['currentUserType'] == "user") {
 
                                         }
 
-                                    ?>
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>
-                            <!-- TABLE END -->
                         </div>
-                        <!-- PANEL BODY END -->
+                        <div id="userlogs" class="tab-pane fade">
+                            <!-- TABLE -->
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Timestamp</th>
+                                            <th>User</th>
+                                            <th>Activity</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $sql = "SELECT * FROM `userlogs` inner join users on users.userID = userlogs.userID order by userLogID DESC";
+                                        $res = $db->query($sql);
+                                        while($row = $res->fetch_assoc()){
+                                            echo "<tr>";
+                                            echo "<td>" . $row['timeIN'] . "</td>";
+                                            echo "<td>" . $row['username'] . "</td>";
+                                            if($row['timeOut']){
+                                                $activity = 'Logged out';
+                                            }else{
+                                                $activity = 'Logged in';
+                                            }
+                                            echo "<td>" . $activity . "</td>";
+
+                                        }
+
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- TABLE END -->
                     </div>
-                    <!-- PANEL END -->
+                    <!-- PANEL BODY END -->
                 </div>
+                <!-- PANEL END -->
             </div>
-            <!-- BODY END -->
         </div>
-        <!-- MAIN PAGE END -->
+        <!-- BODY END -->
+    </div>
+    <!-- MAIN PAGE END -->
 </div>
-        
-    <!-- jQuery -->
-    <script src="vendor/jquery/jquery.min.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!-- jQuery -->
+<script src="vendor/jquery/jquery.min.js"></script>
 
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="vendor/metisMenu/metisMenu.min.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 
-    <!-- Morris Charts JavaScript -->
-    <script src="vendor/raphael/raphael.min.js"></script>
-    <script src="vendor/morrisjs/morris.min.js"></script>
-    <script src="data/morris-data.js"></script>
+<!-- Metis Menu Plugin JavaScript -->
+<script src="vendor/metisMenu/metisMenu.min.js"></script>
 
-    <!-- Custom Theme JavaScript -->
-    <script src="dist/js/sb-admin-2.js"></script>
+<!-- Morris Charts JavaScript -->
+<script src="vendor/raphael/raphael.min.js"></script>
+<script src="vendor/morrisjs/morris.min.js"></script>
+<script src="data/morris-data.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="dist/js/sb-admin-2.js"></script>
 
 </body>
 
