@@ -167,7 +167,7 @@ if ($_SESSION['currentUserType'] == "user") {
                                     <tbody>
                                     <?php
                                         require 'config.php';
-                                        $sql = "SELECT * FROM logs JOIN users ON logs.userID = users.userID";
+                                        $sql = "SELECT * FROM logs JOIN users ON logs.userID = users.userID ORDER by logDate DESC";
                                         $res = $db->query($sql);
                                         while($row = $res->fetch_assoc()){
                                             echo "<tr>";
