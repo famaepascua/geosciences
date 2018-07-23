@@ -1,11 +1,16 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: yanzky
- * Date: 08/07/2018
- * Time: 7:01 AM
- */
-
+ require("../admin/config.php");
 session_start();
+$logID = $_SESSION['userlogID'];
+
+ if($logID){
+  $sql = "Update userlogs set timeOut = NOW() where userlogID = '$logID' ";
+
+  if(!$db->query($sql)){
+    var_dump($db->error);
+    die;
+  }
+  $userlogID = $db->insert_id;
+}
 session_destroy();
 header('Location:../index.php');
