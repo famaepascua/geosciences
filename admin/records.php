@@ -754,7 +754,7 @@ if ($_SESSION['currentUserType'] == "user") {
                         </div>
 
                         <div class="panel-body">
-                            <div id="repTableDiv"  class="table-responsive table-bordered">
+                            <div id="repTableDiv" class="table-responsive table-bordered">
                                 <table id="repTable" class="table">
                                     <thead>
                                         <tr>
