@@ -29,7 +29,7 @@ $t = date('h:i:a');
 $d = date('Y:n:j');
 
 $userID = $_SESSION['currentUserID'];
-$act = "Deleted users: ".$userList;
+$act = "Deleted user/s ".$userList;
 $sqlT = "INSERT INTO logs(logDate, logTime, activity, userID) 
 VALUES ('$d','$t','$act','$userID')";
 
