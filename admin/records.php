@@ -1154,7 +1154,7 @@ if ($_SESSION['currentUserType'] == "user") {
        document.body.innerHTML = printContents;
 
        window.print();
-       // location.href = './records.php';
+       location.href = './records.php';
    })
 }
 $(document).ready(function () {
