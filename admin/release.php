@@ -230,17 +230,17 @@ if ($_SESSION['currentUserType'] == "user") {
                     <div class="panel panel-green">
                         <div class="panel-body">
                             <div class="row">
-                                <div class="col-lg-4">
+                                <div class="col-lg-12">
                                     <div>
                                         <label>Code:</label> <span id="code"></span>
                                     </div>
                                 </div>
-                                <div class="col-lg-4">
+                                <div class="col-lg-12">
                                     <div>
                                         <label>Folder No:</label> <span id="folderno"></span>
                                     </div>
                                 </div>
-                                <div class="col-lg-4">
+                                <div class="col-lg-12">
                                     <div>
                                         <label>Date Received:</label> <span id="dateReceived"></span>
                                     </div>
