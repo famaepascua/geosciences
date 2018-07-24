@@ -5,7 +5,7 @@
  $user = mysqli_real_escape_string($db,$_POST['username']);
  $password = mysqli_real_escape_string($db,$_POST['password']);
 
- $sql = "SELECT username, password, userType,userID FROM users WHERE username = '$user' and password = '$password'";
+ $sql = "SELECT username, password, userType,userID FROM users WHERE username = ? and password = ?";
  $statement = $db->prepare($sql);
  $statement->bind_param('ss',$user,$password);
  $statement->execute();
@@ -16,7 +16,8 @@
 
  $userID = $row[3];
 
-if($db->query($sql)->num_rows > 0 && $row[2] == 'admin'){
+if(mysqli_num_rows($result) > 0){
+
    $sql = "INSERT INTO userlogs(userID) VALUES('$userID') ";
 
   if(!$db->query($sql)){
@@ -28,22 +29,13 @@ if($db->query($sql)->num_rows > 0 && $row[2] == 'admin'){
   $_SESSION['currentUser'] = $row[0];
   $_SESSION['currentUserType'] = $row[2];
   $_SESSION['currentUserID'] = $row[3];
-  header('Location: home.php');
-}else if ($db->query($sql)->num_rows > 0 && $row[2] == 'user'){
-   $sql = "INSERT INTO userlogs(userID) VALUES('$userID') ";
-
-  if(!$db->query($sql)){
-    var_dump($db->error);
-    die;
+  if($row[2] == 'admin'){
+    header('Location: home.php');
+  }else{
+   header('Location: ../user/user.php');
   }
-  $userlogID = $db->insert_id;
- $_SESSION['userlogID'] = $userlogID;
- $_SESSION['currentUser'] = $row[0];
- $_SESSION['currentUserType'] = $row[2];
- $_SESSION['currentUserID'] = $row[3];
- header('Location: ../user/user.php');
 }else{
-  header('Location: ../index.php');
+  echo "<script type='text/javascript'>alert('Invalid username or password. ');location.href='../index.php'</script>";
 }
 
 ?>
