@@ -603,13 +603,13 @@ if ($_SESSION['currentUserType'] == "user") {
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label>Date Release</label>
+                                            <label>Date Released</label>
                                             <input class="form-control" type="date" name="datereleased" id="date" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-8">
                                         <div class="form-group">
-                                            <label>Receive By.</label>
+                                            <label>Received By.</label>
                                             <input name="receiver" class="form-control" placeholder="Enter Full Name">
                                         </div>
                                     </div>
