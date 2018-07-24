@@ -480,6 +480,19 @@ if ($_SESSION['currentUserType'] == "user") {
 
 <script>
     $(document).ready(function () {
+        $('input[name=code]').change(function(){
+            $.ajax({
+            url: 'php/codeValidate.php',
+            data: {code: $(this).val()},
+            dataType: 'JSON',
+            success: function (res) {
+                if(res != "True"){
+                    alert("There is a duplicate code. Please enter a new one. ");
+                    $('input[name=code]').val('');
+                }
+            }
+        }); 
+        })
         var counter =0;
 
         $('#addlocation').click(function(){
