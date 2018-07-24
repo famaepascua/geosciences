@@ -28,7 +28,7 @@ if ($_SESSION['currentUserType'] != "user") {
     <meta name="author" content="">
 
     <link href="../images/mgbcarlogo.png" rel="icon" type="image/png">
-    <title>MGB | GEOSCIENCES DIVISION</title>
+    <title>MGB-CAR | GEOSCIENCES DIVISION</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -73,7 +73,7 @@ if ($_SESSION['currentUserType'] != "user") {
                     <span class="icon-bar"></span>
                 </button>
                 <img src="../images/mgbcarlogo.png" width="45px" height="45px">
-                <a href="homepage.php" style="text-shadow: 0 0 3px #026603; font-size: 20px">MINES AND GEOSCIENCES BUREAU | GEOSCIENCES DIVISION</a>
+                <a href="homepage.php" style="text-shadow: 0 0 3px #026603; font-size: 20px">MINES AND GEOSCIENCES BUREAU - CORDILLERA ADMINISTRATIVE REGION | GEOSCIENCES DIVISION</a>
             </div>
             <!-- NAV HEADER END -->
 
@@ -154,7 +154,7 @@ if ($_SESSION['currentUserType'] != "user") {
                                     <th hidden>Action </th>
                                     <th hidden>Action Desired</th>
                                     <th hidden>note </th>
-                                    <th hidden>OICRD </th>
+                                    <th hidden>OIC-RD </th>
                                     <th hidden>Archive </th>
                                 </tr>
                             </thead>
@@ -272,15 +272,15 @@ if ($_SESSION['currentUserType'] != "user") {
                         </div>
                         <div class="col-lg-6">
                             <div>
+                                <label>OIC-RD:</label> <span id="oicrd"></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div>
                                 <label>Action Desired:</label> <span id="actiondesired"></span>
                             </div>
                         </div>
-                        <div class="col-lg-12">
-                            <div>
-                                <label>OICRD:</label> <span id="oicrd"></span>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
+                        <div class="col-lg-6">
                             <div>
                                 <label>Note:</label> <span id="note"></span>
                             </div>

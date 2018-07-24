@@ -28,7 +28,7 @@ if ($_SESSION['currentUserType'] == "user") {
     <meta name="author" content="">
 
     <link href="../images/mgbcarlogo.png" rel="icon" type="image/png">
-    <title>MGB | GEOSCIENCES DIVISION</title>
+    <title>MGB-CAR | GEOSCIENCES DIVISION</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -73,7 +73,7 @@ if ($_SESSION['currentUserType'] == "user") {
                     <span class="icon-bar"></span>
                 </button>
                 <img src="../images/mgbcarlogo.png" width="45px" height="45px">
-                <a href="homepage.php" style="text-shadow: 0 0 3px #026603; font-size: 20px">MINES AND GEOSCIENCES BUREAU | GEOSCIENCES DIVISION</a>
+                <a href="homepage.php" style="text-shadow: 0 0 3px #026603; font-size: 20px">MINES AND GEOSCIENCES BUREAU - CORDILLERA ADMINISTRATIVE REGION | GEOSCIENCES DIVISION</a>
             </div>
             <!-- NAV HEADER END -->
 
@@ -110,7 +110,7 @@ if ($_SESSION['currentUserType'] == "user") {
                         <a href="homepage.php"><i class="fa fa-search fa-fw"></i>For Inspection</a>
                     </li>
                     <li>
-                        <a href="unclaim.php"><i class="fa fa-file fa-fw"></i>Receive</a>
+                        <a href="unclaim.php"><i class="fa fa-file fa-fw"></i>Received</a>
                     </li>
                     <li>
                         <a href="release.php"><i class="fa fa-file-text fa-fw"></i> Release</a>
@@ -188,7 +188,7 @@ if ($_SESSION['currentUserType'] == "user") {
                                             <th hidden>Action </th>
                                             <th hidden>Action Desired</th>
                                             <th hidden>note </th>
-                                            <th hidden>OICRD </th>
+                                            <th hidden>OIC-RD </th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -264,7 +264,7 @@ if ($_SESSION['currentUserType'] == "user") {
                                             <th hidden>Action </th>
                                             <th hidden>Action Desired</th>
                                             <th hidden>note </th>
-                                            <th hidden>OICRD </th>
+                                            <th hidden>OIC-RD </th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -467,7 +467,7 @@ if ($_SESSION['currentUserType'] == "user") {
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label>OICRD</label>
+                                                        <label>OIC-RD</label>
                                                         <input name="oicrd" type="text" class="form-control"
                                                         placeholder="Enter Full Name">
                                                     </div>
@@ -815,15 +815,15 @@ if ($_SESSION['currentUserType'] == "user") {
                         </div>
                         <div class="col-lg-6">
                             <div>
+                                <label>OIC-RD:</label> <span id="oicrd"></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div>
                                 <label>Action Desired:</label> <span id="actiondesired"></span>
                             </div>
                         </div>
-                        <div class="col-lg-12">
-                            <div>
-                                <label>OICRD:</label> <span id="oicrd"></span>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
+                        <div class="col-lg-6">
                             <div>
                                 <label>Note:</label> <span id="note"></span>
                             </div>
@@ -922,7 +922,7 @@ if ($_SESSION['currentUserType'] == "user") {
                         </div>
                         <div hidden id="scannedFile" class="row">
                          <div class="col-lg-12" align="center">
-                             <a id="viewfile" href="" class="text-success">View Scanned File</a> | <a href="#" id="editFile">Edit File</a>
+                             <a id="viewfile" href="" target="_blank" class="text-success">View Scanned File</a> | <a href="#" id="editFile">Edit File</a>
                          </div>
                      </div>
                  </div>
