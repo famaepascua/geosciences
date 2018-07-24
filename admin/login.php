@@ -2,14 +2,14 @@
  require("config.php");
  session_start();
 
- $user = $_POST['username'];
- $password = $_POST['password'];
+ $user = mysqli_real_escape_string($db,$_POST['username']);
+ $password = mysqli_real_escape_string($db,$_POST['password']);
 
  $sql = "SELECT username, password, userType,userID FROM users WHERE username = '$user' and password = '$password'";
-
  $statement = $db->prepare($sql);
  $statement->bind_param('ss',$user,$password);
  $statement->execute();
+
 
  $result = $statement->get_result();
  $row = $result->fetch_row();
