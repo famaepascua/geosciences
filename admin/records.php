@@ -680,143 +680,148 @@ if ($_SESSION['currentUserType'] == "user") {
     </div>
     <!-- ADD LOCATION MODAL END -->
     <!-- GENERATE REPORT MODAL -->
-    <form method="POST" action="php/generateReport.php" enctype="multipart/form-data">
-        <div class="modal fade" id="generateReport" role="dialog">
-            <!-- MODAL CONTENT-->
-            <div class="modal-dialog">
-                <div class="modal-content modal-lg">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Generate Report</h4>
+<form method="POST" action="php/generateReport.php" enctype="multipart/form-data">
+    <div class="modal fade" id="generateReport" role="dialog">
+        <!-- MODAL CONTENT-->
+        <div class="modal-dialog">
+            <div class="modal-content modal-lg">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Generate Report</h4>
+                </div>
+                <!-- MODAL BODY -->
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-5">
+                            <div class="form-group">
+                                <select id="filter" class="form-control">
+                                    <option value="barangay">Barangay</option>
+                                    <option value="classification">Classification</option>
+                                    <option value="code">Code</option>
+                                    <option value="dateInsp">Date Inspected</option>
+                                    <option value="dateRec">Date Received</option>
+                                    <option value="dateRel">Date Released</option>
+                                    <option value="docDate">Document Date</option>
+                                    <option value="folderNum">Folder No.</option>
+                                    <option value="municipality">Municipality</option>
+                                    <option value="province">Province</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div id="searchFilter" class="col-lg-5">
+                            <div class="form-group">
+                                <input name="search" list="searchKeys" class="form-control" placeholder="Search Here">
+                                <datalist id="searchKeys">
+                                </datalist>
+                            </div>
+                        </div>
+                    <div hidden id="dateFilter">
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label>From: </label>
+                                <input type="date" name="from" class="form-control" placeholder="From">
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label>To: </label>
+                                <input type="date" name="to" class="form-control" placeholder="To">
+                            </div>
+                        </div>
                     </div>
-                    <!-- MODAL BODY -->
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-lg-5">
-                                <div class="form-group">
-                                    <select id="filter" class="form-control">
-                                        <option value="barangay">Barangay</option>
-                                        <option value="classification">Classification</option>
-                                        <option value="code">Code</option>
-                                        <option value="dateInsp">Date Inspected</option>
-                                        <option value="dateRec">Date Received</option>
-                                        <option value="dateRel">Date Released</option>
-                                        <option value="docDate">Document Date</option>
-                                        <option value="folderNum">Folder No.</option>
-                                        <option value="municipality">Municipality</option>
-                                        <option value="province">Province</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div id="searchFilter" class="col-lg-5">
-                                <div class="form-group">
-                                    <input name="search" list="searchKeys" class="form-control" placeholder="Search Here">
-                                    <datalist id="searchKeys">
-                                    </datalist>
-                                </div>
 
+                        <div hidden class="col-lg-5" id="classifFilter">
+                            <div class="form-group">
+                                <select name="classification" class="form-control">
+                                    <option value="Evacuation Site">Evacuation Site</option>
+                                    <option value="Geohazard Assesment">Geohazard Assesment</option>
+                                    <option value="GIR">GIR</option>
+                                    <option value="Government Projects">Government Projects</option>
+                                    <option value="OGI Report">OGI Report</option>
+                                    <option value="Reinvestigation">Reinvestigation</option>
+                                    <option value="Sanitary Landfill Site">Sanitary Landfill Site</option>
+                                    <option value="Other OGI">Other OGI</option>
+                                </select>
                             </div>
-                            <div hidden id="dateFilter">
-                             <div class="col-lg-3">
-                                <div class="form-group">
-                                    <label>From: </label>
-                                    <input type="date" name="from" class="form-control" placeholder="From">
-                                </div>
-                            </div>
-                            <div class="col-lg-3">
-                                <div class="form-group">
-                                    <label>To: </label>
-                                    <input type="date" name="to" class="form-control" placeholder="To">
+                        </div>
+
+                            <button onclick="searchReport()" id="searchrecord" type="button" class="btn btn-success">Go</button>
+                    </div>
+                
+                 
+                    <div class="row">             
+                        <div class="col-lg-12">
+                            <div class="panel panel-default">
+                                <div id="repTableDiv" class="table-responsive table-bordered">
+
+                                    <!-- PANEL HEADER -->
+                                    <div hidden id="repHeader">
+                                        <div class="panel-heading"> 
+                                            <div class="row">
+                                               <div class="col-lg-12" align="center">
+                                                   <div class="logo">
+                                                        <p>
+                                                        <img src="images/mgbcarlogo.png" alt="MGB Car Logo" width="100" height="100" align="left">
+                                                        Mines and Geosciences Bureau</br>
+                                                        Cordillera Administrative Region</br>
+                                                        #80 Diego Silang St. Baguio City</br>
+                                                        GEOSCIENCES DIVISION</p>
+                                                   </div>
+                                               </div>
+                                            </div>
+                                       </div>
+                                    </div>
+                                    <!-- PANEL HEADER END -->
+
+                                    <!-- PANEL BODY -->
+                                    <div class="panel-body">
+                                    <!-- TABLE -->
+                                        <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                            <thead>
+                                                <tr>
+                                                    <th>Code</th>
+                                                    <th>Applicant</th>
+                                                    <th>Sender</th>
+                                                    <th>Location</th>
+                                                    <th>Subject</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                        <!-- TABLE END -->
+                                    </div>
+                                    <!-- PANEL BODY END -->
+
+                                    <!-- PANEL FOOTER -->
+                                    <div hidden id="repFooter" class="panel-footer">
+                                        <div class="row">
+                                            <div class="col-lg-12" align="center">
+                                                <div>
+                                                    <p>Prepared By. Raymark Cuenca</br>
+                                                    Administrative Assistant I / Document Controller</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- PANEL FOOTER END -->
                                 </div>
                             </div>
                         </div>
-                        <div hidden class="col-lg-5" id="classifFilter">
-                            <div class="form-group">
-                              <select name="classification" class="form-control">
-                                 <option value="Evacuation Site">Evacuation Site</option>
-                                 <option value="Geohazard Assesment">Geohazard Assesment</option>
-                                 <option value="GIR">GIR</option>
-                                 <option value="Government Projects">Government Projects</option>
-                                 <option value="OGI Report">OGI Report</option>
-                                 <option value="Reinvestigation">Reinvestigation</option>
-                                 <option value="Sanitary Landfill Site">Sanitary Landfill Site</option>
-                                 <option value="Other OGI">Other OGI</option>
-                             </select>
-                         </div>
-                     </div>
-
-                     <button onclick="searchReport()" id="searchrecord" type="button" class="btn btn-success">Go</button>
-                 </div>
-                 <div class="row">             
-                    <div class="col-lg-12">
-
-
-                        <div class="panel-body">
-
-                            <div id="repTableDiv" class="table-responsive table-bordered">
-                                <div hidden id="repHeader" class="panel panel-green">
-                                   <div class="panel-heading"> 
-                                       <div class="row">
-                                           <div class="col-lg-12" align="center">
-                                               <div class="logo">
-                                                   <img src="images/mgbcarlogo.png" alt="MGB Car Logo" width="100" height="100">
-                                               </div>
-                                               <div>
-                                                   <p>Mines and Geosciences Bureau</p>
-                                                   <p>Cordillera Administrative Region</p>
-                                                   <p>#80 Diego Silang St. Baguio City</p>
-                                                   <p>GEOSCIENCES DIVISION</p>
-                                               </div>
-                                           </div>
-                                       </div>
-                                   </div>
-                               </div>
-                               <!-- PANEL HEADER END -->
-                               <table id="repTable" class="table">
-                                <thead>
-                                    <tr>
-                                        <th>Code</th>
-                                        <th>Folder</th>
-                                        <th>Applicant</th>
-                                        <th>Sender</th>
-                                        <th>Location</th>
-                                    </tr>
-                                </thead>
-                            </table>
-                            <div hidden id="repFooter" class="panel-footer">
-                               <div class="row">
-                                   <div class="col-lg-12" align="center">
-                                       <div>
-                                           <p>Prepared By.</p>
-                                           <p>Raymark Cuenca</p>
-                                           <p>Administrative Assistant I</p>
-                                           <p>Document Controller</p>
-                                           <p>Geosciences Division</p>
-                                       </div>
-                                   </div>
-                               </div>
-                           </div>
-                       </div>
-
-                       <!-- PANEL FOOTER END -->
-                       <div class="panel-footer">
-                        <div class="row">
-                            <div class="col-lg-12" align="center">
-                                <button onclick="printDiv('repTableDiv')" type="button" class="btn btn-primary">Generate Report</button>
-                            </div>
+                    </div>    
+                <!-- MODAL BODY END-->
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col-lg-12" align="center">
+                            <button onclick="printDiv('repTableDiv')" type="button" class="btn btn-primary">Generate Report</button>
                         </div>
                     </div>
                 </div>
+
             </div>
+            <!-- MODAL CONTENT END -->
         </div>
     </div>
-</div>
-<!-- MODAL BODY END-->
-
-</div>
-<!-- MODAL CONTENT END -->
-</div>
-<!-- MODAL END -->
+        <!-- MODAL END -->
 </form>
 <!-- GENERATE REPORT MODAL END -->
 
@@ -1451,10 +1456,12 @@ $(document).ready(function () {
             'data': {key: filterClassification, value: searchValue,from: from,to: to},
             "columns": [
             { "data": "code" },
-            { "data": "folderNumber" },
             { "data": "applicant" },
             { "data": "sender" },
-            { "data": "location" }        ]
+            { "data": "location" },
+            { "data": "subject" },
+            { "data": "status" }
+                    ]
         },
     } ).destroy();
     }
