@@ -59,7 +59,7 @@ if ($_SESSION['currentUserType'] == "user") {
 
 <body>
 
-    <div id="wrapper">
+<div id="wrapper">
 
         <!-- NAVIGATION -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
@@ -209,12 +209,11 @@ if ($_SESSION['currentUserType'] == "user") {
             </div>
             <!-- PANEL END -->
         </div>
+        </div>
     </div>
-</div>
-<!-- MAIN PAGE END -->
+    <!-- MAIN PAGE END -->
 
 </div>
-<!-- /#wrapper -->
 
 <form action="php/release.php" method="POST">
     <div class="modal fade" id="editRelease" role="dialog">
@@ -327,7 +326,7 @@ if ($_SESSION['currentUserType'] == "user") {
                 <!-- MODAL CONTENT END -->
         </div>
     </div>
-    </form>
+</form>
 
     <!-- jQuery -->
     <script src="vendor/jquery/jquery.min.js"></script>
@@ -420,9 +419,6 @@ if ($_SESSION['currentUserType'] == "user") {
             }
 
         })
-
-
-
     </script>
 
 
