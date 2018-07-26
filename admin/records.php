@@ -313,6 +313,7 @@ if ($_SESSION['currentUserType'] == "user") {
                                 <button type="button" class="btn btn-primary" data-toggle="modal"
                                         data-target="#generateReport">Generate Report
                                 </button>
+
                                 <!-- GENERATE REPORT MODAL -->
                                 <form method="POST" action="php/generateReport.php" enctype="multipart/form-data">
                                     <div class="modal fade" id="generateReport" role="dialog">
