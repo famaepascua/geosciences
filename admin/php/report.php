@@ -32,7 +32,7 @@ if($key == 'barangay'){
     $where = "AND classification = '$value'"; 
 }
 
-$sql = "SELECT code,folderNumber,applicant,sender,GROUP_CONCAT(CONCAT(barangay.name,',',municipality,',',province)SEPARATOR '<br>') as location FROM receive INNER JOIN receivelocations on receive.receiveID = receivelocations.receiveID INNER JOIN location on receivelocations.locationID = location.locationID INNER JOIN barangay ON barangay.barangayID = location.barangayID inner JOIN records on records.receiveID = receive.receiveID inner join actionslip on actionslip.actionslipID = receive.actionslipID left join unclaim on unclaim.unclaimID = records.unclaimID WHERE archive = '0' ".$where." GROUP BY records.recordID ";
+$sql = "SELECT code,folderNumber,applicant,sender,GROUP_CONCAT(CONCAT(barangay.name,',',municipality,',',province)SEPARATOR '<br>') as location,status FROM receive INNER JOIN receivelocations on receive.receiveID = receivelocations.receiveID INNER JOIN location on receivelocations.locationID = location.locationID INNER JOIN barangay ON barangay.barangayID = location.barangayID inner JOIN records on records.receiveID = receive.receiveID inner join actionslip on actionslip.actionslipID = receive.actionslipID left join unclaim on unclaim.unclaimID = records.unclaimID WHERE archive = '0' ".$where." GROUP BY records.recordID ";
 
 
 $res = $db->query($sql);
