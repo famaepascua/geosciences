@@ -621,6 +621,8 @@ if ($_SESSION['currentUserType'] == "user") {
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-12" align="center">
+                                                        <button type="button" id="cnclBtn" class="hidden btn btn-outline btn-success">Cancel
+                                                        </button>
                                                         <button name="recordID" id="recordID" class="btn btn-outline btn-success">Save
                                                         </button>
                                                     </div>
@@ -1275,6 +1277,17 @@ if ($_SESSION['currentUserType'] == "user") {
         $('#editFile').on('click', function (e) {
             $('#scannedFile').attr('hidden', 'hidden');
             $('#uploadForm').removeAttr('hidden');
+            $('#cnclBtn').toggleClass('hidden');
+        })
+        $('#cnclBtn').on('click',function(){
+            $('#scannedFile').removeAttr('hidden');
+            $('#uploadForm').attr('hidden','hidden');
+
+              $('#editFile').on('click', function (e) {
+            $('#scannedFile').attr('hidden', 'hidden');
+            $('#uploadForm').removeAttr('hidden');
+            $('#cnclBtn').toggleClass('hidden');
+        })
         })
 
         $('#exampleModal').on('show.bs.modal', function () {
