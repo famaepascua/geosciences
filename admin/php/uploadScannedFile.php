@@ -6,13 +6,13 @@ session_start();
 
 $recordID = $_POST['recordID'];
 
-
+if($filename){
 $sql = "Update records set scanFile ='$filename' where recordID = '$recordID'";
 
 if(!$db->query($sql)){
-	var_dump($db->error);
-	die;
-} 	
+  var_dump($db->error);
+  die;
+}   
 
 $sql = "SELECT records.receiveID,code FROM `records` INNER JOIN receive on receive.receiveID = records.receiveID where records.recordID = '$recordID'";
        $res = $db->query($sql);
@@ -23,7 +23,7 @@ $sql = "SELECT records.receiveID,code FROM `records` INNER JOIN receive on recei
        $receiveID = $r[0];
        $code = $r[1];
 
-	$t = date('h:i:a');
+  $t = date('h:i:a');
     $d = date('Y:n:j');
 
     $userID = $_SESSION['currentUserID'];
@@ -35,4 +35,7 @@ $sql = "SELECT records.receiveID,code FROM `records` INNER JOIN receive on recei
         var_dump($db->error);
         die;
     }
+  
+}
+
     header('Location: ../records.php#success');

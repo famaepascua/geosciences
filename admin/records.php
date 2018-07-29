@@ -402,7 +402,7 @@ if ($_SESSION['currentUserType'] == "user") {
                                                                         <!-- PANEL HEADER -->
                                                                         <div class="panel-heading">
                                                                             <div class="row">
-                                                                                <div class="col-lg-12" align="center" style="margin-left: 150px">
+                                                                                <div class="col-lg-12" align="center" style="margin-left: 450px">
                                                                                     <div>
                                                                                         <div class="logo" style="float: left;">
                                                                                             <img src="images/mgbcarlogo.png" alt="MGB Car Logo" width="100" height="100" style="margin-right: 10px">
@@ -437,6 +437,7 @@ if ($_SESSION['currentUserType'] == "user") {
                                                                                 <th>Sender</th>
                                                                                 <th>Location</th>
                                                                                 <th>Subject</th>
+                                                                                <th>Status</th>
                                                                             </tr>
                                                                             </thead>
                                                                         </table>
@@ -1519,6 +1520,7 @@ if ($_SESSION['currentUserType'] == "user") {
                     {"data": "sender"},
                     {"data": "location"},
                     {"data": "subject"},
+                    {"data": "status"}
                 ]
             },
         }).destroy();
