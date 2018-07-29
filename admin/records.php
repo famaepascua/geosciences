@@ -1,4 +1,4 @@
-<?php
+f<?php
 session_start();
 if (!isset($_SESSION['currentUser'])) {
     $m = "Please Login First";
@@ -375,7 +375,7 @@ if ($_SESSION['currentUserType'] == "user") {
 
                                                         <div hidden class="col-lg-5" id="classifFilter">
                                                             <div class="form-group">
-                                                                <select name="classification" class="form-control">
+                                                                <select id="clsSelect" name="classification" class="form-control">
                                                                     <option value="Evacuation Site">Evacuation Site</option>
                                                                     <option value="Geohazard Assesment">Geohazard Assesment</option>
                                                                     <option value="GIR">GIR</option>
@@ -1399,7 +1399,7 @@ if ($_SESSION['currentUserType'] == "user") {
             });
 
             classif.each(function () {
-                var $classification = $('select[name=classification]').clone().addClass('classif').val($(this).text());
+                var $classification = $('#clsSelect').clone().addClass('classif').val($(this).text());
                 if (!$(this).text().trim()) {
                     $classification.attr('disabled', 'disabled');
                 }
