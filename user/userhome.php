@@ -367,7 +367,7 @@ if ($_SESSION['currentUserType'] != "user") {
                         <div class="panel-body">
                             <div hidden id="scannedFile" class="row">
                                 <div class="col-lg-12" align="center">
-                                    <a id="viewfile" href="" class="text-success">View Scanned File</a>
+                                    <a id="viewfile" href="" target="_blank" class="text-success">View Scanned File</a>
                                 </div>
                             </div>
                         </div>
@@ -443,6 +443,7 @@ if ($_SESSION['currentUserType'] != "user") {
                 $('#actiondesired').html(data[18]);
                 $('#note').html(data[19]);
                 $('#oicrd').html(data[20]);
+                $('#viewfile').attr('href', '../admin/uploads/' + data[14]);
 
                 if(data[21] == '0'){
                     $('#recordinfo').modal();
@@ -457,7 +458,13 @@ if ($_SESSION['currentUserType'] != "user") {
                     $('#scannedFile').attr('hidden','hidden');
                     $('#uploadForm').removeAttr('hidden');
                 }
-            } );
+            });
+                $.ajax({
+                url: 'php/getScannedFile.php',
+                success: function (link) {
+                    $('#viewfile').attr('href', '../admin/uploads/' + link);
+                },
+            });
 
             });
 
