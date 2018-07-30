@@ -323,29 +323,7 @@ if ($_SESSION['currentUserType'] == "user") {
 
 <!-- Custom Theme JavaScript -->
 <script src="dist/js/sb-admin-2.js"></script>
-<script>
-    function deleteUsers() {
-        users = [];
-        $('.userID:checked').each(function(){
-            users.push($(this).val());
-        });
-
-        if(users.length !== 0){
-         $.ajax({
-          method: "POST",
-          url: "php/deleteUsers.php",
-          data: { users: users},
-          success: function(data){
-            alert('Selected user(s) has been deleted. ');
-            location.href = "users.php";
-          }
-      })
-     }else{
-        alert('Please select one or more users. ');
-     }        
-     
- }
-</script>
+<script src="js/deleteUser.js"></script>
 
 </body>
 

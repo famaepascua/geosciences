@@ -348,78 +348,9 @@ if ($_SESSION['currentUserType'] == "user") {
 
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
-    <script>
-        $(document).ready(function() {
-          var table =  $('#dataTables-example').DataTable({
-            responsive: true
-        });
-          $('#dataTables-example tbody').on( 'click', 'tr', function () {
-            var data = table.row( this ).data();
-            $('#code').html(data[1]);
-            $('#folderno').html(data[10]);
-            $('#dateReceived').html(data[13]);
-            $('#applicant').html(data[2]);
-            $('#sender').html(data[3]);
-            $('#location').html(data[4]);
-            $('#purpose').html(data[11]);
-            $('#dateInspected').html(data[9]);
-            $('#inspector').html(data[8]);
-            $('#documentDate').html(data[0]);
-            $('#recordUpdate').val(data[7]);
-            $('#classification').html(data[12]);
-            $('#subject').html(data[5]);
-            $('#recordID').val(data[7]);
-            $('#editRelease').modal();
-        } );
-      });
-  </script>
+    <script src="js/releaseTable.js"></script>
 
-    <script>
-        $(document).ready(function () {
-            if(location.hash === '#success'){
-                $.notify({
-                    icon: 'glyphicon glyphicon-star',
-                    message: "Record Was Released!"
-                },{
-                    type: 'success',
-                    animate: {
-                        enter: 'animated fadeInUp',
-                        exit: 'animated fadeOutRight'
-                    },
-                    placement: {
-                        from: "top",
-                        align: "center"
-                    },
-                    offset: 10,
-                    spacing: 10,
-                    z_index: 1031,
-                });
-                window.location.replace(location.href.split('#')[0]+'#');
-            }
-
-            if(location.hash === '#failed'){
-                $.notify({
-                    icon: 'glyphicon glyphicon-star',
-                    message: "Failed to add data!,Contact Administrator"
-                },{
-                    type: 'danger',
-                    animate: {
-                        enter: 'animated fadeInUp',
-                        exit: 'animated fadeOutRight'
-                    },
-                    placement: {
-                        from: "top",
-                        align: "center"
-                    },
-                    offset: 10,
-                    spacing: 10,
-                    z_index: 1031,
-                });
-                window.location.replace(location.href.split('#')[0]+'#');
-            }
-
-        })
-    </script>
+    <script src="js/releaseMessage.js"></script>
 
 
 </body>
