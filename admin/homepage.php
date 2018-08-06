@@ -375,7 +375,7 @@ if ($_SESSION['currentUserType'] == "user") {
                                     <div class="col-lg-8">
                                         <input name="municipality[0]" id="m0" class="form-control" placeholder="Municipality" required>
                                         <input name="province[0]" id="p0" class="form-control" placeholder="Province" required>
-                                        <button type="button" class="btn btn-success" data-toggle="modal"
+                                      <button type="button" class="btn btn-success" data-toggle="modal"
                                         data-target="#addLocation">Add Location
                                     </button>
                                 </div>
@@ -442,7 +442,7 @@ if ($_SESSION['currentUserType'] == "user") {
                         <!-- MODAL BODY END-->
                         <!-- MODAL FOOTER -->
                         <div class="modal-footer">
-                            <button onclick="$('#addLocation').modal()" type="button" class="btn btn-success">Add Location</button>
+                            <button data-dismiss="modal" class="btn btn-success">Add Location</button>
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                         </div>
                         <!-- MODAL FOOTER END -->

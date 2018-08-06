@@ -14,7 +14,7 @@ $(document).ready(function () {
         })
         var counter =0;
 
-        $('#addlocation').click(function(){
+        $('button#addlocation').click(function(){
             $('#folderNo').removeAttr('disabled');
             var numberOfInputs = $('#numofinput').val();
 
