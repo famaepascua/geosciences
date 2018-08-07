@@ -1,4 +1,10 @@
 <?php
+
+//
+// @author  PASCUA, FATIMA MAE C. | 2143735 | Saint Louis University
+// @date    AUGUST 2018
+//
+
 session_start();
 if (!isset($_SESSION['currentUser'])) {
     $m = "Please Login First";
@@ -262,26 +268,27 @@ if ($_SESSION['currentUserType'] == "user") {
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label>Date Inspected</label>
-                                                    <input name="date" id="date" type="date" class="form-control">
+                                                    <input name="date" id="date" type="date" class="form-control" required>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label>Document Date</label>
-                                                    <input name="docudate" id="date" type="date" class="form-control">
+                                                    <input name="docudate" id="date" type="date" class="form-control" required>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label>Inspector</label>
                                                     <input name="inspector" type="text" class="form-control"
-                                                    placeholder="Enter Full Name">
+                                                    placeholder="Enter Full Name" required>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label>Classification</label>
-                                                    <select name="classification" class="form-control">
+                                                    <select name="classification" class="form-control" required>
+                                                        <option value="Agricultural">Agricultural</option>
                                                         <option value="Evacuation Site">Evacuation Site</option>
                                                         <option value="Geohazard Assesment">Geohazard Assesment</option>
                                                         <option value="GIR">GIR</option>
@@ -297,7 +304,7 @@ if ($_SESSION['currentUserType'] == "user") {
                                                 <div class="form-group">
                                                     <div class="form-group">
                                                         <label>Subject</label>
-                                                        <textarea name="subject" class="form-control" rows="2"></textarea>
+                                                        <textarea style="resize: none;" name="subject" class="form-control" rows="2" required></textarea>
                                                     </div>
                                                 </div>
                                             </div>

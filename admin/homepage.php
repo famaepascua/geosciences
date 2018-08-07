@@ -1,4 +1,10 @@
 <?php
+
+//
+// @author  PASCUA, FATIMA MAE C. | 2143735 | Saint Louis University
+// @date    AUGUST 2018
+//
+
 session_start();
 if (!isset($_SESSION['currentUser'])) {
     $m = "Please Login First";
@@ -300,12 +306,12 @@ if ($_SESSION['currentUserType'] == "user") {
                                             </div>
                                             <div class="form-group">
                                                 <label>OIC-RD</label>
-                                                <input name="oicrd" type="text" class="form-control"
+                                                <input style="text-transform: uppercase;" name="oicrd" type="text" class="form-control"
                                                 placeholder="Enter Full Name">
                                             </div>
                                             <div class="form-group">
                                                 <label>Note</label>
-                                                <textarea name="note" class="form-control" rows="2"></textarea>
+                                                <textarea style="resize: none;" name="note" class="form-control" rows="2"></textarea>
                                             </div>
                                         </div>
                                         <!-- ACTION SLIP PANEL BODY END -->
@@ -337,15 +343,15 @@ if ($_SESSION['currentUserType'] == "user") {
                                 <div class="col-lg-8">
                                     <div class="form-group">
                                         <label>Applicant</label>
-                                        <input name="applicant" type="text" class="form-control"
+                                        <input style="text-transform: uppercase;" name="applicant" type="text" class="form-control"
                                         placeholder="Enter Full Name" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-8">
                                     <div class="form-group">
                                         <label>Sender</label>
-                                        <input name="sender" type="text" class="form-control"
-                                        placeholder="Enter Full Name">
+                                        <input style="text-transform: uppercase;" name="sender" type="text" class="form-control"
+                                        placeholder="Enter Full Name" required>
                                     </div>
                                 </div>
 
@@ -384,7 +390,7 @@ if ($_SESSION['currentUserType'] == "user") {
                                 <div class="form-group">
                                     <div class="form-group">
                                         <label>Purpose</label>
-                                        <textarea name="purpose" class="form-control" rows="14"></textarea>
+                                        <textarea style="resize: none;" name="purpose" class="form-control" rows="14" required></textarea>
                                     </div>
                                 </div>
                             </div>

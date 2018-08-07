@@ -1,4 +1,10 @@
 <!DOCTYPE html>
+
+<!--
+// @author  PASCUA, FATIMA MAE C. | 2143735 | Saint Louis University
+// @date    AUGUST 2018
+-->
+
 <html lang="en">
 <head>
 	<title>MGB | LOGIN</title>

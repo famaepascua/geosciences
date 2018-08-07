@@ -1,4 +1,10 @@
 <!DOCTYPE html>
+
+<!--
+// @author  PASCUA, FATIMA MAE C. | 2143735 | Saint Louis University
+// @date    AUGUST 2018
+-->
+
 <html>
 <head>
 <meta http-equiv="refresh" content="0;url=homepage.html">

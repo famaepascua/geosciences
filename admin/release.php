@@ -1,4 +1,10 @@
 <?php
+
+//
+// @author  PASCUA, FATIMA MAE C. | 2143735 | Saint Louis University
+// @date    AUGUST 2018
+//
+
 session_start();
 if (!isset($_SESSION['currentUser'])) {
     $m = "Please Login First";
@@ -303,14 +309,14 @@ if ($_SESSION['currentUserType'] == "user") {
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>Date Released</label>
-                                        <input name="datereleased" id="dateReleased" type="date" class="form-control">
+                                        <input name="datereleased" id="dateReleased" type="date" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>Receive By.</label>
                                         <input name="receiver" type="text" class="form-control"
-                                        placeholder="Enter Full Name">
+                                        placeholder="Enter Full Name" required>
                                     </div>
                                 </div>
                             </div>

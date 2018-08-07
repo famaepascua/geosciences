@@ -1,4 +1,9 @@
-<?php 
+<?php
+
+//
+// @author  PASCUA, FATIMA MAE C. | 2143735 | Saint Louis University
+// @date    AUGUST 2018
+//
 
 require '../config.php';
 session_start();
@@ -62,7 +67,7 @@ if ($db->query($sql)) {
                 if(!$db->query($sql)){
                     var_dump($db->error);
                 }  
-                 //get barangay ID
+                //get barangay ID
                 $bID = $db->insert_id;
 
                 //insert into location

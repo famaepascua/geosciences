@@ -1,4 +1,10 @@
 <?php
+
+//
+// @author  PASCUA, FATIMA MAE C. | 2143735 | Saint Louis University
+// @date    AUGUST 2018
+//
+
 session_start();
 if (!isset($_SESSION['currentUser'])) {
     $m = "Please Login First";
@@ -56,7 +62,7 @@ if ($_SESSION['currentUserType'] == "user") {
     <![endif]-->
 </head>
 
-<div>
+<div> 
 
 <div id="wrapper">
 
@@ -161,14 +167,14 @@ if ($_SESSION['currentUserType'] == "user") {
                                     <!-- TABLE HEADER-->
                                     <thead>
                                     <tr>
-                                        <th>Code</th>
-                                        <th>Folder</th>
-                                        <th>Date Received</th>
-                                        <th>Applicant</th>
-                                        <th>Sender</th>
-                                        <th>Location</th>
-                                        <th>Purpose</th>
-                                        <th>Status</th>
+                                        <th width="8%">Code</th>
+                                        <th width="8%">Folder</th>
+                                        <th width="10%">Date Received</th>
+                                        <th width="15%">Applicant</th>
+                                        <th width="15%">Sender</th>
+                                        <th width="15%">Location</th>
+                                        <th width="10%">Purpose</th>
+                                        <th width="10%">Status</th>
                                         <th hidden>Record ID</th>
                                         <th hidden>Inspector</th>
                                         <th hidden>Date Inspected</th>
@@ -376,6 +382,7 @@ if ($_SESSION['currentUserType'] == "user") {
                                                         <div hidden class="col-lg-5" id="classifFilter">
                                                             <div class="form-group">
                                                                 <select id="clsSelect" name="classification" class="form-control">
+                                                                    <option value="Agricultural">Agricultural</option>
                                                                     <option value="Evacuation Site">Evacuation Site</option>
                                                                     <option value="Geohazard Assesment">Geohazard Assesment</option>
                                                                     <option value="GIR">GIR</option>
@@ -402,7 +409,7 @@ if ($_SESSION['currentUserType'] == "user") {
                                                                         <!-- PANEL HEADER -->
                                                                         <div class="panel-heading">
                                                                             <div class="row">
-                                                                                <div class="col-lg-12" align="center" style="margin-left: 450px">
+                                                                                <div class="col-lg-12" align="center" style="margin-left: 300px">
                                                                                     <div>
                                                                                         <div class="logo" style="float: left;">
                                                                                             <img src="images/mgbcarlogo.png" alt="MGB Car Logo" width="100" height="100" style="margin-right: 10px">
@@ -437,7 +444,6 @@ if ($_SESSION['currentUserType'] == "user") {
                                                                                 <th>Sender</th>
                                                                                 <th>Location</th>
                                                                                 <th>Subject</th>
-                                                                                <th>Status</th>
                                                                             </tr>
                                                                             </thead>
                                                                         </table>
@@ -981,7 +987,7 @@ if ($_SESSION['currentUserType'] == "user") {
                                     <div class="form-group">
                                         <div class="form-group">
                                             <label>Purpose</label>
-                                            <textarea name="purpose" class="form-control" rows="14"></textarea>
+                                            <textarea style="resize: none;" name="purpose" class="form-control" rows="14"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -1010,6 +1016,7 @@ if ($_SESSION['currentUserType'] == "user") {
                                     <div class="form-group">
                                         <label>Classification</label>
                                         <select name="classification" class="form-control">
+                                            <option value="Agricultural">Agricultural</option>
                                             <option value="Evacuation Site">Evacuation Site</option>
                                             <option value="Geohazard Assesment">Geohazard Assesment</option>
                                             <option value="GIR">GIR</option>
@@ -1025,7 +1032,7 @@ if ($_SESSION['currentUserType'] == "user") {
                                     <div class="form-group">
                                         <div class="form-group">
                                             <label>Subject</label>
-                                            <textarea name="subject" class="form-control" rows="2"></textarea>
+                                            <textarea style="resize: none;" name="subject" class="form-control" rows="2"></textarea>
                                         </div>
                                     </div>
                                 </div>
