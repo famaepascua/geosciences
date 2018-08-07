@@ -228,12 +228,18 @@ function printDiv(divName) {
 
             if ($('.tab-pane.fade.in.active').attr('id') == 'saved') {
                 var data = table.row(this).data();
+                 $('#editRecord').removeClass('hidden');
+                $('#rvrtbtn').addClass('hidden');
+                $('#dltbtn').addClass('hidden');
+                $('#archbtn').removeClass('hidden');
+                $('#uploadPanel').removeClass('hidden');
+                $('#actionPanel').removeClass('hidden');
             } else {
                 var data = tableArch.row(this).data();
-                $('#editRecord').toggleClass('hidden');
-                $('#rvrtbtn').toggleClass('hidden');
-                $('#dltbtn').toggleClass('hidden');
-                $('#archbtn').toggleClass('hidden');
+                $('#editRecord').addClass('hidden');
+                $('#rvrtbtn').removeClass('hidden');
+                $('#dltbtn').removeClass('hidden');
+                $('#archbtn').addClass('hidden');
                 $('#uploadPanel').addClass('hidden');
                 $('#actionPanel').addClass('hidden');
 

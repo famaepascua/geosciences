@@ -920,7 +920,7 @@ if ($_SESSION['currentUserType'] == "user") {
                                 <div class="col-lg-2">
                                     <div class="form-group">
                                         <label>Code</label>
-                                        <input name="code" type="text" class="form-control" placeholder="Enter Code">
+                                        <input name="code" required type="text" class="form-control" placeholder="Enter Code">
                                     </div>
                                 </div>
                                 <div class="col-lg-2">
