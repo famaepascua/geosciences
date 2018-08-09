@@ -11,7 +11,7 @@ session_start();
 $recordID = $_POST['recordID'];
 $dateInspected = $_POST['date'];
 $documentDate = $_POST['docudate'];
-$inspector = $_POST['inspector'];
+$inspector = strtoupper($_POST['inspector']);
 $classification = $_POST['classification'];
 $subject = $_POST['subject'];
 

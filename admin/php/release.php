@@ -20,7 +20,7 @@ if(!$datereleased = $_POST['datereleased']){
 		die;
 	} 	
 }else{
-	$receiver = $_POST['receiver'];
+	$receiver = strtoupper($_POST['receiver']);
 
 	$sql = "Update records set status = 'release', releaseDate = '$datereleased',receiver='$receiver' where recordID = '$recordID'";
 

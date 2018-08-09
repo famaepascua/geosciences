@@ -10,7 +10,7 @@ session_start();
 
 //This are the variables for table actionSlip
 
-$oicrd = $_POST['oicrd'];
+$oicrd = strtoupper($_POST['oicrd']);
 $note = $_POST['note'];
 
 
@@ -42,8 +42,8 @@ if ($db->query($sql)) {
     //Variables for receive table
     $code = $_POST['code'];
     $dateReceived = $_POST['date'];
-    $applicant = $_POST['applicant'];
-    $sender = $_POST['sender'];
+    $applicant =  strtoupper($_POST['applicant']);
+    $sender = strtoupper($_POST['sender']);
     $purpose = $_POST['purpose'];
 
 

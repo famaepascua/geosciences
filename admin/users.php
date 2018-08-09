@@ -178,7 +178,12 @@ if ($_SESSION['currentUserType'] == "user") {
                                     if ($result) {
                                         while ($row = $result->fetch_assoc()) {
                                             echo "<tr>";
+                                            if($row['userType'] !== 'admin'){
                                             echo "<td><input class='userID' type='checkbox' value='".$row['userID']."'/></td>";
+                                            }else{
+                                                echo "<td></td>";
+                                            }
+
                                             echo "<td>" . $row['userType'] . "</td>";
                                             echo "<td>" . $row['firstName'] . "</td>";
                                             echo "<td>" . $row['lastName'] . "</td>";

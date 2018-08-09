@@ -518,6 +518,9 @@ if ($_SESSION['currentUserType'] == "user") {
                                         <div class="panel-body">
                                             <div class="col-lg-6">
                                                 <div>
+                                                    <label>Status:</label> <span id="status"></span>
+                                                </div>
+                                                <div>
                                                     <label>Action:</label> <span id="action"></span>
                                                 </div>
                                             </div>
@@ -649,6 +652,7 @@ if ($_SESSION['currentUserType'] == "user") {
                                 <!-- MODAL FOOTER -->
                                 <div class="modal-footer">
                                     <button name="editRecord" id="editRecord" class="btn btn-primary">Edit</button>
+                                    <button name="backRecord" id="backRecord" class="hidden btn btn-primary">Back</button>
                                     <button name="saveRecord" id="saveRecord" class="hidden btn btn-success">Save</button>
                                     <button id="archbtn" type="button" class="btn btn-danger" data-toggle="modal"
                                             data-target="#exampleModal">

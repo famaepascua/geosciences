@@ -100,7 +100,9 @@ function printDiv(divName) {
         });
         $('#saveRecord').click(function () {
             $(this).toggleClass('hidden');
+            $('#backRecord').toggleClass('hidden');
             $('#editRecord').toggleClass('hidden');
+            $('#archbtn').toggleClass('hidden');
             var text = $('.toSpanText');
             var date = $('.toSpanDate');
             var textarea = $('.toSpanTextArea');
@@ -163,15 +165,17 @@ function printDiv(divName) {
                 },
             });
         })
+        
         $('#editRecord').click(function () {
             $(this).toggleClass('hidden');
+            $('#backRecord').removeClass('hidden');
+            $('#archbtn').toggleClass('hidden');
             $('#saveRecord').toggleClass('hidden');
             var text = $('#recordinfo').find('span.text');
             var date = $('#recordinfo').find('span.date');
             var textarea = $('#recordinfo').find('span.textarea');
             var classif = $('.classif');
             var locSelect = $('.locSelect');
-            var disabled = "";
             text.each(function () {
                 var $input = $('<input>', {
                     val: $(this).text(),
@@ -179,9 +183,6 @@ function printDiv(divName) {
                     class: 'form-control toSpanText',
                     name: $(this).attr('id')
                 })
-                if (!$(this).text().trim()) {
-                    $input.attr('disabled', 'disabled');
-                }
                 $(this).replaceWith($input);
             })
             date.each(function () {
@@ -191,9 +192,6 @@ function printDiv(divName) {
                     class: 'form-control toSpanDate',
                     name: $(this).attr('id')
                 })
-                if (!$(this).text().trim()) {
-                    $input.attr('disabled', 'disabled');
-                }
                 $(this).replaceWith($input);
             })
             textarea.each(function () {
@@ -203,17 +201,11 @@ function printDiv(divName) {
                     class: 'form-control toSpanTextArea',
                     name: $(this).attr('id')
                 })
-                if (!$(this).text().trim()) {
-                    $input.attr('disabled', 'disabled');
-                }
                 $(this).replaceWith($input);
             });
 
             classif.each(function () {
                 var $classification = $('#clsSelect').clone().addClass('classif').val($(this).text());
-                if (!$(this).text().trim()) {
-                    $classification.attr('disabled', 'disabled');
-                }
                 $(this).replaceWith($classification);
             });
         })
@@ -244,6 +236,7 @@ function printDiv(divName) {
                 $('#actionPanel').addClass('hidden');
 
             }
+            $('#status').html(data[7]);
             $('#code').html(data[0]);
             $('#fNo').html(data[1]);
             $('#dateReceived').html(data[2]);
