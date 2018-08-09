@@ -626,7 +626,7 @@ if ($_SESSION['currentUserType'] == "user") {
                                                     <div class="col-lg-12" align="center">
                                                         <div class="form-group">
                                                             <label>Upload File</label>
-                                                            <input type="file" name="scannedFile">
+                                                            <input required type="file" name="scannedFile">
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-12" align="center">
