@@ -51,5 +51,6 @@ $sql = "SELECT records.receiveID,code FROM `records` INNER JOIN receive on recei
         var_dump($db->error);
         die;
     }
+    echo "<script>Received</script>"
     header('Location: ../unclaim.php#success');
 
