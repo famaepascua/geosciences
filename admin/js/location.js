@@ -35,6 +35,7 @@ $(document).ready(function () {
                 var other = $('#brgyname0').clone().val('').attr('id', 'brgyname' + counter).attr('name', 'brgyname[' + counter + ']').appendTo('#location');
                 var municipality = $('#m0').clone().val('').attr('id', 'm' + counter).attr('name', 'municipality[' + counter + ']').appendTo('#location');
                 var province = $('#p0').clone().val('').attr('id', 'p' + counter).attr('name', 'province[' + counter + ']').appendTo('#location');
+                $('#location').append('<button>Remove Location</button>');
             }
             locationChange();
         })
