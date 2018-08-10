@@ -23,20 +23,29 @@ $(document).ready(function () {
             $('#folderNo').removeAttr('disabled');
             var numberOfInputs = $('#numofinput').val();
 
-            var label = '<label>Location</label>';
             for(i=1; i <= numberOfInputs; i++){
                 counter++;
-                $('#location').append(label);
+                $('#location').append('<label id=lab'+counter+'>Location</label>');
                 var barangay = $('#barangay').clone().attr('data-num',counter).attr('name','barangay['+counter+']').appendTo('#location');
                 var other = $('#brgyname0').clone().val('').attr('id','brgyname'+counter).attr('name','brgyname['+counter+']').appendTo('#location');
                 var municipality = $('#m0').clone().val('').attr('id','m'+counter).attr('name','municipality['+counter+']').appendTo('#location');
                 var province = $('#p0').clone().val('').attr('id','p'+counter).attr('name','province['+counter+']').appendTo('#location');
+                $('#location').append('<button type="button" id="btn'+counter+'" onclick="removeAddedLoc('+counter+')" class="btn btn-danger">Remove Location</button><br>');
+           
             }
             locationChange();
         })
 
     });
     locationChange();
+    function removeAddedLoc(counter){
+        $('select[data-num='+counter+']').remove();
+        $('#btn'+counter).remove();
+        $('#lab'+counter).remove();
+        $('#brgyname'+counter).remove();
+        $('#m'+counter).remove();
+        $('#p'+counter).remove();
+    }
     function locationChange(){
         $('select[name^=barangay]').change(function () {
             $id = $(this).val();

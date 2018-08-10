@@ -14,7 +14,7 @@ session_start();
 
 //This are the variables for table actionSlip
 
-$oicrd = $_POST['oicrd'];
+$oicrd = strtoupper($_POST['oicrd']);
 $note = $_POST['note'];
 
 
@@ -46,8 +46,8 @@ if ($db->query($sql)) {
     //Variables for receive table
     $code = $_POST['code'];
     $dateReceived = $_POST['date'];
-    $applicant = $_POST['applicant'];
-    $sender = $_POST['sender'];
+    $applicant = strtoupper($_POST['applicant']);
+    $sender = strtoupper($_POST['sender']);
     $purpose = $_POST['purpose'];
     // Locations
 
@@ -122,7 +122,7 @@ foreach ($location as $value) {
 
 $dateInspected = $_POST['date'];
 $documentDate = $_POST['docudate'];
-$inspector = $_POST['inspector'];
+$inspector = strtoupper($_POST['inspector']);
 $classification = $_POST['classification'];
 $subject = $_POST['subject'];
 
@@ -136,7 +136,7 @@ if(!$db->query($sql)){
 
 $unclaimID = $db->insert_id;
 
-$receiver = $_POST['receiver'];
+$receiver = strtoupper($_POST['receiver']);
 $datereleased = $_POST['datereleased'];
 
 $sql = "INSERT INTO records(status,receiveID,scanFile,unclaimID,releaseDate,receiver) 

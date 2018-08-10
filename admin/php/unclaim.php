@@ -11,7 +11,7 @@ session_start();
 $recordID = $_POST['recordID'];
 $dateInspected = $_POST['date'];
 $documentDate = $_POST['docudate'];
-$inspector = $_POST['inspector'];
+$inspector = strtoupper($_POST['inspector']);
 $classification = $_POST['classification'];
 $subject = $_POST['subject'];
 
@@ -51,5 +51,5 @@ $sql = "SELECT records.receiveID,code FROM `records` INNER JOIN receive on recei
         var_dump($db->error);
         die;
     }
-    header('Location: ../unclaim.php#success');
+    echo "<script>alert('Record has been updated.');location.href = '../unclaim.php'</script>";
 
