@@ -165,12 +165,12 @@ if ($_SESSION['currentUserType'] == "user") {
                             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
                                     <tr>
-                                        <th>Date Received</th>
-                                        <th>Code</th>
-                                        <th>Applicant</th>
-                                        <th>Sender</th>
-                                        <th>Location</th>
-                                        <th>Purpose</th>
+                                        <th width="10%">Date Received</th>
+                                        <th width="8%">Code</th>
+                                        <th width="15%">Applicant</th>
+                                        <th width="15%">Sender</th>
+                                        <th width="15%">Location</th>
+                                        <th width="10%">Purpose</th>
                                         <th hidden>Folder #</th>
                                         <th hidden>Record ID</th>
                                     </tr>
