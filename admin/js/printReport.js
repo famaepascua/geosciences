@@ -99,10 +99,10 @@ function printDiv(divName) {
             responsive: true
         });
         $('#saveRecord').click(function () {
-            $(this).toggleClass('hidden');
-            $('#backRecord').toggleClass('hidden');
-            $('#editRecord').toggleClass('hidden');
-            $('#archbtn').toggleClass('hidden');
+            $(this).addClass('hidden');
+            $('#backRecord').addClass('hidden');
+            $('#editRecord').removeClass('hidden');
+            $('#archbtn').removeClass('hidden');
             var text = $('.toSpanText');
             var date = $('.toSpanDate');
             var textarea = $('.toSpanTextArea');
@@ -165,7 +165,57 @@ function printDiv(divName) {
                 },
             });
         })
-        
+        $('#backRecord').click(function () {
+            $(this).addClass('hidden');
+            $('#editRecord').removeClass('hidden');
+            $('#archbtn').removeClass('hidden');
+            $('#saveRecord').addClass('hidden');
+            var text = $('.toSpanText');
+            var date = $('.toSpanDate');
+            var textarea = $('.toSpanTextArea');
+            var classif = $('.classif');
+            var data = {};
+            text.each(function () {
+                var $span = $('<span>', {
+                    text: $(this).val(),
+                    class: 'text',
+                    id: $(this).attr('name')
+                })
+                $(this).replaceWith($span);
+                data[$(this).attr('name')] = $(this).val();
+
+            })
+            date.each(function () {
+                var $span = $('<span>', {
+                    text: $(this).val(),
+                    class: 'date',
+                    id: $(this).attr('name')
+                })
+                $(this).replaceWith($span);
+                data[$(this).attr('name')] = $(this).val();
+
+            })
+            textarea.each(function () {
+                var $span = $('<span>', {
+                    text: $(this).val(),
+                    class: 'textarea',
+                    id: $(this).attr('name')
+                })
+                $(this).replaceWith($span);
+                data[$(this).attr('name')] = $(this).val();
+
+            })
+            classif.each(function () {
+                var $span = $('<span>', {
+                    text: $(this).val(),
+                    class: 'classif',
+                    id: $(this).attr('name')
+                })
+                $(this).replaceWith($span);
+                data[$(this).attr('name')] = $(this).val();
+
+            })    
+        });
         $('#editRecord').click(function () {
             $(this).toggleClass('hidden');
             $('#backRecord').removeClass('hidden');

@@ -4,6 +4,9 @@
 //
 
 $(document).ready(function () {
+    $('#recordinfo').on('hide.bs.modal',function() {
+        location.href = './records.php'
+    })
       $('input[name=code]').change(function(){
             $.ajax({
             url: 'php/codeValidate.php',

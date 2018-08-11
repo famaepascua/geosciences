@@ -163,9 +163,9 @@ $numberOfRows = mysqli_affected_rows($db);
 
 
 if($numberOfRows > 0){
-    header('Location: ../homepage.php#success');
+    header('Location: ../records.php#success');
 }else{
-    header('Location: ../homepage.php#failed');
+    header('Location: ../records.php#failed');
 }
 }else{
     var_dump($db->error);
