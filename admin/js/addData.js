@@ -50,11 +50,12 @@ $(document).ready(function () {
         $('select[name^=barangay]').change(function () {
             $id = $(this).val();
             $num = $(this).data('num');
+            $text = $(this).find('option:selected').text();
             if($num != '0'){
                 $('#folderNo').removeAttr('disabled');
                 $('#folderNo').val('');
             }else{
-             if($id == '54' || $id == '56'){
+             if($text == 'Other Barangays' || $text == 'Other Municipalities' || $text == 'La Trinidad' || $text == 'Bontoc'){
                 $('#brgyname'+$num).removeAttr('disabled');
                 $('#folderNo').removeAttr('disabled');
             }else{
