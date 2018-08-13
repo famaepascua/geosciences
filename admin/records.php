@@ -516,17 +516,24 @@ if ($_SESSION['currentUserType'] == "user") {
                                         </div>
                                         <!-- ACTION SLIP PANEL HEADING END -->
                                         <div class="panel-body">
-                                            <div class="col-lg-6">
+                                            <div class="col-lg-12">
                                                 <div>
                                                     <label>Status:</label> <span id="status"></span>
                                                 </div>
+                                            </div>
+                                            <div class="col-lg-12">
                                                 <div>
-                                                    <label>Action:</label> <span id="action"></span>
+                                                    <label>OIC-RD:</label> <span id="oicrd"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div>
+                                                    <label>Note:</label> <span id="note"></span>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div>
-                                                    <label>OIC-RD:</label> <span id="oicrd"></span>
+                                                    <label>Action:</label> <span id="action"></span>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
@@ -534,11 +541,7 @@ if ($_SESSION['currentUserType'] == "user") {
                                                     <label>Action Desired:</label> <span id="actiondesired"></span>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-6">
-                                                <div>
-                                                    <label>Note:</label> <span id="note"></span>
-                                                </div>
-                                            </div>
+                                            
                                         </div>
                                     </div>
                                     <div class="panel panel-green">

@@ -314,7 +314,7 @@ if ($_SESSION['currentUserType'] == "user") {
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>Receive By.</label>
+                                        <label>Received By.</label>
                                         <input name="receiver" type="text" class="form-control"
                                         placeholder="Enter Full Name" required>
                                     </div>
